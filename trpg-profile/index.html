@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>TRPG Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Noto Sans JP for readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav>
+            <ul>
+                <li><a href="#profile" class="nav-link" data-target="profile">プロフィール</a></li>
+                <li><a href="#likes" class="nav-link" data-target="likes">地雷/好物</a></li>
+                <li><a href="#scenarios" class="nav-link" data-target="scenarios">シナリオ</a></li>
+                <li><a href="#pcs" class="nav-link" data-target="pcs">探索者</a></li>
+                <li><a href="#works" class="nav-link" data-target="works">自作シナリオ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="app">
+        <!-- コンテンツがここに動的にロードされます -->
+        <div id="loading">Loading...</div>
+    </main>
+
+    <!-- 画像拡大用モーダル -->
+    <div id="image-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modal-img" src="" alt="Expanded Image">
+            <p id="modal-caption"></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

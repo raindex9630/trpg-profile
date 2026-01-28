@@ -1,0 +1,69 @@
+{
+    "passed": [
+        {
+            "title": "毒入りスープ",
+            "ho": ""
+        },
+        {
+            "title": "狂気山脈",
+            "ho": "HO1",
+            "favorite": true
+        },
+        {
+            "title": "庭師は何を口遊む",
+            "ho": "HO4"
+        }
+    ],
+    "planned_schedule": {
+        "note": "新規：×　直近で行ける短いシナリオ以外受け付けてません\n継続：3月〜",
+        "months": [
+            {
+                "label": "現行",
+                "items": [
+                    {
+                        "title": "MAGIC JEWEL 2陣",
+                        "role": "KP"
+                    },
+                    {
+                        "title": "四季送り",
+                        "role": "HO参秋"
+                    },
+                    {
+                        "title": "ミノタウロスの証人",
+                        "role": "HO1 白夜"
+                    }
+                ]
+            },
+            {
+                "label": "2026年2月",
+                "items": [
+                    {
+                        "title": "ミノタウロスの証人",
+                        "role": "HO1 白夜"
+                    },
+                    {
+                        "title": "胎顕プルチネラ",
+                        "role": "HO4 花形役者"
+                    },
+                    {
+                        "title": "AE 9陣",
+                        "role": "KP"
+                    }
+                ]
+            },
+            {
+                "label": "2026年3月",
+                "items": [
+                    {
+                        "title": "皿とは言わず地獄まで",
+                        "role": "PL"
+                    },
+                    {
+                        "title": "Xからの告白",
+                        "role": "HO3"
+                    }
+                ]
+            }
+        ]
+    }
+}
