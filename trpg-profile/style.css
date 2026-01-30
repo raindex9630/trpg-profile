@@ -23,12 +23,15 @@
     .site-header nav ul {
         display: flex;
         flex-wrap: nowrap;
-        width: max-content;
-        justify-content: flex-start;
+        width: 100%;
+        justify-content: flex-start !important;
         align-items: center;
         gap: 18px;
         padding: 0 10px;
         scroll-snap-type: x mandatory;
+    }
+    .site-header nav ul li {
+        min-width: 90px;
     }
     .site-header nav ul li,
     .site-header nav ul a {
