@@ -16,16 +16,23 @@
 }
 /* スマホ環境でのナビゲーション横スクロール＆中央寄せ */
 @media (max-width: 600px) {
+    .site-header nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
     .site-header nav ul {
         display: flex;
         flex-wrap: nowrap;
-        overflow-x: auto;
+        width: max-content;
         justify-content: center;
         align-items: center;
         gap: 18px;
         padding: 0 10px;
         scroll-snap-type: x mandatory;
-        min-width: 100%;
+    }
+    .site-header nav ul li,
+    .site-header nav ul a {
+        white-space: nowrap;
     }
     .site-header nav ul li {
         flex: 0 0 auto;
