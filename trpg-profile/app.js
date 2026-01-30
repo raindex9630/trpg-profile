@@ -241,10 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </details>
 
                 <details open>
-                    <summary>通過済シナリオ <span class="scenario-count">(${passedCount})</span></summary>
+                    <summary>通過済シナリオ一覧 <span class="scenario-count">(${passedCount})</span></summary>
                     <div class="accordion-content">
                         <div class="scenario-list-container">
-                            <h3 class="planned-month-title">通過済みシナリオ一覧</h3>
                             ${passedContent}
                         </div>
                     </div>
