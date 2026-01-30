@@ -20,11 +20,12 @@
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         gap: 18px;
         padding: 0 10px;
         scroll-snap-type: x mandatory;
+        min-width: 100%;
     }
     .site-header nav ul li {
         flex: 0 0 auto;
