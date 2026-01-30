@@ -1,3 +1,7 @@
+/* スクロール位置復元時のみスクロールバーを一時的に非表示 */
+.no-scrollbar {
+    overflow: hidden !important;
+}
 /* 通過済みシナリオ見出しと個数を横並び＆間隔調整 */
 .scenario-header-flex {
     display: inline-flex;

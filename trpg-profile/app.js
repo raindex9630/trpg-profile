@@ -1,12 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
     // スマホナビゲーションの初期位置を左端に
     const nav = document.querySelector('.site-header nav');
-    if (nav) {
-        nav.scrollLeft = 0;
-        // iOS等の描画遅延対策で再度遅延して左端に
-        setTimeout(() => {
-            nav.scrollLeft = 0;
-        }, 100);
+    const navUl = nav ? nav.querySelector('ul') : null;
+    if (navUl) {
+        // 最初は常に.no-scrollbarを付与（自動復元時は絶対に表示されない）
+        navUl.classList.add('no-scrollbar');
+        // localStorageから保存位置を取得
+        const savedScroll = localStorage.getItem('navScrollLeft');
+        if (savedScroll !== null) {
+            navUl.scrollLeft = parseInt(savedScroll, 10);
+            setTimeout(() => {
+                requestAnimationFrame(() => {
+                    navUl.scrollLeft = parseInt(savedScroll, 10);
+                    requestAnimationFrame(() => {
+                        navUl.scrollLeft = parseInt(savedScroll, 10);
+                    });
+                });
+            }, 300);
+        }
+        // 実際に横スクロールしたときのみ.no-scrollbarを外す
+        let lastScrollLeft = navUl.scrollLeft;
+        let hideScrollbarTimer = null;
+        const hideScrollbar = () => {
+            navUl.classList.add('no-scrollbar');
+        };
+        const showScrollbar = () => {
+            navUl.classList.remove('no-scrollbar');
+            if (hideScrollbarTimer) clearTimeout(hideScrollbarTimer);
+            hideScrollbarTimer = setTimeout(() => {
+                // スクロール位置が変化していなければ非表示に戻す
+                if (navUl.scrollLeft === lastScrollLeft) {
+                    hideScrollbar();
+                }
+            }, 1000);
+        };
+        navUl.addEventListener('scroll', () => {
+            localStorage.setItem('navScrollLeft', navUl.scrollLeft);
+            if (Math.abs(navUl.scrollLeft - lastScrollLeft) > 0) {
+                showScrollbar();
+            }
+            lastScrollLeft = navUl.scrollLeft;
+        });
+        navUl.addEventListener('wheel', showScrollbar, { passive: true });
+        navUl.addEventListener('touchmove', showScrollbar, { passive: true });
     }
     const app = document.getElementById('app');
     const loading = document.getElementById('loading');
