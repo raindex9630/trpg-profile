@@ -178,10 +178,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <summary>地雷一覧</summary>
                     <div class="accordion-content">
                         <div class="mines-container">
-                            ${l.mines.map(mine => `
-                                <div class="mine-item">
-                                    <div class="mine-level">【${mine.level}】 ${mine.title}</div>
-                                    <div class="mine-reason">${mine.reason}</div>
+                            ${l.mines.map((group, idx) => `
+                                <div class="mine-group${group.label === '控えてほしいこと' ? ' is-request' : ''}">
+                                    <h3 class="planned-month-title${group.label === '恐怖症' ? ' is-phobia' : ''}" style="margin-top: ${idx === 0 ? '0' : '2em'};">${group.label}</h3>
+                                    ${group.items.length > 0 ? group.items.map(item => `
+                                        <div class="mine-item">
+                                            <div class="mine-title">${item.title}</div>
+                                            <div class="mine-reason">${item.reason}</div>
+                                        </div>
+                                    `).join('') : '<div class="mine-item" style="color:#888;">なし</div>'}
                                 </div>
                             `).join('')}
                         </div>
@@ -243,26 +248,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3 class="planned-month-title" style="margin-top: ${idx === 0 ? '0' : '2.5em'}; margin-bottom: 1.2em;">${group.label}</h3>
                 <ul class="scenario-list">
                     ${group.items.map(item => {
-                        // 既存favoriteはfavorite_scenario扱い
-                        const favScenario = item.favorite_scenario ?? item.favorite ?? false;
-                        const favHo = item.favorite_ho ?? false;
-                        // HO有り
-                        if (item.ho) {
-                            return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
+            // 既存favoriteはfavorite_scenario扱い
+            const favScenario = item.favorite_scenario ?? item.favorite ?? false;
+            const favHo = item.favorite_ho ?? false;
+            // HO有り
+            if (item.ho) {
+                return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
                                 <span class="scenario-title">${item.title}</span>
                                 <span class="scenario-ho-badge">${item.ho}
                                     ${favHo ? `<span class="favorite-ho" title="HOが好き"><svg viewBox="0 0 16 16" fill="#ff80b0" xmlns="http://www.w3.org/2000/svg"><path d="M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z"/></svg></span>` : ''}
                                 </span>
                                 <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '&nbsp;'}</span>
                             </li>`;
-                        } else {
-                            // HO無し
-                            return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
+            } else {
+                // HO無し
+                return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
                                 <span class="scenario-title">${item.title}</span>
                                 <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '&nbsp;'}</span>
                             </li>`;
-                        }
-                    }).join('')}
+            }
+        }).join('')}
                 </ul>
             </div>
         `).join('') : '<div class="scenario-item">なし</div>';
