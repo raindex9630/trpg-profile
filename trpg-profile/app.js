@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // スマホナビゲーションの初期位置を左端に
+    const nav = document.querySelector('.site-header nav');
+    if (nav) {
+        nav.scrollLeft = 0;
+    }
     const app = document.getElementById('app');
     const loading = document.getElementById('loading');
     const navLinks = document.querySelectorAll('.nav-link');
