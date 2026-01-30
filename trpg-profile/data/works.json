@@ -1,29 +1,29 @@
 [
     {
-        "title": "とある探偵の休日",
-        "status": "published",
+        "title": "Naming the Blood",
+        "status": "private",
         "rating": "",
-        "players": "2人〜",
-        "time": "3時間",
-        "ho": "なし",
-        "summary": "探偵事務所でのんびり過ごすはずが、奇妙な依頼に巻き込まれるシティシナリオ。"
+        "players": "2人",
+        "time": "半テキ20～30時間",
+        "ho": "あり / 秘匿",
+        "summary": "人間の主人と吸血鬼の従者が夜を駆け回るシナリオ"
     },
     {
-        "title": "深海からの呼び声",
-        "status": "wip",
+        "title": "イリーガル・リリーフ",
+        "status": "private",
         "rating": "r18",
         "players": "4人",
-        "time": "6-8時間",
-        "ho": "あり (秘匿)",
-        "summary": "深海ステーションを舞台にした、閉鎖空間パニックホラー。"
+        "time": "半テキ20～25時間",
+        "ho": "あり / 秘匿",
+        "summary": "違法薬物中毒者しかいないシナリオ"
     },
     {
-        "title": "秘密の実験室",
-        "status": "private",
+        "title": "君は猟奇殺人犯",
+        "status": "published",
         "rating": "r18g",
-        "players": "1人",
-        "time": "1時間",
+        "players": "タイマン",
+        "time": "半テキ5～6時間",
         "ho": "なし",
-        "summary": "身内向けに作成した、グロテスクな描写を中心とした短編。"
+        "summary": "PCが最近よくKPCに殺される夢を見ている日常系シナリオ"
     }
 ]
