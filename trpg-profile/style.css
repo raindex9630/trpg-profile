@@ -1,3 +1,40 @@
+/* 通過済みシナリオ見出しと個数を横並び＆間隔調整 */
+.scenario-header-flex {
+    display: inline-flex;
+    align-items: center;
+}
+.scenario-count {
+    margin-left: 0.2em;
+    font-size: 1em;
+    vertical-align: middle;
+}
+/* 通過済みシナリオ個数の間隔を調整 */
+.scenario-count {
+    margin-left: 0.2em;
+    font-size: 1em;
+    vertical-align: middle;
+}
+/* スマホ環境でのナビゲーション横スクロール＆中央寄せ */
+@media (max-width: 600px) {
+    .site-header nav ul {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 18px;
+        padding: 0 10px;
+        scroll-snap-type: x mandatory;
+    }
+    .site-header nav ul li {
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+    }
+    .site-header nav ul li:first-child {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 /* シナリオfavoriteの行を強調 */
 .scenario-item.is-favorite {
     background: #fff8e1;
@@ -234,7 +271,6 @@ main {
 
 .scenario-item.is-favorite {
     background-color: #fff9e6;
-    font-weight: bold;
 }
 
 .favorite-star {

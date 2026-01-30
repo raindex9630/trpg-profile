@@ -188,7 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 通過済みシナリオの総数を計算
         const passedCount = s.passed ? s.passed.reduce((sum, group) => sum + (group.items ? group.items.length : 0), 0) : 0;
         // 説明文（通過予定noteと同じレイアウト）
-        const passedNote = `<div class="planned-note">通過済みシナリオの「<span class='icon-inline' style='color:#ffb300;'>★</span>」はシナリオが特に好きな場合、「<span class='icon-inline' style='vertical-align:middle;'><svg viewBox='0 0 16 16' width='1em' height='1em' fill='#ff80b0' style='position:relative;top:-0.12em;' xmlns='http://www.w3.org/2000/svg'><path d='M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z'/></svg></span>」はHOが特に好きな場合に表示されます。</div>`;
+        const passedNote = `<div class="planned-note">
+      <span class='icon-inline' style='color:#ffb300;'>★</span>　┄　シナリオが好き<br>
+      <span class='icon-inline' style='vertical-align:middle;'><svg viewBox='0 0 16 16' width='1em' height='1em' fill='#ff80b0' style='position:relative;top:-0.12em;' xmlns='http://www.w3.org/2000/svg'><path d='M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z'/></svg></span>　┄　HOが好き
+    </div>`;
         // favorite対応
         const passedContent = s.passed ? s.passed.map((group, idx) => `
             <div class="scenario-group">
@@ -256,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </details>
 
                 <details open>
-                    <summary>通過済シナリオ一覧 <span class="scenario-count">(${passedCount})</span></summary>
+                    <summary><span class="scenario-header-flex"><span>通過済シナリオ一覧</span><span class="scenario-count">(${passedCount})</span></span></summary>
                     <div class="accordion-content">
                         <div class="scenario-list-container">
                             ${passedNote}
