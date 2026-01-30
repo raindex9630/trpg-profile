@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.site-header nav');
     if (nav) {
         nav.scrollLeft = 0;
+        // iOS等の描画遅延対策で再度遅延して左端に
+        setTimeout(() => {
+            nav.scrollLeft = 0;
+        }, 100);
     }
     const app = document.getElementById('app');
     const loading = document.getElementById('loading');
