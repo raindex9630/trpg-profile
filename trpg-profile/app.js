@@ -185,15 +185,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderScenarios() {
         const s = data.scenarios;
 
-        const passedContent = s.passed ? s.passed.map(item => `
-            <li class="scenario-item ${item.favorite ? 'is-favorite' : ''}">
-                <div class="scenario-left">
-                    <span class="scenario-title">${item.title}</span>
-                    ${item.ho ? `<span class="scenario-ho">${item.ho}</span>` : ''}
-                </div>
-                ${item.favorite ? '<span class="favorite-star">★</span>' : ''}
-            </li>
-        `).join('') : '<li class="scenario-item">なし</li>';
+        const passedContent = s.passed ? s.passed.map(group => `
+            <div class="scenario-group">
+                <h3 class="group-label">${group.label}</h3>
+                <ul class="scenario-list">
+                    ${group.items.map(item => `
+                        <li class="scenario-item ${item.favorite ? 'is-favorite' : ''}">
+                            <div class="scenario-left">
+                                <span class="scenario-title">${item.title}</span>
+                                ${item.ho ? `<span class="scenario-ho">${item.ho}</span>` : ''}
+                            </div>
+                            ${item.favorite ? '<span class="favorite-star">★</span>' : ''}
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `).join('') : '<div class="scenario-item">なし</div>';
 
         let plannedContent = '';
         if (s.planned_schedule) {
@@ -225,9 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <details open>
                     <summary>通過済シナリオ (${s.passed ? s.passed.length : 0})</summary>
                     <div class="accordion-content">
-                        <ul class="scenario-list">
+                        <div class="scenario-list-container">
                             ${passedContent}
-                        </ul>
+                        </div>
                     </div>
                 </details>
 
