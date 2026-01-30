@@ -187,19 +187,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 通過済みシナリオの総数を計算
         const passedCount = s.passed ? s.passed.reduce((sum, group) => sum + (group.items ? group.items.length : 0), 0) : 0;
-        const passedContent = s.passed ? s.passed.map(group => `
+        // 説明文（通過予定noteと同じレイアウト）
+        const passedNote = `<div class="planned-note">通過済みシナリオの「<span class='icon-inline' style='color:#ffb300;'>★</span>」はシナリオが特に好きな場合、「<span class='icon-inline' style='vertical-align:middle;'><svg viewBox='0 0 16 16' width='1em' height='1em' fill='#ff80b0' style='position:relative;top:-0.12em;' xmlns='http://www.w3.org/2000/svg'><path d='M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z'/></svg></span>」はHOが特に好きな場合に表示されます。</div>`;
+        // favorite対応
+        const passedContent = s.passed ? s.passed.map((group, idx) => `
             <div class="scenario-group">
-                <h3 class="planned-month-title">${group.label}</h3>
+                <h3 class="planned-month-title" style="margin-top: ${idx === 0 ? '0' : '2.5em'}; margin-bottom: 1.2em;">${group.label}</h3>
                 <ul class="scenario-list">
-                    ${group.items.map(item => `
-                        <li class="scenario-item ${item.favorite ? 'is-favorite' : ''}">
-                            <div class="scenario-left">
+                    ${group.items.map(item => {
+                        // 既存favoriteはfavorite_scenario扱い
+                        const favScenario = item.favorite_scenario ?? item.favorite ?? false;
+                        const favHo = item.favorite_ho ?? false;
+                        // HO有り
+                        if (item.ho) {
+                            return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
                                 <span class="scenario-title">${item.title}</span>
-                                ${item.ho ? `<span class="scenario-ho">${item.ho}</span>` : ''}
-                            </div>
-                            ${item.favorite ? '<span class="favorite-star">★</span>' : ''}
-                        </li>
-                    `).join('')}
+                                <span class="scenario-ho-badge">${item.ho}
+                                    ${favHo ? `<span class="favorite-ho" title="HOが好き"><svg viewBox="0 0 16 16" fill="#ff80b0" xmlns="http://www.w3.org/2000/svg"><path d="M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z"/></svg></span>` : ''}
+                                </span>
+                                <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '&nbsp;'}</span>
+                            </li>`;
+                        } else {
+                            // HO無し
+                            return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
+                                <span class="scenario-title">${item.title}</span>
+                                <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '&nbsp;'}</span>
+                            </li>`;
+                        }
+                    }).join('')}
                 </ul>
             </div>
         `).join('') : '<div class="scenario-item">なし</div>';
@@ -244,6 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <summary>通過済シナリオ一覧 <span class="scenario-count">(${passedCount})</span></summary>
                     <div class="accordion-content">
                         <div class="scenario-list-container">
+                            ${passedNote}
                             ${passedContent}
                         </div>
                     </div>

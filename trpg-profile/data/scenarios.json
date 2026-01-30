@@ -119,24 +119,27 @@
       "label": "タイマン",
       "items": [
         {
-          "title": "DIGIN",
+          "title": "共感覚",
           "ho": "",
-          "favorite": false
+          "favorite": true,
+          "favorite_ho": true
         },
         {
-          "title": "LaLuLa",
+          "title": "私悪",
           "ho": "",
-          "favorite": false
+          "favorite": true
         },
         {
-          "title": "Myrtle",
+          "title": "問：死の定義を教えてください",
           "ho": "",
-          "favorite": false
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "The Hog Game",
           "ho": "",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "新シキ世界／アウター・プロトコル",
@@ -221,7 +224,8 @@
         {
           "title": "同窓会",
           "ho": "",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "とろどろ",
@@ -261,7 +265,8 @@
         {
           "title": "ゆれるフリルにくちづけて",
           "ho": "",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "赦しの塔",
@@ -281,7 +286,8 @@
         {
           "title": "AE",
           "ho": "HO1 神の子",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "AND/HAND",
@@ -301,7 +307,8 @@
         {
           "title": "NapFrappe",
           "ho": "HO Moon",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "Noa♡noA",
@@ -341,7 +348,8 @@
         {
           "title": "お前のせいだよ",
           "ho": "HO天才教授",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "彁(かせい)",
@@ -481,7 +489,8 @@
         {
           "title": "Good night, Judas.",
           "ho": "HO4",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "Liebbing",
@@ -496,7 +505,8 @@
         {
           "title": "SSS.S",
           "ho": "HO3 Seek",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "悪辣",
@@ -531,7 +541,8 @@
         {
           "title": "-新生-ジャンヌの猟犬",
           "ho": "HO3 司祭",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "正偽のイデア",
@@ -541,7 +552,8 @@
         {
           "title": "その真紅に愛を見る",
           "ho": "HO人形役",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "ソープスクール",
@@ -561,7 +573,8 @@
         {
           "title": "虜",
           "ho": "HO2",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "庭師は何を口遊む",
@@ -571,7 +584,8 @@
         {
           "title": "人間失覚殺人癖",
           "ho": "HO2 ダス・ゲマイネ",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "百夜神楽",
