@@ -54,6 +54,12 @@
           "favorite": false
         },
         {
+          "title": "探索者ハイスクールデスゲーム",
+          "ho": "",
+          "favorite": false,
+          "favorite_ho": false
+        },
+        {
           "title": "まんだらかばら",
           "ho": "",
           "favorite": false
@@ -94,9 +100,21 @@
           "favorite": true
         },
         {
+          "title": "贖罪の塔",
+          "ho": "",
+          "favorite": false,
+          "favorite_ho": false
+        },
+        {
           "title": "実験体δは青に微笑む",
           "ho": "",
           "favorite": false
+        },
+        {
+          "title": "蝶番の夢",
+          "ho": "",
+          "favorite": false,
+          "favorite_ho": false
         },
         {
           "title": "問：死の定義を教えてください",
@@ -119,27 +137,28 @@
       "label": "タイマン",
       "items": [
         {
-          "title": "共感覚",
+          "title": "DIGIN",
           "ho": "",
-          "favorite": true,
-          "favorite_ho": true
+          "favorite": false,
+          "favorite_ho": false
         },
         {
-          "title": "私悪",
+          "title": "LaLuLa",
           "ho": "",
-          "favorite": true
+          "favorite": false,
+          "favorite_ho": false
         },
         {
-          "title": "問：死の定義を教えてください",
+          "title": "Myrtle",
           "ho": "",
-          "favorite": true,
-          "favorite_ho": true
+          "favorite": false,
+          "favorite_ho": false
         },
         {
           "title": "The Hog Game",
           "ho": "",
           "favorite": true,
-          "favorite_ho": true
+          "favorite_ho": false
         },
         {
           "title": "新シキ世界／アウター・プロトコル",
@@ -225,7 +244,7 @@
           "title": "同窓会",
           "ho": "",
           "favorite": true,
-          "favorite_ho": true
+          "favorite_ho": false
         },
         {
           "title": "とろどろ",
@@ -238,6 +257,12 @@
           "favorite": false
         },
         {
+          "title": "猫なんて関係ないっ！",
+          "ho": "",
+          "favorite": false,
+          "favorite_ho": false
+        },
+        {
           "title": "馬鹿参り",
           "ho": "",
           "favorite": false
@@ -246,6 +271,12 @@
           "title": "パパラッチ・アイキャッチ",
           "ho": "",
           "favorite": false
+        },
+        {
+          "title": "魔神の蒼",
+          "ho": "",
+          "favorite": false,
+          "favorite_ho": false
         },
         {
           "title": "ムーンリットの終点で",
@@ -266,7 +297,7 @@
           "title": "ゆれるフリルにくちづけて",
           "ho": "",
           "favorite": true,
-          "favorite_ho": true
+          "favorite_ho": false
         },
         {
           "title": "赦しの塔",
@@ -297,7 +328,8 @@
         {
           "title": "BARABARADICAL",
           "ho": "HO2",
-          "favorite": false
+          "favorite": true,
+          "favorite_ho": false
         },
         {
           "title": "MAGGY889",
@@ -308,7 +340,7 @@
           "title": "NapFrappe",
           "ho": "HO Moon",
           "favorite": true,
-          "favorite_ho": true
+          "favorite_ho": false
         },
         {
           "title": "Noa♡noA",
@@ -348,7 +380,7 @@
         {
           "title": "お前のせいだよ",
           "ho": "HO天才教授",
-          "favorite": true,
+          "favorite": false,
           "favorite_ho": true
         },
         {
@@ -374,7 +406,8 @@
         {
           "title": "しんでしまう一週間後のきみへ",
           "ho": "HO1 病院関係者",
-          "favorite": true
+          "favorite": false,
+          "favorite_ho": true
         },
         {
           "title": "ステガノグラフィ",
@@ -415,6 +448,12 @@
           "title": "花冷えに亡く季節",
           "ho": "HO2 花",
           "favorite": false
+        },
+        {
+          "title": "ブリュンヒルデにさよならを",
+          "ho": "HO1 Sの奏者",
+          "favorite": false,
+          "favorite_ho": false
         },
         {
           "title": "面会室",
@@ -469,7 +508,8 @@
         {
           "title": "死すべき騎士の定め",
           "ho": "HO NARRATIVE",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": false
         },
         {
           "title": "旅館の捕食者",
@@ -482,6 +522,12 @@
       "label": "4PL",
       "items": [
         {
+          "title": "Aconite:re",
+          "ho": "HO4",
+          "favorite": false,
+          "favorite_ho": true
+        },
+        {
           "title": "AreAy",
           "ho": "HOシェフパティシエ",
           "favorite": true
@@ -489,7 +535,7 @@
         {
           "title": "Good night, Judas.",
           "ho": "HO4",
-          "favorite": true,
+          "favorite": false,
           "favorite_ho": true
         },
         {
@@ -500,7 +546,8 @@
         {
           "title": "Sibyl-シビュラ-",
           "ho": "Case.4",
-          "favorite": true
+          "favorite": false,
+          "favorite_ho": true
         },
         {
           "title": "SSS.S",
@@ -526,7 +573,8 @@
         {
           "title": "異能警察は、英雄じゃない",
           "ho": "HO4 疑念",
-          "favorite": true
+          "favorite": false,
+          "favorite_ho": true
         },
         {
           "title": "彼方からの君に捧ぐ",
@@ -541,24 +589,26 @@
         {
           "title": "-新生-ジャンヌの猟犬",
           "ho": "HO3 司祭",
-          "favorite": true,
+          "favorite": false,
           "favorite_ho": true
         },
         {
           "title": "正偽のイデア",
           "ho": "HO2 天才",
-          "favorite": true
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "その真紅に愛を見る",
           "ho": "HO人形役",
           "favorite": true,
-          "favorite_ho": true
+          "favorite_ho": false
         },
         {
           "title": "ソープスクール",
           "ho": "HO2",
-          "favorite": true
+          "favorite": false,
+          "favorite_ho": true
         },
         {
           "title": "デュラハニズム",
@@ -573,13 +623,14 @@
         {
           "title": "虜",
           "ho": "HO2",
-          "favorite": true,
+          "favorite": false,
           "favorite_ho": true
         },
         {
           "title": "庭師は何を口遊む",
           "ho": "HO4",
-          "favorite": true
+          "favorite": false,
+          "favorite_ho": true
         },
         {
           "title": "人間失覚殺人癖",
@@ -680,7 +731,7 @@
       ]
     }
   ],
-      "planned_schedule": {
+  "planned_schedule": {
     "note": "新規：×　直近で行ける短いシナリオ以外受け付けてません\n継続：3月〜",
     "months": [
       {
@@ -688,7 +739,7 @@
         "items": [
           {
             "title": "四季送り",
-            "role": "HO参秋"
+            "role": "HO参 秋"
           },
           {
             "title": "ミノタウロスの証人",
@@ -708,12 +759,16 @@
             "role": "HO4 花形役者"
           },
           {
-            "title": "AE 9陣",
-            "role": "KP"
+            "title": "メテオライトは君しかいない",
+            "role": "PL"
           },
           {
             "title": "Xからの告白",
             "role": "HO3 検事"
+          },
+          {
+            "title": "AE 9陣",
+            "role": "KP"
           }
         ]
       },
@@ -733,16 +788,20 @@
             "role": "KP"
           },
           {
+            "title": "エデンに成る生熟れの果実（仮）",
+            "role": "PL"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
+          },
+          {
             "title": "貴方達はセフレです。マグロ漁船に乗っています。",
             "role": "HO2 Holacracy"
           },
           {
             "title": "盲信未遂",
             "role": "PL"
-          },
-          {
-            "title": "Xからの告白",
-            "role": "HO3 検事"
           },
           {
             "title": "七罪週間",
@@ -784,12 +843,12 @@
         "label": "6月",
         "items": [
           {
-            "title": "AE 11陣",
-            "role": "KP"
-          },
-          {
             "title": "Xからの告白",
             "role": "HO3 検事"
+          },
+          {
+            "title": "AE 11陣",
+            "role": "KP"
           },
           {
             "title": "What's under the dough？",
