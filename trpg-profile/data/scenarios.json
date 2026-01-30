@@ -1,171 +1,4 @@
 {
-    "planned_schedule": {
-    "note": "新規：×　直近で行ける短いシナリオ以外受け付けてません\n継続：3月〜",
-    "months": [
-      {
-        "label": "現行",
-        "items": [
-          {
-            "title": "四季送り",
-            "role": "HO参秋"
-          },
-          {
-            "title": "ミノタウロスの証人",
-            "role": "HO1 白夜"
-          }
-        ]
-      },
-      {
-        "label": "2月",
-        "items": [
-          {
-            "title": "ミノタウロスの証人",
-            "role": "HO1 白夜"
-          },
-          {
-            "title": "胎顕プルチネラ",
-            "role": "HO4 花形役者"
-          },
-          {
-            "title": "AE 9陣",
-            "role": "KP"
-          },
-          {
-            "title": "Xからの告白",
-            "role": "HO3 検事"
-          }
-        ]
-      },
-      {
-        "label": "3月",
-        "items": [
-          {
-            "title": "皿とは言わず地獄まで",
-            "role": "PL"
-          },
-          {
-            "title": "胎願プルチネラ",
-            "role": "HO4 花形役者"
-          },
-          {
-            "title": "AE 9陣",
-            "role": "KP"
-          },
-          {
-            "title": "貴方達はセフレです。マグロ漁船に乗っています。",
-            "role": "HO2 Holacracy"
-          },
-          {
-            "title": "盲信未遂",
-            "role": "PL"
-          },
-          {
-            "title": "Xからの告白",
-            "role": "HO3 検事"
-          },
-          {
-            "title": "七罪週間",
-            "role": "PL"
-          }
-        ]
-      },
-      {
-        "label": "4月",
-        "items": [
-          {
-            "title": "AE 10陣",
-            "role": "KP"
-          },
-          {
-            "title": "Xからの告白",
-            "role": "HO3 検事"
-          }
-        ]
-      },
-      {
-        "label": "5月",
-        "items": [
-          {
-            "title": "あえかなる饗",
-            "role": "1陣"
-          },
-          {
-            "title": "Xからの告白",
-            "role": "HO3"
-          },
-          {
-            "title": "AE 11陣",
-            "role": "KP"
-          }
-        ]
-      },
-      {
-        "label": "6月",
-        "items": [
-          {
-            "title": "AE 11陣",
-            "role": "KP"
-          },
-          {
-            "title": "Xからの告白",
-            "role": "HO3 検事"
-          },
-          {
-            "title": "What's under the dough？",
-            "role": "HO2 美味しいパン屋の店主さん"
-          },
-          {
-            "title": "その真紅に愛を見る 3陣",
-            "role": "KP"
-          }
-        ]
-      },
-      {
-        "label": "7月",
-        "items": [
-          {
-            "title": "AE 8陣",
-            "role": "KP"
-          }
-        ]
-      },
-      {
-        "label": "8月",
-        "items": [
-          {
-            "title": "静なるテロリスタ（仮）",
-            "role": "HO童子"
-          }
-        ]
-      },
-      {
-        "label": "9月",
-        "items": [
-          {
-            "title": "NOBODY*2（仮）",
-            "role": "HO2 謎多き探索者（仮）"
-          }
-        ]
-      },
-      {
-        "label": "10月",
-        "items": [
-          {
-            "title": "NOBODY*2（仮）",
-            "role": "HO2 謎多き探索者（仮）"
-          },
-          {
-            "title": "しんでしまう一週間後のきみへ（仮）",
-            "role": "KP"
-          },
-          {
-            "title": "空の青さの掴み方（仮）",
-            "role": "HO未定"
-          }
-        ]
-      }
-    ]
-  },
   "passed": [
     {
       "label": "KPレス",
@@ -832,5 +665,172 @@
         }
       ]
     }
-  ]
+  ],
+      "planned_schedule": {
+    "note": "新規：×　直近で行ける短いシナリオ以外受け付けてません\n継続：3月〜",
+    "months": [
+      {
+        "label": "現行",
+        "items": [
+          {
+            "title": "四季送り",
+            "role": "HO参秋"
+          },
+          {
+            "title": "ミノタウロスの証人",
+            "role": "HO1 白夜"
+          }
+        ]
+      },
+      {
+        "label": "2月",
+        "items": [
+          {
+            "title": "ミノタウロスの証人",
+            "role": "HO1 白夜"
+          },
+          {
+            "title": "胎顕プルチネラ",
+            "role": "HO4 花形役者"
+          },
+          {
+            "title": "AE 9陣",
+            "role": "KP"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
+          }
+        ]
+      },
+      {
+        "label": "3月",
+        "items": [
+          {
+            "title": "皿とは言わず地獄まで",
+            "role": "PL"
+          },
+          {
+            "title": "胎願プルチネラ",
+            "role": "HO4 花形役者"
+          },
+          {
+            "title": "AE 9陣",
+            "role": "KP"
+          },
+          {
+            "title": "貴方達はセフレです。マグロ漁船に乗っています。",
+            "role": "HO2 Holacracy"
+          },
+          {
+            "title": "盲信未遂",
+            "role": "PL"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
+          },
+          {
+            "title": "七罪週間",
+            "role": "PL"
+          }
+        ]
+      },
+      {
+        "label": "4月",
+        "items": [
+          {
+            "title": "AE 10陣",
+            "role": "KP"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
+          }
+        ]
+      },
+      {
+        "label": "5月",
+        "items": [
+          {
+            "title": "あえかなる饗",
+            "role": "1陣"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3"
+          },
+          {
+            "title": "AE 11陣",
+            "role": "KP"
+          }
+        ]
+      },
+      {
+        "label": "6月",
+        "items": [
+          {
+            "title": "AE 11陣",
+            "role": "KP"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
+          },
+          {
+            "title": "What's under the dough？",
+            "role": "HO2 美味しいパン屋の店主さん"
+          },
+          {
+            "title": "その真紅に愛を見る 3陣",
+            "role": "KP"
+          }
+        ]
+      },
+      {
+        "label": "7月",
+        "items": [
+          {
+            "title": "AE 8陣",
+            "role": "KP"
+          }
+        ]
+      },
+      {
+        "label": "8月",
+        "items": [
+          {
+            "title": "静なるテロリスタ（仮）",
+            "role": "HO童子"
+          }
+        ]
+      },
+      {
+        "label": "9月",
+        "items": [
+          {
+            "title": "NOBODY*2（仮）",
+            "role": "HO2 謎多き探索者（仮）"
+          }
+        ]
+      },
+      {
+        "label": "10月",
+        "items": [
+          {
+            "title": "NOBODY*2（仮）",
+            "role": "HO2 謎多き探索者（仮）"
+          },
+          {
+            "title": "しんでしまう一週間後のきみへ（仮）",
+            "role": "KP"
+          },
+          {
+            "title": "空の青さの掴み方（仮）",
+            "role": "HO未定"
+          }
+        ]
+      }
+    ]
+  }
 }

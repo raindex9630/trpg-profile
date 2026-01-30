@@ -230,19 +230,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2 class="section-title">通過済み/予定シナリオ一覧</h2>
 
                 <details open>
-                    <summary>通過済シナリオ (${s.passed ? s.passed.length : 0})</summary>
+                    <summary>通過予定・スケジュール</summary>
                     <div class="accordion-content">
-                        <div class="scenario-list-container">
-                            ${passedContent}
+                        <div class="planned-section">
+                            ${plannedContent}
                         </div>
                     </div>
                 </details>
 
                 <details open>
-                    <summary>通過予定・スケジュール</summary>
+                    <summary>通過済シナリオ (${s.passed ? s.passed.length : 0})</summary>
                     <div class="accordion-content">
-                        <div class="planned-section">
-                            ${plannedContent}
+                        <div class="scenario-list-container">
+                            ${passedContent}
                         </div>
                     </div>
                 </details>
