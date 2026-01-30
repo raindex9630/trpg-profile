@@ -1,69 +1,836 @@
 {
-    "passed": [
+  "passed": [
+    {
+      "label": "KPレス",
+      "items": [
         {
-            "title": "毒入りスープ",
-            "ho": ""
+          "title": "31FLOORs",
+          "ho": "",
+          "favorite": false
         },
         {
-            "title": "狂気山脈",
-            "ho": "HO1",
-            "favorite": true
+          "title": "31LOCKERs",
+          "ho": "",
+          "favorite": false
         },
         {
-            "title": "庭師は何を口遊む",
-            "ho": "HO4"
+          "title": "紫陽花栽培キット",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "あなただけの音色を",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "遺却の君へ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "クレイジー・ラフティーショー！",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "さザれ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "さよならを言いに来た（ホテル鯨骨）",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "尊厳CRASH！SAN値ゼリー",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "タコキャンディー",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "まんだらかばら",
+          "ho": "",
+          "favorite": false
         }
-    ],
-    "planned_schedule": {
-        "note": "新規：×　直近で行ける短いシナリオ以外受け付けてません\n継続：3月〜",
-        "months": [
-            {
-                "label": "現行",
-                "items": [
-                    {
-                        "title": "MAGIC JEWEL 2陣",
-                        "role": "KP"
-                    },
-                    {
-                        "title": "四季送り",
-                        "role": "HO参秋"
-                    },
-                    {
-                        "title": "ミノタウロスの証人",
-                        "role": "HO1 白夜"
-                    }
-                ]
-            },
-            {
-                "label": "2026年2月",
-                "items": [
-                    {
-                        "title": "ミノタウロスの証人",
-                        "role": "HO1 白夜"
-                    },
-                    {
-                        "title": "胎顕プルチネラ",
-                        "role": "HO4 花形役者"
-                    },
-                    {
-                        "title": "AE 9陣",
-                        "role": "KP"
-                    }
-                ]
-            },
-            {
-                "label": "2026年3月",
-                "items": [
-                    {
-                        "title": "皿とは言わず地獄まで",
-                        "role": "PL"
-                    },
-                    {
-                        "title": "Xからの告白",
-                        "role": "HO3"
-                    }
-                ]
-            }
-        ]
+      ]
+    },
+    {
+      "label": "ソロ",
+      "items": [
+        {
+          "title": "Meantifiact",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "家の中を歩いてみよう",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "えらいねぇ～",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "砂城の王",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "共感覚",
+          "ho": "",
+          "favorite": true
+        },
+        {
+          "title": "私悪",
+          "ho": "",
+          "favorite": true
+        },
+        {
+          "title": "実験体δは青に微笑む",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "問：死の定義を教えてください",
+          "ho": "",
+          "favorite": true
+        },
+        {
+          "title": "とおりゃんせが聞こえる",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "魔法少女備忘録",
+          "ho": "",
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "label": "タイマン",
+      "items": [
+        {
+          "title": "DIGIN",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "LaLuLa",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "Myrtle",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "The Hog Game",
+          "ho": "",
+          "favorite": true
+        },
+        {
+          "title": "新シキ世界／アウター・プロトコル",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "うえからでられない",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "海原に嫁す",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "エスカバージの心酔",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "踊れ、ワルツ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "おばけのまち",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "伽圉",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "ぎこちない同居",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "君のためのヒポクリシー",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "きみはかみさま",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "グラトニヰ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "ししんしょく",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "心臓がちょっとはやく動くだけ",
+          "ho": "",
+          "favorite": true
+        },
+        {
+          "title": "スーサイデッドメアリンク",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "世界で一番お前が好きだ！",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "つぎはぎロマンス",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "同窓会",
+          "ho": "",
+          "favorite": true
+        },
+        {
+          "title": "とろどろ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "ニュクシフィリアと夜の女王",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "馬鹿参り",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "パパラッチ・アイキャッチ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "ムーンリットの終点で",
+          "ho": "",
+          "favorite": true
+        },
+        {
+          "title": "夜光列車と宝石の夜",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "やさしい朝をくださいね",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "ゆれるフリルにくちづけて",
+          "ho": "",
+          "favorite": true
+        },
+        {
+          "title": "赦しの塔",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "雷鳴に死す",
+          "ho": "",
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "label": "2PL",
+      "items": [
+        {
+          "title": "AE",
+          "ho": "HO1 神の子",
+          "favorite": true
+        },
+        {
+          "title": "AND/HAND",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "BARABARADICAL",
+          "ho": "HO2",
+          "favorite": false
+        },
+        {
+          "title": "MAGGY889",
+          "ho": "HO2 Hitman",
+          "favorite": true
+        },
+        {
+          "title": "NapFrappe",
+          "ho": "HO Moon",
+          "favorite": true
+        },
+        {
+          "title": "Noa♡noA",
+          "ho": "HO1 雇い主",
+          "favorite": false
+        },
+        {
+          "title": "ROOMCERF",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "愛罠蜂",
+          "ho": "HO1 オーナー",
+          "favorite": false
+        },
+        {
+          "title": "鰯と柊",
+          "ho": "HO2 信者",
+          "favorite": false
+        },
+        {
+          "title": "海も枯れるまで",
+          "ho": "HO1",
+          "favorite": false
+        },
+        {
+          "title": "永業回帰",
+          "ho": "HO2 患者",
+          "favorite": true
+        },
+        {
+          "title": "お医者さんごっこ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "お前のせいだよ",
+          "ho": "HO天才教授",
+          "favorite": true
+        },
+        {
+          "title": "彁(かせい)",
+          "ho": "HO罰",
+          "favorite": false
+        },
+        {
+          "title": "キルキルイキル",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "口渇ルルパ",
+          "ho": "HOナイフ",
+          "favorite": false
+        },
+        {
+          "title": "運命という名のアニュラス",
+          "ho": "HO2 現実主義者",
+          "favorite": false
+        },
+        {
+          "title": "しんでしまう一週間後のきみへ",
+          "ho": "HO1 病院関係者",
+          "favorite": true
+        },
+        {
+          "title": "ステガノグラフィ",
+          "ho": "HO1 保健室の先生",
+          "favorite": false
+        },
+        {
+          "title": "追憶のECHO",
+          "ho": "HO2 夢辿る者",
+          "favorite": false
+        },
+        {
+          "title": "罪を×",
+          "ho": "HO罪",
+          "favorite": false
+        },
+        {
+          "title": "ディープ・パープルの境界線",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "ディープブルーにキラめいて",
+          "ho": "HOアイドル",
+          "favorite": false
+        },
+        {
+          "title": "天国の偽証",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "ハイフェッツをなぞる病",
+          "ho": "HO秀才",
+          "favorite": false
+        },
+        {
+          "title": "花冷えに亡く季節",
+          "ho": "HO2 花",
+          "favorite": false
+        },
+        {
+          "title": "面会室",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "野狗子と薬師",
+          "ho": "HO2 薬師",
+          "favorite": false
+        },
+        {
+          "title": "ようこそ！迷冥市役所都市伝説課へ！",
+          "ho": "HO1 都市伝説課の担当者",
+          "favorite": false
+        },
+        {
+          "title": "爛爛",
+          "ho": "HO1 古物研究家",
+          "favorite": false
+        },
+        {
+          "title": "ロトカ・ヴォルテラの愛堕討ち",
+          "ho": "HO1 極道者",
+          "favorite": false
+        },
+        {
+          "title": "ワンちゃんはここにいる。",
+          "ho": "",
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "label": "3PL",
+      "items": [
+        {
+          "title": "ONE ONE ONE",
+          "ho": "HO:B",
+          "favorite": false
+        },
+        {
+          "title": "悪魔の唇",
+          "ho": "HO1 暴力団組員",
+          "favorite": false
+        },
+        {
+          "title": "狂気山脈～邪神の山嶺～",
+          "ho": "HO1A 孤高の人",
+          "favorite": false
+        },
+        {
+          "title": "死すべき騎士の定め",
+          "ho": "HO NARRATIVE",
+          "favorite": true
+        },
+        {
+          "title": "旅館の捕食者",
+          "ho": "HO2 ミステリorホラー作家",
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "label": "4PL",
+      "items": [
+        {
+          "title": "AreAy",
+          "ho": "HOシェフパティシエ",
+          "favorite": true
+        },
+        {
+          "title": "Good night, Judas.",
+          "ho": "HO4",
+          "favorite": true
+        },
+        {
+          "title": "Liebbing",
+          "ho": "HO1",
+          "favorite": false
+        },
+        {
+          "title": "Sibyl-シビュラ-",
+          "ho": "Case.4",
+          "favorite": true
+        },
+        {
+          "title": "SSS.S",
+          "ho": "HO3 Seek",
+          "favorite": true
+        },
+        {
+          "title": "悪辣",
+          "ho": "HO2 薬物売人",
+          "favorite": false
+        },
+        {
+          "title": "雨降らしの蝶Normal",
+          "ho": "HO3 心優しい青年",
+          "favorite": false
+        },
+        {
+          "title": "遺香廻り",
+          "ho": "HO4 幽香",
+          "favorite": false
+        },
+        {
+          "title": "異能警察は、英雄じゃない",
+          "ho": "HO4 疑念",
+          "favorite": true
+        },
+        {
+          "title": "彼方からの君に捧ぐ",
+          "ho": "HO3",
+          "favorite": false
+        },
+        {
+          "title": "サイレン清掃会社",
+          "ho": "HO2 傷物",
+          "favorite": false
+        },
+        {
+          "title": "-新生-ジャンヌの猟犬",
+          "ho": "HO3 司祭",
+          "favorite": true
+        },
+        {
+          "title": "正偽のイデア",
+          "ho": "HO2 天才",
+          "favorite": true
+        },
+        {
+          "title": "その真紅に愛を見る",
+          "ho": "HO人形役",
+          "favorite": true
+        },
+        {
+          "title": "ソープスクール",
+          "ho": "HO2",
+          "favorite": true
+        },
+        {
+          "title": "デュラハニズム",
+          "ho": "HO人",
+          "favorite": false
+        },
+        {
+          "title": "東京ゴーストマティカ",
+          "ho": "HO4 灰",
+          "favorite": false
+        },
+        {
+          "title": "虜",
+          "ho": "HO2",
+          "favorite": true
+        },
+        {
+          "title": "庭師は何を口遊む",
+          "ho": "HO4",
+          "favorite": true
+        },
+        {
+          "title": "人間失覚殺人癖",
+          "ho": "HO2 ダス・ゲマイネ",
+          "favorite": true
+        },
+        {
+          "title": "百夜神楽",
+          "ho": "HO2 大般若",
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "label": "5PL～",
+      "items": [
+        {
+          "title": "イドラの約束",
+          "ho": "HO4",
+          "favorite": false
+        }
+      ]
+    },
+    {
+      "label": "人数不定",
+      "items": [
+        {
+          "title": "BARABARA Mansion",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "阿修羅面",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "堕ちた先に在ったのは",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "革命前夜のアンシャン・レジーム",
+          "ho": "HO 潜入調査",
+          "favorite": false
+        },
+        {
+          "title": "彼方傍ら、映し世の",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "ガレッドデロワ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "グリオーマアクアリウム",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "最果てのレイル",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "着信アリ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "毒入りスープ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "ハッピーサファーーー！",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "春は卵にうさぎのホニャララ",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "薔薇の館",
+          "ho": "",
+          "favorite": false
+        },
+        {
+          "title": "斑猫温泉へ行こう！",
+          "ho": "",
+          "favorite": false
+        }
+      ]
     }
+  ],
+  "planned_schedule": {
+    "note": "新規：×　直近で行ける短いシナリオ以外受け付けてません\n継続：3月〜",
+    "months": [
+      {
+        "label": "現行",
+        "items": [
+          {
+            "title": "四季送り",
+            "role": "HO参秋"
+          },
+          {
+            "title": "ミノタウロスの証人",
+            "role": "HO1 白夜"
+          }
+        ]
+      },
+      {
+        "label": "2月",
+        "items": [
+          {
+            "title": "ミノタウロスの証人",
+            "role": "HO1 白夜"
+          },
+          {
+            "title": "胎顕プルチネラ",
+            "role": "HO4 花形役者"
+          },
+          {
+            "title": "AE 9陣",
+            "role": "KP"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
+          }
+        ]
+      },
+      {
+        "label": "3月",
+        "items": [
+          {
+            "title": "皿とは言わず地獄まで",
+            "role": "PL"
+          },
+          {
+            "title": "胎願プルチネラ",
+            "role": "HO4 花形役者"
+          },
+          {
+            "title": "AE 9陣",
+            "role": "KP"
+          },
+          {
+            "title": "貴方達はセフレです。マグロ漁船に乗っています。",
+            "role": "HO2 Holacracy"
+          },
+          {
+            "title": "盲信未遂",
+            "role": "PL"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
+          },
+          {
+            "title": "七罪週間",
+            "role": "PL"
+          }
+        ]
+      },
+      {
+        "label": "4月",
+        "items": [
+          {
+            "title": "AE 10陣",
+            "role": "KP"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
+          }
+        ]
+      },
+      {
+        "label": "5月",
+        "items": [
+          {
+            "title": "あえかなる饗",
+            "role": "1陣"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3"
+          },
+          {
+            "title": "AE 11陣",
+            "role": "KP"
+          }
+        ]
+      },
+      {
+        "label": "6月",
+        "items": [
+          {
+            "title": "AE 11陣",
+            "role": "KP"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
+          },
+          {
+            "title": "What's under the dough？",
+            "role": "HO2 美味しいパン屋の店主さん"
+          },
+          {
+            "title": "その真紅に愛を見る 3陣",
+            "role": "KP"
+          }
+        ]
+      },
+      {
+        "label": "7月",
+        "items": [
+          {
+            "title": "AE 8陣",
+            "role": "KP"
+          }
+        ]
+      },
+      {
+        "label": "8月",
+        "items": [
+          {
+            "title": "静なるテロリスタ（仮）",
+            "role": "HO童子"
+          }
+        ]
+      },
+      {
+        "label": "9月",
+        "items": [
+          {
+            "title": "NOBODY*2（仮）",
+            "role": "HO2 謎多き探索者（仮）"
+          }
+        ]
+      },
+      {
+        "label": "10月",
+        "items": [
+          {
+            "title": "NOBODY*2（仮）",
+            "role": "HO2 謎多き探索者（仮）"
+          },
+          {
+            "title": "しんでしまう一週間後のきみへ（仮）",
+            "role": "KP"
+          },
+          {
+            "title": "空の青さの掴み方（仮）",
+            "role": "HO未定"
+          }
+        ]
+      }
+    ]
+  }
 }
