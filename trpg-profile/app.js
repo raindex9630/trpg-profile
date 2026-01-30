@@ -185,9 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderScenarios() {
         const s = data.scenarios;
 
+        // 通過済みシナリオの総数を計算
+        const passedCount = s.passed ? s.passed.reduce((sum, group) => sum + (group.items ? group.items.length : 0), 0) : 0;
         const passedContent = s.passed ? s.passed.map(group => `
             <div class="scenario-group">
-                <h3 class="group-label">${group.label}</h3>
+                <h3 class="planned-month-title">${group.label}</h3>
                 <ul class="scenario-list">
                     ${group.items.map(item => `
                         <li class="scenario-item ${item.favorite ? 'is-favorite' : ''}">
@@ -239,9 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </details>
 
                 <details open>
-                    <summary>通過済シナリオ (${s.passed ? s.passed.length : 0})</summary>
+                    <summary>通過済シナリオ <span class="scenario-count">(${passedCount})</span></summary>
                     <div class="accordion-content">
                         <div class="scenario-list-container">
+                            <h3 class="planned-month-title">通過済みシナリオ一覧</h3>
                             ${passedContent}
                         </div>
                     </div>
