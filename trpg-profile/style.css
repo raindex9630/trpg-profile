@@ -2,33 +2,28 @@
 .no-scrollbar {
     overflow: hidden !important;
 }
-
 /* 通過済みシナリオ見出しと個数を横並び＆間隔調整 */
 .scenario-header-flex {
     display: inline-flex;
     align-items: center;
 }
-
 .scenario-count {
     margin-left: 0.2em;
     font-size: 1em;
     vertical-align: middle;
 }
-
 /* 通過済みシナリオ個数の間隔を調整 */
 .scenario-count {
     margin-left: 0.2em;
     font-size: 1em;
     vertical-align: middle;
 }
-
 /* スマホ環境でのナビゲーション横スクロール＆中央寄せ */
 @media (max-width: 600px) {
     .site-header nav {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
-
     .site-header nav ul {
         display: flex;
         flex-wrap: nowrap;
@@ -39,7 +34,6 @@
         padding: 0 10px;
         scroll-snap-type: x mandatory;
     }
-
     .site-header nav ul li {
         min-width: 90px;
         display: flex;
@@ -47,34 +41,28 @@
         align-items: center;
         justify-content: center;
     }
-
     .site-header nav ul li a {
         text-align: center;
         width: 100%;
         display: block;
     }
-
     .site-header nav ul li,
     .site-header nav ul a {
         white-space: nowrap;
     }
-
     .site-header nav ul li {
         flex: 0 0 auto;
         scroll-snap-align: center;
     }
-
     .site-header nav ul li:first-child {
         margin-left: auto;
         margin-right: auto;
     }
 }
-
 /* シナリオfavoriteの行を強調 */
 .scenario-item.is-favorite {
     background: #fff8e1;
 }
-
 /* 塗りつぶしハートアイコン */
 .favorite-ho {
     display: inline-block;
@@ -87,7 +75,6 @@
     margin-right: 0.1em;
     line-height: 1;
 }
-
 /* 説明文内のアイコン用 */
 .icon-inline {
     font-size: 1em;
@@ -96,7 +83,6 @@
     font-weight: bold;
     line-height: 1;
 }
-
 /* シナリオfavoriteの★を強調 */
 .favorite-star {
     color: #ffb300;
@@ -105,7 +91,6 @@
     text-shadow: 0 0 2px #fffbe6, 0 0 2px #fffbe6;
     vertical-align: middle;
 }
-
 /* 通過済みシナリオ一覧の説明文 */
 .passed-note {
     margin-bottom: 1em;
@@ -113,7 +98,6 @@
     font-size: 0.95em;
     padding-left: 0.2em;
 }
-
 /* HOが好きアイコン */
 .favorite-ho {
     color: #e573b3;
@@ -121,7 +105,6 @@
     margin-left: 0.4em;
     vertical-align: middle;
 }
-
 /* 通過済みシナリオのHOバッジ（予定一覧の役割表記と同じデザイン） */
 .scenario-ho-badge {
     display: inline-block;
@@ -138,24 +121,20 @@
     font-weight: 400;
     box-shadow: none;
 }
-
 /* 通過済みシナリオのHOを右端に揃え、☆分のスペースも確保 */
 .scenario-list {
     position: relative;
 }
-
 .scenario-item {
     display: flex;
     align-items: center;
     position: relative;
     min-height: 2em;
 }
-
 .scenario-title {
     flex: 1 1 auto;
     min-width: 0;
 }
-
 .scenario-ho-right {
     flex: 0 0 auto;
     margin-left: auto;
@@ -163,7 +142,6 @@
     color: #888;
     white-space: nowrap;
 }
-
 .favorite-star-space {
     position: absolute;
     right: 0.5em;
@@ -171,14 +149,12 @@
     text-align: right;
     pointer-events: none;
 }
-
 /* 通過済みシナリオ一覧の見出しにスペースを追加 */
-.scenario-list-container>.planned-month-title {
+.scenario-list-container > .planned-month-title {
     margin-top: 3em !important;
     margin-bottom: 1.5em !important;
     display: block;
 }
-
 :root {
     --bg-color: #ffffff;
     --text-color: #333333;
@@ -286,17 +262,15 @@ main {
     border-radius: 4px;
 }
 
-.mine-title {
+.mine-level {
     font-weight: bold;
     color: #cc0000;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     margin-bottom: 5px;
 }
 
 .mine-reason {
-    font-size: 0.85rem;
-    margin: 0 1em;
-    color: #444;
+    font-size: 0.95rem;
 }
 
 /* Scenarios Section (Common List Styles) */
@@ -382,20 +356,6 @@ main {
     background-color: #2c3e50;
     margin-right: 8px;
     transform: rotate(45deg);
-}
-
-.planned-month-title.is-phobia {
-    color: #cc0000;
-    border-bottom-color: #ffcccc;
-    font-size: 1.25rem;
-}
-
-.planned-month-title.is-phobia::before {
-    background-color: #cc0000;
-}
-
-.mine-group.is-request .mine-title {
-    color: var(--text-color);
 }
 
 .planned-list {
