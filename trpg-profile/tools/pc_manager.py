@@ -52,7 +52,7 @@ class DataManager:
         if duplicates and not allow_duplicate_ids:
             return False, f"ID重複エラー: {', '.join(duplicates)}\nこれらのIDは重複しています。修正するか、「一時的に重複IDを許可」にチェックを入れてください。"
 
-        self.create_backup()
+
         try:
             with open(DATA_FILE, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=4, ensure_ascii=False)
@@ -61,16 +61,7 @@ class DataManager:
         except Exception as e:
             return False, f"Error saving data: {e}"
 
-    def create_backup(self):
-        if not DATA_FILE.exists():
-            return
-        timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-        backup_path = BACKUP_DIR / f"pcs.json.bak_{timestamp}"
-        try:
-            shutil.copy2(DATA_FILE, backup_path)
-            print(f"Backup created: {backup_path}")
-        except Exception as e:
-            print(f"Error creating backup: {e}")
+
 
     def generate_new_id(self):
         max_num = 0
