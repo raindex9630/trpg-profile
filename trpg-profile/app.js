@@ -60,6 +60,27 @@ document.addEventListener('DOMContentLoaded', () => {
         works: null
     };
 
+    // Generate placeholder image
+    function generatePlaceholderImage(text, width = 200, height = 200) {
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+
+        // 灰色背景
+        ctx.fillStyle = '#c8c8c8';
+        ctx.fillRect(0, 0, width, height);
+
+        // テキスト
+        ctx.fillStyle = '#646464';
+        ctx.font = `${Math.floor(width * 0.2)}px Arial`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, width / 2, height / 2);
+
+        return canvas.toDataURL();
+    }
+
     // Initialize
     init();
 
@@ -180,7 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="mines-container">
                             ${l.mines.map((group, idx) => `
                                 <div class="mine-group${group.label === '控えてほしいこと' ? ' is-request' : ''}">
-                                    <h3 class="planned-month-title${group.label === '恐怖症' ? ' is-phobia' : ''}" style="margin-top: ${idx === 0 ? '0' : '2em'};">${group.label}</h3>
+                                    <h3 class="planned-month-title${group.label === '恐怖症' ? ' is-phobia' : ''}" style="margin-top: ${idx === 0 ? '0' : '2em'};">
+                                        ${group.label}
+                                        ${group.note ? `<span class="mine-note">${group.note}</span>` : ''}
+                                    </h3>
                                     ${group.items.length > 0 ? group.items.map(item => `
                                         <div class="mine-item">
                                             <div class="mine-title">${item.title}</div>
@@ -196,17 +220,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 <details>
                     <summary>好きな要素</summary>
                     <div class="accordion-content">
-                        <ul class="simple-list">
-                            ${l.likes_elements.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
+                        ${l.likes_elements.map(group => `
+                            <div class="elements-category">
+                                <h4 class="elements-label">${group.label}</h4>
+                                <p class="elements-text">${group.text}</p>
+                                ${group.notes && group.notes.length > 0 ? `
+                                    <div class="elements-notes">
+                                        ${group.notes.map(note => `<span class="elements-note">${note}</span>`).join('')}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `).join('')}
                     </div>
                 </details>
 
                 <details>
                     <summary>好きなシナリオ</summary>
                     <div class="accordion-content">
-                        <ul class="simple-list">
-                            ${l.likes_scenarios.map(item => `<li>${item}</li>`).join('')}
+                        ${l.likes_scenarios.note ? `<div class="planned-note">${l.likes_scenarios.note.replace(/\n/g, '<br>')}</div>` : ''}
+                        <ul class="simple-list favorite-scenarios-list">
+                            ${l.likes_scenarios.items.map(item => `<li>${item}</li>`).join('')}
                         </ul>
                     </div>
                 </details>
@@ -214,21 +247,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 <details>
                     <summary>好きなHO</summary>
                     <div class="accordion-content">
-                        <ul class="scenario-list">
-                            ${l.likes_hos.map(item => `
-                                <li class="scenario-item">
-                                    <div class="scenario-left">
-                                        <span class="scenario-title">${item.title}</span>
-                                        ${item.ho ? `<span class="scenario-ho">${item.ho}</span>` : ''}
-                                    </div>
+                        ${l.likes_hos.categories.map(category => `
+                            <div class="ho-category">
+                                <h4 class="ho-category-label">
+                                    ${category.label}
+                                    ${category.note ? `<span class="ho-category-note">${category.note}</span>` : ''}
+                                </h4>
+                                <ul class="scenario-list">
+                                    ${category.items.map(item => `
+                                        <li class="scenario-item">
+                                            <span class="scenario-title">${item.title}</span>
+                                            <span class="scenario-ho-badges">
+                                                ${item.hos.map(ho => `<span class="scenario-ho-badge">${ho}</span>`).join('')}
+                                            </span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                </details>
+
+                <details>
+                    <summary>好きな作者様</summary>
+                    <div class="accordion-content">
+                        <ul class="simple-list">
+                            ${l.likes_authors.items.map(item => `
+                                <li class="author-item">
+                                    <span class="author-name">${item.name}</span>
+                                    ${item.note ? `<span class="author-note-badge">${item.note}</span>` : ''}
                                 </li>
                             `).join('')}
                         </ul>
+                        ${l.likes_authors.note || l.likes_authors.preferences ? `
+                            <div class="author-preferences">
+                                ${l.likes_authors.note ? `<div class="preferences-note">${l.likes_authors.note}</div>` : ''}
+                                ${l.likes_authors.preferences && l.likes_authors.preferences.length > 0 ? `
+                                    <ul class="preferences-list">
+                                        ${l.likes_authors.preferences.map(pref => `<li>${pref}</li>`).join('')}
+                                    </ul>
+                                ` : ''}
+                            </div>
+                        ` : ''}
                     </div>
                 </details>
             </section>
         `;
         app.innerHTML = html;
+
+        // Restore and save details state
+        restoreDetailsState();
+        document.querySelectorAll('details').forEach((details) => {
+            details.addEventListener('toggle', saveDetailsState);
+        });
+
         window.scrollTo(0, 0);
     }
 
@@ -254,17 +326,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // HO有り
             if (item.ho) {
                 return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
+                                <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '　'}</span>
                                 <span class="scenario-title">${item.title}</span>
-                                <span class="scenario-ho-badge">${item.ho}
-                                    ${favHo ? `<span class="favorite-ho" title="HOが好き"><svg viewBox="0 0 16 16" fill="#ff80b0" xmlns="http://www.w3.org/2000/svg"><path d="M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z"/></svg></span>` : ''}
+                                <span class="scenario-ho-badge${favHo ? ' has-favorite-ho' : ''}">
+                                    ${favHo ? `<span class="favorite-ho" title="HOが好き"><svg viewBox="0 0 16 16" fill="#ff80b0" xmlns="http://www.w3.org/2000/svg"><path d="M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z"/></svg></span>` : ''}${item.ho}
                                 </span>
-                                <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '&nbsp;'}</span>
                             </li>`;
             } else {
                 // HO無し
                 return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
+                                <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '　'}</span>
                                 <span class="scenario-title">${item.title}</span>
-                                <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '&nbsp;'}</span>
                             </li>`;
             }
         }).join('')}
@@ -328,16 +400,26 @@ document.addEventListener('DOMContentLoaded', () => {
             <section class="animate-fade-in">
                 <h2 class="section-title">探索者一覧</h2>
                 <div class="pc-grid">
-                    ${data.pcs.map(pc => `
-                        <div class="pc-thumbnail" onclick="location.hash='#pc/${pc.id}'">
-                            <img src="${pc.image_icon}" alt="${pc.name}" class="pc-icon" loading="lazy">
-                            <div class="pc-name-thumb">${pc.name}</div>
-                        </div>
-                    `).join('')}
+                    ${data.pcs.map(pc => {
+            const iconSrc = pc.image_icon || generatePlaceholderImage(pc.name, 200, 200);
+            return `
+                            <div class="pc-thumbnail" onclick="location.hash='#pc/${pc.id}'">
+                                <img src="${iconSrc}" alt="${pc.name}" class="pc-icon" loading="lazy">
+                                <div class="pc-name-thumb">${pc.name}</div>
+                            </div>
+                        `;
+        }).join('')}
                 </div>
             </section>
         `;
         app.innerHTML = html;
+
+        // Restore and save details state
+        restoreDetailsState();
+        document.querySelectorAll('details').forEach((details) => {
+            details.addEventListener('toggle', saveDetailsState);
+        });
+
         window.scrollTo(0, 0);
     }
 
@@ -357,8 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const st = statusMap[work.status] || { text: work.status, class: 'status-private' };
             const ratingBadge = work.rating ? `<span class="rating-badge">${work.rating.toUpperCase()}</span>` : '';
 
-            return `
-                        <div class="work-card">
+            const cardContent = `
                             <div class="work-header">
                                 <h3 class="work-title">${work.title}</h3>
                             </div>
@@ -372,13 +453,33 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="work-spec-item">🏷 HO: ${work.ho}</span>
                             </div>
                             <p class="work-summary">${work.summary}</p>
-                        </div>
                         `;
+
+            if (work.url) {
+                return `
+                                <a href="${work.url}" class="work-card has-link" target="_blank" rel="noopener noreferrer">
+                                    ${cardContent}
+                                </a>
+                            `;
+            } else {
+                return `
+                                <div class="work-card">
+                                    ${cardContent}
+                                </div>
+                            `;
+            }
         }).join('')}
                 </div>
             </section>
-        `;
+    `;
         app.innerHTML = html;
+
+        // Restore and save details state
+        restoreDetailsState();
+        document.querySelectorAll('details').forEach((details) => {
+            details.addEventListener('toggle', saveDetailsState);
+        });
+
         window.scrollTo(0, 0);
     }
 
@@ -391,29 +492,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const diffsHtml = pc.images_diff && pc.images_diff.length > 0
             ? `<div class="pc-diff-images">
-                ${pc.images_diff.map(src => `<img src="${src}" class="pc-diff-thumb" alt="差分">`).join('')}
+    ${pc.images_diff.map(src => `<img src="${src}" class="pc-diff-thumb" alt="差分">`).join('')}
                </div>`
             : '';
 
         const artsHtml = pc.arts && pc.arts.length > 0
             ? `<div class="gallery-grid">
-                ${pc.arts.map(art => `
+    ${pc.arts.map(art => `
                     <div class="gallery-item" onclick="openModal('${art.url}', '${art.artist}')">
                         <img src="${art.url}" class="gallery-thumb" alt="Art by ${art.artist}" loading="lazy">
                         <div class="artist-name">By ${art.artist}</div>
                     </div>
-                `).join('')}
+                `).join('')
+            }
                </div>`
             : '<p>登録されているイラストはありません。</p>';
 
+
         const scenariosHtml = pc.passed_scenarios && pc.passed_scenarios.length > 0
             ? `<ul class="scenario-list">
-                ${pc.passed_scenarios.map(sc => `<li class="scenario-item">${sc}</li>`).join('')}
+${pc.passed_scenarios.map(sc => {
+                let title, ho, end;
+                if (typeof sc === 'object') {
+                    title = sc.title || '';
+                    ho = sc.ho || '';
+                    end = sc.end || '';
+                } else {
+                    // 旧形式(文字列)の互換性
+                    title = sc;
+                    ho = '';
+                    end = '';
+                }
+
+                const isFavHo = sc.favorite_ho || false;
+                let badgesHtml = '';
+
+                if (ho) {
+                    badgesHtml += `<span class="scenario-ho-badge${isFavHo ? ' has-favorite-ho' : ''}">
+                        ${isFavHo ? `<span class="favorite-ho" title="HOが好き"><svg viewBox="0 0 16 16" fill="#ff80b0" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:text-bottom;"><path d="M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z"/></svg></span>` : ''}${ho}
+                    </span>`;
+                }
+                if (end) {
+                    badgesHtml += ` <span class="scenario-end-badge">${end}</span>`;
+                }
+
+                return `<li class="scenario-item">
+                    <span class="scenario-title-text">${title}</span>
+                    <div class="scenario-badges">${badgesHtml}</div>
+                </li>`;
+            }).join('')}
                </ul>`
             : '<p>登録なし</p>';
 
+
         let html = `
-            <section class="animate-fade-in">
+    <section class="animate-fade-in">
                 <div style="margin-bottom: 10px;">
                     <a href="#pcs" style="color: #666;">&lt; 一覧に戻る</a>
                 </div>
@@ -422,7 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 <div class="pc-detail-container">
                     <div class="pc-tachie-container">
-                        <img src="${pc.image_main}" alt="${pc.name}" class="pc-tachie">
+                        <img src="${pc.image_main || generatePlaceholderImage(pc.name, 400, 800)}" alt="${pc.name}" class="pc-tachie">
                         ${diffsHtml}
                     </div>
 
@@ -449,14 +582,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </section>
-        `;
+    `;
         app.innerHTML = html;
         window.scrollTo(0, 0);
     }
 
     window.openModal = function (src, caption) {
         modalImg.src = src;
-        modalCaption.textContent = caption ? `Art by ${caption}` : '';
+        modalCaption.textContent = caption ? `Art by ${caption} ` : '';
         modal.classList.add('show');
     }
 
@@ -471,4 +604,33 @@ document.addEventListener('DOMContentLoaded', () => {
             modalImg.src = '';
         }
     });
+
+    // Functions to save and restore details state
+    function saveDetailsState() {
+        const detailsElements = document.querySelectorAll('details');
+        const state = {};
+        detailsElements.forEach((details) => {
+            const summary = details.querySelector('summary');
+            if (summary) {
+                state[summary.textContent.trim()] = details.open;
+            }
+        });
+        localStorage.setItem('detailsState', JSON.stringify(state));
+    }
+
+    function restoreDetailsState() {
+        const savedState = localStorage.getItem('detailsState');
+        if (savedState) {
+            const state = JSON.parse(savedState);
+            document.querySelectorAll('details').forEach((details) => {
+                const summary = details.querySelector('summary');
+                if (summary) {
+                    const key = summary.textContent.trim();
+                    if (state.hasOwnProperty(key)) {
+                        details.open = state[key];
+                    }
+                }
+            });
+        }
+    }
 });

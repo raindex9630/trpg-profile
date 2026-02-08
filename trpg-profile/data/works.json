@@ -15,7 +15,7 @@
         "players": "4人",
         "time": "半テキ20～25時間",
         "ho": "あり / 秘匿",
-        "summary": "違法薬物中毒者しかいないシナリオ"
+        "summary": "違法薬物中毒者しかいないシナリオ<br>ただの癖シ"
     },
     {
         "title": "君は猟奇殺人犯",
@@ -24,6 +24,52 @@
         "players": "タイマン",
         "time": "半テキ5～6時間",
         "ho": "なし",
+        "url": "https://dreameteor.booth.pm/items/5927316",
         "summary": "PCが最近よくKPCに殺される夢を見ている日常系シナリオ"
+    },
+    {
+        "title": "MAGIC JEWEL",
+        "status": "wip",
+        "rating": "",
+        "players": "4人",
+        "time": "ボイセ40～45時間",
+        "ho": "あり / 秘匿",
+        "summary": "現代と魔法のシナリオ"
+    },
+    {
+        "title": "絶望なくして希望なし",
+        "status": "wip",
+        "rating": "",
+        "players": "2人",
+        "time": "短め",
+        "ho": "あり / 秘匿",
+        "summary": "希望の天使と絶望の人間が出会うシナリオ"
+    },
+    {
+        "title": "星間を繋ぐ(仮題)",
+        "status": "wip",
+        "rating": "",
+        "players": "3人",
+        "time": "ちょっと長め",
+        "ho": "あり / 秘匿",
+        "summary": "3人の使用人が集まるシナリオ"
+    },
+    {
+        "title": "容姿学園(仮題)",
+        "status": "wip",
+        "rating": "",
+        "players": "4人",
+        "time": "長め",
+        "ho": "あり / 秘匿",
+        "summary": "APPの高さでカーストが決まる学校のシナリオ"
+    },
+    {
+        "title": "パリティ・サーカスの鳥籠",
+        "status": "wip",
+        "rating": "r18g",
+        "players": "4人",
+        "time": "少し長め",
+        "ho": "あり / 秘匿",
+        "summary": "グロゴアサーカスのシナリオ"
     }
 ]

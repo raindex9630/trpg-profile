@@ -241,6 +241,11 @@
           "favorite": false
         },
         {
+          "title": "天国の偽証",
+          "ho": "",
+          "favorite": false
+        },
+        {
           "title": "同窓会",
           "ho": "",
           "favorite": true,
@@ -435,11 +440,6 @@
           "favorite": false
         },
         {
-          "title": "天国の偽証",
-          "ho": "",
-          "favorite": false
-        },
-        {
           "title": "ハイフェッツをなぞる病",
           "ho": "HO秀才",
           "favorite": false
@@ -492,8 +492,9 @@
       "items": [
         {
           "title": "ONE ONE ONE",
-          "ho": "HO:B",
-          "favorite": false
+          "ho": "HO B",
+          "favorite": false,
+          "favorite_ho": false
         },
         {
           "title": "悪魔の唇",
@@ -585,6 +586,12 @@
           "title": "サイレン清掃会社",
           "ho": "HO2 傷物",
           "favorite": false
+        },
+        {
+          "title": "四季送り",
+          "ho": "HO参 秋",
+          "favorite": true,
+          "favorite_ho": true
         },
         {
           "title": "-新生-ジャンヌの猟犬",
@@ -738,26 +745,18 @@
         "label": "現行",
         "items": [
           {
-            "title": "四季送り",
-            "role": "HO参 秋"
-          },
-          {
-            "title": "ミノタウロスの証人",
-            "role": "HO1 白夜"
-          }
-        ]
-      },
-      {
-        "label": "2月",
-        "items": [
-          {
             "title": "ミノタウロスの証人",
             "role": "HO1 白夜"
           },
           {
             "title": "胎顕プルチネラ",
             "role": "HO4 花形役者"
-          },
+          }
+        ]
+      },
+      {
+        "label": "2月",
+        "items": [
           {
             "title": "メテオライトは君しかいない",
             "role": "PL"
@@ -788,8 +787,12 @@
             "role": "KP"
           },
           {
-            "title": "エデンに成る生熟れの果実（仮）",
-            "role": "PL"
+            "title": "エデンに成る生熟れの果実",
+            "role": "HO未定"
+          },
+          {
+            "title": "INTO2",
+            "role": "KP"
           },
           {
             "title": "Xからの告白",
@@ -831,7 +834,7 @@
           },
           {
             "title": "Xからの告白",
-            "role": "HO3"
+            "role": "HO3 検事"
           },
           {
             "title": "AE 11陣",
@@ -882,8 +885,8 @@
         "label": "9月",
         "items": [
           {
-            "title": "NOBODY*2（仮）",
-            "role": "HO2 謎多き探索者（仮）"
+            "title": "NOBODY*2",
+            "role": "HO2 謎多き探索者"
           }
         ]
       },
@@ -891,16 +894,16 @@
         "label": "10月",
         "items": [
           {
-            "title": "NOBODY*2（仮）",
-            "role": "HO2 謎多き探索者（仮）"
+            "title": "NOBODY*2",
+            "role": "HO2 謎多き探索者"
           },
           {
             "title": "しんでしまう一週間後のきみへ（仮）",
             "role": "KP"
           },
           {
-            "title": "空の青さの掴み方（仮）",
-            "role": "HO未定"
+            "title": "空の青さの掴み方",
+            "role": "HO2 新都市の迷子"
           }
         ]
       }

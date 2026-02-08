@@ -1,0 +1,184 @@
+[
+    {
+        "id": "愛川 ",
+        "name": "新規探索者",
+        "ruby": "",
+        "image_icon": "data/assets/pcs/pc006/icon/アイコン01-1.png",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-07"
+    },
+    {
+        "id": "pc005",
+        "name": "風早 爽",
+        "ruby": "かぜはや そう",
+        "image_icon": "data/assets/pcs/pc005/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/pc005/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-07"
+    },
+    {
+        "id": "pc004",
+        "name": "疾風 勁草",
+        "ruby": "しっぷう けいそう",
+        "image_icon": "data/assets/pcs/pc004/icon/アイコン01-1.png",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "男",
+            "age": "24歳",
+            "height": "172cm",
+            "job": "へーメラー"
+        },
+        "passed_scenarios": [
+            {
+                "title": "アイの記憶",
+                "ho": "",
+                "end": "END 3"
+            },
+            {
+                "title": "ディープ・パープルの境界線",
+                "ho": "",
+                "end": "END"
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-07"
+    },
+    {
+        "id": "pc003",
+        "name": "音無 遥",
+        "ruby": "おとなし はるか",
+        "image_icon": "data/assets/pcs/pc003/icon/アイコン_.png",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [
+            {
+                "title": "着信アリ",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "ガレッドデロワ",
+                "ho": "",
+                "end": ""
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-07"
+    },
+    {
+        "id": "pc001",
+        "name": "朝霧 琥珀",
+        "ruby": "あさぎり こはく",
+        "image_icon": "data/assets/pcs/pc001/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/pc001/main/立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "23歳",
+            "height": "160cm",
+            "job": ""
+        },
+        "passed_scenarios": [
+            {
+                "title": "堕ちた先に在ったのは",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "彼方傍ら、映し世の",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "赦しの塔",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "お医者さんごっこ",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "グリオーマアクアリウム",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "まんだらかばら",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "BARABARA Mansion",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "ワンちゃんはここにいる。",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "最果てのレイル",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "とおりゃんせが聞こえる",
+                "ho": "",
+                "end": ""
+            },
+            {
+                "title": "31FLOORs",
+                "ho": "",
+                "end": "END A"
+            }
+        ],
+        "arts": [],
+        "created_at": "2023-01-15"
+    },
+    {
+        "id": "pc002",
+        "name": "夢咲 未来",
+        "ruby": "ゆめさき みく",
+        "image_icon": "data/assets/pcs/pc002/icon/アイコン2.png",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [
+            "斑猫温泉に行こう！"
+        ],
+        "arts": [],
+        "created_at": "2023-05-20"
+    }
+]
