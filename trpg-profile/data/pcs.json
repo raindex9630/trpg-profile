@@ -3,7 +3,7 @@
         "id": "pc006",
         "name": "愛川 綾",
         "ruby": "あいかわ あや",
-        "image_icon": "data/assets/pcs/pc006/icon/アイコン01-1_20260207222550.png",
+        "image_icon": "data/assets/pcs/pc006/icon/アイコン01-1_20260207222550.webp",
         "image_main": "data/assets/pcs/pc006/main/_立ち絵01.png",
         "images_diff": [],
         "profile": {
@@ -20,7 +20,7 @@
         "id": "pc005",
         "name": "風早 爽",
         "ruby": "かぜはや そう",
-        "image_icon": "data/assets/pcs/pc005/icon/アイコン01-1.png",
+        "image_icon": "data/assets/pcs/pc005/icon/アイコン01-1.webp",
         "image_main": "data/assets/pcs/pc005/main/_立ち絵01.png",
         "images_diff": [],
         "profile": {
@@ -37,7 +37,7 @@
         "id": "pc004",
         "name": "疾風 勁草",
         "ruby": "しっぷう けいそう",
-        "image_icon": "data/assets/pcs/pc004/icon/アイコン01-1.png",
+        "image_icon": "data/assets/pcs/pc004/icon/アイコン01-1.webp",
         "image_main": "",
         "images_diff": [],
         "profile": {
@@ -65,7 +65,7 @@
         "id": "pc003",
         "name": "音無 遥",
         "ruby": "おとなし はるか",
-        "image_icon": "data/assets/pcs/pc003/icon/アイコン_.png",
+        "image_icon": "data/assets/pcs/pc003/icon/アイコン_.webp",
         "image_main": "",
         "images_diff": [],
         "profile": {
@@ -93,7 +93,7 @@
         "id": "pc001",
         "name": "朝霧 琥珀",
         "ruby": "あさぎり こはく",
-        "image_icon": "data/assets/pcs/pc001/icon/アイコン01-1.png",
+        "image_icon": "data/assets/pcs/pc001/icon/アイコン01-1.webp",
         "image_main": "data/assets/pcs/pc001/main/立ち絵01.png",
         "images_diff": [],
         "profile": {
@@ -166,7 +166,7 @@
         "id": "pc002",
         "name": "夢咲 未来",
         "ruby": "ゆめさき みく",
-        "image_icon": "data/assets/pcs/pc002/icon/アイコン2.png",
+        "image_icon": "data/assets/pcs/pc002/icon/アイコン2.webp",
         "image_main": "",
         "images_diff": [],
         "profile": {
