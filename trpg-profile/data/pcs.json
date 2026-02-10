@@ -1,10 +1,1622 @@
 [
     {
-        "id": "pc006",
+        "id": "073",
+        "name": "九条 響一",
+        "ruby": "くじょう きょういち",
+        "image_icon": "data/assets/pcs/073/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/073/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "072",
+        "name": "長月 慈乃",
+        "ruby": "ながつき しの",
+        "image_icon": "",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "071",
+        "name": "暁 陽彩",
+        "ruby": "あかつき ひいろ",
+        "image_icon": "",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "070",
+        "name": "月見 枯葉",
+        "ruby": "つきみ かれは",
+        "image_icon": "data/assets/pcs/070/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/070/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "069",
+        "name": "Frity Martin",
+        "ruby": "フリティ・マーティン",
+        "image_icon": "data/assets/pcs/069/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/069/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "068",
+        "name": "愛徳 幽",
+        "ruby": "なるえ かすか",
+        "image_icon": "data/assets/pcs/068/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/068/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [
+            {
+                "url": "data/assets/pcs/068/arts/3356195-1.png",
+                "artist": "null*"
+            }
+        ],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "067",
+        "name": "Leone Veleno",
+        "ruby": "レオーネ・ヴェレーノ",
+        "image_icon": "data/assets/pcs/067/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/067/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [
+            {
+                "url": "data/assets/pcs/067/arts/3234394-1_縮小_20260208234538.png",
+                "artist": "葛桐汐音"
+            },
+            {
+                "url": "data/assets/pcs/067/arts/3234394-2_縮小.png",
+                "artist": "葛桐汐音"
+            },
+            {
+                "url": "data/assets/pcs/067/arts/3234394-3_縮小.png",
+                "artist": "葛桐汐音"
+            }
+        ],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "066",
+        "name": "影内 響也",
+        "ruby": "かげうち きょうや",
+        "image_icon": "data/assets/pcs/066/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/066/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "065",
+        "name": "夜一夜 晃黯",
+        "ruby": "よひとよ こうや",
+        "image_icon": "",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "064",
+        "name": "瑪瑙",
+        "ruby": "まどう",
+        "image_icon": "data/assets/pcs/064/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/064/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "063",
+        "name": "氷室 純",
+        "ruby": "ひむろ じゅん",
+        "image_icon": "data/assets/pcs/063/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/063/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "062",
+        "name": "白咲 凍音",
+        "ruby": "しらさき しおん",
+        "image_icon": "data/assets/pcs/062/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/062/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "061",
+        "name": "うさみちゃん",
+        "ruby": "-",
+        "image_icon": "data/assets/pcs/061/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/061/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "060",
+        "name": "鳳凰 紡",
+        "ruby": "ほうおう つむぐ",
+        "image_icon": "data/assets/pcs/060/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/060/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [
+            {
+                "url": "data/assets/pcs/060/arts/3392688-2.png",
+                "artist": "東堂前夜"
+            }
+        ],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "059",
+        "name": "待雪 麻緖",
+        "ruby": "まつゆき まお",
+        "image_icon": "data/assets/pcs/059/icon/_アイコン02-1.png",
+        "image_main": "data/assets/pcs/059/main/_立ち絵02.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "058",
+        "name": "神和 優",
+        "ruby": "かんなぎ ゆう",
+        "image_icon": "data/assets/pcs/058/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/058/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "057",
+        "name": "不知火 真人",
+        "ruby": "しらぬい まさと",
+        "image_icon": "data/assets/pcs/057/icon/アイコン02-1.png",
+        "image_main": "data/assets/pcs/057/main/_立ち絵02.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "056",
+        "name": "黒鵜 アンリ",
+        "ruby": "くろう -",
+        "image_icon": "data/assets/pcs/056/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/056/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "無性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "055",
+        "name": "Oort Dust",
+        "ruby": "オールト・ダスト",
+        "image_icon": "data/assets/pcs/055/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/055/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "054",
+        "name": "乾 縫",
+        "ruby": "いぬい ぬい",
+        "image_icon": "data/assets/pcs/054/icon/アイコン.png",
+        "image_main": "data/assets/pcs/054/main/イラスト.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "053",
+        "name": "Emmanuel Benoît",
+        "ruby": "エマニュエル・ブノワ",
+        "image_icon": "data/assets/pcs/053/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/053/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "052",
+        "name": "闇雲 詩",
+        "ruby": "やみぐも うた",
+        "image_icon": "data/assets/pcs/052/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/052/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "051",
+        "name": "Sera Regalo",
+        "ruby": "セラ・レガーロ",
+        "image_icon": "data/assets/pcs/051/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/051/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [
+            {
+                "url": "data/assets/pcs/051/arts/3511997-1.png",
+                "artist": "春衣"
+            },
+            {
+                "url": "data/assets/pcs/051/arts/3210215-2_縮小.png",
+                "artist": "ぬ"
+            },
+            {
+                "url": "data/assets/pcs/051/arts/2939751-1_縮小.png",
+                "artist": "null*"
+            }
+        ],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "050",
+        "name": "Sharlie Hermes",
+        "ruby": "シャーリー・ヘルメス",
+        "image_icon": "data/assets/pcs/050/icon/アイコン03-1.png",
+        "image_main": "data/assets/pcs/050/main/_立ち絵03.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "049",
+        "name": "髙見 一",
+        "ruby": "たかみ はじめ",
+        "image_icon": "data/assets/pcs/049/icon/アイコン08-1.png",
+        "image_main": "data/assets/pcs/049/main/_立ち絵08.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [
+            {
+                "url": "data/assets/pcs/049/arts/3253746-1.png",
+                "artist": "ワ～！"
+            },
+            {
+                "url": "data/assets/pcs/049/arts/3002294-1.png",
+                "artist": "東堂前夜"
+            },
+            {
+                "url": "data/assets/pcs/049/arts/2992274-1.png",
+                "artist": "👾"
+            },
+            {
+                "url": "data/assets/pcs/049/arts/2449527-1_20260208234301.png",
+                "artist": "どうも"
+            },
+            {
+                "url": "data/assets/pcs/049/arts/2373313-1_20260208234251.png",
+                "artist": "くろでこ"
+            }
+        ],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "048",
+        "name": "Schwarz Erst",
+        "ruby": "シュヴァルツ・エーアスト",
+        "image_icon": "data/assets/pcs/048/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/048/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "047",
+        "name": "Karsten Beryl",
+        "ruby": "カシュテン・ベリル",
+        "image_icon": "data/assets/pcs/047/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/047/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "046",
+        "name": "名張 鴉",
+        "ruby": "なばり からす",
+        "image_icon": "data/assets/pcs/046/icon/アイコン.png",
+        "image_main": "data/assets/pcs/046/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "045",
+        "name": "雨夜 華子",
+        "ruby": "あまや はなこ",
+        "image_icon": "data/assets/pcs/045/icon/アイコン.png",
+        "image_main": "data/assets/pcs/045/main/_立ち絵.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "044",
+        "name": "蒼海 空",
+        "ruby": "あおみ そら",
+        "image_icon": "data/assets/pcs/044/icon/アイコン.png",
+        "image_main": "data/assets/pcs/044/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "043",
+        "name": "璃道 沙綾",
+        "ruby": "りみち さあや",
+        "image_icon": "data/assets/pcs/043/icon/アイコン.png",
+        "image_main": "data/assets/pcs/043/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "042",
+        "name": "亞鳥 雀",
+        "ruby": "あとり すずめ",
+        "image_icon": "data/assets/pcs/042/icon/アイコン.png",
+        "image_main": "data/assets/pcs/042/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "041",
+        "name": "愛恵 卯々",
+        "ruby": "あいえ うう",
+        "image_icon": "data/assets/pcs/041/icon/アイコン.png",
+        "image_main": "data/assets/pcs/041/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [
+            {
+                "url": "data/assets/pcs/041/arts/2185296-1.png",
+                "artist": "いなば"
+            }
+        ],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "040",
+        "name": "天使 光希",
+        "ruby": "あまつか こうき",
+        "image_icon": "data/assets/pcs/040/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/040/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "039",
+        "name": "出雲 ナギ",
+        "ruby": "いづも -",
+        "image_icon": "data/assets/pcs/039/icon/アイコン.png",
+        "image_main": "data/assets/pcs/039/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "038",
+        "name": "黒影 翼",
+        "ruby": "くろかげ つばさ",
+        "image_icon": "data/assets/pcs/038/icon/アイコン.png",
+        "image_main": "data/assets/pcs/038/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "037",
+        "name": "Citrus Reincarnation",
+        "ruby": "シトラス・リンカネーション",
+        "image_icon": "data/assets/pcs/037/icon/アイコン.png",
+        "image_main": "data/assets/pcs/037/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "036",
+        "name": "藍河 楽",
+        "ruby": "あいが らく",
+        "image_icon": "data/assets/pcs/036/icon/_アイコン02-1.png",
+        "image_main": "data/assets/pcs/036/main/_立ち絵02.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "035",
+        "name": "石塚 灯",
+        "ruby": "いしづか ともる",
+        "image_icon": "data/assets/pcs/035/icon/アイコン.png",
+        "image_main": "data/assets/pcs/035/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "034",
+        "name": "北風 南",
+        "ruby": "あなぜ みなみ",
+        "image_icon": "data/assets/pcs/034/icon/アイコン.png",
+        "image_main": "data/assets/pcs/034/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "033",
+        "name": "宮下 奏音",
+        "ruby": "みやした かなめ",
+        "image_icon": "data/assets/pcs/033/icon/アイコン.png",
+        "image_main": "data/assets/pcs/033/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "032",
+        "name": "月下 希",
+        "ruby": "つきした のぞみ",
+        "image_icon": "data/assets/pcs/032/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/032/main/_立ち絵03.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "031",
+        "name": "リル",
+        "ruby": "-",
+        "image_icon": "data/assets/pcs/031/icon/アイコン3.png",
+        "image_main": "data/assets/pcs/031/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "030",
+        "name": "夜桜 あすか",
+        "ruby": "よざくら -",
+        "image_icon": "data/assets/pcs/030/icon/アイコン02-1.png",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "029",
+        "name": "星見 海月",
+        "ruby": "ほしみ くらげ",
+        "image_icon": "data/assets/pcs/029/icon/アイコン.png",
+        "image_main": "data/assets/pcs/029/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "23歳",
+            "height": "168cm",
+            "job": "何でも屋"
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "028",
+        "name": "烏山 蒼蝶",
+        "ruby": "からすやま あげは",
+        "image_icon": "data/assets/pcs/028/icon/アイコン.png",
+        "image_main": "data/assets/pcs/028/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "23歳",
+            "height": "173cm",
+            "job": "アパレル店員"
+        },
+        "passed_scenarios": [
+            {
+                "title": "雨降らしの蝶_Normal",
+                "ho": "HO3 心優しい青年",
+                "end": "END",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "027",
+        "name": "白鳥 ナナ",
+        "ruby": "しらどり -",
+        "image_icon": "data/assets/pcs/027/icon/アイコン.png",
+        "image_main": "data/assets/pcs/027/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "22歳",
+            "height": "182cm",
+            "job": "アイドル"
+        },
+        "passed_scenarios": [
+            {
+                "title": "虜",
+                "ho": "HO2",
+                "end": "END 3-A",
+                "is_if": false
+            },
+            {
+                "title": "The Hog Game",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "ワンちゃんはここにいる。",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "いい子にしてるか黙ってろ",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            }
+        ],
+        "arts": [
+            {
+                "url": "data/assets/pcs/027/arts/2502309-1.png",
+                "artist": "ふやけ"
+            }
+        ],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "026",
+        "name": "平岡 健久",
+        "ruby": "ひらおか たけひさ",
+        "image_icon": "data/assets/pcs/026/icon/アイコン3.png",
+        "image_main": "data/assets/pcs/026/main/_立ち絵2.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "25歳",
+            "height": "167cm",
+            "job": "看護師"
+        },
+        "passed_scenarios": [
+            {
+                "title": "しんでしまう一週間後のきみへ",
+                "ho": "HO1 病院関係者",
+                "end": "END 6",
+                "is_if": false
+            },
+            {
+                "title": "DIGIN",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "花あかり君はなし",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "アガルタからの視線",
+                "ho": "KPC",
+                "end": "END 5-B",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "025",
+        "name": "空蝕 直人",
+        "ruby": "うろじき なおと",
+        "image_icon": "data/assets/pcs/025/icon/アイコン.png",
+        "image_main": "data/assets/pcs/025/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "28歳",
+            "height": "197cm",
+            "job": "狂信者"
+        },
+        "passed_scenarios": [
+            {
+                "title": "Sibyl -シビュラ-",
+                "ho": "Case.4",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "The Hog Game",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "贖罪の塔",
+                "ho": "",
+                "end": "END L",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "024",
+        "name": "星ヶ崎 海",
+        "ruby": "ほしがさき うみ",
+        "image_icon": "data/assets/pcs/024/icon/アイコン.png",
+        "image_main": "data/assets/pcs/024/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "25歳",
+            "height": "155cm",
+            "job": "男娼"
+        },
+        "passed_scenarios": [
+            {
+                "title": "Noa♡noA",
+                "ho": "HO1 雇い主",
+                "end": "END A",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "023",
+        "name": "醒谷 綺世",
+        "ruby": "さめたに あやせ",
+        "image_icon": "data/assets/pcs/023/icon/アイコン2.png",
+        "image_main": "data/assets/pcs/023/main/_立ち絵02.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "25歳",
+            "height": "172cm",
+            "job": "薬物売人"
+        },
+        "passed_scenarios": [
+            {
+                "title": "悪辣",
+                "ho": "HO2 薬物売人",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "二人飛び降り救済法",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "022",
+        "name": "光星 天輝",
+        "ruby": "こうせい そらき",
+        "image_icon": "data/assets/pcs/022/icon/アイコン.png",
+        "image_main": "data/assets/pcs/022/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "25歳",
+            "height": "170cm",
+            "job": "無職"
+        },
+        "passed_scenarios": [
+            {
+                "title": "海も枯れるまで",
+                "ho": "HO1",
+                "end": "END 3",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "021",
+        "name": "雷電 迅",
+        "ruby": "らいでん じん",
+        "image_icon": "data/assets/pcs/021/icon/アイコン.png",
+        "image_main": "data/assets/pcs/021/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "21歳",
+            "height": "172cm",
+            "job": "極道者"
+        },
+        "passed_scenarios": [
+            {
+                "title": "ロトカ・ヴォルテラの愛堕討ち",
+                "ho": "HO1 極道者",
+                "end": "END 3",
+                "is_if": false
+            }
+        ],
+        "arts": [
+            {
+                "url": "data/assets/pcs/021/arts/2185233-1-02.png",
+                "artist": "どうも"
+            }
+        ],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "020",
+        "name": "Agile Diligen",
+        "ruby": "アジル・デリジェン",
+        "image_icon": "data/assets/pcs/020/icon/アイコン.png",
+        "image_main": "data/assets/pcs/020/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "26歳",
+            "height": "156cm",
+            "job": "アエテルニム"
+        },
+        "passed_scenarios": [
+            {
+                "title": "Liebbing",
+                "ho": "HO1",
+                "end": "END B-2",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "019",
+        "name": "晝牙",
+        "ruby": "ひるが",
+        "image_icon": "data/assets/pcs/019/icon/アイコン.png",
+        "image_main": "data/assets/pcs/019/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "27歳",
+            "height": "194cm",
+            "job": "迷冥市役所 都市伝説課"
+        },
+        "passed_scenarios": [
+            {
+                "title": "ようこそ！迷冥市役所都市伝説課へ！",
+                "ho": "HO1 都市伝説課の担当者",
+                "end": "END 4",
+                "is_if": false
+            },
+            {
+                "title": "面会室",
+                "ho": "",
+                "end": "END 5",
+                "is_if": false
+            },
+            {
+                "title": "海原に嫁す",
+                "ho": "",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "018",
+        "name": "夜虎 紅藍",
+        "ruby": "やとら くらん",
+        "image_icon": "data/assets/pcs/018/icon/アイコン2.png",
+        "image_main": "data/assets/pcs/018/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "30歳",
+            "height": "165cm",
+            "job": "警視庁特殊事件課［無銘］"
+        },
+        "passed_scenarios": [
+            {
+                "title": "イドラの約束",
+                "ho": "HO4",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "ゆれるフリルにくちづけて",
+                "ho": "",
+                "end": "END B-1",
+                "is_if": false
+            },
+            {
+                "title": "ハッピーサファーーー！",
+                "ho": "",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "馬鹿参り",
+                "ho": "",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "しんでなんかないよ",
+                "ho": "KPC",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "うずぶちの子還り",
+                "ho": "KPC",
+                "end": "END G",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "017",
+        "name": "水無瀬 光",
+        "ruby": "みなせ ひかる",
+        "image_icon": "data/assets/pcs/017/icon/アイコン.png",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "17歳",
+            "height": "176cm",
+            "job": "高校生"
+        },
+        "passed_scenarios": [
+            {
+                "title": "彼方からの君に捧ぐ",
+                "ho": "HO3",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "君が夜を終わらせて",
+                "ho": "KPC",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "016",
+        "name": "水無瀬 傑",
+        "ruby": "みなせ すぐる",
+        "image_icon": "data/assets/pcs/016/icon/アイコン.png",
+        "image_main": "data/assets/pcs/016/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "24歳",
+            "height": "161cm",
+            "job": "無職"
+        },
+        "passed_scenarios": [
+            {
+                "title": "キルキルイキル",
+                "ho": "",
+                "end": "END D",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "015",
+        "name": "深藍 深空",
+        "ruby": "ふかあい みそら",
+        "image_icon": "data/assets/pcs/015/icon/アイコン2.png",
+        "image_main": "data/assets/pcs/015/main/_立ち絵02.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "16歳",
+            "height": "175cm",
+            "job": "-"
+        },
+        "passed_scenarios": [
+            {
+                "title": "永業回帰",
+                "ho": "HO2 患者",
+                "end": "END C",
+                "is_if": false
+            },
+            {
+                "title": "夜光列車と宝石の夜",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "さよならを言いに来た（ホテル鯨骨）",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "タコキャンディー",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "実験体δは青に微笑む",
+                "ho": "",
+                "end": "True END",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "014",
+        "name": "衒朱",
+        "ruby": "てらす",
+        "image_icon": "data/assets/pcs/014/icon/アイコン.png",
+        "image_main": "data/assets/pcs/014/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "14歳",
+            "height": "147cm",
+            "job": "-"
+        },
+        "passed_scenarios": [
+            {
+                "title": "口渇ルルパ",
+                "ho": "HOナイフ",
+                "end": "END 3",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "013",
+        "name": "早乙女 楽羅",
+        "ruby": "さおとめ らら",
+        "image_icon": "data/assets/pcs/013/icon/アイコン.png",
+        "image_main": "data/assets/pcs/013/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "24歳",
+            "height": "153cm",
+            "job": "拝掌教信者"
+        },
+        "passed_scenarios": [
+            {
+                "title": "鰯と柊",
+                "ho": "HO2 信者",
+                "end": "END 2",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "012",
+        "name": "幻夜 銀",
+        "ruby": "まもや ぎん",
+        "image_icon": "data/assets/pcs/012/icon/アイコン2.png",
+        "image_main": "data/assets/pcs/012/main/_立ち絵3.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "24歳",
+            "height": "164cm",
+            "job": "ヤクザ"
+        },
+        "passed_scenarios": [
+            {
+                "title": "踊れ、ワルツ",
+                "ho": "",
+                "end": "END 3",
+                "is_if": false
+            },
+            {
+                "title": "きみがいないせかいはこんなにさみしい",
+                "ho": "",
+                "end": "END A",
+                "is_if": true
+            },
+            {
+                "title": "同窓会",
+                "ho": "KPC",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "011",
+        "name": "孤清 愛翔",
+        "ruby": "こすみ あいと",
+        "image_icon": "data/assets/pcs/011/icon/アイコン.png",
+        "image_main": "data/assets/pcs/011/main/_立ち絵1.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "25歳",
+            "height": "179cm",
+            "job": "明稜中学校 体育教師"
+        },
+        "passed_scenarios": [
+            {
+                "title": "ソープスクール",
+                "ho": "HO2",
+                "end": "END B",
+                "is_if": false
+            },
+            {
+                "title": "名前を呼ぶ度KPCが絶頂する部屋",
+                "ho": "KPC",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "二人飛び降り救済法",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "忘却のゴミヶ原",
+                "ho": "KPC",
+                "end": "END 2",
+                "is_if": false
+            },
+            {
+                "title": "やさしい朝をくださいね",
+                "ho": "KPC",
+                "end": "END C",
+                "is_if": false
+            },
+            {
+                "title": "とける",
+                "ho": "KPC",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "同窓会",
+                "ho": "",
+                "end": "END 3",
+                "is_if": false
+            },
+            {
+                "title": "伽圉",
+                "ho": "",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "私悪",
+                "ho": "",
+                "end": "END 私悪",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "010",
+        "name": "シルヴィ",
+        "ruby": "-",
+        "image_icon": "data/assets/pcs/010/icon/アイコン02-1.png",
+        "image_main": "data/assets/pcs/010/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "10歳",
+            "height": "135cm",
+            "job": "-"
+        },
+        "passed_scenarios": [
+            {
+                "title": "NapFrappe",
+                "ho": "HO Moon",
+                "end": "END 4"
+            },
+            {
+                "title": "ニュクシフィリアと夜の女王",
+                "ho": "",
+                "end": "END",
+                "is_if": true
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "009",
+        "name": "陽ノ下 炎",
+        "ruby": "ひのもと ほむら",
+        "image_icon": "data/assets/pcs/009/icon/アイコン05-1.png",
+        "image_main": "data/assets/pcs/009/main/_立ち絵07.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "15歳",
+            "height": "153cm",
+            "job": "舞台俳優"
+        },
+        "passed_scenarios": [
+            {
+                "title": "その真紅に愛を見る",
+                "ho": "HO人形役",
+                "end": "END 1"
+            },
+            {
+                "title": "世界で一番お前が好きだ！",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "ワンちゃんはここにいる。",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "畏としい君の汚し方",
+                "ho": "KPC",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "ムーンリットの終点で",
+                "ho": "",
+                "end": "END 3",
+                "is_if": false
+            },
+            {
+                "title": "桐と枸櫞",
+                "ho": "KPC",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "LaLuLa",
+                "ho": "KPC",
+                "end": "END 1-B",
+                "is_if": false
+            },
+            {
+                "title": "魔神の蒼",
+                "ho": "",
+                "end": "END A-1",
+                "is_if": false
+            },
+            {
+                "title": "皿とは言わず地獄まで",
+                "ho": "",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "008",
+        "name": "清護 理叶",
+        "ruby": "せいご りと",
+        "image_icon": "data/assets/pcs/008/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/008/main/_立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "21歳",
+            "height": "188cm",
+            "job": "大学院生"
+        },
+        "passed_scenarios": [
+            {
+                "title": "運命という名のアニュラス",
+                "ho": "HO2 現実主義者",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "007",
+        "name": "白 澄玲",
+        "ruby": "つくも すみれ",
+        "image_icon": "data/assets/pcs/007/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/007/main/113.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "19歳",
+            "height": "149cm",
+            "job": "大学生（看護専攻）"
+        },
+        "passed_scenarios": [
+            {
+                "title": "心臓がちょっとはやく動くだけ",
+                "ho": "",
+                "end": "END 1"
+            },
+            {
+                "title": "夜光列車と宝石の夜",
+                "ho": "",
+                "end": "END A"
+            },
+            {
+                "title": "やさしい朝をくださいね",
+                "ho": "KPC",
+                "end": "END A"
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-02-08"
+    },
+    {
+        "id": "006",
         "name": "愛川 綾",
         "ruby": "あいかわ あや",
-        "image_icon": "data/assets/pcs/pc006/icon/アイコン01-1_20260207222550.webp",
-        "image_main": "data/assets/pcs/pc006/main/_立ち絵01.png",
+        "image_icon": "data/assets/pcs/006/icon/アイコン01-1_20260207222550.webp",
+        "image_main": "data/assets/pcs/006/main/_立ち絵01.png",
         "images_diff": [],
         "profile": {
             "gender": "女性",
@@ -12,36 +1624,53 @@
             "height": "156cm",
             "job": "施設職員"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "The Hog Game",
+                "ho": "",
+                "end": "END B-1"
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-07"
     },
     {
-        "id": "pc005",
+        "id": "005",
         "name": "風早 爽",
         "ruby": "かぜはや そう",
-        "image_icon": "data/assets/pcs/pc005/icon/アイコン01-1.webp",
-        "image_main": "data/assets/pcs/pc005/main/_立ち絵01.png",
+        "image_icon": "data/assets/pcs/005/icon/アイコン01-1.webp",
+        "image_main": "data/assets/pcs/005/main/_立ち絵01.png",
         "images_diff": [],
         "profile": {
-            "gender": "男",
+            "gender": "男性",
             "age": "21歳",
             "height": "172cm",
             "job": "施設職員"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "The Hog Game",
+                "ho": "KPC",
+                "end": "END A"
+            },
+            {
+                "title": "いい子にしてるか黙ってろ",
+                "ho": "KPC",
+                "end": "END A"
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-07"
     },
     {
-        "id": "pc004",
+        "id": "004",
         "name": "疾風 勁草",
         "ruby": "しっぷう けいそう",
-        "image_icon": "data/assets/pcs/pc004/icon/アイコン01-1.webp",
-        "image_main": "",
+        "image_icon": "data/assets/pcs/004/icon/アイコン01-1.webp",
+        "image_main": "data/assets/pcs/004/main/_立ち絵01.png",
         "images_diff": [],
         "profile": {
-            "gender": "男",
+            "gender": "男性",
             "age": "24歳",
             "height": "172cm",
             "job": "へーメラー"
@@ -62,10 +1691,10 @@
         "created_at": "2026-02-07"
     },
     {
-        "id": "pc003",
+        "id": "003",
         "name": "音無 遥",
         "ruby": "おとなし はるか",
-        "image_icon": "data/assets/pcs/pc003/icon/アイコン_.webp",
+        "image_icon": "data/assets/pcs/003/icon/アイコン_.webp",
         "image_main": "",
         "images_diff": [],
         "profile": {
@@ -90,11 +1719,30 @@
         "created_at": "2026-02-07"
     },
     {
-        "id": "pc001",
+        "id": "002",
+        "name": "夢咲 未来",
+        "ruby": "ゆめさき みく",
+        "image_icon": "data/assets/pcs/002/icon/アイコン2.webp",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "女性",
+            "age": "21歳",
+            "height": "152cm",
+            "job": "大学生（看護専攻）"
+        },
+        "passed_scenarios": [
+            "斑猫温泉に行こう！"
+        ],
+        "arts": [],
+        "created_at": "2023-05-20"
+    },
+    {
+        "id": "001",
         "name": "朝霧 琥珀",
         "ruby": "あさぎり こはく",
-        "image_icon": "data/assets/pcs/pc001/icon/アイコン01-1.webp",
-        "image_main": "data/assets/pcs/pc001/main/立ち絵01.png",
+        "image_icon": "data/assets/pcs/001/icon/アイコン01-1.webp",
+        "image_main": "data/assets/pcs/001/main/立ち絵01.png",
         "images_diff": [],
         "profile": {
             "gender": "男性",
@@ -161,24 +1809,5 @@
         ],
         "arts": [],
         "created_at": "2023-01-15"
-    },
-    {
-        "id": "pc002",
-        "name": "夢咲 未来",
-        "ruby": "ゆめさき みく",
-        "image_icon": "data/assets/pcs/pc002/icon/アイコン2.webp",
-        "image_main": "",
-        "images_diff": [],
-        "profile": {
-            "gender": "女性",
-            "age": "21歳",
-            "height": "152cm",
-            "job": "大学生（看護専攻）"
-        },
-        "passed_scenarios": [
-            "斑猫温泉に行こう！"
-        ],
-        "arts": [],
-        "created_at": "2023-05-20"
     }
 ]

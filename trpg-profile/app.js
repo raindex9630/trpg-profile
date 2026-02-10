@@ -326,8 +326,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // HO有り
             if (item.ho) {
                 return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
-                                <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '　'}</span>
-                                <span class="scenario-title">${item.title}</span>
+                                <div class="scenario-left">
+                                    <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : ''}</span>
+                                    <span class="scenario-title">${item.title}</span>
+                                </div>
                                 <span class="scenario-ho-badge${favHo ? ' has-favorite-ho' : ''}">
                                     ${favHo ? `<span class="favorite-ho" title="HOが好き"><svg viewBox="0 0 16 16" fill="#ff80b0" xmlns="http://www.w3.org/2000/svg"><path d="M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z"/></svg></span>` : ''}${item.ho}
                                 </span>
@@ -335,8 +337,10 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // HO無し
                 return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
-                                <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : '　'}</span>
-                                <span class="scenario-title">${item.title}</span>
+                                <div class="scenario-left">
+                                    <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : ''}</span>
+                                    <span class="scenario-title">${item.title}</span>
+                                </div>
                             </li>`;
             }
         }).join('')}
@@ -492,16 +496,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const diffsHtml = pc.images_diff && pc.images_diff.length > 0
             ? `<div class="pc-diff-images">
-    ${pc.images_diff.map(src => `<img src="${src}" class="pc-diff-thumb" alt="差分">`).join('')}
+    ${pc.images_diff.map(src => `<img src="${src}" class="pc-diff-thumb" alt="差分" onclick="openModal('${src}', '${pc.name}')" style="cursor: pointer;">`).join('')}
                </div>`
             : '';
 
         const artsHtml = pc.arts && pc.arts.length > 0
             ? `<div class="gallery-grid">
     ${pc.arts.map(art => `
-                    <div class="gallery-item" onclick="openModal('${art.url}', '${art.artist}')">
-                        <img src="${art.url}" class="gallery-thumb" alt="Art by ${art.artist}" loading="lazy">
-                        <div class="artist-name">By ${art.artist}</div>
+                    <div class="gallery-item" onclick="openModal('${art.url}', 'Art by ${art.artist} 様')">
+                        <img src="${art.url}" class="gallery-thumb" alt="Art by ${art.artist} 様" loading="lazy">
+                        <div class="artist-name">By ${art.artist} 様</div>
                     </div>
                 `).join('')
             }
@@ -512,20 +516,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const scenariosHtml = pc.passed_scenarios && pc.passed_scenarios.length > 0
             ? `<ul class="scenario-list">
 ${pc.passed_scenarios.map(sc => {
-                let title, ho, end;
+                let title, ho, end, isIf;
                 if (typeof sc === 'object') {
                     title = sc.title || '';
                     ho = sc.ho || '';
                     end = sc.end || '';
+                    isIf = sc.is_if || false;
                 } else {
                     // 旧形式(文字列)の互換性
                     title = sc;
                     ho = '';
                     end = '';
+                    isIf = false;
                 }
 
                 const isFavHo = sc.favorite_ho || false;
                 let badgesHtml = '';
+
+                if (isIf) {
+                    title = `<span class="scenario-if-badge">IF</span>${title}`;
+                }
 
                 if (ho) {
                     badgesHtml += `<span class="scenario-ho-badge${isFavHo ? ' has-favorite-ho' : ''}">
@@ -555,7 +565,7 @@ ${pc.passed_scenarios.map(sc => {
                 
                 <div class="pc-detail-container">
                     <div class="pc-tachie-container">
-                        <img src="${pc.image_main || generatePlaceholderImage(pc.name, 400, 800)}" alt="${pc.name}" class="pc-tachie">
+                        <img src="${pc.image_main || generatePlaceholderImage(pc.name, 400, 800)}" alt="${pc.name}" class="pc-tachie" onclick="openModal(this.src, '${pc.name}')" style="cursor: pointer;">
                         ${diffsHtml}
                     </div>
 
@@ -589,7 +599,7 @@ ${pc.passed_scenarios.map(sc => {
 
     window.openModal = function (src, caption) {
         modalImg.src = src;
-        modalCaption.textContent = caption ? `Art by ${caption} ` : '';
+        modalCaption.textContent = caption || '';
         modal.classList.add('show');
     }
 

@@ -8,7 +8,7 @@ from pathlib import Path
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
                                QListWidget, QListWidgetItem, QPushButton, QLabel, QLineEdit, 
                                QTextEdit, QSplitter, QMessageBox, QFileDialog, QScrollArea,
-                               QFormLayout, QGroupBox, QSpinBox, QCheckBox, QFrame, QMenu, QStyle)
+                               QFormLayout, QGroupBox, QSpinBox, QCheckBox, QFrame, QMenu, QStyle, QComboBox)
 from PySide6.QtCore import Qt, QSize, Signal, QMimeData
 from PySide6.QtGui import QDragEnterEvent, QDropEvent, QPixmap, QIcon, QAction
 
@@ -18,6 +18,23 @@ DATA_FILE = PROJECT_ROOT / "data/pcs.json"
 ASSETS_DIR = PROJECT_ROOT / "data/assets/pcs"
 TRASH_DIR = PROJECT_ROOT / "data/.trash"
 BACKUP_DIR = PROJECT_ROOT / "data"
+
+class ZeroPaddedSpinBox(QSpinBox):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setRange(1, 999)
+        self.setDisplayIntegerBase(10)
+        self.setFixedWidth(80) # Adjust width
+        # self.valueChanged.connect(self.validate_value) # No internal validation needed, logic handled externally
+
+    def textFromValue(self, value):
+        return f"{value:03d}"
+
+    def valueFromText(self, text):
+        return int(text) if text.isdigit() else 0
+    
+    def validate(self, input_text, pos):
+        return super().validate(input_text, pos)
 
 class DataManager:
     """Handles JSON data loading, saving, and backups."""
@@ -67,49 +84,25 @@ class DataManager:
         max_num = 0
         for pc in self.data:
             pid = pc.get('id', '')
-            match = re.match(r'pc(\d+)', pid)
+            match = re.search(r'(\d+)', pid)
             if match:
                 num = int(match.group(1))
                 if num > max_num:
                     max_num = num
-        return f"pc{max_num + 1:03d}"
+        return f"{max_num + 1:03d}"
 
 class PlaceholderImageGenerator:
-    """仮画像生成クラス"""
+    """仮画像生成クラス (Deprecated)"""
     
     @staticmethod
     def generate_icon(text, size=200):
-        """アイコン用の仮画像を生成"""
-        from PySide6.QtGui import QPainter, QFont, QColor
-        
-        pixmap = QPixmap(size, size)
-        pixmap.fill(QColor(200, 200, 200))  # 灰色背景
-        
-        painter = QPainter(pixmap)
-        painter.setPen(QColor(100, 100, 100))  # 濃い灰色テキスト
-        font = QFont("Arial", int(size * 0.2))
-        painter.setFont(font)
-        painter.drawText(pixmap.rect(), Qt.AlignCenter, text)
-        painter.end()
-        
-        return pixmap
+        """(Deprecated) Return transparent/empty or handled elsewhere"""
+        return None
     
     @staticmethod
     def generate_standing(text, width=400, height=800):
-        """立ち絵用の仮画像を生成"""
-        from PySide6.QtGui import QPainter, QFont, QColor
-        
-        pixmap = QPixmap(width, height)
-        pixmap.fill(QColor(200, 200, 200))
-        
-        painter = QPainter(pixmap)
-        painter.setPen(QColor(100, 100, 100))
-        font = QFont("Arial", int(width * 0.15))
-        painter.setFont(font)
-        painter.drawText(pixmap.rect(), Qt.AlignCenter, text)
-        painter.end()
-        
-        return pixmap
+        """(Deprecated)"""
+        return None
 
 class ImageManager:
     """Handles image file operations (copy, trash)."""
@@ -174,6 +167,58 @@ class ImageManager:
         except Exception as e:
             print(f"Error moving to trash: {e}")
 
+    @staticmethod
+    def rename_assets(old_id, new_id):
+        """Renames the asset directory for a PC."""
+        if not old_id or not new_id or old_id == new_id:
+            return True
+        
+        old_dir = ASSETS_DIR / old_id
+        new_dir = ASSETS_DIR / new_id
+        
+        if old_dir.exists():
+            if new_dir.exists():
+                print(f"Target directory {new_dir} already exists. Cannot rename {old_dir}.")
+                return False
+            else:
+                try:
+                    old_dir.rename(new_dir)
+                    print(f"Renamed {old_dir} to {new_dir}")
+                    return True
+                except Exception as e:
+                    print(f"Error renaming directory: {e}")
+                    return False
+        return True
+
+    @staticmethod
+    def swap_assets(id1, id2):
+        """Swaps asset directories between two PCs."""
+        dir1 = ASSETS_DIR / id1
+        dir2 = ASSETS_DIR / id2
+        
+        # Scenario: Both exist
+        if dir1.exists() and dir2.exists():
+            temp_dir = ASSETS_DIR / f"temp_swap_{datetime.datetime.now().strftime('%f')}"
+            try:
+                dir1.rename(temp_dir)
+                dir2.rename(dir1)
+                temp_dir.rename(dir2)
+                return True
+            except Exception as e:
+                print(f"Error swapping directories: {e}")
+                return False
+        
+        # Scenario: Only dir1 exists (Rename 1->2)
+        elif dir1.exists():
+            return ImageManager.rename_assets(id1, id2)
+            
+        # Scenario: Only dir2 exists (Rename 2->1)
+        elif dir2.exists():
+            return ImageManager.rename_assets(id2, id1)
+            
+        # Neither exists
+        return True
+
 class ImageDropWidget(QFrame):
     imageChanged = Signal(str) # Emits new relative path or empty string
     
@@ -223,29 +268,8 @@ class ImageDropWidget(QFrame):
             else:
                 self.img_label.setText(f"{self.label_text}\n(リンク切れ: {self.current_rel_path})")
         else:
-            # 仮画像を生成
-            pc_name = self.get_pc_name()
-            if pc_name:
-                widget_size = self.size()
-                if self.category == "icon":
-                    # アイコンは正方形なので、幅を使用
-                    size = max(widget_size.width(), widget_size.height())
-                    if size > 0:
-                        self.original_pixmap = PlaceholderImageGenerator.generate_icon(pc_name, size)
-                elif self.category == "main":
-                    # 立ち絵は縦長
-                    width = widget_size.width() if widget_size.width() > 0 else 400
-                    height = widget_size.height() if widget_size.height() > 0 else 800
-                    self.original_pixmap = PlaceholderImageGenerator.generate_standing(pc_name, width, height)
-                
-                if self.original_pixmap:
-                    self.update_pixmap_display()
-                    self.img_label.setText("")
-                    return
-            
+            # 仮画像を生成せず、テキストのみ表示
             self.img_label.setText(f"{self.label_text}\n(Drag & Drop)")
-
-
 
     def update_pixmap_display(self):
         if self.original_pixmap and not self.original_pixmap.isNull():
@@ -315,6 +339,7 @@ class ImageDropWidget(QFrame):
 
 class EditorWidget(QWidget):
     dataChanged = Signal()
+    idChangeRequested = Signal(str, str) # old_id, new_id
 
     def __init__(self):
         super().__init__()
@@ -329,21 +354,37 @@ class EditorWidget(QWidget):
         gb_basic = QGroupBox("基本情報")
         form_layout = QFormLayout(gb_basic)
         
-        self.inp_id = QLineEdit()
+        self.inp_id = ZeroPaddedSpinBox() # Changed to SpinBox
         self.inp_name = QLineEdit()
         self.inp_ruby = QLineEdit()
         
-        self.inp_gender = QLineEdit()
-        self.inp_age = QLineEdit()
-        self.inp_height = QLineEdit()
-        self.inp_job = QLineEdit()
+        # Gender Input: Combo + Free Text
+        self.layout_gender = QHBoxLayout()
+        self.combo_gender = QComboBox()
+        self.combo_gender.addItems(["男性", "女性", "その他"])
+        self.inp_gender_free = QLineEdit()
+        self.inp_gender_free.setPlaceholderText("自由記述")
+        self.inp_gender_free.setVisible(False) # Initial state
         
+        self.layout_gender.addWidget(self.combo_gender)
+        self.layout_gender.addWidget(self.inp_gender_free)
+        
+        self.inp_age = QLineEdit()
+        
+        self.layout_height = QHBoxLayout()
+        self.inp_height = QLineEdit()
+        self.chk_height_no_unit = QCheckBox("cmなし")
+        self.layout_height.addWidget(self.inp_height)
+        self.layout_height.addWidget(self.chk_height_no_unit)
+        
+        self.inp_job = QLineEdit()
+
         form_layout.addRow("ID:", self.inp_id)
         form_layout.addRow("名前;", self.inp_name)
         form_layout.addRow("よみ:", self.inp_ruby)
-        form_layout.addRow("性別:", self.inp_gender)
+        form_layout.addRow("性別:", self.layout_gender)
         form_layout.addRow("年齢:", self.inp_age)
-        form_layout.addRow("身長:", self.inp_height)
+        form_layout.addRow("身長:", self.layout_height)
         form_layout.addRow("職業:", self.inp_job)
         
         layout.addWidget(gb_basic)
@@ -352,12 +393,19 @@ class EditorWidget(QWidget):
         self.editing_scenario_index = None
 
         # Connect basic inputs
-        self.inp_id.textChanged.connect(self.update_data)
+        self.inp_id.valueChanged.connect(self.check_id_change) # Modified Connection
         self.inp_name.textChanged.connect(self.update_data)
         self.inp_ruby.textChanged.connect(self.update_data)
-        self.inp_gender.textChanged.connect(self.update_profile_data)
+        
+        self.combo_gender.currentTextChanged.connect(self.on_gender_combo_changed)
+        self.combo_gender.currentTextChanged.connect(self.update_profile_data)
+        self.inp_gender_free.textChanged.connect(self.update_profile_data)
+        
+        self.inp_gender_free.textChanged.connect(self.update_profile_data)
+        
         self.inp_age.textChanged.connect(self.update_profile_data)
         self.inp_height.textChanged.connect(self.update_profile_data)
+        self.chk_height_no_unit.toggled.connect(self.update_profile_data)
         self.inp_job.textChanged.connect(self.update_profile_data)
 
         # Images - Separated
@@ -413,6 +461,9 @@ class EditorWidget(QWidget):
         input_layout.addWidget(QLabel("END番号:"))
         input_layout.addWidget(self.inp_scenario_end)
         
+        self.chk_scenario_if = QCheckBox("IFシナリオ")
+        input_layout.addWidget(self.chk_scenario_if)
+        
         # Buttons
         h_layout_sc_btns = QHBoxLayout()
         btn_add_sc = QPushButton("追加")
@@ -450,14 +501,60 @@ class EditorWidget(QWidget):
         self.current_pc = pc_data
         self.updating_ui = True # Start blocking updates
         
-        self.inp_id.setText(pc_data.get('id', ''))
+        pid_str = pc_data.get('id', '')
+        match = re.search(r'(\d+)', pid_str)
+        if match:
+            self.inp_id.setValue(int(match.group(1)))
+        else:
+            self.inp_id.setValue(0)
+
         self.inp_name.setText(pc_data.get('name', ''))
         self.inp_ruby.setText(pc_data.get('ruby', ''))
         
         profile = pc_data.get('profile', {})
-        self.inp_gender.setText(profile.get('gender', ''))
+        
+        # Gender Logic
+        gender = profile.get('gender', '')
+        if not gender:
+            gender = "男性" # Default
+            # Force update data so it saves even if user doesn't change it
+            self.current_pc['profile']['gender'] = gender
+            
+        if gender in ["男性", "女性"]:
+            self.combo_gender.setCurrentText(gender)
+            self.inp_gender_free.clear()
+        else:
+            self.combo_gender.setCurrentText("その他")
+            # If "その他", set text to "その他" or empty? 
+            # If data is "その他", free text should be empty or "その他"?
+            # User requirement: "If empty, display 'その他'". So if data is "その他", free input should be empty.
+            if gender == "その他":
+                 self.inp_gender_free.clear()
+            else:
+                 self.inp_gender_free.setText(gender)
+        
+        self.on_gender_combo_changed(self.combo_gender.currentText())
+
         self.inp_age.setText(profile.get('age', ''))
-        self.inp_height.setText(profile.get('height', ''))
+        
+        height = profile.get('height', '')
+        if not height:
+             # Empty -> Default to cm enabled (Checkbox OFF)
+             self.inp_height.setText("")
+             self.chk_height_no_unit.setChecked(False)
+        elif height.endswith("cm"):
+             self.inp_height.setText(height[:-2])
+             self.chk_height_no_unit.setChecked(False)
+        elif height.isdigit():
+             # Numeric string without units -> Treat as cm (Checkbox OFF)
+             self.inp_height.setText(height)
+             self.chk_height_no_unit.setChecked(False)
+        else:
+             # Non-empty, non-numeric, no cm (e.g. "不明", "1m70", "170?")
+             # In this case, "No Unit" is TRUE.
+             self.inp_height.setText(height)
+             self.chk_height_no_unit.setChecked(True)
+             
         self.inp_job.setText(profile.get('job', ''))
         
         # Images
@@ -469,9 +566,12 @@ class EditorWidget(QWidget):
         
         # Scenarios
         self.list_scenarios.clear()
+        self.list_scenarios.clear()
         for sc in pc_data.get('passed_scenarios', []):
             if isinstance(sc, dict):
                 display_text = sc.get('title', '')
+                if sc.get('is_if'):
+                     display_text = f"[IF] {display_text}"
                 if sc.get('ho'):
                     display_text += f" [HO: {sc['ho']}]"
                 if sc.get('end'):
@@ -486,18 +586,30 @@ class EditorWidget(QWidget):
         
         self.updating_ui = False # Stop blocking updates
 
+    def check_id_change(self):
+        if self.updating_ui or not self.current_pc: return
+        
+        new_id_val = self.inp_id.value()
+        new_id_str = f"{new_id_val:03d}"
+        old_id_str = self.current_pc.get('id', '')
+        
+        if new_id_str != old_id_str:
+            self.idChangeRequested.emit(old_id_str, new_id_str)
+
     def update_data(self):
         if self.updating_ui or not self.current_pc: return
         
-        new_id = self.inp_id.text() 
-        self.current_pc['id'] = new_id
+        # ID is handled separately now via check_id_change -> MainWindow -> set_pc
+        
         self.current_pc['name'] = self.inp_name.text()
         self.current_pc['ruby'] = self.inp_ruby.text()
         
-        # Propagate ID to image widgets
-        self.drop_icon.set_data(new_id, self.current_pc.get('image_icon', ''))
-        self.drop_main.set_data(new_id, self.current_pc.get('image_main', ''))
-        self.drop_diff_adder.set_data(new_id, "")
+        # Propagate ID to image widgets (using current ID)
+        current_id = self.current_pc.get('id', '')
+        
+        self.drop_icon.set_data(current_id, self.current_pc.get('image_icon', ''))
+        self.drop_main.set_data(current_id, self.current_pc.get('image_main', ''))
+        self.drop_diff_adder.set_data(current_id, "")
         
         # Update placeholder images if name changed
         self.drop_icon.update_display()
@@ -523,7 +635,7 @@ class EditorWidget(QWidget):
                     if isinstance(dw, ImageDropWidget):
                         # Get current path from current_pc to be safe
                         current_path = self.current_pc['images_diff'][i] if i < len(self.current_pc['images_diff']) else ""
-                        dw.set_data(new_id, current_path)
+                        dw.set_data(current_id, current_path)
 
         # Update Art Widgets
         # Arts are in self.layout_arts. Items are containers.
@@ -537,16 +649,37 @@ class EditorWidget(QWidget):
                     dw = layout.itemAt(0).widget()
                     if isinstance(dw, ImageDropWidget):
                         current_path = self.current_pc['arts'][i]['url'] if i < len(self.current_pc['arts']) else ""
-                        dw.set_data(new_id, current_path)
+                        dw.set_data(current_id, current_path)
 
         self.dataChanged.emit()
+
+    def on_gender_combo_changed(self, text):
+        if text == "その他":
+            self.inp_gender_free.setVisible(True)
+        else:
+            self.inp_gender_free.setVisible(False)
 
     def update_profile_data(self):
         if self.updating_ui or not self.current_pc: return
         if 'profile' not in self.current_pc: self.current_pc['profile'] = {}
-        self.current_pc['profile']['gender'] = self.inp_gender.text()
+        
+        # Gender Logic
+        gender_selection = self.combo_gender.currentText()
+        if gender_selection == "その他":
+            free_text = self.inp_gender_free.text().strip()
+            if free_text:
+                self.current_pc['profile']['gender'] = free_text
+            else:
+                self.current_pc['profile']['gender'] = "その他"
+        else:
+            self.current_pc['profile']['gender'] = gender_selection
+            
         self.current_pc['profile']['age'] = self.inp_age.text()
-        self.current_pc['profile']['height'] = self.inp_height.text()
+        height_val = self.inp_height.text()
+        if not self.chk_height_no_unit.isChecked() and height_val and not height_val.endswith("cm"):
+             height_val += "cm"
+             
+        self.current_pc['profile']['height'] = height_val
         self.current_pc['profile']['job'] = self.inp_job.text()
         self.dataChanged.emit()
 
@@ -628,12 +761,15 @@ class EditorWidget(QWidget):
             scenario = {
                 "title": title,
                 "ho": self.inp_scenario_ho.text().strip(),
-                "end": self.inp_scenario_end.text().strip()
+                "end": self.inp_scenario_end.text().strip(),
+                "is_if": self.chk_scenario_if.isChecked()
             }
             
             self.current_pc['passed_scenarios'].append(scenario)
             
             display_text = title
+            if scenario['is_if']:
+                display_text = f"[IF] {display_text}"
             if scenario['ho']:
                 display_text += f" [HO: {scenario['ho']}]"
             if scenario['end']:
@@ -643,6 +779,7 @@ class EditorWidget(QWidget):
             self.inp_scenario_title.clear()
             self.inp_scenario_ho.clear()
             self.inp_scenario_end.clear()
+            self.chk_scenario_if.setChecked(False)
             self.dataChanged.emit()
 
     def edit_scenario(self):
@@ -654,11 +791,13 @@ class EditorWidget(QWidget):
                 self.inp_scenario_title.setText(sc.get('title', ''))
                 self.inp_scenario_ho.setText(sc.get('ho', ''))
                 self.inp_scenario_end.setText(sc.get('end', ''))
+                self.chk_scenario_if.setChecked(sc.get('is_if', False))
             else:
                 # 旧形式(文字列)の場合
                 self.inp_scenario_title.setText(sc)
                 self.inp_scenario_ho.clear()
                 self.inp_scenario_end.clear()
+                self.chk_scenario_if.setChecked(False)
             
             # 編集モードに入る
             self.editing_scenario_index = row
@@ -675,7 +814,8 @@ class EditorWidget(QWidget):
             scenario = {
                 "title": title,
                 "ho": self.inp_scenario_ho.text().strip(),
-                "end": self.inp_scenario_end.text().strip()
+                "end": self.inp_scenario_end.text().strip(),
+                "is_if": self.chk_scenario_if.isChecked()
             }
             
             # 既存のシナリオを更新
@@ -683,6 +823,8 @@ class EditorWidget(QWidget):
             
             # リスト表示を更新
             display_text = title
+            if scenario['is_if']:
+                 display_text = f"[IF] {display_text}"
             if scenario['ho']:
                 display_text += f" [HO: {scenario['ho']}]"
             if scenario['end']:
@@ -694,6 +836,7 @@ class EditorWidget(QWidget):
             self.inp_scenario_title.clear()
             self.inp_scenario_ho.clear()
             self.inp_scenario_end.clear()
+            self.chk_scenario_if.setChecked(False)
             
             # 編集モードを終了
             self.editing_scenario_index = None
@@ -714,7 +857,7 @@ class EditorWidget(QWidget):
         if 'arts' not in self.current_pc:
             self.current_pc['arts'] = []
         
-        self.current_pc['arts'].append({"url": "", "artist": ""})
+        self.current_pc['arts'].insert(0, {"url": "", "artist": ""})
         self.refresh_arts_list()
         self.dataChanged.emit()
 
@@ -748,7 +891,7 @@ class EditorWidget(QWidget):
             h_layout.addWidget(drop)
             h_layout.addLayout(v_inputs)
             
-            self.layout_arts.insertWidget(self.layout_arts.count() - 1, container)
+            self.layout_arts.addWidget(container)
             
             drop.imageChanged.connect(lambda p, idx=i: self.update_art_image(idx, p))
             inp_artist.textChanged.connect(lambda t, idx=i: self.update_art_artist(idx, t))
@@ -871,6 +1014,7 @@ class MainWindow(QMainWindow):
         # Right Panel: Detail Editor
         self.editor = EditorWidget()
         self.editor.dataChanged.connect(self.on_data_changed)
+        self.editor.idChangeRequested.connect(self.handle_id_change)
         
         # Scroll Area wrap
         scroll = QScrollArea()
@@ -890,6 +1034,8 @@ class MainWindow(QMainWindow):
         
         # Save Action
         save_action = QAction("保存 (Save)", self)
+        save_action.setShortcut("Ctrl+S")
+        save_action.setToolTip("変更を保存 (Ctrl+S)")
         save_action.triggered.connect(self.save_data_click)
         save_action.setIcon(self.style().standardIcon(QStyle.SP_DialogSaveButton))
         toolbar.addAction(save_action)
@@ -898,12 +1044,22 @@ class MainWindow(QMainWindow):
         
         # Add Actions
         add_action = QAction("新規作成", self)
+        add_action.setShortcut("Ctrl+N")
+        add_action.setToolTip("新規PCを作成 (Ctrl+N)")
         add_action.triggered.connect(self.add_pc)
         toolbar.addAction(add_action)
 
     def refresh_list(self):
         current_id = self.current_pc_id
         search_text = self.search_input.text().lower()
+        
+        # Sort PCs by ID descending
+        def get_id_num(pc):
+            pid = pc.get('id', '')
+            match = re.search(r'(\d+)', pid)
+            return int(match.group(1)) if match else 0
+            
+        self.pcs.sort(key=get_id_num, reverse=True)
         
         self.pc_list_widget.blockSignals(True)
         self.pc_list_widget.clear()
@@ -1061,7 +1217,7 @@ class MainWindow(QMainWindow):
         new_id = self.data_manager.generate_new_id()
         new_pc = {
             "id": new_id,
-            "name": "新規探索者",
+            "name": "",
             "ruby": "",
             "image_icon": "",
             "image_main": "",
@@ -1081,6 +1237,92 @@ class MainWindow(QMainWindow):
         self.pc_list_widget.setCurrentRow(0) # Triggers selection change -> sets current_pc_id
         self.is_dirty = True # Adding is a change
         self.update_title()
+        
+        # Focus Name Input
+        self.editor.inp_name.setFocus()
+
+    def handle_id_change(self, old_id, new_id):
+        # Find objects
+        current_pc = next((p for p in self.pcs if p['id'] == old_id), None)
+        if not current_pc:
+             # Should not happen
+             self.editor.set_pc(self.editor.current_pc) 
+             return
+
+        target_pc = next((p for p in self.pcs if p['id'] == new_id), None)
+
+        if target_pc and target_pc != current_pc:
+            # Duplicate
+            ret = QMessageBox.warning(self, "ID重複", 
+                                      f"ID {new_id} は既に存在します。\n「{target_pc.get('name')}」と入れ替えますか？",
+                                      QMessageBox.Yes | QMessageBox.No)
+            if ret == QMessageBox.Yes:
+                self.perform_pc_swap(current_pc, target_pc)
+            else:
+                # Revert UI
+                self.editor.set_pc(current_pc) 
+        else:
+            # Rename
+            self.perform_pc_rename(current_pc, new_id)
+            
+    def perform_pc_rename(self, pc, new_id):
+        old_id = pc['id']
+        
+        if ImageManager.rename_assets(old_id, new_id):
+            pc['id'] = new_id
+            self.update_paths_for_id(pc, old_id, new_id)
+            self.is_dirty = True
+            
+            self.refresh_list()
+            self.select_pc_by_id(new_id)
+        else:
+            QMessageBox.critical(self, "エラー", "フォルダのリネームに失敗しました。")
+            self.editor.set_pc(pc)
+
+    def perform_pc_swap(self, pc1, pc2):
+        id1 = pc1['id']
+        id2 = pc2['id']
+        
+        if ImageManager.swap_assets(id1, id2):
+            pc1['id'] = id2
+            pc2['id'] = id1
+            
+            self.update_paths_for_id(pc1, id1, id2)
+            self.update_paths_for_id(pc2, id2, id1)
+            
+            self.is_dirty = True
+            
+            self.refresh_list()
+            self.select_pc_by_id(id2) # Select pc1's new ID
+        else:
+             QMessageBox.critical(self, "エラー", "フォルダの入れ替えに失敗しました。")
+             self.editor.set_pc(pc1)
+
+    def update_paths_for_id(self, pc, old_id, new_id):
+        def replace_path(path):
+            if not path: return ""
+            return path.replace(f"/pcs/{old_id}/", f"/pcs/{new_id}/")
+
+        pc['image_icon'] = replace_path(pc.get('image_icon'))
+        pc['image_main'] = replace_path(pc.get('image_main'))
+        
+        if 'images_diff' in pc:
+            pc['images_diff'] = [replace_path(p) for p in pc['images_diff']]
+            
+        if 'arts' in pc:
+            for art in pc['arts']:
+                art['url'] = replace_path(art.get('url'))
+
+    def select_pc_by_id(self, pc_id):
+        self.current_pc_id = pc_id
+        for i in range(self.pc_list_widget.count()):
+            item = self.pc_list_widget.item(i)
+            if item.data(Qt.UserRole) == pc_id:
+                self.pc_list_widget.setCurrentItem(item)
+                break
+        pc = next((p for p in self.pcs if p['id'] == pc_id), None)
+        if pc:
+            self.editor.set_pc(pc)
 
     def copy_pc(self):
         if not self.check_unsaved_changes():

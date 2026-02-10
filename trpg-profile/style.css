@@ -167,13 +167,7 @@
     white-space: nowrap;
 }
 
-.favorite-star-space {
-    position: absolute;
-    right: 0.5em;
-    width: 1.7em;
-    text-align: right;
-    pointer-events: none;
-}
+
 
 /* 騾夐℃貂医∩繧ｷ繝翫Μ繧ｪ荳隕ｧ縺ｮ隕句・縺励↓繧ｹ繝壹・繧ｹ繧定ｿｽ蜉� */
 .scenario-list-container>.planned-month-title {
@@ -438,8 +432,13 @@ ul.favorite-scenarios-list,
     border-bottom: 1px dotted var(--border-color);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    /* 蟾ｦ蜿ｳ縺ｫ驟咲ｽｮ */
+    justify-content: flex-start;
+    /* Ensure items start from left */
+}
+
+/* Badge should be pushed to the right */
+.scenario-ho-badge {
+    margin-left: auto;
 }
 
 .scenario-left {
@@ -451,11 +450,19 @@ ul.favorite-scenarios-list,
     background-color: #fff9e6;
 }
 
+
+.favorite-star-space {
+    display: inline-block;
+    width: 1.5em;
+    /* Fixed width for indentation */
+    text-align: center;
+    flex-shrink: 0;
+}
+
 .favorite-star {
-    color: #ffd700;
+    color: #ffb300;
     font-size: 1.1em;
-    margin-left: 10px;
-    /* 蟾ｦ繝槭・繧ｸ繝ｳ */
+    /* margin-left removed */
 }
 
 .scenario-ho {
@@ -591,11 +598,17 @@ ul.favorite-scenarios-list,
     margin-bottom: 5px;
 }
 
-.pc-name-thumb {
-    font-size: 0.8rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.scenario-if-badge {
+    font-size: 0.75rem;
+    color: #fff;
+    background-color: #6c757d;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-weight: bold;
+    display: inline-block;
+    /* Inline-block to allow vertical align */
+    vertical-align: middle;
 }
 
 /* PC Detail Section */
@@ -617,9 +630,10 @@ ul.favorite-scenarios-list,
     max-width: 100%;
     max-height: 80vh;
     object-fit: contain;
-    pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
+    cursor: pointer;
+    /* Explicitly set cursor */
 }
 
 .pc-info {
@@ -650,7 +664,7 @@ ul.favorite-scenarios-list,
     height: 80px;
     object-fit: cover;
     border-radius: 4px;
-    pointer-events: none;
+    cursor: pointer;
 }
 
 .gallery-grid {
