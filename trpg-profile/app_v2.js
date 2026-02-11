@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${l.mines.map((group, idx) => `
                                 <div class="mine-group${group.label === '控えてほしいこと' ? ' is-request' : ''}">
                                     <h3 class="planned-month-title${group.label === '恐怖症' ? ' is-phobia' : ''}" style="margin-top: ${idx === 0 ? '0' : '2em'};">
-                                        ${group.label}
+                                        <span class="title-main">${group.label}</span>
                                         ${group.note ? `<span class="mine-note">${group.note}</span>` : ''}
                                     </h3>
                                     ${group.items.length > 0 ? group.items.map(item => `
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${l.likes_hos.categories.map(category => `
                             <div class="ho-category">
                                 <h4 class="ho-category-label">
-                                    ${category.label}
+                                    <span class="title-main">${category.label}</span>
                                     ${category.note ? `<span class="ho-category-note">${category.note}</span>` : ''}
                                 </h4>
                                 <ul class="scenario-list">
@@ -405,10 +405,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="pc-grid">
                     ${data.pcs.map(pc => {
             const iconSrc = pc.image_icon || generatePlaceholderImage(pc.name, 200, 200);
+            const isLost = pc.is_lost || false;
+            const lostIconClass = isLost ? ' is-lost' : '';
+            const lostNameClass = isLost ? ' is-lost-name' : '';
             return `
                             <div class="pc-thumbnail" onclick="location.hash='#pc/${pc.id}'">
-                                <img src="${iconSrc}" alt="${pc.name}" class="pc-icon" loading="lazy">
-                                <div class="pc-name-thumb">${pc.name}</div>
+                                <img src="${iconSrc}" alt="${pc.name}" class="pc-icon${lostIconClass}" loading="lazy">
+                                <div class="pc-name-thumb${lostNameClass}">${pc.name}</div>
                             </div>
                         `;
         }).join('')}
@@ -530,29 +533,39 @@ ${pc.passed_scenarios.map(sc => {
                 }
 
                 const isFavHo = sc.favorite_ho || false;
-                let badgesHtml = '';
+                let hoBadgeHtml = '';
+                let endBadgeHtml = '';
 
                 if (isIf) {
                     title = `<span class="scenario-if-badge">IF</span>${title}`;
                 }
 
                 if (ho) {
-                    badgesHtml += `<span class="scenario-ho-badge${isFavHo ? ' has-favorite-ho' : ''}">
+                    hoBadgeHtml = `<span class="scenario-ho-badge${isFavHo ? ' has-favorite-ho' : ''}">
                         ${isFavHo ? `<span class="favorite-ho" title="HOが好き"><svg viewBox="0 0 16 16" fill="#ff80b0" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:text-bottom;"><path d="M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z"/></svg></span>` : ''}${ho}
                     </span>`;
                 }
                 if (end) {
-                    badgesHtml += ` <span class="scenario-end-badge">${end}</span>`;
+                    endBadgeHtml = `<span class="scenario-end-badge">${end}</span>`;
                 }
 
                 return `<li class="scenario-item">
-                    <span class="scenario-title-text">${title}</span>
-                    <div class="scenario-badges">${badgesHtml}</div>
+                    <div class="scenario-left">
+                        <span class="scenario-title-text">${title}</span>
+                        ${hoBadgeHtml}
+                    </div>
+                    <div class="scenario-right">
+                        ${endBadgeHtml}
+                    </div>
                 </li>`;
             }).join('')}
                </ul>`
             : '<p>登録なし</p>';
 
+
+        const isLost = pc.is_lost || false;
+        const lostNameClass = isLost ? ' is-lost-name' : '';
+        const lostBadge = isLost ? '<span class="lost-badge">ロスト</span>' : '';
 
         let html = `
     <section class="animate-fade-in">
@@ -560,7 +573,7 @@ ${pc.passed_scenarios.map(sc => {
                     <a href="#pcs" style="color: #666;">&lt; 一覧に戻る</a>
                 </div>
                 
-                <h2 class="section-title">${pc.name} <span style="font-size: 0.8rem; font-weight: normal;">(${pc.ruby})</span></h2>
+                <h2 class="section-title"><span class="${lostNameClass}">${pc.name}</span> <span style="font-size: 0.8rem; font-weight: normal;">(${pc.ruby})</span>${lostBadge}</h2>
                 
                 <div class="pc-detail-container">
                     <div class="pc-tachie-container">

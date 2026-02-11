@@ -8,13 +8,33 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "17歳",
+            "height": "174cm",
+            "job": "ピアニスト"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "ブリュンヒルデにさよならを",
+                "ho": "HO1 Sの奏者",
+                "end": "END B",
+                "is_if": false
+            },
+            {
+                "title": "猫なんて関係ないっ！",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "メテオライトは君しかいない",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            }
+        ],
         "arts": [],
-        "created_at": "2026-02-08"
+        "created_at": "2026-02-08",
+        "is_lost": false
     },
     {
         "id": "072",
@@ -25,11 +45,18 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "19歳",
+            "height": "155cm",
+            "job": "舞台役者"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "胎願プルチネラ",
+                "ho": "HO4 花形役者",
+                "end": "現行",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -42,11 +69,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "27歳",
+            "height": "172cm",
+            "job": "検事"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "Xからの告白",
+                "ho": "HO3 検事",
+                "end": "現行",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -59,11 +93,30 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "24歳",
+            "height": "171cm",
+            "job": "殺し屋"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "四季送り",
+                "ho": "HO参 秋",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "INTO2",
+                "ho": "KPC",
+                "end": "予定",
+                "is_if": false
+            },
+            {
+                "title": "スーサイド・ラプソディ",
+                "ho": "KPC",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -76,11 +129,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "23歳",
+            "height": "171cm",
+            "job": "マフィア"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "Aconite:re",
+                "ho": "HO4",
+                "end": "END B",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -93,11 +153,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "25歳",
+            "height": "175cm",
+            "job": "バイオリニスト"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "彁(かせい)",
+                "ho": "HO2 罰",
+                "end": "END B",
+                "is_if": false
+            }
+        ],
         "arts": [
             {
                 "url": "data/assets/pcs/068/arts/3356195-1.png",
@@ -115,11 +182,24 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "24歳",
+            "height": "186cm",
+            "job": "殺し屋"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "MAGGY889",
+                "ho": "HO2 Hitman",
+                "end": "END 1-A",
+                "is_if": false
+            },
+            {
+                "title": "とろどろ",
+                "ho": "",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
         "arts": [
             {
                 "url": "data/assets/pcs/067/arts/3234394-1_縮小_20260208234538.png",
@@ -145,11 +225,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "25歳",
+            "height": "182cm",
+            "job": "プログラマー"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "罪を×",
+                "ho": "HO罪",
+                "end": "END 5",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -162,11 +249,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "25歳",
+            "height": "165cm",
+            "job": "刑事"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "ミノタウロスの証人",
+                "ho": "HO1 白夜",
+                "end": "現行",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -179,11 +273,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "23歳",
+            "height": "160cm",
+            "job": "怪事庁"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "東京ゴーストマティカ",
+                "ho": "HO4 灰",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -196,11 +297,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "33歳",
+            "height": "178cm",
+            "job": "医学部教授"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "お前のせいだよ",
+                "ho": "HO天才教授",
+                "end": "END",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -213,11 +321,24 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "17歳",
+            "height": "157cm",
+            "job": "アイドル"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "ディープブルーにキラめいて",
+                "ho": "HOアイドル",
+                "end": "END Blue",
+                "is_if": false
+            },
+            {
+                "title": "パパラッチ・アイキャッチ",
+                "ho": "",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -230,11 +351,18 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "？？？歳",
+            "height": "？？？cm",
+            "job": "-"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "ROOMCERF",
+                "ho": "",
+                "end": "END 7",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -247,11 +375,24 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "18歳",
+            "height": "176cm",
+            "job": "高校生"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "死すべき騎士の定め",
+                "ho": "HO NARRATIVE",
+                "end": "Epilogue 02",
+                "is_if": false
+            },
+            {
+                "title": "蒼きシンクレティズム",
+                "ho": "KPC",
+                "end": "END",
+                "is_if": true
+            }
+        ],
         "arts": [
             {
                 "url": "data/assets/pcs/060/arts/3392688-2.png",
@@ -269,11 +410,24 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "17歳",
+            "height": "165cm",
+            "job": "高校生"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "BARABARADICAL",
+                "ho": "HO2 弟/妹",
+                "end": "END 2",
+                "is_if": false
+            },
+            {
+                "title": "君は猟奇殺人犯",
+                "ho": "KPC",
+                "end": "END 3",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -286,11 +440,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "18歳",
+            "height": "175cm",
+            "job": "高校生"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "百夜神楽",
+                "ho": "HO2 大般若",
+                "end": "END 金",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -302,12 +463,25 @@
         "image_main": "data/assets/pcs/057/main/_立ち絵02.png",
         "images_diff": [],
         "profile": {
-            "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "gender": "女性",
+            "age": "22歳",
+            "height": "160cm",
+            "job": "料理人"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "デュラハニズム",
+                "ho": "HO人",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "えらいねぇ～",
+                "ho": "",
+                "end": "END 3",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -320,11 +494,18 @@
         "images_diff": [],
         "profile": {
             "gender": "無性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "？？？歳",
+            "height": "164cm",
+            "job": "警視庁公安部特務課第四班［遺香］"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "遺香廻り",
+                "ho": "HO4 幽香",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -337,11 +518,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "24歳",
+            "height": "151cm",
+            "job": "探偵"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "追憶のECHO",
+                "ho": "HO2 探偵",
+                "end": "END C",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -354,11 +542,18 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
+            "age": "31歳",
             "height": "",
-            "job": ""
+            "job": "科学捜査研究員"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "新シキ世界／アウター・プロトコル",
+                "ho": "",
+                "end": "END N",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -371,11 +566,24 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "27歳",
+            "height": "170cm",
+            "job": "司祭"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "-新生-ジャンヌの猟犬",
+                "ho": "HO3 司祭",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "七罪週間",
+                "ho": "",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -388,11 +596,24 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "27歳",
+            "height": "186cm",
+            "job": "ホラー作家"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "旅館の捕食者",
+                "ho": "HO2 ミステリorホラー作家",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "バックスペース禁止シナリオ",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -405,11 +626,30 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "12歳",
+            "height": "150cm",
+            "job": "神の子"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "AE",
+                "ho": "HO1 神の子",
+                "end": "END 2",
+                "is_if": false
+            },
+            {
+                "title": "Angel pizzicato",
+                "ho": "KPC",
+                "end": "END 3",
+                "is_if": false
+            },
+            {
+                "title": "盲信未遂",
+                "ho": "",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
         "arts": [
             {
                 "url": "data/assets/pcs/051/arts/3511997-1.png",
@@ -435,11 +675,30 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "27歳",
+            "height": "172cm",
+            "job": "FBI"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "SSS.S",
+                "ho": "HO3 Seek",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "おばけのまち",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "革命前夜のアンシャン・レジーム",
+                "ho": "HO潜入調査",
+                "end": "END 1-A",
+                "is_if": true
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -452,11 +711,72 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "28歳",
+            "height": "176cm",
+            "job": "公安警察"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "正偽のイデア",
+                "ho": "HO2 天才",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "The Hog Game",
+                "ho": "KPC",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "MY MELLOW ME MEOW",
+                "ho": "KPC",
+                "end": "END 2",
+                "is_if": false
+            },
+            {
+                "title": "愚刺愚刺",
+                "ho": "KPC",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "天国の偽称",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "6番線4時44分発の",
+                "ho": "KPC",
+                "end": "END 2",
+                "is_if": false
+            },
+            {
+                "title": "Myrtle",
+                "ho": "",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "砂城の王",
+                "ho": "",
+                "end": "END Aex",
+                "is_if": false
+            },
+            {
+                "title": "君のためのヒポクリシー",
+                "ho": "",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "31TOWERs",
+                "ho": "",
+                "end": "現行",
+                "is_if": false
+            }
+        ],
         "arts": [
             {
                 "url": "data/assets/pcs/049/arts/3253746-1.png",
@@ -490,11 +810,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "27歳",
+            "height": "182cm",
+            "job": "古物研究家"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "爛爛",
+                "ho": "HO1 古物研究家",
+                "end": "END E",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -507,11 +834,42 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "26歳",
+            "height": "195cm",
+            "job": "パティシエ"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "AreAy",
+                "ho": "HOシェフパティシエ",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "うえからでられない",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "阿修羅面",
+                "ho": "",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "君は猟奇殺人犯",
+                "ho": "KPC",
+                "end": "END 3",
+                "is_if": false
+            },
+            {
+                "title": "雷鳴に死す",
+                "ho": "",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -524,11 +882,24 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "28歳",
+            "height": "176cm",
+            "job": "養護教諭"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "ステガノグラフィ",
+                "ho": "HO1 保健室の先生",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "同窓会",
+                "ho": "KPC",
+                "end": "END 2",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -541,11 +912,30 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "28歳",
+            "height": "162cm",
+            "job": "高校教師"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "共感覚",
+                "ho": "",
+                "end": "END 6",
+                "is_if": false
+            },
+            {
+                "title": "あなただけの音色を",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "ししんしょく",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -558,13 +948,21 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "26歳",
+            "height": "182cm",
+            "job": "配信者"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "Meantifiact",
+                "ho": "",
+                "end": "END R",
+                "is_if": false
+            }
+        ],
         "arts": [],
-        "created_at": "2026-02-08"
+        "created_at": "2026-02-08",
+        "is_lost": true
     },
     {
         "id": "043",
@@ -575,11 +973,18 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "23歳",
+            "height": "144cm",
+            "job": "システムエンジニア"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "スーサイデッドメアリンク",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -592,11 +997,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "20歳",
+            "height": "173cm",
+            "job": "大学生 演劇サークル"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "ONE ONE ONE",
+                "ho": "HO B",
+                "end": "END",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -609,11 +1021,24 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "永遠の14歳♡",
+            "height": "147cm",
+            "job": "Youtuber"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "春は卵にうさぎのホニャララ",
+                "ho": "",
+                "end": "END 2",
+                "is_if": false
+            },
+            {
+                "title": "31LOCKERs",
+                "ho": "",
+                "end": "END A-1",
+                "is_if": false
+            }
+        ],
         "arts": [
             {
                 "url": "data/assets/pcs/041/arts/2185296-1.png",
@@ -631,11 +1056,36 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "24歳",
+            "height": "168cm",
+            "job": "刑事"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "Good night, Judas.",
+                "ho": "HO4",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "きみはかみさま",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "桐と枸櫞",
+                "ho": "KPC",
+                "end": "END 2",
+                "is_if": false
+            },
+            {
+                "title": "蝶番の夢",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -648,11 +1098,18 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "26歳",
+            "height": "164cm",
+            "job": "登山家"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "狂気山脈 ～邪神の山嶺～",
+                "ho": "HO1-A 孤高の人",
+                "end": "END",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -665,11 +1122,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "23歳",
+            "height": "202cm",
+            "job": "清掃員"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "サイレン清掃会社",
+                "ho": "HO2 傷物",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -682,11 +1146,18 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "25",
+            "height": "155cm",
+            "job": "パティシエ"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "愛罠蜂",
+                "ho": "HO1 オーナーシェフ",
+                "end": "END 愛",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -699,11 +1170,36 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "26",
+            "height": "170cm",
+            "job": "暴力団組員"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "悪魔の唇",
+                "ho": "HO1 暴力団組員",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "尊厳CRUSH！SAN値ゼリー",
+                "ho": "",
+                "end": "END 性癖crush!",
+                "is_if": false
+            },
+            {
+                "title": "The Hog Game",
+                "ho": "",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "6番線4時44分発の",
+                "ho": "KPC",
+                "end": "END 2",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -716,13 +1212,21 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "24歳",
+            "height": "178cm",
+            "job": "作家"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "つぎはぎロマンス",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            }
+        ],
         "arts": [],
-        "created_at": "2026-02-08"
+        "created_at": "2026-02-08",
+        "is_lost": true
     },
     {
         "id": "034",
@@ -733,11 +1237,24 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "25",
+            "height": "164cm",
+            "job": "DAP"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "異能警察は、英雄じゃない",
+                "ho": "HO4 疑念",
+                "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "催眠ダーリンLv1",
+                "ho": "KPC",
+                "end": "EMD 2",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -750,11 +1267,30 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "23歳",
+            "height": "170cm",
+            "job": "ピアニスト"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "ハイフェッツをなぞる病",
+                "ho": "HO秀才",
+                "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "AND/HAND",
+                "ho": "",
+                "end": "END",
+                "is_if": false
+            },
+            {
+                "title": "LaLuLa",
+                "ho": "",
+                "end": "END 1-B",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -767,11 +1303,24 @@
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "20歳",
+            "height": "156cm",
+            "job": "会社員"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "花冷えに亡く季節",
+                "ho": "HO2 花",
+                "end": "END 4",
+                "is_if": false
+            },
+            {
+                "title": "問：死の定義を教えてください",
+                "ho": "",
+                "end": "END α",
+                "is_if": true
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -784,11 +1333,18 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "26",
+            "height": "170cm",
+            "job": "薬師"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "野狗子と薬師",
+                "ho": "HO2 薬師",
+                "end": "END 1",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -801,13 +1357,33 @@
         "images_diff": [],
         "profile": {
             "gender": "女性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "18",
+            "height": "160cm",
+            "job": "高校生"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "魔法少女備忘録",
+                "ho": "",
+                "end": "END EX",
+                "is_if": false
+            },
+            {
+                "title": "グラトニヰ",
+                "ho": "",
+                "end": "END 2-1",
+                "is_if": false
+            },
+            {
+                "title": "家の中を歩いてみよう",
+                "ho": "",
+                "end": "END A",
+                "is_if": false
+            }
+        ],
         "arts": [],
-        "created_at": "2026-02-08"
+        "created_at": "2026-02-08",
+        "is_lost": true
     },
     {
         "id": "029",
@@ -822,7 +1398,14 @@
             "height": "168cm",
             "job": "何でも屋"
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "人間失覚殺人癖",
+                "ho": "HO2 ダス・ゲマイネ",
+                "end": "END 壱",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-02-08"
     },
@@ -848,7 +1431,8 @@
             }
         ],
         "arts": [],
-        "created_at": "2026-02-08"
+        "created_at": "2026-02-08",
+        "is_lost": true
     },
     {
         "id": "027",
@@ -1104,7 +1688,8 @@
             }
         ],
         "arts": [],
-        "created_at": "2026-02-08"
+        "created_at": "2026-02-08",
+        "is_lost": true
     },
     {
         "id": "019",
@@ -1481,7 +2066,8 @@
             }
         ],
         "arts": [],
-        "created_at": "2026-02-08"
+        "created_at": "2026-02-08",
+        "is_lost": true
     },
     {
         "id": "009",

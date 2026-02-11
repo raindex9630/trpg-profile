@@ -369,7 +369,11 @@ class EditorWidget(QWidget):
         self.layout_gender.addWidget(self.combo_gender)
         self.layout_gender.addWidget(self.inp_gender_free)
         
+        self.layout_age = QHBoxLayout()
         self.inp_age = QLineEdit()
+        self.chk_age_no_unit = QCheckBox("歳なし")
+        self.layout_age.addWidget(self.inp_age)
+        self.layout_age.addWidget(self.chk_age_no_unit)
         
         self.layout_height = QHBoxLayout()
         self.inp_height = QLineEdit()
@@ -378,14 +382,18 @@ class EditorWidget(QWidget):
         self.layout_height.addWidget(self.chk_height_no_unit)
         
         self.inp_job = QLineEdit()
+        
+        # ロストフラグのチェックボックスを追加
+        self.chk_is_lost = QCheckBox("ロストフラグ")
 
         form_layout.addRow("ID:", self.inp_id)
-        form_layout.addRow("名前;", self.inp_name)
+        form_layout.addRow("名前:", self.inp_name)
         form_layout.addRow("よみ:", self.inp_ruby)
         form_layout.addRow("性別:", self.layout_gender)
-        form_layout.addRow("年齢:", self.inp_age)
+        form_layout.addRow("年齢:", self.layout_age)
         form_layout.addRow("身長:", self.layout_height)
         form_layout.addRow("職業:", self.inp_job)
+        form_layout.addRow("", self.chk_is_lost)
         
         layout.addWidget(gb_basic)
 
@@ -404,9 +412,11 @@ class EditorWidget(QWidget):
         self.inp_gender_free.textChanged.connect(self.update_profile_data)
         
         self.inp_age.textChanged.connect(self.update_profile_data)
+        self.chk_age_no_unit.toggled.connect(self.update_profile_data)
         self.inp_height.textChanged.connect(self.update_profile_data)
         self.chk_height_no_unit.toggled.connect(self.update_profile_data)
         self.inp_job.textChanged.connect(self.update_profile_data)
+        self.chk_is_lost.toggled.connect(self.update_data)
 
         # Images - Separated
         # Icon
@@ -535,7 +545,23 @@ class EditorWidget(QWidget):
         
         self.on_gender_combo_changed(self.combo_gender.currentText())
 
-        self.inp_age.setText(profile.get('age', ''))
+        age = profile.get('age', '')
+        if not age:
+             # Empty -> Default to "歳" enabled (Checkbox OFF)
+             self.inp_age.setText("")
+             self.chk_age_no_unit.setChecked(False)
+        elif age.endswith("歳"):
+             self.inp_age.setText(age[:-1])
+             self.chk_age_no_unit.setChecked(False)
+        elif age.isdigit():
+             # Numeric string without units -> Treat as "歳" (Checkbox OFF)
+             self.inp_age.setText(age)
+             self.chk_age_no_unit.setChecked(False)
+        else:
+             # Non-empty, non-numeric, no "歳" (e.g. "不明", "？")
+             # In this case, "No Unit" is TRUE.
+             self.inp_age.setText(age)
+             self.chk_age_no_unit.setChecked(True)
         
         height = profile.get('height', '')
         if not height:
@@ -556,6 +582,9 @@ class EditorWidget(QWidget):
              self.chk_height_no_unit.setChecked(True)
              
         self.inp_job.setText(profile.get('job', ''))
+        
+        # ロストフラグの読み込み
+        self.chk_is_lost.setChecked(pc_data.get('is_lost', False))
         
         # Images
         self.drop_icon.set_data(pc_data.get('id', ''), pc_data.get('image_icon', ''))
@@ -603,6 +632,9 @@ class EditorWidget(QWidget):
         
         self.current_pc['name'] = self.inp_name.text()
         self.current_pc['ruby'] = self.inp_ruby.text()
+        
+        # ロストフラグの保存
+        self.current_pc['is_lost'] = self.chk_is_lost.isChecked()
         
         # Propagate ID to image widgets (using current ID)
         current_id = self.current_pc.get('id', '')
@@ -674,7 +706,11 @@ class EditorWidget(QWidget):
         else:
             self.current_pc['profile']['gender'] = gender_selection
             
-        self.current_pc['profile']['age'] = self.inp_age.text()
+        age_val = self.inp_age.text()
+        if not self.chk_age_no_unit.isChecked() and age_val and not age_val.endswith("歳"):
+             age_val += "歳"
+             
+        self.current_pc['profile']['age'] = age_val
         height_val = self.inp_height.text()
         if not self.chk_height_no_unit.isChecked() and height_val and not height_val.endswith("cm"):
              height_val += "cm"
