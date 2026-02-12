@@ -573,7 +573,7 @@ ${pc.passed_scenarios.map(sc => {
                     <a href="#pcs" style="color: #666;">&lt; 一覧に戻る</a>
                 </div>
                 
-                <h2 class="section-title"><span class="${lostNameClass}">${pc.name}</span> <span style="font-size: 0.8rem; font-weight: normal;">(${pc.ruby})</span>${lostBadge}</h2>
+                <h2 class="section-title"><span class="${lostNameClass}">${pc.name}</span>${pc.ruby ? ` <span style="font-size: 0.8rem; font-weight: normal;">(${pc.ruby})</span>` : ''}${lostBadge}</h2>
                 
                 <div class="pc-detail-container">
                     <div class="pc-tachie-container">

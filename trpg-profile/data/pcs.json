@@ -44,7 +44,7 @@
         "image_main": "",
         "images_diff": [],
         "profile": {
-            "gender": "女性",
+            "gender": "男性",
             "age": "19歳",
             "height": "155cm",
             "job": "舞台役者"
@@ -345,7 +345,7 @@
     {
         "id": "061",
         "name": "うさみちゃん",
-        "ruby": "-",
+        "ruby": "",
         "image_icon": "data/assets/pcs/061/icon/アイコン01-1.png",
         "image_main": "data/assets/pcs/061/main/_立ち絵01.png",
         "images_diff": [],
@@ -364,7 +364,8 @@
             }
         ],
         "arts": [],
-        "created_at": "2026-02-08"
+        "created_at": "2026-02-08",
+        "is_lost": false
     },
     {
         "id": "060",
@@ -525,7 +526,7 @@
         "passed_scenarios": [
             {
                 "title": "追憶のECHO",
-                "ho": "HO2 探偵",
+                "ho": "HO2 夢辿る者",
                 "end": "END C",
                 "is_if": false
             }
@@ -1327,7 +1328,7 @@
     {
         "id": "031",
         "name": "リル",
-        "ruby": "-",
+        "ruby": "",
         "image_icon": "data/assets/pcs/031/icon/アイコン3.png",
         "image_main": "data/assets/pcs/031/main/_立ち絵1.png",
         "images_diff": [],
@@ -1346,7 +1347,8 @@
             }
         ],
         "arts": [],
-        "created_at": "2026-02-08"
+        "created_at": "2026-02-08",
+        "is_lost": false
     },
     {
         "id": "030",
@@ -2042,12 +2044,12 @@
     {
         "id": "010",
         "name": "シルヴィ",
-        "ruby": "-",
+        "ruby": "No.0708",
         "image_icon": "data/assets/pcs/010/icon/アイコン02-1.png",
         "image_main": "data/assets/pcs/010/main/_立ち絵01.png",
         "images_diff": [],
         "profile": {
-            "gender": "男性",
+            "gender": "女性",
             "age": "10歳",
             "height": "135cm",
             "job": "-"
