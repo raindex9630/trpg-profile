@@ -244,8 +244,8 @@
         "id": "065",
         "name": "夜一夜 晃黯",
         "ruby": "よひとよ こうや",
-        "image_icon": "",
-        "image_main": "",
+        "image_icon": "data/assets/pcs/065/icon/_アイコン01-1.png",
+        "image_main": "data/assets/pcs/065/main/_立ち絵01_原寸.png",
         "images_diff": [],
         "profile": {
             "gender": "男性",
