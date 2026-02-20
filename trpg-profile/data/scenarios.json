@@ -456,6 +456,12 @@
           "favorite_ho": false
         },
         {
+          "title": "ミノタウロスの証人",
+          "ho": "HO1 白夜",
+          "favorite": true,
+          "favorite_ho": false
+        },
+        {
           "title": "面会室",
           "ho": "",
           "favorite": false
@@ -739,15 +745,11 @@
     }
   ],
   "planned_schedule": {
-    "note": "新規：×　直近で行ける短いシナリオ以外受け付けてません\n継続：3月〜",
+    "note": "新規：×　直近で行ける短いシナリオ以外受け付けてません\n継続：要相談",
     "months": [
       {
         "label": "現行",
         "items": [
-          {
-            "title": "ミノタウロスの証人",
-            "role": "HO1 白夜"
-          },
           {
             "title": "胎顕プルチネラ",
             "role": "HO4 花形役者"
@@ -784,7 +786,7 @@
           },
           {
             "title": "エデンに成る生熟れの果実",
-            "role": "HO未定"
+            "role": "HO Pear"
           },
           {
             "title": "INTO2",
