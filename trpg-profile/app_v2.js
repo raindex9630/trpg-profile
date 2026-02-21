@@ -50,7 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
     const modalCaption = document.getElementById('modal-caption');
+    const modalCounter = document.getElementById('modal-counter');
+    const modalPrev = document.getElementById('modal-prev');
+    const modalNext = document.getElementById('modal-next');
     const closeModal = document.querySelector('.close-modal');
+
+    // スライドショーのステート
+    let _slidePages = [];
+    let _slideIndex = 0;
 
     let data = {
         profile: null,
@@ -164,25 +171,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderProfile() {
         const p = data.profile;
-        let html = `
+
+        // ヘルパー：配列→段落（\n は <br> に変換）
+        const listHtml = (arr) => arr.map(t => `<p>${t.replace(/\n/g, '<br>')}</p>`).join('');
+
+        const html = `
             <section class="animate-fade-in">
                 ${p.icon_url ? `
                 <div class="profile-header">
                     <img src="${p.icon_url}" alt="Profile Icon" class="profile-icon">
+                    <div class="profile-name-block">
+                        <div class="profile-name">${p.name}</div>
+                        <div class="profile-name-alts">${p.name_alts}</div>
+                    </div>
                 </div>
                 ` : ''}
 
                 <h2 class="section-title">プロフィール</h2>
-                
+
+                <!-- Session -->
                 <div class="profile-item">
-                    <h3 class="subsection-title">セッション可能時間</h3>
-                    <p>${p.play_time.replace(/\n/g, '<br>')}</p>
+                    <h3 class="subsection-title profile-section-title">✧𝖲𝖾𝗌𝗌𝗂𝗈𝗇</h3>
+                    <div class="profile-section-body">
+                        <div class="profile-session-grid">
+                            <div class="profile-session-row">
+                                <span class="session-role">GM</span>
+                                <span>${p.session.gm}</span>
+                            </div>
+                            <div class="profile-session-row">
+                                <span class="session-role">PL</span>
+                                <span>${p.session.pl}</span>
+                            </div>
+                        </div>
+                        ${p.session.common && p.session.common.length > 0 ? `
+                        <div class="profile-session-common">
+                            ${listHtml(p.session.common)}
+                        </div>` : ''}
+                    </div>
                 </div>
 
+                <!-- Time -->
                 <div class="profile-item">
-                    <h3 class="subsection-title">卓スタイル・傾向</h3>
-                    <p>${p.style.replace(/\n/g, '<br>')}</p>
+                    <h3 class="subsection-title profile-section-title">✧𝖳𝗂𝗆𝖾</h3>
+                    <div class="profile-section-body">
+                        <div class="profile-time-grid">
+                            <span class="time-label">平日</span><span>${p.time.weekday}</span>
+                            <span class="time-label">土日祝</span><span>${p.time.weekend}</span>
+                        </div>
+                        ${p.time.note ? `<p class="profile-note">${p.time.note}</p>` : ''}
+                    </div>
                 </div>
+
+                <!-- Contact -->
+                <div class="profile-item">
+                    <h3 class="subsection-title profile-section-title">✧𝖢𝗈𝗇𝗍𝖺𝖼𝗍</h3>
+                    <div class="profile-section-body">${listHtml(p.contact)}</div>
+                </div>
+
+                <!-- Personality -->
+                <div class="profile-item">
+                    <h3 class="subsection-title profile-section-title">✧𝖯𝖾𝗋𝗌𝗈𝗇𝖺𝗅𝗂𝗍𝗒</h3>
+                    <div class="profile-section-body">${listHtml(p.personality)}</div>
+                </div>
+
+                <!-- Style -->
+                <div class="profile-item">
+                    <h3 class="subsection-title profile-section-title">✧𝖲𝗍𝗒𝗅𝖾</h3>
+                    <div class="profile-section-body">${listHtml(p.style)}</div>
+                </div>
+
+                <!-- Other -->
+                <div class="profile-item">
+                    <h3 class="subsection-title profile-section-title">✧𝖮𝗍𝗁𝖾𝗋</h3>
+                    <div class="profile-section-body">${listHtml(p.other)}</div>
+                </div>
+
             </section>
         `;
         app.innerHTML = html;
@@ -308,44 +371,112 @@ document.addEventListener('DOMContentLoaded', () => {
         const s = data.scenarios;
 
         // 通過済みシナリオの総数を計算
-        const passedCount = s.passed ? s.passed.reduce((sum, group) => sum + (group.items ? group.items.length : 0), 0) : 0;
+        const passedCount = s.passed ? s.passed.reduce((sum, sys) => {
+            return sum + (sys.groups ? sys.groups.reduce((gSum, group) => gSum + (group.items ? group.items.length : 0), 0) : 0);
+        }, 0) : 0;
         // 説明文（通過予定noteと同じレイアウト）
         const passedNote = `<div class="planned-note">
       <span class='icon-inline' style='color:#ffb300;'>★</span>　┄　シナリオが好き<br>
       <span class='icon-inline' style='vertical-align:middle;'><svg viewBox='0 0 16 16' width='1em' height='1em' fill='#ff80b0' style='position:relative;top:-0.12em;' xmlns='http://www.w3.org/2000/svg'><path d='M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z'/></svg></span>　┄　HOが好き
     </div>`;
-        // favorite対応
-        const passedContent = s.passed ? s.passed.map((group, idx) => `
-            <div class="scenario-group">
-                <h3 class="planned-month-title" style="margin-top: ${idx === 0 ? '0' : '2.5em'}; margin-bottom: 1.2em;">${group.label}</h3>
-                <ul class="scenario-list">
-                    ${group.items.map(item => {
+        // favorite対応 (2階層構造: system > groups > items)
+        const passedContent = s.passed ? s.passed.map((sys, sysIdx) => `
+            <div class="scenario-system-block">
+                <h3 class="section-title" style="margin-top: ${sysIdx === 0 ? '0' : '2.0em'}; font-size: 1.4rem; border-bottom: 2px solid #ddd; padding-bottom: 0.3em; margin-bottom: 1.2em;">${sys.system}</h3>
+                ${sys.groups && sys.groups.length > 0 ? sys.groups.map((group, idx) => `
+                    <div class="scenario-group">
+                        <h4 class="planned-month-title" style="margin-top: ${idx === 0 ? '0' : '2.0em'}; margin-bottom: 1.0em; font-size: 1.1rem;">${group.label}</h4>
+                        <ul class="scenario-list">
+                            ${group.items.map(item => {
             // 既存favoriteはfavorite_scenario扱い
             const favScenario = item.favorite_scenario ?? item.favorite ?? false;
             const favHo = item.favorite_ho ?? false;
             // HO有り
             if (item.ho) {
                 return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
-                                <div class="scenario-left">
-                                    <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : ''}</span>
-                                    <span class="scenario-title">${item.title}</span>
-                                </div>
-                                <span class="scenario-ho-badge${favHo ? ' has-favorite-ho' : ''}">
-                                    ${favHo ? `<span class="favorite-ho" title="HOが好き"><svg viewBox="0 0 16 16" fill="#ff80b0" xmlns="http://www.w3.org/2000/svg"><path d="M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z"/></svg></span>` : ''}${item.ho}
-                                </span>
-                            </li>`;
+                                                    <div class="scenario-left">
+                                                        <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : ''}</span>
+                                                        <span class="scenario-title">${item.title}</span>
+                                                    </div>
+                                                    <span class="scenario-ho-badge${favHo ? ' has-favorite-ho' : ''}">
+                                                        ${favHo ? `<span class="favorite-ho" title="HOが好き"><svg viewBox="0 0 16 16" fill="#ff80b0" xmlns="http://www.w3.org/2000/svg"><path d="M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z"/></svg></span>` : ''}${item.ho}
+                                                    </span>
+                                                </li>`;
             } else {
                 // HO無し
                 return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
-                                <div class="scenario-left">
-                                    <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : ''}</span>
-                                    <span class="scenario-title">${item.title}</span>
-                                </div>
-                            </li>`;
+                                                    <div class="scenario-left">
+                                                        <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : ''}</span>
+                                                        <span class="scenario-title">${item.title}</span>
+                                                    </div>
+                                                </li>`;
             }
         }).join('')}
+                        </ul>
+                    </div>
+                `).join('') : '<div class="scenario-item">なし</div>'}
             </div>
         `).join('') : '<div class="scenario-item">なし</div>';
+
+        // 視聴/既読シナリオの総数を計算
+        const watchedCount = s.watched ? s.watched.reduce((sum, sys) => {
+            return sum + (sys.groups ? sys.groups.reduce((gSum, group) => gSum + (group.items ? group.items.length : 0), 0) : 0);
+        }, 0) : 0;
+
+        // watched対応 (2階層構造: system > groups > items, HO無し)
+        const watchedContent = s.watched && s.watched.length > 0 ? s.watched.map((sys, sysIdx) => `
+            <div class="scenario-system-block">
+                <h3 class="section-title" style="margin-top: ${sysIdx === 0 ? '0' : '2.0em'}; font-size: 1.4rem; border-bottom: 2px solid #ddd; padding-bottom: 0.3em; margin-bottom: 1.2em;">${sys.system}</h3>
+                ${sys.groups && sys.groups.length > 0 ? sys.groups.map((group, idx) => `
+                    <div class="scenario-group">
+                        <h4 class="planned-month-title" style="margin-top: ${idx === 0 ? '0' : '2.0em'}; margin-bottom: 1.0em; font-size: 1.1rem;">${group.label}</h4>
+                        <ul class="scenario-list">
+                            ${group.items.map(item => {
+            const favScenario = item.favorite ?? false;
+            return `<li class="scenario-item${favScenario ? ' is-favorite' : ''}">
+                                    <div class="scenario-left">
+                                        <span class="favorite-star-space">${favScenario ? '<span class="favorite-star" title="シナリオが好き">★</span>' : ''}</span>
+                                        <span class="scenario-title">${item.title}</span>
+                                    </div>
+                                </li>`;
+        }).join('')}
+                        </ul>
+                    </div>
+                `).join('') : '<div class="scenario-item">なし</div>'}
+            </div>
+        `).join('') : '<div class="scenario-item">なし</div>';
+
+        // GM経験有りシナリオの総数を計算
+        const gmCount = s.gm ? s.gm.reduce((sum, sys) => {
+            return sum + (sys.groups ? sys.groups.reduce((gSum, group) => gSum + (group.items ? group.items.length : 0), 0) : 0);
+        }, 0) : 0;
+
+        // gm対応 (2階層構造: system > groups > items, 回数表示有り)
+        const gmContent = s.gm && s.gm.length > 0 ? s.gm.map((sys, sysIdx) => `
+            <div class="scenario-system-block">
+                <h3 class="section-title" style="margin-top: ${sysIdx === 0 ? '0' : '2.0em'}; font-size: 1.4rem; border-bottom: 2px solid #ddd; padding-bottom: 0.3em; margin-bottom: 1.2em;">${sys.system}</h3>
+                ${sys.groups && sys.groups.length > 0 ? sys.groups.map((group, idx) => `
+                    <div class="scenario-group">
+                        <h4 class="planned-month-title" style="margin-top: ${idx === 0 ? '0' : '2.0em'}; margin-bottom: 1.0em; font-size: 1.1rem;">${group.label}</h4>
+                        <ul class="scenario-list">
+                            ${group.items.map(item => {
+            // 回数のバッジ (ほどよく目立つデザインに調整)
+            const countContent = item.count ? `<span class="scenario-count-badge" style="margin-left:10px; padding:2px 8px; background-color:#fff8e1; color:#f57c00; border:1px solid #ffb74d; border-radius:12px; font-size:0.85em; white-space:nowrap;">${item.count}回</span>` : '';
+            return `<li class="scenario-item">
+                                    <div class="scenario-left" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                                        <div style="display: flex; align-items: center;">
+                                            <span class="scenario-title">${item.title}</span>
+                                        </div>
+                                        ${countContent}
+                                    </div>
+                                </li>`;
+        }).join('')}
+                        </ul>
+                    </div>
+                `).join('') : '<div class="scenario-item">なし</div>'
+            }
+            </div>
+            `).join('') : '<div class="scenario-item">なし</div>';
 
         let plannedContent = '';
         if (s.planned_schedule) {
@@ -366,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             `).join('')}
                         </ul>
                     </div>
-                `).join('');
+            `).join('');
             }
         }
 
@@ -392,6 +523,26 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </details>
+
+                <details open>
+                    <summary><span class="scenario-header-flex"><span>視聴・既読シナリオ一覧</span><span class="scenario-count">(${watchedCount})</span></span></summary>
+                    <div class="accordion-content">
+                        <div class="scenario-list-container">
+                            ${watchedContent}
+                        </div>
+                    </div>
+                </details>
+
+                <!-- GM経験有りシナリオ (一時的に非表示)
+                <details open>
+                    <summary><span class="scenario-header-flex"><span>GM経験有りシナリオ一覧</span><span class="scenario-count">(${gmCount})</span></span></summary>
+                    <div class="accordion-content">
+                        <div class="scenario-list-container">
+                            ${gmContent}
+                        </div>
+                    </div>
+                </details>
+                -->
             </section>
         `;
         app.innerHTML = html;
@@ -477,7 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('')}
                 </div>
             </section>
-    `;
+        `;
         app.innerHTML = html;
 
         // Restore and save details state
@@ -498,26 +649,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const diffsHtml = pc.images_diff && pc.images_diff.length > 0
             ? `<div class="pc-diff-images">
-    ${pc.images_diff.map(src => `<img src="${src}" class="pc-diff-thumb" alt="差分" onclick="openModal('${src}', '${pc.name}')" style="cursor: pointer;">`).join('')}
+            ${pc.images_diff.map(src => `<img src="${src}" class="pc-diff-thumb" alt="差分" onclick="openModal('${src}', '${pc.name}')" style="cursor: pointer;">`).join('')}
                </div>`
             : '';
 
         const artsHtml = pc.arts && pc.arts.length > 0
             ? `<div class="gallery-grid">
-    ${pc.arts.map(art => `
-                    <div class="gallery-item" onclick="openModal('${art.url}', 'Art by ${art.artist} 様')">
-                        <img src="${art.url}" class="gallery-thumb" alt="Art by ${art.artist} 様" loading="lazy">
-                        <div class="artist-name">By ${art.artist} 様</div>
-                    </div>
-                `).join('')
+            ${pc.arts.map(art => {
+                // 全ページ配列を構築 (url + pages)
+                const allPages = [art.url, ...((art.pages || []).filter(p => p))];
+                const pageCount = allPages.length;
+                const pagesJsonAttr = JSON.stringify(allPages).replace(/"/g, '&quot;');
+                const captionText = `Art by ${art.artist} \u69d8`;
+
+                if (art.spoiler) {
+                    const spoilerScenario = art.spoiler_scenario || '';
+                    const pagesJsonSafe = JSON.stringify(allPages).replace(/"/g, '&quot;');
+                    return `
+                    <div class="gallery-item spoiler-item" onclick="openSpoilerConfirm('${art.url}', '${captionText}', '${spoilerScenario.replace(/'/g, "\\'")}', ${pagesJsonSafe})">
+                        <div class="gallery-thumb spoiler-thumb">
+                            <span class="spoiler-icon">\u26a0</span>
+                            <span class="spoiler-label">\u30cd\u30bf\u30d0\u30ec\u3042\u308a</span>
+                            <span class="spoiler-sub">\u30af\u30ea\u30c3\u30af\u3057\u3066\u78ba\u8a8d</span>
+                        </div>
+                        ${pageCount > 1 ? `<span class="gallery-page-badge">\ud83d\uddbc ${pageCount}\u679a</span>` : ''}
+                        <div class="artist-name">By ${art.artist} \u69d8</div>
+                    </div>`;
+                } else {
+                    return `
+                    <div class="gallery-item" onclick="openModal('${art.url}', '${captionText}', ${pagesJsonAttr})">
+                        <img src="${art.url}" class="gallery-thumb" alt="${captionText}" loading="lazy">
+                        ${pageCount > 1 ? `<span class="gallery-page-badge">\ud83d\uddbc ${pageCount}\u679a</span>` : ''}
+                        <div class="artist-name">By ${art.artist} \u69d8</div>
+                    </div>`;
+                }
+            }).join('')
             }
                </div>`
-            : '<p>登録されているイラストはありません。</p>';
+            : '';
 
 
         const scenariosHtml = pc.passed_scenarios && pc.passed_scenarios.length > 0
             ? `<ul class="scenario-list">
-${pc.passed_scenarios.map(sc => {
+            ${pc.passed_scenarios.map(sc => {
                 let title, ho, end, isIf;
                 if (typeof sc === 'object') {
                     title = sc.title || '';
@@ -558,7 +732,8 @@ ${pc.passed_scenarios.map(sc => {
                         ${endBadgeHtml}
                     </div>
                 </li>`;
-            }).join('')}
+            }).join('')
+            }
                </ul>`
             : '<p>登録なし</p>';
 
@@ -568,7 +743,7 @@ ${pc.passed_scenarios.map(sc => {
         const lostBadge = isLost ? '<span class="lost-badge">ロスト</span>' : '';
 
         let html = `
-    <section class="animate-fade-in">
+            <section class="animate-fade-in">
                 <div style="margin-bottom: 10px;">
                     <a href="#pcs" style="color: #666;">&lt; 一覧に戻る</a>
                 </div>
@@ -597,23 +772,104 @@ ${pc.passed_scenarios.map(sc => {
                             ${scenariosHtml}
                         </div>
 
+                        ${artsHtml ? `
                         <div class="pc-gallery">
-                            <h3 class="subsection-title">GALLERY (Skeb / FA)</h3>
+                            <h3 class="subsection-title">GALLERY (Skeb)</h3>
                             ${artsHtml}
                         </div>
+                        ` : ''}
                     </div>
                 </div>
             </section>
-    `;
+        `;
         app.innerHTML = html;
         window.scrollTo(0, 0);
     }
 
-    window.openModal = function (src, caption) {
-        modalImg.src = src;
+    // スライド表示拴新関数
+    function _updateSlide() {
+        modalImg.src = _slidePages[_slideIndex];
+        if (_slidePages.length > 1) {
+            modalCounter.textContent = `${_slideIndex + 1} / ${_slidePages.length}`;
+            modalCounter.style.display = 'block';
+            modalPrev.style.display = 'block';
+            modalNext.style.display = 'block';
+        } else {
+            modalCounter.style.display = 'none';
+            modalPrev.style.display = 'none';
+            modalNext.style.display = 'none';
+        }
+    }
+
+    window.openModal = function (src, caption, pages) {
+        // pagesが配列ならスライドショー、なければ単筆
+        _slidePages = (Array.isArray(pages) && pages.length > 0) ? pages : [src];
+        _slideIndex = 0;
         modalCaption.textContent = caption || '';
         modal.classList.add('show');
+        _updateSlide();
     }
+
+    modalPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (_slidePages.length < 2) return;
+        _slideIndex = (_slideIndex - 1 + _slidePages.length) % _slidePages.length;
+        _updateSlide();
+    });
+
+    modalNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (_slidePages.length < 2) return;
+        _slideIndex = (_slideIndex + 1) % _slidePages.length;
+        _updateSlide();
+    });
+
+    // キーボード操作対応
+    document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('show')) return;
+        if (e.key === 'ArrowLeft') {
+            _slideIndex = (_slideIndex - 1 + _slidePages.length) % _slidePages.length;
+            _updateSlide();
+        } else if (e.key === 'ArrowRight') {
+            _slideIndex = (_slideIndex + 1) % _slidePages.length;
+            _updateSlide();
+        } else if (e.key === 'Escape') {
+            modal.classList.remove('show');
+            modalImg.src = '';
+        }
+    });
+
+    // ネタバレ確認ダイアログを開く
+    window.openSpoilerConfirm = function (src, caption, scenarioName, pages) {
+        const dialog = document.getElementById('spoiler-dialog');
+        if (!dialog) return;
+        const bodyEl = dialog.querySelector('.spoiler-dialog-body');
+        if (bodyEl) {
+            const name = scenarioName ? `「${scenarioName}」` : 'シナリオ';
+            bodyEl.innerHTML = `このイラストには${name}のネタバレが含まれます。<br>表示してもよろしいですか？`;
+        }
+        dialog.classList.add('show');
+        dialog.dataset.src = src;
+        dialog.dataset.caption = caption || '';
+        // 複数ページ情報をdata属性に保持
+        dialog.dataset.pages = JSON.stringify(
+            (Array.isArray(pages) && pages.length > 0) ? pages : [src]
+        );
+    }
+
+    // ネタバレ確認ダイアログのボタン処理
+    document.addEventListener('click', (e) => {
+        const dialog = document.getElementById('spoiler-dialog');
+        if (!dialog) return;
+        if (e.target.id === 'spoiler-confirm-yes') {
+            dialog.classList.remove('show');
+            const savedPages = JSON.parse(dialog.dataset.pages || 'null');
+            openModal(dialog.dataset.src, dialog.dataset.caption, savedPages);
+        }
+        if (e.target.id === 'spoiler-confirm-no' || e.target.id === 'spoiler-dialog-overlay') {
+            dialog.classList.remove('show');
+        }
+    });
 
     closeModal.addEventListener('click', () => {
         modal.classList.remove('show');

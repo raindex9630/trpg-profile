@@ -34,10 +34,27 @@
 
     <!-- 画像拡大用モーダル -->
     <div id="image-modal" class="modal hidden">
+        <button id="modal-prev" class="modal-nav modal-prev" aria-label="前へ">&#10094;</button>
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <img id="modal-img" src="" alt="Expanded Image">
             <p id="modal-caption"></p>
+            <div id="modal-counter" class="modal-counter"></div>
+        </div>
+        <button id="modal-next" class="modal-nav modal-next" aria-label="次へ">&#10095;</button>
+    </div>
+
+    <!-- ネタバレ確認ダイアログ -->
+    <div id="spoiler-dialog">
+        <div id="spoiler-dialog-overlay"></div>
+        <div class="spoiler-dialog-box">
+            <div class="spoiler-dialog-icon">⚠</div>
+            <div class="spoiler-dialog-title">ネタバレが含まれます</div>
+            <div class="spoiler-dialog-body">このイラストにはシナリオのネタバレが含まれます。<br>表示してもよろしいですか？</div>
+            <div class="spoiler-dialog-buttons">
+                <button id="spoiler-confirm-yes">表示する</button>
+                <button id="spoiler-confirm-no">キャンセル</button>
+            </div>
         </div>
     </div>
 

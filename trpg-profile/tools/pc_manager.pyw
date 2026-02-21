@@ -893,7 +893,7 @@ class EditorWidget(QWidget):
         if 'arts' not in self.current_pc:
             self.current_pc['arts'] = []
         
-        self.current_pc['arts'].insert(0, {"url": "", "artist": ""})
+        self.current_pc['arts'].insert(0, {"url": "", "artist": "", "spoiler": False})
         self.refresh_arts_list()
         self.dataChanged.emit()
 
@@ -903,7 +903,7 @@ class EditorWidget(QWidget):
             widget = item.widget()
             if widget and widget != self.btn_add_art_zone:
                 widget.deleteLater()
-            
+        
         arts = self.current_pc.get('arts', [])
         for i, art in enumerate(arts):
             container = QFrame()
@@ -914,23 +914,57 @@ class EditorWidget(QWidget):
             drop.set_data(self.current_pc.get('id', ''), art.get('url', ''))
             drop.setFixedWidth(120)
             
+            # 右側入力エリア
             v_inputs = QVBoxLayout()
             inp_artist = QLineEdit(art.get('artist', ''))
             inp_artist.setPlaceholderText("Artist Name")
+            chk_spoiler = QCheckBox("ネタバレ")
+            chk_spoiler.setChecked(art.get('spoiler', False))
+            inp_scenario = QLineEdit(art.get('spoiler_scenario', ''))
+            inp_scenario.setPlaceholderText("ネタバレシナリオ名")
+            inp_scenario.setVisible(art.get('spoiler', False))
             btn_del = QPushButton("削除")
             
             v_inputs.addWidget(QLabel("Artist:"))
             v_inputs.addWidget(inp_artist)
+            v_inputs.addWidget(chk_spoiler)
+            v_inputs.addWidget(inp_scenario)
             v_inputs.addWidget(btn_del)
+
+            # 追加ページエリア
+            pages_area = QVBoxLayout()
+            pages_area.addWidget(QLabel("追加ページ:"))
+            pages = art.get('pages', [])
+            for pi, page_url in enumerate(pages):
+                pdrop = ImageDropWidget("arts", f"Page {pi+2}")
+                pdrop.set_data(self.current_pc.get('id', ''), page_url)
+                pdrop.setFixedWidth(100)
+                pdel = QPushButton("ページ削除")
+                ph = QHBoxLayout()
+                ph.addWidget(pdrop)
+                ph.addWidget(pdel)
+                pages_area.addLayout(ph)
+                pdrop.imageChanged.connect(lambda p, idx=i, pidx=pi: self.update_art_page(idx, pidx, p))
+                pdel.clicked.connect(lambda _, idx=i, pidx=pi: self.delete_art_page(idx, pidx))
+            btn_add_page = QPushButton("+ ページを追加")
+            btn_add_page.clicked.connect(lambda _, idx=i: self.add_art_page(idx))
+            pages_area.addWidget(btn_add_page)
+
             v_inputs.addStretch()
             
             h_layout.addWidget(drop)
             h_layout.addLayout(v_inputs)
+            h_layout.addLayout(pages_area)
             
             self.layout_arts.addWidget(container)
             
             drop.imageChanged.connect(lambda p, idx=i: self.update_art_image(idx, p))
             inp_artist.textChanged.connect(lambda t, idx=i: self.update_art_artist(idx, t))
+            chk_spoiler.stateChanged.connect(lambda state, idx=i, inp=inp_scenario: (
+                self.update_art_spoiler(idx, bool(state)),
+                inp.setVisible(bool(state))
+            ))
+            inp_scenario.textChanged.connect(lambda t, idx=i: self.update_art_spoiler_scenario(idx, t))
             btn_del.clicked.connect(lambda _, idx=i: self.delete_art(idx))
             
         self.layout_arts.addWidget(self.btn_add_art_zone)
@@ -947,6 +981,49 @@ class EditorWidget(QWidget):
         if not self.current_pc: return
         self.current_pc['arts'][idx]['artist'] = text
         self.dataChanged.emit()
+
+    def update_art_spoiler(self, idx, value):
+        if not self.current_pc: return
+        self.current_pc['arts'][idx]['spoiler'] = value
+        self.dataChanged.emit()
+
+    def update_art_spoiler_scenario(self, idx, text):
+        if not self.current_pc: return
+        self.current_pc['arts'][idx]['spoiler_scenario'] = text
+        self.dataChanged.emit()
+
+    def add_art_page(self, idx):
+        """idx番イラストに追加ページを追加"""
+        if not self.current_pc: return
+        art = self.current_pc['arts'][idx]
+        if 'pages' not in art:
+            art['pages'] = []
+        art['pages'].append("")
+        self.refresh_arts_list()
+        self.dataChanged.emit()
+
+    def update_art_page(self, idx, page_idx, rel_path):
+        if not self.current_pc: return
+        pages = self.current_pc['arts'][idx].get('pages', [])
+        if page_idx < len(pages):
+            pages[page_idx] = rel_path
+            self.current_pc['arts'][idx]['pages'] = pages
+            self.dataChanged.emit()
+
+    def delete_art_page(self, idx, page_idx):
+        if not self.current_pc: return
+        art = self.current_pc['arts'][idx]
+        pages = art.get('pages', [])
+        if page_idx < len(pages):
+            rel_path = pages[page_idx]
+            if rel_path:
+                ret = QMessageBox.question(self, "確認", "画像をゴミ箋に移動しますか？", QMessageBox.Yes | QMessageBox.No)
+                if ret == QMessageBox.Yes:
+                    ImageManager.move_to_trash(rel_path)
+            del pages[page_idx]
+            art['pages'] = pages
+            self.refresh_arts_list()
+            self.dataChanged.emit()
 
     def delete_art(self, idx):
         if not self.current_pc: return

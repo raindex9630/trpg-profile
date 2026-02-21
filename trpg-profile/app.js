@@ -586,7 +586,7 @@ ${pc.passed_scenarios.map(sc => {
                         </div>
 
                         <div class="pc-gallery">
-                            <h3 class="subsection-title">GALLERY (Skeb / FA)</h3>
+                            <h3 class="subsection-title">Skeb</h3>
                             ${artsHtml}
                         </div>
                     </div>
