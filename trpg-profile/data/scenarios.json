@@ -778,16 +778,16 @@
           {
             "title": "Xからの告白",
             "role": "HO3 検事"
+          },
+          {
+            "title": "AE 9陣",
+            "role": "KP"
           }
         ]
       },
       {
         "label": "2月",
         "items": [
-          {
-            "title": "AE 9陣",
-            "role": "KP"
-          },
           {
             "title": "催眠ダーリンLv1 2陣",
             "role": "KP"
@@ -944,7 +944,15 @@
           "label": "KPレス",
           "items": [
             {
+              "title": "カリカドーズ",
+              "favorite": false
+            },
+            {
               "title": "ホームグラウンドマーダーパレス",
+              "favorite": false
+            },
+            {
+              "title": "ラストリゾートにお前はいない",
               "favorite": false
             },
             {
