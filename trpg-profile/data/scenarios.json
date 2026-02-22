@@ -780,7 +780,7 @@
             "role": "HO3 検事"
           },
           {
-            "title": "AE 9陣",
+            "title": "AE　9陣",
             "role": "KP"
           }
         ]
@@ -789,7 +789,7 @@
         "label": "2月",
         "items": [
           {
-            "title": "催眠ダーリンLv1 2陣",
+            "title": "催眠ダーリンLv1　2陣",
             "role": "KP"
           }
         ]
@@ -806,7 +806,7 @@
             "role": "HO4 花形役者"
           },
           {
-            "title": "AE 9陣",
+            "title": "AE　9陣",
             "role": "KP"
           },
           {
@@ -814,7 +814,7 @@
             "role": "HO Pear"
           },
           {
-            "title": "INTO2 1陣",
+            "title": "INTO2　1陣",
             "role": "KP"
           },
           {
@@ -839,7 +839,7 @@
         "label": "4月",
         "items": [
           {
-            "title": "AE 10陣",
+            "title": "AE　10陣",
             "role": "KP"
           },
           {
@@ -852,7 +852,7 @@
         "label": "5月",
         "items": [
           {
-            "title": "あえかなる饗 1陣",
+            "title": "あえかなる饗　1陣",
             "role": "KP"
           },
           {
@@ -860,11 +860,15 @@
             "role": "HO3 検事"
           },
           {
-            "title": "私悪 3陣",
+            "title": "スーサイド・ラプソディ　1陣",
             "role": "KP"
           },
           {
-            "title": "AE 11陣",
+            "title": "私悪　3陣",
+            "role": "KP"
+          },
+          {
+            "title": "AE　11陣",
             "role": "KP"
           }
         ]
@@ -877,7 +881,7 @@
             "role": "HO3 検事"
           },
           {
-            "title": "AE 11陣",
+            "title": "AE　11陣",
             "role": "KP"
           },
           {
@@ -885,7 +889,7 @@
             "role": "HO2 美味しいパン屋の店主さん"
           },
           {
-            "title": "その真紅に愛を見る 3陣",
+            "title": "その真紅に愛を見る　3陣",
             "role": "KP"
           }
         ]
@@ -894,7 +898,7 @@
         "label": "7月",
         "items": [
           {
-            "title": "AE 8陣",
+            "title": "AE　8陣",
             "role": "KP"
           }
         ]
@@ -925,7 +929,7 @@
             "role": "HO2 謎多き探索者"
           },
           {
-            "title": "しんでしまう一週間後のきみへ 1陣",
+            "title": "しんでしまう一週間後のきみへ　1陣",
             "role": "KP"
           },
           {
