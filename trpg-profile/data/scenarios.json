@@ -780,16 +780,11 @@
             "role": "HO3 検事"
           },
           {
-            "title": "AE　9陣",
-            "role": "KP"
-          }
-        ]
-      },
-      {
-        "label": "2月",
-        "items": [
-          {
             "title": "催眠ダーリンLv1　2陣",
+            "role": "KP"
+          },
+          {
+            "title": "AE　9陣",
             "role": "KP"
           }
         ]
