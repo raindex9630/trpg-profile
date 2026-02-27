@@ -292,6 +292,12 @@
               "favorite": true
             },
             {
+              "title": "メテオライトは君しかいない",
+              "ho": "",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "夜光列車と宝石の夜",
               "ho": "",
               "favorite": false
@@ -335,7 +341,7 @@
             },
             {
               "title": "BARABARADICAL",
-              "ho": "HO2",
+              "ho": "HO2 弟/妹",
               "favorite": true,
               "favorite_ho": false
             },
@@ -571,9 +577,10 @@
               "favorite": false
             },
             {
-              "title": "雨降らしの蝶Normal",
+              "title": "雨降らしの蝶_Normal",
               "ho": "HO3 心優しい青年",
-              "favorite": false
+              "favorite": false,
+              "favorite_ho": false
             },
             {
               "title": "遺香廻り",
