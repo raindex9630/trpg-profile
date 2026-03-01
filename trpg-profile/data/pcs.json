@@ -2087,8 +2087,8 @@
         "id": "009",
         "name": "陽ノ下 炎",
         "ruby": "ひのもと ほむら",
-        "image_icon": "data/assets/pcs/009/icon/アイコン05-1.png",
-        "image_main": "data/assets/pcs/009/main/_立ち絵07.png",
+        "image_icon": "data/assets/pcs/009/icon/_アイコン08-1.png",
+        "image_main": "data/assets/pcs/009/main/_立ち絵08.png",
         "images_diff": [],
         "profile": {
             "gender": "男性",
@@ -2147,7 +2147,7 @@
             {
                 "title": "皿とは言わず地獄まで",
                 "ho": "",
-                "end": "予定",
+                "end": "END 2",
                 "is_if": false
             }
         ],

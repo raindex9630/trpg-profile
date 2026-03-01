@@ -219,6 +219,12 @@
               "favorite": false
             },
             {
+              "title": "皿とは言わず地獄まで",
+              "ho": "",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "ししんしょく",
               "ho": "",
               "favorite": false
@@ -799,10 +805,6 @@
       {
         "label": "3月",
         "items": [
-          {
-            "title": "皿とは言わず地獄まで",
-            "role": "PL"
-          },
           {
             "title": "胎願プルチネラ",
             "role": "HO4 花形役者"
