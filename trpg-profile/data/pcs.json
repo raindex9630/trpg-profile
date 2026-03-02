@@ -12,7 +12,14 @@
             "height": "",
             "job": ""
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "空の青さの掴み方",
+                "ho": "HO2 新都市の迷子",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-03-02",
         "is_lost": false
@@ -30,7 +37,14 @@
             "height": "",
             "job": ""
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "貴方達はセフレです。マグロ漁船に乗っています。",
+                "ho": "HO2 Holacracy",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-03-02",
         "is_lost": false
@@ -48,7 +62,14 @@
             "height": "132cm",
             "job": ""
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "エデンに成る生熟れの果実",
+                "ho": "HO Pear🍐",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-03-02",
         "is_lost": false
@@ -66,7 +87,14 @@
             "height": "",
             "job": ""
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "NOBODY*2",
+                "ho": "HO2 謎多き探索者",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "created_at": "2026-03-02",
         "is_lost": false
