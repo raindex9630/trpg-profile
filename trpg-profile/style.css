@@ -179,6 +179,8 @@ a {
     white-space: nowrap;
     width: 100%;
     justify-content: center;
+    /* スマホで縦スクロールより横スクロールを優先させる */
+    touch-action: pan-x;
 }
 
 .site-header nav a {
@@ -666,33 +668,39 @@ ul.favorite-scenarios-list,
 /* 探索者詳細ページ - 通過済シナリオのレイアウト */
 .pc-scenarios .scenario-item {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    /* 折り返しなし：常に同一行 */
+    align-items: flex-end;
+    /* END番号をタイトルの最終行に揃える */
+    gap: 6px;
     padding: 8px 10px;
     border-bottom: 1px dotted var(--border-color);
 }
 
-.pc-scenarios .scenario-left {
+/* タイトル＋HO名（インライン） */
+.pc-scenarios .scenario-title-text {
     flex: 1 1 auto;
     min-width: 0;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
-.pc-scenarios .scenario-title-text {
-    flex: 0 0 auto;
+/* HO名バッジはタイトルテキスト内でインライン表示 */
+.pc-scenarios .scenario-title-text .scenario-ho-badge {
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: middle;
 }
 
-.pc-scenarios .scenario-right {
+/* END番号ラッパー（右端に固定） */
+.pc-scenarios .scenario-end-wrapper {
     flex: 0 0 auto;
-    margin-left: auto;
 }
 
 .pc-scenarios .scenario-ho-badge {
     margin-left: 0;
 }
+
 
 .scenario-end-badge {
     font-size: 0.8rem;

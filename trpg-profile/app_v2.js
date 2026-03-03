@@ -724,13 +724,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 return `<li class="scenario-item">
-                    <div class="scenario-left">
-                        <span class="scenario-title-text">${title}</span>
-                        ${hoBadgeHtml}
-                    </div>
-                    <div class="scenario-right">
-                        ${endBadgeHtml}
-                    </div>
+                    <span class="scenario-title-text">${title}${hoBadgeHtml}</span>
+                    ${endBadgeHtml ? `<span class="scenario-end-wrapper">${endBadgeHtml}</span>` : ''}
                 </li>`;
             }).join('')
             }
