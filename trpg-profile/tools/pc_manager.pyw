@@ -124,14 +124,15 @@ class ImageManager:
         
         filename = src_path.name
         # Sanitize filename: remove special characters that break URLs
-        filename = re.sub(r'[#\?\&@%\+\s]', '_', filename)
+        filename = re.sub(r'[#\?\@\%\+\s]', '', filename)
         
         dest_path = dest_dir / filename
         
         # Handle duplicates
         if dest_path.exists():
-            stem = src_path.stem
-            suffix = src_path.suffix
+            sanitized_path = Path(filename)
+            stem = sanitized_path.stem
+            suffix = sanitized_path.suffix
             timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
             filename = f"{stem}_{timestamp}{suffix}"
             dest_path = dest_dir / filename
