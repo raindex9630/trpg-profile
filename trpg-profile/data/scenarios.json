@@ -640,6 +640,12 @@
               "favorite_ho": true
             },
             {
+              "title": "胎願プルチネラ",
+              "ho": "HO4 花形役者",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "デュラハニズム",
               "ho": "HO人",
               "favorite": false
@@ -785,10 +791,6 @@
         "label": "現行",
         "items": [
           {
-            "title": "胎顕プルチネラ",
-            "role": "HO4 花形役者"
-          },
-          {
             "title": "Xからの告白",
             "role": "HO3 検事"
           },
@@ -805,10 +807,6 @@
       {
         "label": "3月",
         "items": [
-          {
-            "title": "胎願プルチネラ",
-            "role": "HO4 花形役者"
-          },
           {
             "title": "AE　9陣",
             "role": "KP"
