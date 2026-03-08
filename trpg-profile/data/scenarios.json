@@ -795,11 +795,11 @@
             "role": "HO3 検事"
           },
           {
-            "title": "AE　9陣",
+            "title": "催眠ダーリンLv1　2陣",
             "role": "KP"
           },
           {
-            "title": "催眠ダーリンLv1　2陣",
+            "title": "INTO2　1陣",
             "role": "KP"
           }
         ]
@@ -808,16 +808,8 @@
         "label": "3月",
         "items": [
           {
-            "title": "AE　9陣",
-            "role": "KP"
-          },
-          {
             "title": "エデンに成る生熟れの果実",
             "role": "HO Pear"
-          },
-          {
-            "title": "INTO2　1陣",
-            "role": "KP"
           },
           {
             "title": "Xからの告白",
@@ -1474,7 +1466,7 @@
           "items": [
             {
               "title": "AE",
-              "count": "4"
+              "count": "5"
             },
             {
               "title": "Naming the Blood",
