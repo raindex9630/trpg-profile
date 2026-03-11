@@ -801,16 +801,16 @@
           {
             "title": "INTO2　1陣",
             "role": "KP"
+          },
+          {
+            "title": "エデンに成る生熟れの果実",
+            "role": "HO Pear"
           }
         ]
       },
       {
         "label": "3月",
         "items": [
-          {
-            "title": "エデンに成る生熟れの果実",
-            "role": "HO Pear"
-          },
           {
             "title": "Xからの告白",
             "role": "HO3 検事"
@@ -1466,7 +1466,7 @@
           "items": [
             {
               "title": "AE",
-              "count": "5"
+              "count": "6"
             },
             {
               "title": "Naming the Blood",

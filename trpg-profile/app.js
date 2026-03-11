@@ -307,15 +307,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderScenarios() {
         const s = data.scenarios;
 
-        // 通過済みシナリオの総数を計算
-        const passedCount = s.passed ? s.passed.reduce((sum, group) => sum + (group.items ? group.items.length : 0), 0) : 0;
+        // 通過済みシナリオの総数を計算 (未分類は除く)
+        const passedCount = s.passed ? s.passed.filter(g => g.label !== '未分類').reduce((sum, group) => sum + (group.items ? group.items.length : 0), 0) : 0;
         // 説明文（通過予定noteと同じレイアウト）
         const passedNote = `<div class="planned-note">
       <span class='icon-inline' style='color:#ffb300;'>★</span>　┄　シナリオが好き<br>
       <span class='icon-inline' style='vertical-align:middle;'><svg viewBox='0 0 16 16' width='1em' height='1em' fill='#ff80b0' style='position:relative;top:-0.12em;' xmlns='http://www.w3.org/2000/svg'><path d='M8 14s-5.5-3.33-5.5-7.5A3.5 3.5 0 0 1 8 3.5a3.5 3.5 0 0 1 5.5 3C13.5 10.67 8 14 8 14z'/></svg></span>　┄　HOが好き
     </div>`;
-        // favorite対応
-        const passedContent = s.passed ? s.passed.map((group, idx) => `
+        // favorite対応 (未分類は除く)
+        const passedContent = s.passed ? s.passed.filter(g => g.label !== '未分類').map((group, idx) => `
             <div class="scenario-group">
                 <h3 class="planned-month-title" style="margin-top: ${idx === 0 ? '0' : '2.5em'}; margin-bottom: 1.2em;">${group.label}</h3>
                 <ul class="scenario-list">

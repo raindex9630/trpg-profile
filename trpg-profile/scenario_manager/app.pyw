@@ -844,6 +844,20 @@ class _SystemTabBase(QWidget):
 # PassedTab
 # ---------------------------------------------------------------------------
 class PassedTab(_SystemTabBase):
+    def refresh(self):
+        # 「未分類」グループが空の場合は自動削除する
+        groups = self._get_current_groups()
+        if groups is not None:
+            to_remove = []
+            for i, g in enumerate(groups):
+                if g.get("label", "") == "未分類" and not g.get("items", []):
+                    to_remove.append(i)
+            if to_remove:
+                for i in reversed(to_remove):
+                    groups.pop(i)
+                self.data_manager.mark_modified()
+        super().refresh()
+
     def _get_systems(self):
         return self.data_manager.get_passed_systems()
 
@@ -963,6 +977,7 @@ class PlannedTab(QWidget):
         btl.addWidget(_mk_btn("削除", self.delete_item))
         btl.addWidget(_mk_btn("月に移動", self.move_item_to_month))
         btl.addWidget(_mk_btn("現行中", self.move_to_current))
+        btl.addWidget(_mk_btn("完了", self.complete_item))
         btl.addWidget(_hr())
         btl.addWidget(QLabel("並び替え"))
         btl.addWidget(_mk_btn("上へ", self.move_up))
@@ -1154,36 +1169,110 @@ class PlannedTab(QWidget):
                 self._refresh_tree()
 
     def move_to_current(self):
-        """選択中のシナリオをPassedTabの「現行」グループ末尾に追加する"""
+        """選択中のシナリオを通過予定タブの「現行」月に移動する"""
         _, info = self._get_sel()
         if not info or info["type"] != "item":
             QMessageBox.information(self, "情報", "月のシナリオを選択してください。")
             return
+
+        pd = self.data_manager.get_planned_data()
+        months = pd["months"]
+
+        current_month_idx = next(
+            (i for i, m in enumerate(months) if m.get("label", "") == "現行"), None)
+
+        if current_month_idx is None:
+            QMessageBox.warning(
+                self, "警告",
+                "「現行」という名前の月が見つかりません。\n"
+                "通過予定タブに「現行」という月を作成してください。")
+            return
+
+        if current_month_idx == info["m_index"]:
+            QMessageBox.information(self, "情報", "すでに「現行」にあります。")
+            return
+
+        item_data = months[info["m_index"]]["items"].pop(info["i_index"])
+        title = item_data.get("title", "")
+        months[current_month_idx]["items"].append(item_data)
+
+        self.data_manager.mark_modified()
+        self._refresh_tree()
+        QMessageBox.information(
+            self, "完了", f"「{title}」を「現行」に移動しました。")
+
+    def complete_item(self):
+        """完了ボタンの処理"""
+        _, info = self._get_sel()
+        if not info or info["type"] != "item":
+            QMessageBox.information(self, "情報", "月のシナリオを選択してください。")
+            return
+        
         if self.passed_tab is None:
             QMessageBox.critical(self, "エラー", "通過済みタブへの参照がありません。")
             return
+
         pd = self.data_manager.get_planned_data()
         item_data = pd["months"][info["m_index"]]["items"][info["i_index"]]
         title = item_data.get("title", "")
+        role = item_data.get("role", "")
+
+        # 役割に「KP」が含まれている場合
+        if "KP" in role:
+            if QMessageBox.question(self, "確認", f"KP予定の「{title}」を予定から削除しますか?", QMessageBox.Yes | QMessageBox.No) == QMessageBox.Yes:
+                pd["months"][info["m_index"]]["items"].pop(info["i_index"])
+                self.data_manager.mark_modified()
+                self._refresh_tree()
+                QMessageBox.information(self, "完了", f"「{title}」を削除しました。")
+            return
+
+        # 役割が「PL」のみの場合はHOを空に、それ以外は役割をHOに
+        ho_text = "" if role == "PL" else role
+
         groups = self.passed_tab._get_current_groups()
         if groups is None:
             QMessageBox.critical(self, "エラー", "通過済みタブのグループが取得できません。")
             return
-        current_group = next(
-            (g for g in groups if g.get("label", "") == "現行"), None)
-        if current_group is None:
-            QMessageBox.warning(
-                self, "警告",
-                "「現行」という名前のグループが見つかりません。\n"
-                "通過済みタブに「現行」グループを作成してください。")
-            return
-        current_group["items"].append({
-            "title": title, "ho": "", "favorite": False, "favorite_ho": False
+
+        # 同名シナリオが通過済みタブに存在するかチェック
+        exists = any(item.get("title") == title for g in groups for item in g.get("items", []))
+        if exists:
+            reply = QMessageBox.question(
+                self, "警告", 
+                f"「{title}」はすでに通過済みタブに存在します。\n「追加する」(はい) か「追加しない」(いいえ) か選んでください。", 
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)
+            
+            if reply == QMessageBox.Cancel:
+                return
+            elif reply == QMessageBox.No:
+                # 追加しない場合は通過予定からの削除のみ
+                pd["months"][info["m_index"]]["items"].pop(info["i_index"])
+                self.data_manager.mark_modified()
+                self._refresh_tree()
+                QMessageBox.information(self, "完了", f"「{title}」を予定から削除しました。")
+                return
+            # Yes の場合はそのまま追加処理に進む
+
+        # 「未分類」カテゴリを探す
+        uncategorized_group = next((g for g in groups if g.get("label", "") == "未分類"), None)
+        if uncategorized_group is None:
+            # 未分類カテゴリがない場合は作成
+            uncategorized_group = {"label": "未分類", "items": []}
+            groups.append(uncategorized_group)
+
+        # 未分類カテゴリに追加
+        uncategorized_group["items"].append({
+            "title": title, "ho": ho_text, "favorite": False, "favorite_ho": False
         })
+        
+        # 通過予定から削除
+        pd["months"][info["m_index"]]["items"].pop(info["i_index"])
+        
         self.data_manager.mark_modified()
+        self._refresh_tree()
         self.passed_tab.refresh()
-        QMessageBox.information(
-            self, "完了", f"「{title}」を「現行」グループに追加しました。")
+        
+        QMessageBox.information(self, "完了", f"「{title}」を通過済みの「未分類」に追加しました。")
 
     def move_up(self):
         _, info = self._get_sel()
