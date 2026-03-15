@@ -882,23 +882,9 @@
         ],
         "arts": [
             {
-                "url": "data/assets/pcs/049/arts/3402017-1.png",
-                "artist": "なす",
-                "spoiler": false
-            },
-            {
                 "url": "data/assets/pcs/049/arts/3253746-1.png",
                 "artist": "ワ～！",
                 "pages": []
-            },
-            {
-                "url": "data/assets/pcs/049/arts/3244524-1.png",
-                "artist": "にじいろ",
-                "spoiler": false,
-                "pages": [
-                    "data/assets/pcs/049/arts/3244524-2.png",
-                    "data/assets/pcs/049/arts/3244524-3.png"
-                ]
             },
             {
                 "url": "data/assets/pcs/049/arts/3002294-1.png",
