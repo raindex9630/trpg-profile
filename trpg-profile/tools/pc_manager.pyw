@@ -906,10 +906,25 @@ class EditorWidget(QWidget):
                 widget.deleteLater()
         
         arts = self.current_pc.get('arts', [])
+        total_arts = len(arts)
         for i, art in enumerate(arts):
             container = QFrame()
             container.setFrameStyle(QFrame.StyledPanel)
             h_layout = QHBoxLayout(container)
+
+            # ▲▼ 並び替えボタン
+            v_order_btns = QVBoxLayout()
+            btn_up = QPushButton("▲")
+            btn_up.setFixedSize(30, 30)
+            btn_up.setToolTip("上へ移動")
+            btn_up.setEnabled(i > 0)
+            btn_down = QPushButton("▼")
+            btn_down.setFixedSize(30, 30)
+            btn_down.setToolTip("下へ移動")
+            btn_down.setEnabled(i < total_arts - 1)
+            v_order_btns.addWidget(btn_up)
+            v_order_btns.addWidget(btn_down)
+            v_order_btns.addStretch()
             
             drop = ImageDropWidget("arts", "Art Image")
             drop.set_data(self.current_pc.get('id', ''), art.get('url', ''))
@@ -953,12 +968,15 @@ class EditorWidget(QWidget):
 
             v_inputs.addStretch()
             
+            h_layout.addLayout(v_order_btns)
             h_layout.addWidget(drop)
             h_layout.addLayout(v_inputs)
             h_layout.addLayout(pages_area)
             
             self.layout_arts.addWidget(container)
             
+            btn_up.clicked.connect(lambda _, idx=i: self.move_art_up(idx))
+            btn_down.clicked.connect(lambda _, idx=i: self.move_art_down(idx))
             drop.imageChanged.connect(lambda p, idx=i: self.update_art_image(idx, p))
             inp_artist.textChanged.connect(lambda t, idx=i: self.update_art_artist(idx, t))
             chk_spoiler.stateChanged.connect(lambda state, idx=i, inp=inp_scenario: (
@@ -1025,6 +1043,26 @@ class EditorWidget(QWidget):
             art['pages'] = pages
             self.refresh_arts_list()
             self.dataChanged.emit()
+
+    def move_art_up(self, idx):
+        """artsリストのidx番目を1つ上に移動"""
+        if not self.current_pc: return
+        arts = self.current_pc.get('arts', [])
+        if idx <= 0 or idx >= len(arts): return
+        arts[idx - 1], arts[idx] = arts[idx], arts[idx - 1]
+        self.current_pc['arts'] = arts
+        self.refresh_arts_list()
+        self.dataChanged.emit()
+
+    def move_art_down(self, idx):
+        """artsリストのidx番目を1つ下に移動"""
+        if not self.current_pc: return
+        arts = self.current_pc.get('arts', [])
+        if idx < 0 or idx >= len(arts) - 1: return
+        arts[idx], arts[idx + 1] = arts[idx + 1], arts[idx]
+        self.current_pc['arts'] = arts
+        self.refresh_arts_list()
+        self.dataChanged.emit()
 
     def delete_art(self, idx):
         if not self.current_pc: return
