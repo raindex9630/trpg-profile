@@ -477,23 +477,24 @@ class EditorWidget(QWidget):
         
         # Buttons
         h_layout_sc_btns = QHBoxLayout()
-        btn_add_sc = QPushButton("追加")
-        btn_edit_sc = QPushButton("編集")
+        self.btn_add_sc = QPushButton("追加")
+        self.btn_edit_sc = QPushButton("編集")
         self.btn_save_sc = QPushButton("保存")
         self.btn_save_sc.setVisible(False)  # 初期状態では非表示
-        btn_del_sc = QPushButton("削除")
-        h_layout_sc_btns.addWidget(btn_add_sc)
-        h_layout_sc_btns.addWidget(btn_edit_sc)
+        self.btn_del_sc = QPushButton("削除")
+        h_layout_sc_btns.addWidget(self.btn_add_sc)
+        h_layout_sc_btns.addWidget(self.btn_edit_sc)
         h_layout_sc_btns.addWidget(self.btn_save_sc)
-        h_layout_sc_btns.addWidget(btn_del_sc)
+        h_layout_sc_btns.addWidget(self.btn_del_sc)
         
         input_layout.addLayout(h_layout_sc_btns)
         v_layout_sc.addLayout(input_layout)
         
-        btn_add_sc.clicked.connect(self.add_scenario)
-        btn_edit_sc.clicked.connect(self.edit_scenario)
+        self.btn_add_sc.clicked.connect(self.add_scenario)
+        self.btn_edit_sc.clicked.connect(self.edit_scenario)
         self.btn_save_sc.clicked.connect(self.save_scenario)
-        btn_del_sc.clicked.connect(self.delete_scenario)
+        self.btn_del_sc.clicked.connect(self.delete_scenario)
+        self.list_scenarios.currentRowChanged.connect(self.on_scenario_row_changed)
         layout.addWidget(gb_scenarios)
 
         # Arts
@@ -595,7 +596,7 @@ class EditorWidget(QWidget):
         self.refresh_diff_list()
         
         # Scenarios
-        self.list_scenarios.clear()
+        self.cancel_scenario_edit()  # 編集状態を破棄してからリセット
         self.list_scenarios.clear()
         for sc in pc_data.get('passed_scenarios', []):
             if isinstance(sc, dict):
@@ -836,8 +837,11 @@ class EditorWidget(QWidget):
                 self.inp_scenario_end.clear()
                 self.chk_scenario_if.setChecked(False)
             
-            # 編集モードに入る
+            # 編集モードに入る: 追加・編集・削除を隠して保存のみ表示
             self.editing_scenario_index = row
+            self.btn_add_sc.setVisible(False)
+            self.btn_edit_sc.setVisible(False)
+            self.btn_del_sc.setVisible(False)
             self.btn_save_sc.setVisible(True)
 
     def save_scenario(self):
@@ -869,17 +873,27 @@ class EditorWidget(QWidget):
             
             self.list_scenarios.item(self.editing_scenario_index).setText(display_text)
             
-            # 入力欄をクリア
-            self.inp_scenario_title.clear()
-            self.inp_scenario_ho.clear()
-            self.inp_scenario_end.clear()
-            self.chk_scenario_if.setChecked(False)
-            
-            # 編集モードを終了
-            self.editing_scenario_index = None
-            self.btn_save_sc.setVisible(False)
+            # 編集モードを終了して入力欄をクリア
+            self.cancel_scenario_edit()
             
             self.dataChanged.emit()
+
+    def cancel_scenario_edit(self):
+        """編集状態を确認なしで破棄して通常モードに戻る"""
+        self.editing_scenario_index = None
+        self.inp_scenario_title.clear()
+        self.inp_scenario_ho.clear()
+        self.inp_scenario_end.clear()
+        self.chk_scenario_if.setChecked(False)
+        self.btn_save_sc.setVisible(False)
+        self.btn_add_sc.setVisible(True)
+        self.btn_edit_sc.setVisible(True)
+        self.btn_del_sc.setVisible(True)
+
+    def on_scenario_row_changed(self, row):
+        """変更時に編集中なら破棄する"""
+        if self.editing_scenario_index is not None:
+            self.cancel_scenario_edit()
 
     def delete_scenario(self):
         row = self.list_scenarios.currentRow()

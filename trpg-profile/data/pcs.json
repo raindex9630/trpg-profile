@@ -26,22 +26,22 @@
     },
     {
         "id": "076",
-        "name": "セフマグHO2",
-        "ruby": "",
-        "image_icon": "",
-        "image_main": "",
+        "name": "有栖川 蘭",
+        "ruby": "ありすがわ らん",
+        "image_icon": "data/assets/pcs/076/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/076/main/立ち絵01.png",
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
+            "age": "28歳",
             "height": "",
-            "job": ""
+            "job": "ミュージシャン"
         },
         "passed_scenarios": [
             {
                 "title": "貴方達はセフレです。マグロ漁船に乗っています。",
                 "ho": "HO2 Holacracy",
-                "end": "予定",
+                "end": "END 1",
                 "is_if": false
             }
         ],
@@ -66,7 +66,7 @@
             {
                 "title": "エデンに成る生熟れの果実",
                 "ho": "HO Pear🍐",
-                "end": "予定",
+                "end": "END",
                 "is_if": false
             }
         ],

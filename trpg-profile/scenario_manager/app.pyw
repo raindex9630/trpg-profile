@@ -442,6 +442,16 @@ def _hr():
     return f
 
 
+def _silent_info(parent, title, message):
+    """音を鳴らさない情報ダイアログ（NoIcon を使用）"""
+    msg = QMessageBox(parent)
+    msg.setWindowTitle(title)
+    msg.setText(message)
+    msg.setIcon(QMessageBox.NoIcon)
+    msg.setStandardButtons(QMessageBox.Ok)
+    msg.exec()
+
+
 # ---------------------------------------------------------------------------
 # _SystemTabBase — common base for Passed / Watched / GM tabs
 # ---------------------------------------------------------------------------
@@ -1223,7 +1233,7 @@ class PlannedTab(QWidget):
                 pd["months"][info["m_index"]]["items"].pop(info["i_index"])
                 self.data_manager.mark_modified()
                 self._refresh_tree()
-                QMessageBox.information(self, "完了", f"「{title}」を削除しました。")
+                _silent_info(self, "完了", f"「{title}」を削除しました。")
             return
 
         # 役割が「PL」のみの場合はHOを空に、それ以外は役割をHOに
@@ -1249,7 +1259,7 @@ class PlannedTab(QWidget):
                 pd["months"][info["m_index"]]["items"].pop(info["i_index"])
                 self.data_manager.mark_modified()
                 self._refresh_tree()
-                QMessageBox.information(self, "完了", f"「{title}」を予定から削除しました。")
+                _silent_info(self, "完了", f"「{title}」を予定から削除しました。")
                 return
             # Yes の場合はそのまま追加処理に進む
 
@@ -1272,7 +1282,7 @@ class PlannedTab(QWidget):
         self._refresh_tree()
         self.passed_tab.refresh()
         
-        QMessageBox.information(self, "完了", f"「{title}」を通過済みの「未分類」に追加しました。")
+        _silent_info(self, "完了", f"「{title}」を通過済みの「未分類」に追加しました。")
 
     def move_up(self):
         _, info = self._get_sel()

@@ -378,6 +378,12 @@
               "favorite": false
             },
             {
+              "title": "貴方達はセフレです。マグロ漁船に乗っています。",
+              "ho": "HO2 Holacracy",
+              "favorite": true,
+              "favorite_ho": false
+            },
+            {
               "title": "鰯と柊",
               "ho": "HO2 信者",
               "favorite": false
@@ -704,6 +710,12 @@
               "favorite": false
             },
             {
+              "title": "エデンに成る生熟れの果実",
+              "ho": "HO 🍐Pear",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "堕ちた先に在ったのは",
               "ho": "",
               "favorite": false
@@ -799,12 +811,8 @@
             "role": "KP"
           },
           {
-            "title": "INTO2　1陣",
-            "role": "KP"
-          },
-          {
-            "title": "エデンに成る生熟れの果実",
-            "role": "HO Pear"
+            "title": "盲信未遂",
+            "role": "PL"
           }
         ]
       },
@@ -812,20 +820,12 @@
         "label": "3月",
         "items": [
           {
-            "title": "Xからの告白",
-            "role": "HO3 検事"
-          },
-          {
-            "title": "貴方達はセフレです。マグロ漁船に乗っています。",
-            "role": "HO2 Holacracy"
-          },
-          {
-            "title": "盲信未遂",
-            "role": "PL"
-          },
-          {
             "title": "七罪週間",
             "role": "PL"
+          },
+          {
+            "title": "Xからの告白",
+            "role": "HO3 検事"
           }
         ]
       },
@@ -983,7 +983,7 @@
               "favorite": false
             },
             {
-              "title": "INTO2",
+              "title": "INTO 2",
               "favorite": false
             },
             {
@@ -1341,6 +1341,10 @@
             },
             {
               "title": "DDD",
+              "count": "1"
+            },
+            {
+              "title": "INTO 2",
               "count": "1"
             },
             {
