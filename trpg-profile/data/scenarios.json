@@ -304,6 +304,12 @@
               "favorite_ho": false
             },
             {
+              "title": "盲信未遂",
+              "ho": "",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "夜光列車と宝石の夜",
               "ho": "",
               "favorite": false
@@ -809,10 +815,6 @@
           {
             "title": "催眠ダーリンLv1　2陣",
             "role": "KP"
-          },
-          {
-            "title": "盲信未遂",
-            "role": "PL"
           }
         ]
       },

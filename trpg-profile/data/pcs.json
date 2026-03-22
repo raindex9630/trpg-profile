@@ -728,7 +728,7 @@
         "image_main": "data/assets/pcs/051/main/_立ち絵01.png",
         "images_diff": [],
         "profile": {
-            "gender": "女性",
+            "gender": "男性",
             "age": "12歳",
             "height": "150cm",
             "job": "神の子"
@@ -749,7 +749,7 @@
             {
                 "title": "盲信未遂",
                 "ho": "",
-                "end": "予定",
+                "end": "END",
                 "is_if": false
             }
         ],
