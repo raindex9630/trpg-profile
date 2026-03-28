@@ -34,8 +34,8 @@ class DataManager:
             self.is_modified = False
             return True
         except Exception as e:
-            QMessageBox.critical(self._parent_widget, "エラー",
-                                 f"ファイルの読み込みに失敗しました:\n{e}")
+            _silent_critical(self._parent_widget, "エラー",
+                             f"ファイルの読み込みに失敗しました:\n{e}")
             return False
 
     def save_file(self, filepath=None):
@@ -49,8 +49,8 @@ class DataManager:
             self.is_modified = False
             return True
         except Exception as e:
-            QMessageBox.critical(self._parent_widget, "エラー",
-                                 f"ファイルの保存に失敗しました:\n{e}")
+            _silent_critical(self._parent_widget, "エラー",
+                             f"ファイルの保存に失敗しました:\n{e}")
             return False
 
     def _ensure_structure(self):
@@ -280,7 +280,7 @@ class ItemDialog(QDialog):
 
     def _ok(self):
         if not self.title_e.text().strip():
-            QMessageBox.warning(self, "警告", "タイトルは必須です。")
+            _silent_warning(self, "警告", "タイトルは必須です。")
             return
         self.result_data = {
             "title": self.title_e.text().strip(),
@@ -307,7 +307,7 @@ class WatchedItemDialog(QDialog):
 
     def _ok(self):
         if not self.title_e.text().strip():
-            QMessageBox.warning(self, "警告", "タイトルは必須です。")
+            _silent_warning(self, "警告", "タイトルは必須です。")
             return
         self.result_data = {
             "title": self.title_e.text().strip(),
@@ -337,7 +337,7 @@ class GMItemDialog(QDialog):
 
     def _ok(self):
         if not self.title_e.text().strip():
-            QMessageBox.warning(self, "警告", "タイトルは必須です。")
+            _silent_warning(self, "警告", "タイトルは必須です。")
             return
         self.result_data = {
             "title": self.title_e.text().strip(),
@@ -450,6 +450,36 @@ def _silent_info(parent, title, message):
     msg.setIcon(QMessageBox.NoIcon)
     msg.setStandardButtons(QMessageBox.Ok)
     msg.exec()
+
+
+def _silent_warning(parent, title, message):
+    """音を鳴らさない警告ダイアログ（NoIcon を使用）"""
+    msg = QMessageBox(parent)
+    msg.setWindowTitle(title)
+    msg.setText(message)
+    msg.setIcon(QMessageBox.NoIcon)
+    msg.setStandardButtons(QMessageBox.Ok)
+    msg.exec()
+
+
+def _silent_critical(parent, title, message):
+    """音を鳴らさないエラーダイアログ（NoIcon を使用）"""
+    msg = QMessageBox(parent)
+    msg.setWindowTitle(title)
+    msg.setText(message)
+    msg.setIcon(QMessageBox.NoIcon)
+    msg.setStandardButtons(QMessageBox.Ok)
+    msg.exec()
+
+
+def _silent_question(parent, title, message, buttons=QMessageBox.Yes | QMessageBox.No):
+    """音を鳴らさない確認ダイアログ（NoIcon を使用）。戻り値は押されたボタン。"""
+    msg = QMessageBox(parent)
+    msg.setWindowTitle(title)
+    msg.setText(message)
+    msg.setIcon(QMessageBox.NoIcon)
+    msg.setStandardButtons(buttons)
+    return msg.exec()
 
 
 # ---------------------------------------------------------------------------
@@ -598,10 +628,9 @@ class _SystemTabBase(QWidget):
     def delete_system(self):
         systems = self._get_systems()
         if 0 <= self.current_system_index < len(systems):
-            if QMessageBox.question(
+            if _silent_question(
                     self, "確認",
-                    "このシステムとすべてのグループ/アイテムを削除しますか?",
-                    QMessageBox.Yes | QMessageBox.No
+                    "このシステムとすべてのグループ/アイテムを削除しますか?"
             ) == QMessageBox.Yes:
                 systems.pop(self.current_system_index)
                 if self.current_system_index > 0:
@@ -641,10 +670,9 @@ class _SystemTabBase(QWidget):
             return
         _, info = self._get_sel()
         if info and info["type"] == "group":
-            if QMessageBox.question(
+            if _silent_question(
                     self, "確認",
-                    "このグループとすべてのアイテムを削除しますか?",
-                    QMessageBox.Yes | QMessageBox.No
+                    "このグループとすべてのアイテムを削除しますか?"
             ) == QMessageBox.Yes:
                 groups.pop(info["index"])
                 self.data_manager.mark_modified()
@@ -662,7 +690,7 @@ class _SystemTabBase(QWidget):
         elif info and info["type"] == "item":
             g_idx, insert_idx = info["g_index"], info["i_index"]
         else:
-            QMessageBox.information(
+            _silent_info(
                 self, "情報", "グループまたはアイテムを選択してください。")
             return
         dlg = self._make_edit_dialog({})
@@ -689,7 +717,7 @@ class _SystemTabBase(QWidget):
         elif info and info["type"] == "item":
             g_idx, insert_idx = info["g_index"], info["i_index"]
         else:
-            QMessageBox.information(
+            _silent_info(
                 self, "情報", "グループまたはアイテムを選択してください。")
             return
         dlg = self._make_bulk_dialog()
@@ -725,9 +753,8 @@ class _SystemTabBase(QWidget):
             return
         _, info = self._get_sel()
         if info and info["type"] == "item":
-            if QMessageBox.question(
-                    self, "確認", "このアイテムを削除しますか?",
-                    QMessageBox.Yes | QMessageBox.No
+            if _silent_question(
+                    self, "確認", "このアイテムを削除しますか?"
             ) == QMessageBox.Yes:
                 groups[info["g_index"]]["items"].pop(info["i_index"])
                 self.data_manager.mark_modified()
@@ -1082,10 +1109,9 @@ class PlannedTab(QWidget):
     def delete_month(self):
         _, info = self._get_sel()
         if info and info["type"] == "month":
-            if QMessageBox.question(
+            if _silent_question(
                     self, "確認",
-                    "この月とすべてのアイテムを削除しますか?",
-                    QMessageBox.Yes | QMessageBox.No
+                    "この月とすべてのアイテムを削除しますか?"
             ) == QMessageBox.Yes:
                 pd = self.data_manager.get_planned_data()
                 pd["months"].pop(info["index"])
@@ -1101,7 +1127,7 @@ class PlannedTab(QWidget):
         elif info and info["type"] == "item":
             m_idx, insert_idx = info["m_index"], info["i_index"]
         else:
-            QMessageBox.information(self, "情報", "月またはアイテムを選択してください。")
+            _silent_info(self, "情報", "月またはアイテムを選択してください。")
             return
         dlg = PlannedItemDialog(self)
         if dlg.exec() == QDialog.Accepted and dlg.result_data:
@@ -1125,7 +1151,7 @@ class PlannedTab(QWidget):
         elif info and info["type"] == "item":
             m_idx, insert_idx = info["m_index"], info["i_index"]
         else:
-            QMessageBox.information(self, "情報", "月またはアイテムを選択してください。")
+            _silent_info(self, "情報", "月またはアイテムを選択してください。")
             return
         dlg = PlannedBulkItemDialog(self)
         if dlg.exec() == QDialog.Accepted and dlg.result_data:
@@ -1182,7 +1208,7 @@ class PlannedTab(QWidget):
         """選択中のシナリオを通過予定タブの「現行」月に移動する"""
         _, info = self._get_sel()
         if not info or info["type"] != "item":
-            QMessageBox.information(self, "情報", "月のシナリオを選択してください。")
+            _silent_info(self, "情報", "月のシナリオを選択してください。")
             return
 
         pd = self.data_manager.get_planned_data()
@@ -1192,14 +1218,14 @@ class PlannedTab(QWidget):
             (i for i, m in enumerate(months) if m.get("label", "") == "現行"), None)
 
         if current_month_idx is None:
-            QMessageBox.warning(
+            _silent_warning(
                 self, "警告",
                 "「現行」という名前の月が見つかりません。\n"
                 "通過予定タブに「現行」という月を作成してください。")
             return
 
         if current_month_idx == info["m_index"]:
-            QMessageBox.information(self, "情報", "すでに「現行」にあります。")
+            _silent_info(self, "情報", "すでに「現行」にあります。")
             return
 
         item_data = months[info["m_index"]]["items"].pop(info["i_index"])
@@ -1208,18 +1234,18 @@ class PlannedTab(QWidget):
 
         self.data_manager.mark_modified()
         self._refresh_tree()
-        QMessageBox.information(
+        _silent_info(
             self, "完了", f"「{title}」を「現行」に移動しました。")
 
     def complete_item(self):
         """完了ボタンの処理"""
         _, info = self._get_sel()
         if not info or info["type"] != "item":
-            QMessageBox.information(self, "情報", "月のシナリオを選択してください。")
+            _silent_info(self, "情報", "月のシナリオを選択してください。")
             return
         
         if self.passed_tab is None:
-            QMessageBox.critical(self, "エラー", "通過済みタブへの参照がありません。")
+            _silent_critical(self, "エラー", "通過済みタブへの参照がありません。")
             return
 
         pd = self.data_manager.get_planned_data()
@@ -1229,7 +1255,7 @@ class PlannedTab(QWidget):
 
         # 役割に「KP」が含まれている場合
         if "KP" in role:
-            if QMessageBox.question(self, "確認", f"KP予定の「{title}」を予定から削除しますか?", QMessageBox.Yes | QMessageBox.No) == QMessageBox.Yes:
+            if _silent_question(self, "確認", f"KP予定の「{title}」を予定から削除しますか?") == QMessageBox.Yes:
                 pd["months"][info["m_index"]]["items"].pop(info["i_index"])
                 self.data_manager.mark_modified()
                 self._refresh_tree()
@@ -1241,15 +1267,15 @@ class PlannedTab(QWidget):
 
         groups = self.passed_tab._get_current_groups()
         if groups is None:
-            QMessageBox.critical(self, "エラー", "通過済みタブのグループが取得できません。")
+            _silent_critical(self, "エラー", "通過済みタブのグループが取得できません。")
             return
 
         # 同名シナリオが通過済みタブに存在するかチェック
         exists = any(item.get("title") == title for g in groups for item in g.get("items", []))
         if exists:
-            reply = QMessageBox.question(
-                self, "警告", 
-                f"「{title}」はすでに通過済みタブに存在します。\n「追加する」(はい) か「追加しない」(いいえ) か選んでください。", 
+            reply = _silent_question(
+                self, "警告",
+                f"「{title}」はすでに通過済みタブに存在します。\n「追加する」(はい) か「追加しない」(いいえ) か選んでください。",
                 QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)
             
             if reply == QMessageBox.Cancel:
@@ -1449,7 +1475,7 @@ class ScenarioManagerApp(QMainWindow):
 
     def closeEvent(self, event):
         if self.data_manager.is_modified:
-            ret = QMessageBox.question(
+            ret = _silent_question(
                 self, "未保存の変更",
                 "変更が保存されていません。\n保存しますか?",
                 QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel
