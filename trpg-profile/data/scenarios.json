@@ -266,6 +266,12 @@
               "favorite": false
             },
             {
+              "title": "七罪週間",
+              "ho": "",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "ニュクシフィリアと夜の女王",
               "ho": "",
               "favorite": false
@@ -815,10 +821,6 @@
           {
             "title": "催眠ダーリンLv1　2陣",
             "role": "KP"
-          },
-          {
-            "title": "七罪週間",
-            "role": "PL"
           }
         ]
       },
@@ -887,6 +889,10 @@
           {
             "title": "AE　8陣",
             "role": "KP"
+          },
+          {
+            "title": "AE　12陣",
+            "role": "KP"
           }
         ]
       },
@@ -905,6 +911,14 @@
           {
             "title": "NOBODY*2",
             "role": "HO2 謎多き探索者"
+          },
+          {
+            "title": "MAGGY 889　1陣",
+            "role": "KP"
+          },
+          {
+            "title": "BARABARADICAL　2陣",
+            "role": "KP"
           }
         ]
       },
@@ -917,6 +931,10 @@
           },
           {
             "title": "しんでしまう一週間後のきみへ　1陣",
+            "role": "KP"
+          },
+          {
+            "title": "MAGGY 889　2陣",
             "role": "KP"
           },
           {
