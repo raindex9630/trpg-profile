@@ -364,9 +364,10 @@
               "favorite_ho": false
             },
             {
-              "title": "MAGGY889",
+              "title": "MAGGY 889",
               "ho": "HO2 Hitman",
-              "favorite": true
+              "favorite": true,
+              "favorite_ho": false
             },
             {
               "title": "NapFrappe",
@@ -821,16 +822,16 @@
           {
             "title": "催眠ダーリンLv1　2陣",
             "role": "KP"
+          },
+          {
+            "title": "AE　10陣",
+            "role": "KP"
           }
         ]
       },
       {
         "label": "4月",
         "items": [
-          {
-            "title": "AE　10陣",
-            "role": "KP"
-          },
           {
             "title": "Xからの告白",
             "role": "HO3 検事"
