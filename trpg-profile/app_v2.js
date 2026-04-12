@@ -222,6 +222,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
+                <!-- Rule Book -->
+                ${p.rulebooks && p.rulebooks.length > 0 ? `
+                <div class="profile-item">
+                    <h3 class="subsection-title profile-section-title">✧𝖱𝗎𝗅𝖾 𝖡𝗈𝗈𝗸</h3>
+                    <div class="profile-section-body">
+                        <div class="rulebook-list">
+                            ${p.rulebooks.map(rb => `
+                            <div class="rulebook-system">
+                                <div class="rulebook-core">${rb.core}</div>
+                                ${rb.supplements && rb.supplements.length > 0 ? `
+                                <ul class="rulebook-supplements">
+                                    ${rb.supplements.map(s => `<li class="rulebook-supplement">${s}</li>`).join('')}
+                                </ul>` : ''}
+                            </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                ` : ''}
+
                 <!-- Contact -->
                 <div class="profile-item">
                     <h3 class="subsection-title profile-section-title">✧𝖢𝗈𝗇𝗍𝖺𝖼𝗍</h3>

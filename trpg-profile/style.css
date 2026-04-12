@@ -225,6 +225,48 @@ main {
     margin-bottom: 20px;
 }
 
+/* Rule Book Section */
+.rulebook-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.rulebook-system {
+    border-left: 3px solid var(--border-color);
+    padding-left: 12px;
+}
+
+.rulebook-core {
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+
+.rulebook-supplements {
+    list-style: none;
+    padding-left: 1.2em;
+    margin-top: 4px;
+}
+
+.rulebook-supplement {
+    font-size: 0.9rem;
+    color: #555;
+    padding: 3px 0;
+    border-bottom: 1px dotted var(--border-color);
+}
+
+.rulebook-supplement:last-child {
+    border-bottom: none;
+}
+
+.rulebook-supplement::before {
+    content: "└ ";
+    color: #aaa;
+    font-size: 0.85em;
+}
+
 .mine-item {
     margin-bottom: 15px;
     padding: 10px;
