@@ -164,8 +164,8 @@
         "id": "071",
         "name": "暁 陽彩",
         "ruby": "あかつき ひいろ",
-        "image_icon": "",
-        "image_main": "",
+        "image_icon": "data/assets/pcs/071/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/071/main/立ち絵02.png",
         "images_diff": [],
         "profile": {
             "gender": "男性",
