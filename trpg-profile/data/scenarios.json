@@ -896,7 +896,7 @@
         "label": "8月",
         "items": [
           {
-            "title": "静なるテロリスタ（仮）",
+            "title": "静なるテロリスタ",
             "role": "HO童子"
           }
         ]
@@ -915,6 +915,10 @@
           {
             "title": "BARABARADICAL　2陣",
             "role": "KP"
+          },
+          {
+            "title": "Vicx",
+            "role": "PL"
           }
         ]
       },
