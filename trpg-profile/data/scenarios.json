@@ -822,10 +822,6 @@
           {
             "title": "催眠ダーリンLv1　2陣",
             "role": "KP"
-          },
-          {
-            "title": "AE　10陣",
-            "role": "KP"
           }
         ]
       },
@@ -1481,7 +1477,7 @@
           "items": [
             {
               "title": "AE",
-              "count": "6"
+              "count": "7"
             },
             {
               "title": "Naming the Blood",
