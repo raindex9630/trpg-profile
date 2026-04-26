@@ -1,5 +1,55 @@
 [
     {
+        "id": "079",
+        "name": "静テロ童子",
+        "ruby": "",
+        "image_icon": "",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "未定",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [
+            {
+                "title": "静なるテロリスタ",
+                "ho": "HO童子",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-04-27",
+        "is_lost": false
+    },
+    {
+        "id": "078",
+        "name": "何パンHO2",
+        "ruby": "",
+        "image_icon": "",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "未定",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [
+            {
+                "title": "What’s under the dough?",
+                "ho": "HO2 美味しいパン屋の店主さん",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "created_at": "2026-04-27",
+        "is_lost": false
+    },
+    {
         "id": "077",
         "name": "空掴HO2",
         "ruby": "",
@@ -53,8 +103,8 @@
         "id": "075",
         "name": "Pirum",
         "ruby": "ピルム",
-        "image_icon": "",
-        "image_main": "",
+        "image_icon": "data/assets/pcs/075/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/075/main/立ち絵01.png",
         "images_diff": [],
         "profile": {
             "gender": "女性",
