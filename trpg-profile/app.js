@@ -371,6 +371,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // 行きたいシナリオ（非表示にするには false にする）
+        const SHOW_WISHLIST = false;
+        const wishlistNote = `<div class="planned-note">
+      <span class='icon-inline' style='color:#ffb300;'>★</span>　┄　特に行きたい
+    </div>`;
+        const wishlistItems = s.wishlist && s.wishlist.length > 0 ? s.wishlist : [];
+        const wishlistCount = wishlistItems.length;
+        const wishlistContent = wishlistItems.length > 0
+            ? `<ul class="scenario-list">
+                ${wishlistItems.map(item => {
+                const fav = item.favorite ?? false;
+                return `<li class="scenario-item${fav ? ' is-favorite' : ''}">
+                                <div class="scenario-left">
+                                    <span class="favorite-star-space">${fav ? '<span class="favorite-star" title="特に行きたい">★</span>' : ''}</span>
+                                    <span class="scenario-title">${item.title}</span>
+                                </div>
+                                ${item.note ? `<span class="scenario-ho-badge">${item.note}</span>` : ''}
+                            </li>`;
+            }).join('')}
+               </ul>`
+            : '<div class="planned-note" style="color:#aaa;">なし</div>';
+
         let html = `
             <section class="animate-fade-in">
                 <h2 class="section-title">通過済み/予定シナリオ一覧</h2>
@@ -383,6 +405,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </details>
+
+                ${SHOW_WISHLIST ? `
+                <details open>
+                    <summary><span class="scenario-header-flex"><span>行きたいシナリオ</span><span class="scenario-count">(${wishlistCount})</span></span></summary>
+                    <div class="accordion-content">
+                        <div class="scenario-list-container">
+                            ${wishlistNote}
+                            ${wishlistContent}
+                        </div>
+                    </div>
+                </details>` : ''}
 
                 <details open>
                     <summary><span class="scenario-header-flex"><span>通過済シナリオ一覧</span><span class="scenario-count">(${passedCount})</span></span></summary>
@@ -637,7 +670,7 @@ ${pc.passed_scenarios.map(sc => {
                 if (summary) {
                     const key = summary.textContent.trim();
                     if (state.hasOwnProperty(key)) {
-                        details.open = state[key];
+                               details.open = state[key];
                     }
                 }
             });

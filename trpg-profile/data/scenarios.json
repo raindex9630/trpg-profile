@@ -941,6 +941,18 @@
       }
     ]
   },
+  "wishlist": [
+    {
+      "title": "Paranormal Crime",
+      "note": "",
+      "favorite": false
+    },
+    {
+      "title": "Ⅶ・peccata",
+      "note": "",
+      "favorite": false
+    }
+  ],
   "watched": [
     {
       "system": "Call of Cthulhu",

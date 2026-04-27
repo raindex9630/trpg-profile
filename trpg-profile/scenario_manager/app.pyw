@@ -70,6 +70,8 @@ class DataManager:
             ps["note"] = ""
         if "months" not in ps:
             ps["months"] = []
+        if "wishlist" not in self.data:
+            self.data["wishlist"] = []
         if "watched" not in self.data:
             self.data["watched"] = []
         if "gm" not in self.data:
@@ -86,6 +88,9 @@ class DataManager:
 
     def get_planned_data(self):
         return self.data.get("planned_schedule", {})
+
+    def get_wishlist(self):
+        return self.data.setdefault("wishlist", [])
 
     def mark_modified(self):
         self.is_modified = True
@@ -343,6 +348,68 @@ class GMItemDialog(QDialog):
             "title": self.title_e.text().strip(),
             "count": str(self.count_spin.value())
         }
+        self.accept()
+
+
+class WishlistItemDialog(QDialog):
+    def __init__(self, parent=None, title="", note="", favorite=False):
+        super().__init__(parent)
+        self.setWindowTitle("行きたいシナリオ 編集")
+        self.setMinimumWidth(420)
+        self.result_data = None
+        lay = QFormLayout(self)
+        self.title_e = QLineEdit(title)
+        self.title_e.setMinimumWidth(260)
+        self.note_e = QLineEdit(note)
+        self.fav_c = QCheckBox(); self.fav_c.setChecked(favorite)
+        lay.addRow("タイトル:", self.title_e)
+        lay.addRow("メモ:", self.note_e)
+        lay.addRow("特に行きたい (★):", self.fav_c)
+        lay.addRow(_cancel_ok_box(self, self._ok))
+
+    def _ok(self):
+        if not self.title_e.text().strip():
+            _silent_warning(self, "警告", "タイトルは必須です。")
+            return
+        self.result_data = {
+            "title": self.title_e.text().strip(),
+            "note": self.note_e.text().strip(),
+            "favorite": self.fav_c.isChecked()
+        }
+        self.accept()
+
+
+class WishlistBulkItemDialog(QDialog):
+    def __init__(self, parent=None, row_count=10):
+        super().__init__(parent)
+        self.setWindowTitle("まとめて追加（行きたいシナリオ）")
+        self.setMinimumWidth(480)
+        self.result_data = []
+        self.rows = []
+        lay = QGridLayout(self)
+        for col, txt in enumerate(["タイトル", "メモ", "特に行きたい(★)"]):
+            lay.addWidget(QLabel(txt), 0, col)
+        for i in range(row_count):
+            te = QLineEdit()
+            ne = QLineEdit()
+            fc = QCheckBox()
+            te.setMinimumWidth(180)
+            lay.addWidget(te, i+1, 0)
+            lay.addWidget(ne, i+1, 1)
+            lay.addWidget(fc, i+1, 2)
+            self.rows.append((te, ne, fc))
+        lay.addWidget(_cancel_ok_box(self, self._ok), row_count+1, 0, 1, 3)
+
+    def _ok(self):
+        self.result_data = []
+        for te, ne, fc in self.rows:
+            t = te.text().strip()
+            if t:
+                self.result_data.append({
+                    "title": t,
+                    "note": ne.text().strip(),
+                    "favorite": fc.isChecked()
+                })
         self.accept()
 
 
@@ -964,6 +1031,170 @@ class GMTab(_SystemTabBase):
 
 
 # ---------------------------------------------------------------------------
+# WishlistTab
+# ---------------------------------------------------------------------------
+class WishlistTab(QWidget):
+    """行きたいシナリオをフラットリストで管理するタブ。"""
+
+    def __init__(self, parent, data_manager):
+        super().__init__(parent)
+        self.data_manager = data_manager
+        self._setup_ui()
+
+    def _setup_ui(self):
+        main_lay = QVBoxLayout(self)
+        main_lay.setContentsMargins(5, 5, 5, 5)
+
+        splitter = QSplitter(Qt.Horizontal)
+
+        self.tree = DnDTreeWidget(["タイトル", "メモ", "特に行きたい"])
+        self.tree.setColumnWidth(0, 300)
+        self.tree.setColumnWidth(1, 200)
+        self.tree.dnd_dropped.connect(self._move_item_dnd)
+        self.tree.itemDoubleClicked.connect(lambda *_: self.edit_item())
+        splitter.addWidget(self.tree)
+
+        btn_w = QWidget()
+        bl = QVBoxLayout(btn_w)
+        bl.addWidget(QLabel("アイテムの操作"))
+        bl.addWidget(_mk_btn("追加", self.add_item))
+        bl.addWidget(_mk_btn("まとめて追加", self.add_item_bulk))
+        bl.addWidget(_mk_btn("編集", self.edit_item))
+        bl.addWidget(_mk_btn("削除", self.delete_item))
+        bl.addWidget(_hr())
+        bl.addWidget(QLabel("並び替え"))
+        bl.addWidget(_mk_btn("上へ", self.move_up))
+        bl.addWidget(_mk_btn("下へ", self.move_down))
+        bl.addStretch()
+        splitter.addWidget(btn_w)
+        splitter.setSizes([700, 200])
+        main_lay.addWidget(splitter)
+
+    def _items(self):
+        return self.data_manager.get_wishlist()
+
+    def _get_sel(self):
+        sel = self.tree.selectedItems()
+        if not sel:
+            return None, None
+        it = sel[0]
+        return it, _idata(it)
+
+    def _sel_index(self, idx):
+        for i in range(self.tree.topLevelItemCount()):
+            item = self.tree.topLevelItem(i)
+            d = _idata(item)
+            if d and d["index"] == idx:
+                self.tree.setCurrentItem(item)
+                return
+
+    def refresh(self):
+        self.tree.clear()
+        for idx, item in enumerate(self._items()):
+            fav_str = "★" if item.get("favorite") else ""
+            t_item = QTreeWidgetItem([
+                item.get("title", ""),
+                item.get("note", ""),
+                fav_str
+            ])
+            _sdata(t_item, {"index": idx})
+            self.tree.addTopLevelItem(t_item)
+
+    def add_item(self):
+        _, info = self._get_sel()
+        insert_idx = info["index"] if info else None
+        dlg = WishlistItemDialog(self)
+        if dlg.exec() == QDialog.Accepted and dlg.result_data:
+            items = self._items()
+            if insert_idx is not None:
+                items.insert(insert_idx, dlg.result_data)
+            else:
+                items.append(dlg.result_data)
+            self.data_manager.mark_modified()
+            self.refresh()
+            self._sel_index(insert_idx if insert_idx is not None else len(items) - 1)
+
+    def add_item_bulk(self):
+        dlg = WishlistBulkItemDialog(self)
+        if dlg.exec() == QDialog.Accepted and dlg.result_data:
+            _, info = self._get_sel()
+            insert_idx = info["index"] if info else None
+            items = self._items()
+            if insert_idx is not None:
+                for i, it in enumerate(dlg.result_data):
+                    items.insert(insert_idx + i, it)
+            else:
+                items.extend(dlg.result_data)
+            self.data_manager.mark_modified()
+            self.refresh()
+
+    def edit_item(self):
+        _, info = self._get_sel()
+        if not info:
+            return
+        items = self._items()
+        it = items[info["index"]]
+        dlg = WishlistItemDialog(self,
+                                 title=it.get("title", ""),
+                                 note=it.get("note", ""),
+                                 favorite=it.get("favorite", False))
+        if dlg.exec() == QDialog.Accepted and dlg.result_data:
+            it.update(dlg.result_data)
+            self.data_manager.mark_modified()
+            self.refresh()
+            self._sel_index(info["index"])
+
+    def delete_item(self):
+        _, info = self._get_sel()
+        if not info:
+            return
+        if _silent_question(
+                self, "確認", "このアイテムを削除しますか?"
+        ) == QMessageBox.Yes:
+            self._items().pop(info["index"])
+            self.data_manager.mark_modified()
+            self.refresh()
+
+    def move_up(self):
+        _, info = self._get_sel()
+        if not info:
+            return
+        idx = info["index"]
+        items = self._items()
+        if idx > 0:
+            items[idx], items[idx-1] = items[idx-1], items[idx]
+            self.data_manager.mark_modified()
+            self.refresh()
+            self._sel_index(idx - 1)
+
+    def move_down(self):
+        _, info = self._get_sel()
+        if not info:
+            return
+        idx = info["index"]
+        items = self._items()
+        if idx < len(items) - 1:
+            items[idx], items[idx+1] = items[idx+1], items[idx]
+            self.data_manager.mark_modified()
+            self.refresh()
+            self._sel_index(idx + 1)
+
+    def _move_item_dnd(self, src, tgt):
+        si = _idata(src)
+        ti = _idata(tgt)
+        if not si or not ti:
+            return
+        items = self._items()
+        a, b = si["index"], ti["index"]
+        item = items.pop(a)
+        if a < b:
+            b -= 1
+        items.insert(b, item)
+        self.data_manager.mark_modified()
+        self.refresh()
+
+
+# ---------------------------------------------------------------------------
 # PlannedTab
 # ---------------------------------------------------------------------------
 class PlannedTab(QWidget):
@@ -1438,11 +1669,13 @@ class ScenarioManagerApp(QMainWindow):
         self.tab_gm = GMTab(self, self.data_manager)
         self.tab_planned = PlannedTab(
             self, self.data_manager, passed_tab=self.tab_passed)
+        self.tab_wishlist = WishlistTab(self, self.data_manager)
 
-        self.notebook.addTab(self.tab_passed,  "通過済み")
-        self.notebook.addTab(self.tab_watched, "視聴/既読")
-        self.notebook.addTab(self.tab_gm,      "GM経験")
-        self.notebook.addTab(self.tab_planned, "通過予定")
+        self.notebook.addTab(self.tab_passed,   "通過済み")
+        self.notebook.addTab(self.tab_watched,  "視聴/既読")
+        self.notebook.addTab(self.tab_gm,       "GM経験")
+        self.notebook.addTab(self.tab_planned,  "通過予定")
+        self.notebook.addTab(self.tab_wishlist, "行きたい")
 
         self.setStatusBar(QStatusBar())
 
@@ -1472,6 +1705,7 @@ class ScenarioManagerApp(QMainWindow):
         self.tab_watched.refresh_systems()
         self.tab_gm.refresh_systems()
         self.tab_planned.refresh()
+        self.tab_wishlist.refresh()
 
     def closeEvent(self, event):
         if self.data_manager.is_modified:
