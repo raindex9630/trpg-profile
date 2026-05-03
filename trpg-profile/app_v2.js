@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- Rule Book -->
                 ${p.rulebooks && p.rulebooks.length > 0 ? `
                 <div class="profile-item">
-                    <h3 class="subsection-title profile-section-title">✧𝖱𝗎𝗅𝖾 𝖡𝗈𝗈𝗸</h3>
+                    <h3 class="subsection-title profile-section-title">✧𝖱𝗎𝗅𝖾 𝖡𝗈𝗈𝗄</h3>
                     <div class="profile-section-body">
                         <div class="rulebook-list">
                             ${p.rulebooks.map(rb => `
