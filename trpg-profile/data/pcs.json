@@ -12,7 +12,14 @@
             "height": "",
             "job": ""
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "ハッピーエンドは君が殺した",
+                "ho": "HOヘンゼルとグレーテル",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "is_hidden": false,
         "created_at": "2026-06-05",
@@ -31,7 +38,14 @@
             "height": "",
             "job": ""
         },
-        "passed_scenarios": [],
+        "passed_scenarios": [
+            {
+                "title": "Vicx",
+                "ho": "",
+                "end": "予定",
+                "is_if": false
+            }
+        ],
         "arts": [],
         "is_hidden": false,
         "created_at": "2026-06-05",

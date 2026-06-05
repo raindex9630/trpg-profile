@@ -1,0 +1,44 @@
+# Local editor settings
+.vscode/
+
+# Local management tools and runtime files
+tools/
+scenario_manager/
+requirements.txt
+start_server.bat
+app.js
+**/__pycache__/
+*.py[cod]
+
+# Local project notes for cross-chat work
+AGENTS.md
+PROJECT_STRUCTURE.md
+CHANGELOG.md
+
+# Backups and deleted assets
+data/.trash/
+data/*.bak*
+
+# Assets currently not referenced by public JSON data
+data/assets/pcs/001/main/アイコン01-1.png
+data/assets/pcs/006/icon/アイコン01-1.png
+data/assets/pcs/009/icon/#アイコン08-1_20260304092635.png
+data/assets/pcs/009/icon/#アイコン08-1_20260304193916.png
+data/assets/pcs/009/icon/#アイコン08-1_20260304195253.png
+data/assets/pcs/009/icon/_アイコン08-1.png
+data/assets/pcs/009/icon/アイコン05-1.png
+data/assets/pcs/009/main/_立ち絵07.png
+data/assets/pcs/018/icon/_立ち絵1.png
+data/assets/pcs/018/main/アイコン2.png
+data/assets/pcs/025/icon/アイコン2.png
+data/assets/pcs/049/arts/2373313-1.png
+data/assets/pcs/049/arts/2449527-1.png
+data/assets/pcs/049/arts/3244524-2.png
+data/assets/pcs/049/arts/3244524-3.png
+data/assets/pcs/051/arts/2939751-1.png
+data/assets/pcs/051/arts/3210215-1.png
+data/assets/pcs/067/arts/3234394-1_縮小.png
+data/assets/pcs/070/arts/3599587-1.output.png
+data/assets/pcs/070/arts/3599587-1.縮小.png
+data/assets/pcs/070/arts/3599587-1.縮小_20260605152635.png
+data/assets/pcs/070/arts/3599587-1.縮小_20260605152640.png
