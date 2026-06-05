@@ -1,9 +1,9 @@
-/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ菴咲ｽｮ蠕ｩ蜈・凾縺ｮ縺ｿ繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繝舌・繧剃ｸ譎ら噪縺ｫ髱櫁｡ｨ遉ｺ */
+/* スクロール位置復元時のみスクロールバーを一時的に非表示 */
 .no-scrollbar {
     overflow: hidden !important;
 }
 
-/* 騾夐℃貂医∩繧ｷ繝翫Μ繧ｪ隕句・縺励→蛟区焚繧呈ｨｪ荳ｦ縺ｳ・・俣髫碑ｪｿ謨ｴ */
+/* 通過済みシナリオ見出しと個数を横並び・間隔調整 */
 .scenario-header-flex {
     display: inline-flex;
     align-items: center;
@@ -15,7 +15,7 @@
     vertical-align: middle;
 }
 
-/* 騾夐℃貂医∩繧ｷ繝翫Μ繧ｪ蛟区焚縺ｮ髢馴囈繧定ｪｿ謨ｴ */
+/* 通過済みシナリオ個数の間隔を調整 */
 .scenario-count {
     margin-left: 0.2em;
     font-size: 1em;
@@ -88,7 +88,7 @@
     box-shadow: none;
 }
 
-/* 騾夐℃貂医∩繧ｷ繝翫Μ繧ｪ縺ｮHO繧貞承遶ｯ縺ｫ謠・∴縲≫・蛻・・繧ｹ繝壹・繧ｹ繧ら｢ｺ菫・*/
+/* 通過済みシナリオのHOを右端に揃え、前部分のスペースも確保 */
 .scenario-list {
     position: relative;
 }
@@ -116,7 +116,7 @@
 
 
 
-/* 騾夐℃貂医∩繧ｷ繝翫Μ繧ｪ荳隕ｧ縺ｮ隕句・縺励↓繧ｹ繝壹・繧ｹ繧定ｿｽ蜉� */
+/* 通過済みシナリオ一覧の見出しにスペースを追加 */
 .scenario-list-container>.planned-month-title {
     margin-top: 3em !important;
     margin-bottom: 1.5em !important;
@@ -144,7 +144,7 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     padding-top: var(--header-height);
-    /* 繝倥ャ繝繝ｼ蝗ｺ螳壼・縺ｮ菴咏區 */
+    /* ヘッダー固定分の余白 */
 }
 
 a {
@@ -172,10 +172,10 @@ a {
     display: flex;
     list-style: none;
     gap: 15px;
-    /* 鬆・岼縺悟｢励∴縺溘・縺ｧ蟆代＠隧ｰ繧√ｋ */
+    /* 項目が増えたので少し詰める */
     padding: 0 10px;
     overflow-x: auto;
-    /* 繧ｹ繝槭・縺ｧ鬆・岼縺悟､壹＞蝣ｴ蜷域ｨｪ繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ */
+    /* スマホで項目が多い場合は横スクロール */
     white-space: nowrap;
     width: 100%;
     justify-content: center;
@@ -186,7 +186,7 @@ a {
 .site-header nav a {
     font-weight: 500;
     font-size: 0.85rem;
-    /* 鬆・岼縺悟｢励∴縺溘・縺ｧ蟆代＠蟆上＆縺・*/
+    /* 項目が増えたので少し小さく */
     padding: 10px 5px;
     transition: color 0.3s;
     display: block;
@@ -436,7 +436,7 @@ ul.favorite-scenarios-list,
 
 .scenario-item {
     padding: 4px 8px;
-    /* 蟾ｦ蜿ｳ縺ｫ蟆代＠菴咏區 */
+    /* 左右に少し余白 */
     border-bottom: 1px dotted var(--border-color);
     display: flex;
     align-items: center;
@@ -534,6 +534,47 @@ ul.favorite-scenarios-list,
     white-space: normal !important;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+/* Other Genres Section */
+.other-genre-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 4px;
+}
+
+.other-genre-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    padding-left: 0.5em;
+}
+
+.other-genre-badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+}
+
+.other-genre-badge-icon {
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    width: 1.5em;
+    text-align: center;
+}
+
+.other-genre-chara {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #bbdefb;
+}
+
+.other-genre-couple {
+    background-color: #fce4ec;
+    color: #c62828;
+    border: 1px solid #f8bbd0;
 }
 
 /* Planned Schedule Styles */
@@ -1339,19 +1380,19 @@ summary {
     font-size: 1.1rem;
     position: relative;
     list-style: none;
-    /* 繝・ヵ繧ｩ繝ｫ繝医・荳芽ｧ貞ｽ｢繧呈ｶ医☆・井ｸ驛ｨ繝悶Λ繧ｦ繧ｶ蜷代￠・・*/
+    /* デフォルトの三角形を消す（一部ブラウザ向け） */
     display: flex;
-    /* Flexbox縺ｧ繧｢繧､繧ｳ繝ｳ驟咲ｽｮ蛻ｶ蠕｡ */
+    /* Flexboxでアイコン配置を制御 */
     align-items: center;
     justify-content: space-between;
 }
 
-/* 讓呎ｺ悶・繝槭・繧ｫ繝ｼ繧呈ｶ医☆・・hrome/Safari・・*/
+/* 標準のマーカーを消す（Chrome/Safari） */
 summary::-webkit-details-marker {
     display: none;
 }
 
-/* 繧ｫ繧ｹ繧ｿ繝�繝槭・繧ｫ繝ｼ */
+/* カスタムマーカー */
 summary::after {
     content: '›';
     /* アイコンを > に変更 */
@@ -1365,7 +1406,7 @@ summary::after {
 
 details[open] summary::after {
     transform: rotate(90deg);
-    /* 90蠎ｦ蝗櫁ｻ｢縺励※荳句髄縺阪↓縺吶ｋ */
+    /* 90度回転して下向きにする */
 }
 
 details[open] summary {
@@ -1389,10 +1430,10 @@ details[open] summary {
     }
 }
 
-/* Generic List Styles (for likes/elements) - 鮟剃ｸｸ縺ｪ縺・*/
+/* Generic List Styles (for likes/elements) - 黒丸なし */
 .simple-list {
     list-style: none;
-    /* disc 縺九ｉ none 縺ｫ螟画峩 */
+    /* disc から none に変更 */
     padding-left: 5px;
     margin-left: 0;
 }
@@ -1400,7 +1441,7 @@ details[open] summary {
 .simple-list li {
     margin-bottom: 8px;
     border-bottom: 1px dashed #eee;
-    /* 阮・＞蛹ｺ蛻・ｊ邱壹ｒ蜈･繧後ｋ */
+    /* 薄い区切り線を入れる */
     padding-bottom: 4px;
 }
 

@@ -59,6 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let _slidePages = [];
     let _slideIndex = 0;
 
+    // true にすると「他ジャンル」欄を表示
+    const SHOW_OTHER_GENRES = false;
+
     let data = {
         profile: null,
         likes: null,
@@ -374,6 +377,38 @@ document.addEventListener('DOMContentLoaded', () => {
                         ` : ''}
                     </div>
                 </details>
+
+                ${SHOW_OTHER_GENRES && l.other_genres && l.other_genres.categories && l.other_genres.categories.length > 0 ? `
+                <details>
+                    <summary>他ジャンル</summary>
+                    <div class="accordion-content">
+                        ${l.other_genres.categories.map(category => `
+                            <div class="ho-category">
+                                <h4 class="ho-category-label">
+                                    <span class="title-main">${category.label}</span>
+                                    ${category.note ? `<span class="ho-category-note">${category.note}</span>` : ''}
+                                </h4>
+                                <ul class="scenario-list">
+                                    ${category.items.map(item => {
+                                        const chars = (item.characters || []);
+                                        const cpls = (item.couples || []);
+                                        const hasChars = chars.length > 0;
+                                        const hasCpls = cpls.length > 0;
+                                        return `
+                                        <li class="scenario-item other-genre-item">
+                                            <span class="scenario-title">${item.title}</span>
+                                            ${hasChars || hasCpls ? `<div class="other-genre-badges">
+                                                ${hasChars ? `<span class="other-genre-badge-group"><span class="other-genre-badge-icon">👤</span>${chars.map(c => `<span class="scenario-ho-badge other-genre-chara">${c}</span>`).join('')}</span>` : ''}
+                                                ${hasCpls ? `<span class="other-genre-badge-group"><span class="other-genre-badge-icon">💕</span>${cpls.map(c => `<span class="scenario-ho-badge other-genre-couple">${c}</span>`).join('')}</span>` : ''}
+                                            </div>` : ''}
+                                        </li>`;
+                                    }).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                </details>
+                ` : ''}
             </section>
         `;
         app.innerHTML = html;
@@ -574,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <section class="animate-fade-in">
                 <h2 class="section-title">探索者一覧</h2>
                 <div class="pc-grid">
-                    ${data.pcs.map(pc => {
+                    ${data.pcs.filter(pc => !pc.is_hidden).map(pc => {
             const iconSrc = pc.image_icon || generatePlaceholderImage(pc.name, 200, 200);
             const isLost = pc.is_lost || false;
             const lostIconClass = isLost ? ' is-lost' : '';
@@ -661,7 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderPCDetail(pcId) {
-        const pc = data.pcs.find(p => p.id === pcId);
+        const pc = data.pcs.find(p => p.id === pcId && !p.is_hidden);
         if (!pc) {
             app.innerHTML = '<p>探索者が見つかりません。</p>';
             return;

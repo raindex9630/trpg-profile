@@ -9,7 +9,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                                QListWidget, QListWidgetItem, QPushButton, QLabel, QLineEdit, 
                                QTextEdit, QSplitter, QMessageBox, QFileDialog, QScrollArea,
                                QFormLayout, QGroupBox, QSpinBox, QCheckBox, QFrame, QMenu, QStyle, QComboBox)
-from PySide6.QtCore import Qt, QSize, Signal, QMimeData
+from PySide6.QtCore import Qt, QSize, Signal, QMimeData, QTimer
 from PySide6.QtGui import QDragEnterEvent, QDropEvent, QPixmap, QIcon, QAction
 
 # Constants
@@ -386,6 +386,7 @@ class EditorWidget(QWidget):
         
         # ロストフラグのチェックボックスを追加
         self.chk_is_lost = QCheckBox("ロストフラグ")
+        self.chk_is_hidden = QCheckBox("非表示")
 
         form_layout.addRow("ID:", self.inp_id)
         form_layout.addRow("名前:", self.inp_name)
@@ -395,6 +396,7 @@ class EditorWidget(QWidget):
         form_layout.addRow("身長:", self.layout_height)
         form_layout.addRow("職業:", self.inp_job)
         form_layout.addRow("", self.chk_is_lost)
+        form_layout.addRow("", self.chk_is_hidden)
         
         layout.addWidget(gb_basic)
 
@@ -418,6 +420,7 @@ class EditorWidget(QWidget):
         self.chk_height_no_unit.toggled.connect(self.update_profile_data)
         self.inp_job.textChanged.connect(self.update_profile_data)
         self.chk_is_lost.toggled.connect(self.update_data)
+        self.chk_is_hidden.toggled.connect(self.confirm_hidden_change)
 
         # Images - Separated
         # Icon
@@ -501,7 +504,7 @@ class EditorWidget(QWidget):
         gb_arts = QGroupBox("Arts (Fan Art / Skeb)")
         self.layout_arts = QVBoxLayout(gb_arts)
         
-        self.btn_add_art_zone = QPushButton("＋ Art追加エリアを表示")
+        self.btn_add_art_zone = QPushButton("イラストを追加")
         self.btn_add_art_zone.clicked.connect(self.add_art_widget)
         self.layout_arts.addWidget(self.btn_add_art_zone)
         
@@ -587,6 +590,7 @@ class EditorWidget(QWidget):
         
         # ロストフラグの読み込み
         self.chk_is_lost.setChecked(pc_data.get('is_lost', False))
+        self.chk_is_hidden.setChecked(pc_data.get('is_hidden', False))
         
         # Images
         self.drop_icon.set_data(pc_data.get('id', ''), pc_data.get('image_icon', ''))
@@ -626,6 +630,26 @@ class EditorWidget(QWidget):
         
         if new_id_str != old_id_str:
             self.idChangeRequested.emit(old_id_str, new_id_str)
+
+    def confirm_hidden_change(self, checked):
+        if self.updating_ui or not self.current_pc:
+            return
+
+        action = "非表示に" if checked else "表示状態に"
+        ret = QMessageBox.question(
+            self,
+            "確認",
+            f"この探索者を{action}変更しますか？",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if ret != QMessageBox.Yes:
+            self.chk_is_hidden.blockSignals(True)
+            self.chk_is_hidden.setChecked(not checked)
+            self.chk_is_hidden.blockSignals(False)
+            return
+
+        self.current_pc['is_hidden'] = checked
+        self.dataChanged.emit()
 
     def update_data(self):
         if self.updating_ui or not self.current_pc: return
@@ -907,10 +931,62 @@ class EditorWidget(QWidget):
         if not self.current_pc: return
         if 'arts' not in self.current_pc:
             self.current_pc['arts'] = []
-        
-        self.current_pc['arts'].insert(0, {"url": "", "artist": "", "spoiler": False})
-        self.refresh_arts_list()
+
+        scroll_area = self.get_scroll_area()
+        if scroll_area:
+            scroll_area.viewport().setUpdatesEnabled(False)
+
+        previous_container = self.layout_arts.itemAt(self.layout_arts.count() - 2)
+        if previous_container and previous_container.widget():
+            previous_container.widget().art_down_button.setEnabled(True)
+
+        art = {"url": "", "artist": "", "spoiler": False}
+        self.current_pc['arts'].append(art)
+        idx = len(self.current_pc['arts']) - 1
+        container = self.create_art_container(idx, art, len(self.current_pc['arts']))
+        self.layout_arts.insertWidget(self.layout_arts.count() - 1, container)
+        self.layout_arts.activate()
+        self.updateGeometry()
+        if scroll_area:
+            QTimer.singleShot(0, lambda: self.finish_art_add(scroll_area))
         self.dataChanged.emit()
+
+    def finish_art_add(self, scroll_area):
+        self.layout_arts.activate()
+        self.adjustSize()
+        scroll_bar = scroll_area.verticalScrollBar()
+        scroll_bar.setValue(scroll_bar.maximum())
+        scroll_area.viewport().setUpdatesEnabled(True)
+        scroll_area.viewport().update()
+
+    def get_scroll_area(self):
+        parent = self.parent()
+        while parent and not isinstance(parent, QScrollArea):
+            parent = parent.parent()
+        return parent
+
+    def finish_art_delete(self, scroll_area, bottom_offset):
+        self.layout_arts.activate()
+        self.adjustSize()
+        scroll_bar = scroll_area.verticalScrollBar()
+        scroll_bar.setValue(max(scroll_bar.minimum(), scroll_bar.maximum() - bottom_offset))
+        scroll_area.viewport().setUpdatesEnabled(True)
+        scroll_area.viewport().update()
+
+    def get_art_index(self, art):
+        if not self.current_pc:
+            return -1
+        for idx, current_art in enumerate(self.current_pc.get('arts', [])):
+            if current_art is art:
+                return idx
+        return -1
+
+    def update_art_order_buttons(self):
+        art_count = len(self.current_pc.get('arts', [])) if self.current_pc else 0
+        for idx in range(art_count):
+            container = self.layout_arts.itemAt(idx).widget()
+            container.art_up_button.setEnabled(idx > 0)
+            container.art_down_button.setEnabled(idx < art_count - 1)
 
     def refresh_arts_list(self):
         while self.layout_arts.count():
@@ -922,88 +998,107 @@ class EditorWidget(QWidget):
         arts = self.current_pc.get('arts', [])
         total_arts = len(arts)
         for i, art in enumerate(arts):
-            container = QFrame()
-            container.setFrameStyle(QFrame.StyledPanel)
-            h_layout = QHBoxLayout(container)
-
-            # ▲▼ 並び替えボタン
-            v_order_btns = QVBoxLayout()
-            btn_up = QPushButton("▲")
-            btn_up.setFixedSize(30, 30)
-            btn_up.setToolTip("上へ移動")
-            btn_up.setEnabled(i > 0)
-            btn_down = QPushButton("▼")
-            btn_down.setFixedSize(30, 30)
-            btn_down.setToolTip("下へ移動")
-            btn_down.setEnabled(i < total_arts - 1)
-            v_order_btns.addWidget(btn_up)
-            v_order_btns.addWidget(btn_down)
-            v_order_btns.addStretch()
-            
-            drop = ImageDropWidget("arts", "Art Image")
-            drop.set_data(self.current_pc.get('id', ''), art.get('url', ''))
-            drop.setFixedWidth(120)
-            
-            # 右側入力エリア
-            v_inputs = QVBoxLayout()
-            inp_artist = QLineEdit(art.get('artist', ''))
-            inp_artist.setPlaceholderText("Artist Name")
-            chk_spoiler = QCheckBox("ネタバレ")
-            chk_spoiler.setChecked(art.get('spoiler', False))
-            inp_scenario = QLineEdit(art.get('spoiler_scenario', ''))
-            inp_scenario.setPlaceholderText("ネタバレシナリオ名")
-            inp_scenario.setVisible(art.get('spoiler', False))
-            btn_del = QPushButton("削除")
-            
-            v_inputs.addWidget(QLabel("Artist:"))
-            v_inputs.addWidget(inp_artist)
-            v_inputs.addWidget(chk_spoiler)
-            v_inputs.addWidget(inp_scenario)
-            v_inputs.addWidget(btn_del)
-
-            # 追加ページエリア
-            pages_area = QVBoxLayout()
-            pages_area.addWidget(QLabel("追加ページ:"))
-            pages = art.get('pages', [])
-            for pi, page_url in enumerate(pages):
-                pdrop = ImageDropWidget("arts", f"Page {pi+2}")
-                pdrop.set_data(self.current_pc.get('id', ''), page_url)
-                pdrop.setFixedWidth(100)
-                pdel = QPushButton("ページ削除")
-                ph = QHBoxLayout()
-                ph.addWidget(pdrop)
-                ph.addWidget(pdel)
-                pages_area.addLayout(ph)
-                pdrop.imageChanged.connect(lambda p, idx=i, pidx=pi: self.update_art_page(idx, pidx, p))
-                pdel.clicked.connect(lambda _, idx=i, pidx=pi: self.delete_art_page(idx, pidx))
-            btn_add_page = QPushButton("+ ページを追加")
-            btn_add_page.clicked.connect(lambda _, idx=i: self.add_art_page(idx))
-            pages_area.addWidget(btn_add_page)
-
-            v_inputs.addStretch()
-            
-            h_layout.addLayout(v_order_btns)
-            h_layout.addWidget(drop)
-            h_layout.addLayout(v_inputs)
-            h_layout.addLayout(pages_area)
-            
-            self.layout_arts.addWidget(container)
-            
-            btn_up.clicked.connect(lambda _, idx=i: self.move_art_up(idx))
-            btn_down.clicked.connect(lambda _, idx=i: self.move_art_down(idx))
-            drop.imageChanged.connect(lambda p, idx=i: self.update_art_image(idx, p))
-            inp_artist.textChanged.connect(lambda t, idx=i: self.update_art_artist(idx, t))
-            chk_spoiler.stateChanged.connect(lambda state, idx=i, inp=inp_scenario: (
-                self.update_art_spoiler(idx, bool(state)),
-                inp.setVisible(bool(state))
-            ))
-            inp_scenario.textChanged.connect(lambda t, idx=i: self.update_art_spoiler_scenario(idx, t))
-            btn_del.clicked.connect(lambda _, idx=i: self.delete_art(idx))
+            self.layout_arts.addWidget(self.create_art_container(i, art, total_arts))
             
         self.layout_arts.addWidget(self.btn_add_art_zone)
 
+    def create_art_container(self, idx, art, total_arts):
+        container = QFrame()
+        container.setFrameStyle(QFrame.StyledPanel)
+        h_layout = QHBoxLayout(container)
+
+        v_order_btns = QVBoxLayout()
+        btn_up = QPushButton("▲")
+        btn_up.setFixedSize(30, 30)
+        btn_up.setToolTip("上へ移動")
+        btn_up.setEnabled(idx > 0)
+        container.art_up_button = btn_up
+        btn_down = QPushButton("▼")
+        btn_down.setFixedSize(30, 30)
+        btn_down.setToolTip("下へ移動")
+        btn_down.setEnabled(idx < total_arts - 1)
+        container.art_down_button = btn_down
+        v_order_btns.addWidget(btn_up)
+        v_order_btns.addWidget(btn_down)
+        v_order_btns.addStretch()
+
+        drop = ImageDropWidget("arts", "Art Image")
+        drop.set_data(self.current_pc.get('id', ''), art.get('url', ''))
+        drop.setFixedWidth(120)
+
+        v_inputs = QVBoxLayout()
+        inp_artist = QLineEdit(art.get('artist', ''))
+        inp_artist.setPlaceholderText("Artist Name")
+        chk_spoiler = QCheckBox("ネタバレ")
+        chk_spoiler.setChecked(art.get('spoiler', False))
+        inp_scenario = QLineEdit(art.get('spoiler_scenario', ''))
+        inp_scenario.setPlaceholderText("ネタバレシナリオ名")
+        inp_scenario.setVisible(art.get('spoiler', False))
+        btn_del = QPushButton("削除")
+
+        v_inputs.addWidget(QLabel("Artist:"))
+        v_inputs.addWidget(inp_artist)
+        v_inputs.addWidget(chk_spoiler)
+        v_inputs.addWidget(inp_scenario)
+        v_inputs.addWidget(btn_del)
+
+        pages_area = QVBoxLayout()
+        pages_area.addWidget(QLabel("追加ページ:"))
+        for page_idx, page_url in enumerate(art.get('pages', [])):
+            pdrop = ImageDropWidget("arts", f"Page {page_idx + 2}")
+            pdrop.set_data(self.current_pc.get('id', ''), page_url)
+            pdrop.setFixedWidth(100)
+            pdel = QPushButton("ページ削除")
+            page_layout = QHBoxLayout()
+            page_layout.addWidget(pdrop)
+            page_layout.addWidget(pdel)
+            pages_area.addLayout(page_layout)
+            pdrop.imageChanged.connect(
+                lambda p, art_ref=art, pidx=page_idx: self.update_art_page(
+                    self.get_art_index(art_ref), pidx, p
+                )
+            )
+            pdel.clicked.connect(
+                lambda _, art_ref=art, pidx=page_idx: self.delete_art_page(
+                    self.get_art_index(art_ref), pidx
+                )
+            )
+        btn_add_page = QPushButton("+ ページを追加")
+        btn_add_page.clicked.connect(
+            lambda _, art_ref=art: self.add_art_page(self.get_art_index(art_ref))
+        )
+        pages_area.addWidget(btn_add_page)
+
+        v_inputs.addStretch()
+        h_layout.addLayout(v_order_btns)
+        h_layout.addWidget(drop)
+        h_layout.addLayout(v_inputs)
+        h_layout.addLayout(pages_area)
+
+        btn_up.clicked.connect(lambda _, art_ref=art: self.move_art_up(self.get_art_index(art_ref)))
+        btn_down.clicked.connect(lambda _, art_ref=art: self.move_art_down(self.get_art_index(art_ref)))
+        drop.imageChanged.connect(
+            lambda p, art_ref=art: self.update_art_image(self.get_art_index(art_ref), p)
+        )
+        inp_artist.textChanged.connect(
+            lambda t, art_ref=art: self.update_art_artist(self.get_art_index(art_ref), t)
+        )
+        chk_spoiler.stateChanged.connect(lambda state, art_ref=art, inp=inp_scenario: (
+            self.update_art_spoiler(self.get_art_index(art_ref), bool(state)),
+            inp.setVisible(bool(state))
+        ))
+        inp_scenario.textChanged.connect(
+            lambda t, art_ref=art: self.update_art_spoiler_scenario(
+                self.get_art_index(art_ref), t
+            )
+        )
+        btn_del.clicked.connect(
+            lambda _, art_ref=art: self.delete_art(self.get_art_index(art_ref))
+        )
+        return container
+
     def update_art_image(self, idx, rel_path):
-        if not self.current_pc: return
+        if not self.current_pc or idx < 0 or idx >= len(self.current_pc.get('arts', [])): return
         if not rel_path: 
              self.current_pc['arts'][idx]['url'] = ""
         else:
@@ -1011,23 +1106,23 @@ class EditorWidget(QWidget):
         self.dataChanged.emit()
 
     def update_art_artist(self, idx, text):
-        if not self.current_pc: return
+        if not self.current_pc or idx < 0 or idx >= len(self.current_pc.get('arts', [])): return
         self.current_pc['arts'][idx]['artist'] = text
         self.dataChanged.emit()
 
     def update_art_spoiler(self, idx, value):
-        if not self.current_pc: return
+        if not self.current_pc or idx < 0 or idx >= len(self.current_pc.get('arts', [])): return
         self.current_pc['arts'][idx]['spoiler'] = value
         self.dataChanged.emit()
 
     def update_art_spoiler_scenario(self, idx, text):
-        if not self.current_pc: return
+        if not self.current_pc or idx < 0 or idx >= len(self.current_pc.get('arts', [])): return
         self.current_pc['arts'][idx]['spoiler_scenario'] = text
         self.dataChanged.emit()
 
     def add_art_page(self, idx):
         """idx番イラストに追加ページを追加"""
-        if not self.current_pc: return
+        if not self.current_pc or idx < 0 or idx >= len(self.current_pc.get('arts', [])): return
         art = self.current_pc['arts'][idx]
         if 'pages' not in art:
             art['pages'] = []
@@ -1036,7 +1131,7 @@ class EditorWidget(QWidget):
         self.dataChanged.emit()
 
     def update_art_page(self, idx, page_idx, rel_path):
-        if not self.current_pc: return
+        if not self.current_pc or idx < 0 or idx >= len(self.current_pc.get('arts', [])): return
         pages = self.current_pc['arts'][idx].get('pages', [])
         if page_idx < len(pages):
             pages[page_idx] = rel_path
@@ -1044,7 +1139,7 @@ class EditorWidget(QWidget):
             self.dataChanged.emit()
 
     def delete_art_page(self, idx, page_idx):
-        if not self.current_pc: return
+        if not self.current_pc or idx < 0 or idx >= len(self.current_pc.get('arts', [])): return
         art = self.current_pc['arts'][idx]
         pages = art.get('pages', [])
         if page_idx < len(pages):
@@ -1079,16 +1174,34 @@ class EditorWidget(QWidget):
         self.dataChanged.emit()
 
     def delete_art(self, idx):
-        if not self.current_pc: return
+        if not self.current_pc or idx < 0 or idx >= len(self.current_pc.get('arts', [])): return
         
         rel_path = self.current_pc['arts'][idx].get('url', '')
         if rel_path:
              ret = QMessageBox.question(self, "確認", "画像をゴミ箱に移動しますか？", QMessageBox.Yes | QMessageBox.No)
-             if ret == QMessageBox.Yes:
-                 ImageManager.move_to_trash(rel_path)
+             if ret != QMessageBox.Yes:
+                 return
+             ImageManager.move_to_trash(rel_path)
+
+        scroll_area = self.get_scroll_area()
+        bottom_offset = 0
+        if scroll_area:
+            scroll_bar = scroll_area.verticalScrollBar()
+            bottom_offset = scroll_bar.maximum() - scroll_bar.value()
+            scroll_area.viewport().setUpdatesEnabled(False)
 
         del self.current_pc['arts'][idx]
-        self.refresh_arts_list()
+        item = self.layout_arts.takeAt(idx)
+        if item and item.widget():
+            widget = item.widget()
+            widget.hide()
+            widget.setParent(None)
+            widget.deleteLater()
+        self.update_art_order_buttons()
+        self.layout_arts.activate()
+        self.updateGeometry()
+        if scroll_area:
+            QTimer.singleShot(0, lambda: self.finish_art_delete(scroll_area, bottom_offset))
         self.dataChanged.emit()
 
 
@@ -1396,6 +1509,7 @@ class MainWindow(QMainWindow):
             },
             "passed_scenarios": [],
             "arts": [],
+            "is_hidden": False,
             "created_at": datetime.date.today().isoformat()
         }
         self.pcs.insert(0, new_pc)

@@ -1,6 +1,44 @@
 [
     {
-        "id": "079",
+        "id": "082",
+        "name": "はぴころヘングレ",
+        "ruby": "",
+        "image_icon": "",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "is_hidden": false,
+        "created_at": "2026-06-05",
+        "is_lost": false
+    },
+    {
+        "id": "081",
+        "name": "VicxPC",
+        "ruby": "",
+        "image_icon": "",
+        "image_main": "",
+        "images_diff": [],
+        "profile": {
+            "gender": "未定",
+            "age": "",
+            "height": "",
+            "job": ""
+        },
+        "passed_scenarios": [],
+        "arts": [],
+        "is_hidden": false,
+        "created_at": "2026-06-05",
+        "is_lost": false
+    },
+    {
+        "id": "080",
         "name": "静テロ童子",
         "ruby": "",
         "image_icon": "",
@@ -22,6 +60,32 @@
         ],
         "arts": [],
         "created_at": "2026-04-27",
+        "is_lost": false
+    },
+    {
+        "id": "079",
+        "name": "甕速 優志",
+        "ruby": "みかはや ゆうじ",
+        "image_icon": "data/assets/pcs/079/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/079/main/立ち絵01.png",
+        "images_diff": [],
+        "profile": {
+            "gender": "男性",
+            "age": "27歳",
+            "height": "172cm",
+            "job": "-"
+        },
+        "passed_scenarios": [
+            {
+                "title": "-",
+                "ho": "",
+                "end": "END a",
+                "is_if": false
+            }
+        ],
+        "arts": [],
+        "is_hidden": true,
+        "created_at": "2026-06-05",
         "is_lost": false
     },
     {
@@ -276,6 +340,11 @@
             {
                 "url": "data/assets/pcs/070/arts/3626413-1.png",
                 "artist": "🧸🍯",
+                "spoiler": false
+            },
+            {
+                "url": "data/assets/pcs/070/arts/3599587-1.縮小_20260605152645.png",
+                "artist": "なす",
                 "spoiler": false
             }
         ],
