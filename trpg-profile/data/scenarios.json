@@ -830,10 +830,6 @@
           {
             "title": "スーサイド・ラプソディ　1陣",
             "role": "KP"
-          },
-          {
-            "title": "AE　11陣",
-            "role": "KP"
           }
         ]
       },
@@ -841,12 +837,12 @@
         "label": "6月",
         "items": [
           {
-            "title": "AE　11陣",
-            "role": "KP"
-          },
-          {
             "title": "What's under the dough？",
             "role": "HO2 美味しいパン屋の店主さん"
+          },
+          {
+            "title": "私悪　3陣",
+            "role": "KP"
           },
           {
             "title": "その真紅に愛を見る　3陣",
