@@ -537,6 +537,12 @@
               "favorite_ho": false
             },
             {
+              "title": "Xからの告白",
+              "ho": "HO3 検事",
+              "favorite": true,
+              "favorite_ho": false
+            },
+            {
               "title": "悪魔の唇",
               "ho": "HO1 暴力団組員",
               "favorite": false
@@ -810,15 +816,11 @@
     }
   ],
   "planned_schedule": {
-    "note": "新規：×　直近で行ける短いシナリオ以外受け付けてません\n継続：要相談",
+    "note": "新規：×\n継続：要相談",
     "months": [
       {
         "label": "現行",
         "items": [
-          {
-            "title": "Xからの告白",
-            "role": "HO3 検事"
-          },
           {
             "title": "催眠ダーリンLv1　2陣",
             "role": "KP"
@@ -948,12 +950,67 @@
   },
   "wishlist": [
     {
-      "title": "Paranormal Crime",
+      "title": "202",
       "note": "",
       "favorite": false
     },
     {
       "title": "Ⅶ・peccata",
+      "note": "色欲 or 強欲？",
+      "favorite": false
+    },
+    {
+      "title": "Emergency10/31",
+      "note": "",
+      "favorite": false
+    },
+    {
+      "title": "INSIDECITY",
+      "note": "",
+      "favorite": false
+    },
+    {
+      "title": "Mr.Mのこどもたち",
+      "note": "",
+      "favorite": true
+    },
+    {
+      "title": "Paranormal Crime",
+      "note": "HO6？",
+      "favorite": false
+    },
+    {
+      "title": "UNISON HOTEL",
+      "note": "",
+      "favorite": true
+    },
+    {
+      "title": "金糸雀の欠伸",
+      "note": "",
+      "favorite": false
+    },
+    {
+      "title": "町葬屋怪異譚",
+      "note": "HO4",
+      "favorite": true
+    },
+    {
+      "title": "天使たちの黙示録",
+      "note": "",
+      "favorite": false
+    },
+    {
+      "title": "瞑瞑館殺人事件",
+      "note": "",
+      "favorite": true
+    },
+    {
+      "title": "もみの木に祈らないで",
+      "note": "",
+      "favorite": false
+    },
+    {
+      "title": "煉獄すらも生ぬるい",
       "note": "",
       "favorite": false
     }
@@ -1494,7 +1551,7 @@
           "items": [
             {
               "title": "AE",
-              "count": "7"
+              "count": "8"
             },
             {
               "title": "Naming the Blood",
