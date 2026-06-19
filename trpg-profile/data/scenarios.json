@@ -832,26 +832,18 @@
             "role": "KP"
           },
           {
-            "title": "私悪　3陣",
+            "title": "スーサイド・ラプソディ　1陣",
             "role": "KP"
           },
           {
-            "title": "スーサイド・ラプソディ　1陣",
-            "role": "KP"
+            "title": "What's under the dough？",
+            "role": "HO2 美味しいパン屋の店主さん"
           }
         ]
       },
       {
         "label": "6月",
         "items": [
-          {
-            "title": "What's under the dough？",
-            "role": "HO2 美味しいパン屋の店主さん"
-          },
-          {
-            "title": "私悪　3陣",
-            "role": "KP"
-          },
           {
             "title": "その真紅に愛を見る　3陣",
             "role": "KP"
@@ -880,6 +872,10 @@
           {
             "title": "AE　12陣",
             "role": "KP"
+          },
+          {
+            "title": "1Dayキューピッド",
+            "role": "HO2 被害者"
           },
           {
             "title": "静なるテロリスタ",
@@ -970,7 +966,7 @@
     },
     {
       "title": "Ⅶ・peccata",
-      "note": "色欲 or 強欲？",
+      "note": "色欲 or 強欲推薦",
       "favorite": false
     },
     {
@@ -989,8 +985,13 @@
       "favorite": true
     },
     {
+      "title": "Mr.Xの滑稽なる数式",
+      "note": "",
+      "favorite": true
+    },
+    {
       "title": "Paranormal Crime",
-      "note": "HO6？",
+      "note": "HO6推薦",
       "favorite": false
     },
     {
@@ -1000,18 +1001,28 @@
     },
     {
       "title": "金糸雀の欠伸",
-      "note": "",
+      "note": "HO2 or HO3 or HO5推薦",
       "favorite": false
     },
     {
+      "title": "奇天烈探偵倶楽部",
+      "note": "",
+      "favorite": true
+    },
+    {
       "title": "町葬屋怪異譚",
-      "note": "HO4",
+      "note": "HO4希望",
       "favorite": true
     },
     {
       "title": "天使たちの黙示録",
-      "note": "",
+      "note": "HO3希望",
       "favorite": false
+    },
+    {
+      "title": "テンスメイド",
+      "note": "",
+      "favorite": true
     },
     {
       "title": "瞑瞑館殺人事件",
@@ -1020,7 +1031,7 @@
     },
     {
       "title": "もみの木に祈らないで",
-      "note": "",
+      "note": "HO3希望",
       "favorite": false
     },
     {
@@ -1416,7 +1427,7 @@
             },
             {
               "title": "私悪",
-              "count": "2",
+              "count": "3",
               "favorite": false
             }
           ]

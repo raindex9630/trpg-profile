@@ -95,6 +95,18 @@
                 "ho": "",
                 "end": "END a",
                 "is_if": false
+            },
+            {
+                "title": "スーサイド・ラプソディ",
+                "ho": "KPC",
+                "end": "予定",
+                "is_if": false
+            },
+            {
+                "title": "1Dayキューピッド",
+                "ho": "HO2 被害者",
+                "end": "予定",
+                "is_if": false
             }
         ],
         "arts": [],
@@ -104,22 +116,22 @@
     },
     {
         "id": "078",
-        "name": "何パンHO2",
-        "ruby": "",
+        "name": "Iris Fournier",
+        "ruby": "アイリス・フルニエ",
         "image_icon": "",
         "image_main": "",
         "images_diff": [],
         "profile": {
-            "gender": "未定",
-            "age": "",
-            "height": "",
-            "job": ""
+            "gender": "男性",
+            "age": "25歳",
+            "height": "167cm",
+            "job": "パン屋"
         },
         "passed_scenarios": [
             {
                 "title": "What’s under the dough?",
                 "ho": "HO2 美味しいパン屋の店主さん",
-                "end": "予定",
+                "end": "現行",
                 "is_if": false
             }
         ],
