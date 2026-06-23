@@ -310,7 +310,7 @@
               "favorite_ho": false
             },
             {
-              "title": "盲信未遂",
+              "title": "盲心未遂",
               "ho": "",
               "favorite": false,
               "favorite_ho": false
@@ -838,6 +838,10 @@
           {
             "title": "What's under the dough？",
             "role": "HO2 美味しいパン屋の店主さん"
+          },
+          {
+            "title": "スーサイド・ラプソディ　2陣",
+            "role": "KP"
           }
         ]
       },
@@ -846,10 +850,6 @@
         "items": [
           {
             "title": "その真紅に愛を見る　3陣",
-            "role": "KP"
-          },
-          {
-            "title": "スーサイド・ラプソディ　2陣",
             "role": "KP"
           },
           {
