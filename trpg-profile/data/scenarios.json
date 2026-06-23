@@ -386,6 +386,12 @@
               "favorite": false
             },
             {
+              "title": "What's under the dough？",
+              "ho": "HO2 美味しいパン屋の店主さん",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "愛罠蜂",
               "ho": "HO1 オーナー",
               "favorite": false
@@ -836,10 +842,6 @@
             "role": "KP"
           },
           {
-            "title": "What's under the dough？",
-            "role": "HO2 美味しいパン屋の店主さん"
-          },
-          {
             "title": "スーサイド・ラプソディ　2陣",
             "role": "KP"
           }
@@ -971,6 +973,11 @@
     },
     {
       "title": "Emergency10/31",
+      "note": "",
+      "favorite": false
+    },
+    {
+      "title": "FRaTRlCiDE（及びメルカレシリーズ）",
       "note": "",
       "favorite": false
     },
