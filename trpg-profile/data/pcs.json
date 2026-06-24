@@ -99,7 +99,7 @@
             {
                 "title": "スーサイド・ラプソディ",
                 "ho": "KPC",
-                "end": "予定",
+                "end": "END 1-A",
                 "is_if": false
             },
             {
@@ -131,7 +131,7 @@
             {
                 "title": "What’s under the dough?",
                 "ho": "HO2 美味しいパン屋の店主さん",
-                "end": "現行",
+                "end": "END A.F",
                 "is_if": false
             }
         ],
@@ -327,7 +327,13 @@
                 "is_if": false
             }
         ],
-        "arts": [],
+        "arts": [
+            {
+                "url": "data/assets/pcs/071/arts/3762657-2.png",
+                "artist": "東堂前夜",
+                "spoiler": false
+            }
+        ],
         "created_at": "2026-02-08"
     },
     {
@@ -909,7 +915,7 @@
                 "is_if": false
             },
             {
-                "title": "盲信未遂",
+                "title": "盲心未遂",
                 "ho": "",
                 "end": "END",
                 "is_if": false
