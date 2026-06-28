@@ -531,7 +531,13 @@
                 "is_if": false
             }
         ],
-        "arts": [],
+        "arts": [
+            {
+                "url": "data/assets/pcs/065/arts/3648130-2_縮小.png",
+                "artist": "梶木",
+                "spoiler": false
+            }
+        ],
         "created_at": "2026-02-08"
     },
     {
