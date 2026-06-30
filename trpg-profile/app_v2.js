@@ -91,6 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return canvas.toDataURL();
     }
 
+    function galleryThumbnailUrl(imageUrl) {
+        const slashIndex = imageUrl.lastIndexOf('/');
+        const dotIndex = imageUrl.lastIndexOf('.');
+        if (slashIndex === -1 || dotIndex <= slashIndex) return imageUrl;
+        const dir = imageUrl.slice(0, slashIndex);
+        const base = imageUrl.slice(slashIndex + 1, dotIndex);
+        return `${dir}/thumbs/${base}.webp`;
+    }
+
     // Initialize
     init();
 
@@ -731,9 +740,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="artist-name">By ${art.artist} \u69d8</div>
                     </div>`;
                 } else {
+                    const thumbUrl = galleryThumbnailUrl(art.url);
                     return `
                     <div class="gallery-item" onclick="openModal('${art.url}', '${captionText}', ${pagesJsonAttr})">
-                        <img src="${art.url}" class="gallery-thumb" alt="${captionText}" loading="lazy">
+                        <img src="${thumbUrl}" class="gallery-thumb" alt="${captionText}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='${art.url}';">
                         ${pageCount > 1 ? `<span class="gallery-page-badge">\ud83d\uddbc ${pageCount}\u679a</span>` : ''}
                         <div class="artist-name">By ${art.artist} \u69d8</div>
                     </div>`;

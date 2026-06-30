@@ -865,10 +865,12 @@ ul.favorite-scenarios-list,
 }
 
 .gallery-thumb {
+    display: block;
     width: 100%;
     height: 120px;
     object-fit: cover;
     border-radius: 4px;
+    image-rendering: auto;
     transition: transform 0.2s;
 }
 
