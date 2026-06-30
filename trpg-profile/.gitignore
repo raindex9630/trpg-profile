@@ -6,9 +6,11 @@ tools/
 scenario_manager/
 requirements.txt
 start_server.bat
+open_local_site.bat
 app.js
 **/__pycache__/
 *.py[cod]
+.thumb-test-*/
 
 # Local project notes for cross-chat work
 AGENTS.md
