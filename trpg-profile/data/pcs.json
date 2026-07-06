@@ -53,14 +53,14 @@
     },
     {
         "id": "080",
-        "name": "静テロ童子",
-        "ruby": "",
+        "name": "時光 水月",
+        "ruby": "ときみつ みづき",
         "image_icon": "",
         "image_main": "",
         "images_diff": [],
         "profile": {
-            "gender": "未定",
-            "age": "",
+            "gender": "男性",
+            "age": "10歳",
             "height": "",
             "job": ""
         },
