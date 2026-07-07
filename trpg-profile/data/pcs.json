@@ -118,8 +118,8 @@
         "id": "078",
         "name": "Iris Fournier",
         "ruby": "アイリス・フルニエ",
-        "image_icon": "",
-        "image_main": "",
+        "image_icon": "data/assets/pcs/078/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/078/main/立ち絵01.png",
         "images_diff": [],
         "profile": {
             "gender": "男性",
