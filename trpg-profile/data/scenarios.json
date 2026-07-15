@@ -840,16 +840,16 @@
           {
             "title": "AE　8陣",
             "role": "KP"
+          },
+          {
+            "title": "AE　12陣",
+            "role": "KP"
           }
         ]
       },
       {
         "label": "7月",
         "items": [
-          {
-            "title": "AE　12陣",
-            "role": "KP"
-          },
           {
             "title": "1Dayキューピッド",
             "role": "HO2 被害者"
@@ -863,6 +863,10 @@
       {
         "label": "8月",
         "items": [
+          {
+            "title": "Nu11:Reca11",
+            "role": "PL"
+          },
           {
             "title": "静なるテロリスタ",
             "role": "HO童子"
@@ -939,6 +943,10 @@
           {
             "title": "ハッピーエンドは君が殺した",
             "role": "HOヘンゼルとグレーテル"
+          },
+          {
+            "title": "MAGGY 889　3陣",
+            "role": "KP"
           }
         ]
       },
