@@ -536,6 +536,11 @@
                 "url": "data/assets/pcs/065/arts/3648130-2_縮小.png",
                 "artist": "梶木",
                 "spoiler": false
+            },
+            {
+                "url": "data/assets/pcs/065/arts/3897147-1.png",
+                "artist": "あ",
+                "spoiler": false
             }
         ],
         "created_at": "2026-02-08"
@@ -939,6 +944,11 @@
             {
                 "url": "data/assets/pcs/051/arts/2939751-1_縮小.png",
                 "artist": "null*"
+            },
+            {
+                "url": "data/assets/pcs/051/arts/3695052-1.png",
+                "artist": "🧸🍯",
+                "spoiler": false
             }
         ],
         "created_at": "2026-02-08"
