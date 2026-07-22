@@ -838,10 +838,6 @@
             "role": "KP"
           },
           {
-            "title": "AE　8陣",
-            "role": "KP"
-          },
-          {
             "title": "AE　12陣",
             "role": "KP"
           }
@@ -1588,7 +1584,7 @@
           "items": [
             {
               "title": "AE",
-              "count": "8"
+              "count": "9"
             },
             {
               "title": "Naming the Blood",
