@@ -537,6 +537,12 @@
           "label": "3PL",
           "items": [
             {
+              "title": "1Dayキューピッド",
+              "ho": "HO2 被害者",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "ONE ONE ONE",
               "ho": "HO B",
               "favorite": false,
@@ -847,10 +853,6 @@
         "label": "7月",
         "items": [
           {
-            "title": "1Dayキューピッド",
-            "role": "HO2 被害者"
-          },
-          {
             "title": "静なるテロリスタ",
             "role": "HO童子"
           }
@@ -859,6 +861,10 @@
       {
         "label": "8月",
         "items": [
+          {
+            "title": "雷鳴に死す　2陣",
+            "role": "KP"
+          },
           {
             "title": "Nu11:Reca11",
             "role": "PL"
