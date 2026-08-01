@@ -844,15 +844,6 @@
             "role": "KP"
           },
           {
-            "title": "AE　12陣",
-            "role": "KP"
-          }
-        ]
-      },
-      {
-        "label": "7月",
-        "items": [
-          {
             "title": "静なるテロリスタ",
             "role": "HO童子"
           }
@@ -958,6 +949,15 @@
           {
             "title": "夜明けのヴィジェル　1陣",
             "role": "KP"
+          }
+        ]
+      },
+      {
+        "label": "4月",
+        "items": [
+          {
+            "title": "奇天烈探偵倶楽部",
+            "role": "HO3 女中"
           }
         ]
       }
@@ -1590,7 +1590,7 @@
           "items": [
             {
               "title": "AE",
-              "count": "9"
+              "count": "10"
             },
             {
               "title": "Naming the Blood",
