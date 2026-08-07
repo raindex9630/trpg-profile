@@ -846,23 +846,14 @@
           {
             "title": "静なるテロリスタ",
             "role": "HO童子"
-          }
-        ]
-      },
-      {
-        "label": "8月",
-        "items": [
-          {
-            "title": "雷鳴に死す　2陣",
-            "role": "KP"
           },
           {
             "title": "Nu11:Reca11",
             "role": "PL"
           },
           {
-            "title": "静なるテロリスタ",
-            "role": "HO童子"
+            "title": "wash over",
+            "role": "PL"
           }
         ]
       },
@@ -1580,6 +1571,10 @@
               "count": "2"
             },
             {
+              "title": "雷鳴に死す",
+              "count": "2"
+            },
+            {
               "title": "ワンちゃんはここにいる。",
               "count": "3"
             }
@@ -1673,6 +1668,10 @@
               "count": "1"
             }
           ]
+        },
+        {
+          "label": "未分類",
+          "items": []
         }
       ]
     },

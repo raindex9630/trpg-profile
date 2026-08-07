@@ -68,7 +68,7 @@
             {
                 "title": "静なるテロリスタ",
                 "ho": "HO童子",
-                "end": "予定",
+                "end": "現行",
                 "is_if": false
             }
         ],
@@ -106,6 +106,12 @@
                 "title": "1Dayキューピッド",
                 "ho": "HO2 被害者",
                 "end": "END C",
+                "is_if": false
+            },
+            {
+                "title": "雷鳴に死す",
+                "ho": "KPC",
+                "end": "END 1",
                 "is_if": false
             }
         ],
@@ -216,16 +222,16 @@
     },
     {
         "id": "074",
-        "name": "のばHO2",
-        "ruby": "",
+        "name": "空 風牙",
+        "ruby": "きのした ふうが",
         "image_icon": "",
         "image_main": "",
         "images_diff": [],
         "profile": {
             "gender": "男性",
-            "age": "",
-            "height": "",
-            "job": ""
+            "age": "24歳",
+            "height": "178cm",
+            "job": "-"
         },
         "passed_scenarios": [
             {
