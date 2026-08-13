@@ -164,6 +164,12 @@
               "favorite_ho": false
             },
             {
+              "title": "wash over",
+              "ho": "",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "新シキ世界／アウター・プロトコル",
               "ho": "",
               "favorite": false
@@ -736,6 +742,12 @@
               "favorite": false
             },
             {
+              "title": "Nu11:Reca11",
+              "ho": "",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "阿修羅面",
               "ho": "",
               "favorite": false
@@ -846,14 +858,6 @@
           {
             "title": "静なるテロリスタ",
             "role": "HO童子"
-          },
-          {
-            "title": "Nu11:Reca11",
-            "role": "PL"
-          },
-          {
-            "title": "wash over",
-            "role": "PL"
           }
         ]
       },
@@ -1004,16 +1008,6 @@
       "title": "金糸雀の欠伸",
       "note": "HO2 or HO3 or HO5推薦",
       "favorite": false
-    },
-    {
-      "title": "奇天烈探偵倶楽部",
-      "note": "",
-      "favorite": true
-    },
-    {
-      "title": "町葬屋怪異譚",
-      "note": "HO4希望",
-      "favorite": true
     },
     {
       "title": "天使たちの黙示録",
