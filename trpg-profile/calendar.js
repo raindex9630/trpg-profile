@@ -273,20 +273,20 @@ if (typeof module !== "undefined" && module.exports) {
         if (event.allDay || !event.startTime) return "終日";
         if (!event.endTime) return event.startTime;
         const nextDayPrefix = event.endNextDay && !usesExtendedEndHour(event.endTime) ? "翌" : "";
-        return `${event.startTime}–${nextDayPrefix}${event.endTime}`;
+        return `${event.startTime}-${nextDayPrefix}${event.endTime}`;
     }
 
     function createEventCard(event) {
         const card = template.content.firstElementChild.cloneNode(true);
         card.classList.add(TAG_CLASS[event.tag]);
 
-        const time = card.querySelector(".event-time");
-        time.textContent = formatTime(event);
-        time.dateTime = event.allDay ? event.date : `${event.date}T${event.startTime}:00`;
-
+        const formattedTime = formatTime(event);
         card.querySelector(".event-title").textContent = event.title;
+        const time = card.querySelector(".event-time");
+        time.textContent = formattedTime;
+        time.dateTime = event.allDay ? event.date : `${event.date}T${event.startTime}:00`;
         card.querySelector(".event-details").textContent = event.details;
-        card.setAttribute("aria-label", `${event.tag} ${formatTime(event)} ${event.title}`);
+        card.setAttribute("aria-label", `${event.tag} ${event.title} ${formattedTime}`);
         return card;
     }
 

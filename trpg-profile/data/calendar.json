@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-08-31 18:07",
+  "updated_at": "2026-08-31 19:35",
   "monthly_notes": {},
   "events": [
     {
@@ -11,15 +11,105 @@
       "title": "NOBODY*2",
       "tag": "PL",
       "dates": [
-        "2026-09-01",
-        "2026-09-02",
-        "2026-09-08",
-        "2026-09-09",
-        "2026-09-13",
-        "2026-09-15",
-        "2026-09-16",
-        "2026-09-29",
-        "2026-09-30"
+        "2026-09-01"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "details": ""
+    },
+    {
+      "id": "c12a1a071590",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-02"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "details": ""
+    },
+    {
+      "id": "c9420ac87433",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-08"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "details": ""
+    },
+    {
+      "id": "a5d0aa46190a",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-09"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "details": ""
+    },
+    {
+      "id": "e2c9d40aa184",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-13"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "details": ""
+    },
+    {
+      "id": "7212423c24f8",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-15"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "details": ""
+    },
+    {
+      "id": "857aa582cbd1",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-16"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "details": ""
+    },
+    {
+      "id": "5c7160ab4711",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-29"
       ],
       "all_day": false,
       "start_time": "21:30",
@@ -38,6 +128,20 @@
       "all_day": false,
       "start_time": "13:00",
       "end_time": "24:30",
+      "end_next_day": true,
+      "details": ""
+    },
+    {
+      "id": "fdc401d0207c",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-30"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
       "end_next_day": true,
       "details": ""
     }
