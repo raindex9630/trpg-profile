@@ -151,6 +151,7 @@ if (typeof module !== "undefined" && module.exports) {
     if (typeof document === "undefined") return;
 
     const DATA_URL = `data/calendar.json?v=${Date.now()}`;
+    const BACKUP_DATE_SUFFIX = "￤予備日";
     const TAG_CLASS = {
         "GM": "tag-gm",
         "PL": "tag-pl",
@@ -183,6 +184,16 @@ if (typeof module !== "undefined" && module.exports) {
     let wheelDelta = 0;
     let wheelCooldown = false;
     let wheelResetTimer = null;
+
+    function currentMonthStart() {
+        const today = new Date();
+        return new Date(today.getFullYear(), today.getMonth(), 1);
+    }
+
+    function clampToCurrentOrFutureMonth(monthDate) {
+        const minimumMonth = currentMonthStart();
+        return monthDate < minimumMonth ? minimumMonth : monthDate;
+    }
 
     function parseDate(dateText) {
         if (!/^\d{4}-\d{2}-\d{2}$/.test(dateText || "")) return null;
@@ -258,7 +269,8 @@ if (typeof module !== "undefined" && module.exports) {
                 allDay,
                 startTime,
                 endTime,
-                endNextDay: Boolean(event.end_next_day) || usesExtendedEndHour(endTime)
+                endNextDay: Boolean(event.end_next_day) || usesExtendedEndHour(endTime),
+                isBackupDate: Boolean(event.is_backup_date)
             }));
         }).sort((a, b) => {
             const dateOrder = a.date.localeCompare(b.date);
@@ -276,17 +288,25 @@ if (typeof module !== "undefined" && module.exports) {
         return `${event.startTime}-${nextDayPrefix}${event.endTime}`;
     }
 
+    function formatEventTitle(event) {
+        if (!event.isBackupDate || event.title.endsWith(BACKUP_DATE_SUFFIX)) {
+            return event.title;
+        }
+        return `${event.title}${BACKUP_DATE_SUFFIX}`;
+    }
+
     function createEventCard(event) {
         const card = template.content.firstElementChild.cloneNode(true);
         card.classList.add(TAG_CLASS[event.tag]);
 
         const formattedTime = formatTime(event);
-        card.querySelector(".event-title").textContent = event.title;
+        const formattedTitle = formatEventTitle(event);
+        card.querySelector(".event-title").textContent = formattedTitle;
         const time = card.querySelector(".event-time");
         time.textContent = formattedTime;
         time.dateTime = event.allDay ? event.date : `${event.date}T${event.startTime}:00`;
         card.querySelector(".event-details").textContent = event.details;
-        card.setAttribute("aria-label", `${event.tag} ${event.title} ${formattedTime}`);
+        card.setAttribute("aria-label", `${event.tag} ${formattedTitle} ${formattedTime}`);
         return card;
     }
 
@@ -373,7 +393,7 @@ if (typeof module !== "undefined" && module.exports) {
 
     function chooseInitialMonth() {
         const hashMonth = parseMonthKey(window.location.hash.replace(/^#/, ""));
-        if (hashMonth) return hashMonth;
+        if (hashMonth) return clampToCurrentOrFutureMonth(hashMonth);
 
         const today = new Date();
         const currentMonthKey = toMonthKey(today);
@@ -389,6 +409,9 @@ if (typeof module !== "undefined" && module.exports) {
     }
 
     function renderVisibleMonth(updateHash) {
+        const requestedMonthKey = toMonthKey(visibleMonth);
+        visibleMonth = clampToCurrentOrFutureMonth(visibleMonth);
+        if (requestedMonthKey !== toMonthKey(visibleMonth)) updateHash = true;
         const year = visibleMonth.getFullYear();
         const month = visibleMonth.getMonth() + 1;
         const monthKey = toMonthKey(visibleMonth);
@@ -403,6 +426,9 @@ if (typeof module !== "undefined" && module.exports) {
         monthlyNote.hidden = false;
         status.hidden = true;
         root.hidden = false;
+        const minimumMonthKey = toMonthKey(currentMonthStart());
+        previousButton.disabled = monthKey === minimumMonthKey;
+        jumpInput.min = minimumMonthKey;
 
         if (updateHash) {
             window.history.replaceState(null, "", `#${monthKey}`);
@@ -410,14 +436,28 @@ if (typeof module !== "undefined" && module.exports) {
     }
 
     function moveMonth(offset) {
-        visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + offset, 1);
+        visibleMonth = clampToCurrentOrFutureMonth(
+            new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + offset, 1)
+        );
         renderVisibleMonth(true);
+    }
+
+    function enforceCurrentMonthFloor() {
+        const clampedMonth = clampToCurrentOrFutureMonth(visibleMonth);
+        if (toMonthKey(clampedMonth) !== toMonthKey(visibleMonth)) {
+            visibleMonth = clampedMonth;
+            renderVisibleMonth(true);
+            return;
+        }
+        const minimumMonthKey = toMonthKey(currentMonthStart());
+        previousButton.disabled = toMonthKey(visibleMonth) === minimumMonthKey;
+        jumpInput.min = minimumMonthKey;
     }
 
     function jumpToMonth(monthKey) {
         const targetMonth = parseMonthKey(monthKey);
         if (!targetMonth) return false;
-        visibleMonth = targetMonth;
+        visibleMonth = clampToCurrentOrFutureMonth(targetMonth);
         renderVisibleMonth(true);
         return true;
     }
@@ -433,7 +473,10 @@ if (typeof module !== "undefined" && module.exports) {
 
         document.title = String(data.calendar_name || "卓予定カレンダー");
         updated.textContent = data.updated_at ? `最終更新: ${data.updated_at}` : "";
-        const hasValidHash = Boolean(parseMonthKey(window.location.hash.replace(/^#/, "")));
+        const hashMonth = parseMonthKey(window.location.hash.replace(/^#/, ""));
+        const hasValidHash = Boolean(
+            hashMonth && toMonthKey(hashMonth) === toMonthKey(clampToCurrentOrFutureMonth(hashMonth))
+        );
         visibleMonth = chooseInitialMonth();
         renderVisibleMonth(!hasValidHash);
     }
@@ -522,11 +565,17 @@ if (typeof module !== "undefined" && module.exports) {
 
     window.addEventListener("hashchange", () => {
         const hashMonth = parseMonthKey(window.location.hash.replace(/^#/, ""));
-        if (hashMonth && toMonthKey(hashMonth) !== toMonthKey(visibleMonth)) {
-            visibleMonth = hashMonth;
-            renderVisibleMonth(false);
+        if (hashMonth) {
+            const targetMonth = clampToCurrentOrFutureMonth(hashMonth);
+            const hashWasClamped = toMonthKey(targetMonth) !== toMonthKey(hashMonth);
+            if (toMonthKey(targetMonth) !== toMonthKey(visibleMonth) || hashWasClamped) {
+                visibleMonth = targetMonth;
+                renderVisibleMonth(hashWasClamped);
+            }
         }
     });
+
+    window.setInterval(enforceCurrentMonthFloor, 60_000);
 
     fetch(DATA_URL, { cache: "no-store" })
         .then((response) => {

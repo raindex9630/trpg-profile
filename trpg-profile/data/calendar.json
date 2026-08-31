@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-08-31 23:32",
+  "updated_at": "2026-09-01 00:31",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×"
@@ -19,7 +19,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "c12a1a071590",
@@ -32,7 +33,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "c9420ac87433",
@@ -45,7 +47,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "a5d0aa46190a",
@@ -58,7 +61,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "e2c9d40aa184",
@@ -71,7 +75,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "7212423c24f8",
@@ -84,7 +89,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "857aa582cbd1",
@@ -97,7 +103,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "5c7160ab4711",
@@ -110,7 +117,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "20c29697e27d",
@@ -123,7 +131,8 @@
       "all_day": false,
       "start_time": "13:00",
       "end_time": "24:30",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "fdc401d0207c",
@@ -136,7 +145,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "d3ce5a3d6a7c",
@@ -149,7 +159,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "6f9442d8b300",
@@ -162,7 +173,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "61537ed4c228",
@@ -175,7 +187,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "904552f9361f",
@@ -188,7 +201,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "6048bcb53299",
@@ -201,7 +215,8 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "fae54ede5043",
@@ -214,72 +229,134 @@
       "all_day": false,
       "start_time": "13:00",
       "end_time": "24:30",
-      "end_next_day": true
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "af69688bdf49",
       "session_id": "76571bd30c5d",
       "title": "MAGGY 889￤1陣",
-      "tag": "PL",
+      "tag": "GM",
       "dates": [
         "2026-09-04"
       ],
       "all_day": false,
       "start_time": "21:00",
-      "end_time": "00:00",
-      "end_next_day": true
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "31f69e956de9",
       "session_id": "76571bd30c5d",
       "title": "MAGGY 889￤1陣",
-      "tag": "PL",
+      "tag": "GM",
       "dates": [
         "2026-09-07"
       ],
       "all_day": false,
       "start_time": "21:00",
-      "end_time": "00:00",
-      "end_next_day": true
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "adb523c29712",
       "session_id": "76571bd30c5d",
       "title": "MAGGY 889￤1陣",
-      "tag": "PL",
+      "tag": "GM",
       "dates": [
         "2026-09-11"
       ],
       "all_day": false,
       "start_time": "21:00",
-      "end_time": "00:00",
-      "end_next_day": true
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "429d6553aeac",
       "session_id": "76571bd30c5d",
       "title": "MAGGY 889￤1陣",
-      "tag": "PL",
+      "tag": "GM",
       "dates": [
         "2026-09-14"
       ],
       "all_day": false,
       "start_time": "21:00",
-      "end_time": "00:00",
-      "end_next_day": true
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "361ca0e2768d",
       "session_id": "76571bd30c5d",
       "title": "MAGGY 889￤1陣",
-      "tag": "PL",
+      "tag": "GM",
       "dates": [
         "2026-09-25"
       ],
       "all_day": false,
       "start_time": "21:00",
-      "end_time": "00:00",
-      "end_next_day": true
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "66226d3363d6",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-03"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "00e30d292cdc",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-10"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "46a9cc5c0583",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-28"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "40ece9edb8bd",
+      "session_id": "833ae38f4f95",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2026-09-18"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
