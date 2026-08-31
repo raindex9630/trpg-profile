@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="共有用の卓予定カレンダー">
+    <meta name="theme-color" content="#f8fafc">
+    <title>卓予定カレンダー</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="calendar.css?v=20260831e">
+</head>
+
+<body>
+    <main class="calendar-shell">
+        <div class="calendar-toolbar">
+            <button id="month-prev" class="month-button" type="button" aria-label="前の月を表示">‹</button>
+            <div class="month-heading" aria-live="polite">
+                <div class="month-heading-line">
+                    <h2 id="month-label">読み込み中</h2>
+                    <button id="month-today" class="today-button" type="button">今月を表示</button>
+                </div>
+                <p id="calendar-count">予定を読み込んでいます</p>
+                <p id="calendar-updated" class="calendar-updated"></p>
+                <div class="legend" aria-label="予定種別の色分け">
+                    <span class="legend-item tag-gm"><span class="legend-dot" aria-hidden="true"></span>GM</span>
+                    <span class="legend-item tag-pl"><span class="legend-dot" aria-hidden="true"></span>PL</span>
+                    <span class="legend-item tag-hold"><span class="legend-dot" aria-hidden="true"></span>仮押さえ</span>
+                    <span class="legend-item tag-blocked"><span class="legend-dot" aria-hidden="true"></span>×</span>
+                </div>
+            </div>
+            <button id="month-next" class="month-button" type="button" aria-label="次の月を表示">›</button>
+        </div>
+
+        <div id="calendar-status" class="calendar-status" role="status">Loading...</div>
+        <div id="calendar-root" class="calendar-viewport" aria-label="月間予定カレンダー" hidden></div>
+        <section id="monthly-note" class="monthly-note" aria-labelledby="monthly-note-title" hidden>
+            <h2 id="monthly-note-title"></h2>
+            <p id="monthly-note-text"></p>
+        </section>
+    </main>
+
+    <template id="event-template">
+        <article class="event-card">
+            <div class="event-heading">
+                <span class="event-tag"></span>
+                <time class="event-time"></time>
+            </div>
+            <p class="event-title"></p>
+            <p class="event-details"></p>
+        </article>
+    </template>
+
+    <script src="calendar.js?v=20260831c"></script>
+</body>
+
+</html>

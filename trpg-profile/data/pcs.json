@@ -55,8 +55,8 @@
         "id": "080",
         "name": "時光 水月",
         "ruby": "ときみつ みづき",
-        "image_icon": "",
-        "image_main": "",
+        "image_icon": "data/assets/pcs/080/icon/アイコン01-1.png",
+        "image_main": "data/assets/pcs/080/main/立ち絵02.png",
         "images_diff": [],
         "profile": {
             "gender": "男性",
@@ -112,6 +112,12 @@
                 "title": "雷鳴に死す",
                 "ho": "KPC",
                 "end": "END 1",
+                "is_if": false
+            },
+            {
+                "title": "wash over",
+                "ho": "",
+                "end": "END A",
                 "is_if": false
             }
         ],
@@ -678,6 +684,12 @@
                 "title": "蒼きシンクレティズム",
                 "ho": "KPC",
                 "end": "END",
+                "is_if": true
+            },
+            {
+                "title": "Nu11:Reca11",
+                "ho": "",
+                "end": "END 1",
                 "is_if": true
             }
         ],

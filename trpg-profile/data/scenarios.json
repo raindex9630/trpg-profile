@@ -965,6 +965,24 @@
             "role": "HO3 女中"
           }
         ]
+      },
+      {
+        "label": "7月",
+        "items": [
+          {
+            "title": "町葬屋怪異譚（仮）",
+            "role": "HO4 請負人"
+          }
+        ]
+      },
+      {
+        "label": "8月",
+        "items": [
+          {
+            "title": "町葬屋怪異譚（仮）",
+            "role": "HO4 請負人"
+          }
+        ]
       }
     ]
   },
@@ -986,7 +1004,7 @@
     },
     {
       "title": "FRaTRlCiDE（及びメルカレシリーズ）",
-      "note": "HO2推薦",
+      "note": "HO2orHO3推薦",
       "favorite": false
     },
     {

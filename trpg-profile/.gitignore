@@ -4,6 +4,7 @@
 # Local management tools and runtime files
 tools/
 scenario_manager/
+calendar_manager/
 requirements.txt
 start_server.bat
 open_local_site.bat
