@@ -398,7 +398,7 @@ if (typeof module !== "undefined" && module.exports) {
         const note = monthlyNotes[monthKey] || "";
         monthlyNoteTitle.textContent = `${year}年${month}月のメモ`;
         monthlyNoteText.textContent = note;
-        monthlyNote.hidden = !note;
+        monthlyNote.hidden = false;
         status.hidden = true;
         root.hidden = false;
 
