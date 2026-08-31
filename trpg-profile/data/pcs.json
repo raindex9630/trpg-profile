@@ -68,7 +68,7 @@
             {
                 "title": "静なるテロリスタ",
                 "ho": "HO童子",
-                "end": "現行",
+                "end": "True END",
                 "is_if": false
             }
         ],
@@ -118,6 +118,12 @@
                 "title": "wash over",
                 "ho": "",
                 "end": "END A",
+                "is_if": false
+            },
+            {
+                "title": "31FISHING",
+                "ho": "",
+                "end": "END B-1",
                 "is_if": false
             }
         ],

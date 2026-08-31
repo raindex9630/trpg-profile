@@ -415,7 +415,7 @@ if (typeof module !== "undefined" && module.exports) {
         });
 
         document.title = String(data.calendar_name || "卓予定カレンダー");
-        updated.textContent = data.updated_at ? `更新: ${data.updated_at}` : "";
+        updated.textContent = data.updated_at ? `最終更新: ${data.updated_at}` : "";
         const hasValidHash = Boolean(parseMonthKey(window.location.hash.replace(/^#/, "")));
         visibleMonth = chooseInitialMonth();
         renderVisibleMonth(!hasValidHash);

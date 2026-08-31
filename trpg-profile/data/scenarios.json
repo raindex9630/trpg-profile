@@ -17,6 +17,12 @@
               "favorite": false
             },
             {
+              "title": "31FISHING",
+              "ho": "",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "FISH FOR FISHING",
               "ho": "",
               "favorite": false,
@@ -677,6 +683,12 @@
               "favorite_ho": true
             },
             {
+              "title": "静なるテロリスタ",
+              "ho": "HO童子",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "その真紅に愛を見る",
               "ho": "HO人形役",
               "favorite": true,
@@ -860,14 +872,6 @@
           {
             "title": "催眠ダーリンLv1　2陣",
             "role": "KP"
-          },
-          {
-            "title": "静なるテロリスタ",
-            "role": "HO童子"
-          },
-          {
-            "title": "31FISHING",
-            "role": ""
           }
         ]
       },
