@@ -108,7 +108,8 @@ button {
 }
 
 .month-button,
-.today-button {
+.today-button,
+.jump-button {
     display: inline-grid;
     place-items: center;
     border: 1px solid var(--border-strong);
@@ -128,13 +129,17 @@ button {
 }
 
 .month-button:hover,
-.today-button:hover {
+.today-button:hover,
+.jump-button:hover {
     background: #fff;
     border-color: #98a4b2;
 }
 
 .month-button:focus-visible,
-.today-button:focus-visible {
+.today-button:focus-visible,
+.jump-button:focus-visible,
+.jump-dialog-close:focus-visible,
+.jump-month-field input:focus-visible {
     outline: 3px solid rgba(8, 121, 168, 0.24);
     outline-offset: 2px;
 }
@@ -155,14 +160,89 @@ button {
     margin: 0;
     font-size: clamp(1rem, 2vw, 1.25rem);
     line-height: 1.2;
+    white-space: nowrap;
 }
 
-.today-button {
+.today-button,
+.jump-button {
     min-height: 24px;
     padding: 2px 8px;
     border-radius: 999px;
     font-size: 0.66rem;
     font-weight: 600;
+}
+
+.jump-dialog {
+    width: min(310px, calc(100% - 32px));
+    padding: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: 14px;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 20px 60px rgba(31, 41, 55, 0.2);
+}
+
+.jump-dialog::backdrop {
+    background: rgba(39, 49, 61, 0.26);
+    backdrop-filter: blur(2px);
+}
+
+.jump-dialog-form {
+    display: grid;
+    gap: 14px;
+    padding: 18px;
+}
+
+.jump-dialog-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.jump-dialog-heading h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.jump-dialog-close {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface-muted);
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.jump-month-field {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.jump-month-field input {
+    min-width: 0;
+    min-height: 40px;
+    padding: 7px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+    font: inherit;
+}
+
+.jump-dialog-note {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.7rem;
 }
 
 .calendar-updated {
@@ -523,9 +603,10 @@ button {
         font-size: 0.84rem;
     }
 
-    .today-button {
+    .today-button,
+    .jump-button {
         min-height: 19px;
-        padding: 1px 6px;
+        padding: 1px 5px;
         font-size: 0.5rem;
     }
 

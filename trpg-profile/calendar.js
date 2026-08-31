@@ -160,12 +160,16 @@ if (typeof module !== "undefined" && module.exports) {
     const WEEKDAYS = ["月", "火", "水", "木", "金", "土", "日"];
 
     const root = document.getElementById("calendar-root");
+    const calendarShell = document.querySelector(".calendar-shell");
     const status = document.getElementById("calendar-status");
     const updated = document.getElementById("calendar-updated");
     const monthLabel = document.getElementById("month-label");
     const previousButton = document.getElementById("month-prev");
     const nextButton = document.getElementById("month-next");
     const todayButton = document.getElementById("month-today");
+    const jumpButton = document.getElementById("month-jump");
+    const jumpDialog = document.getElementById("month-jump-dialog");
+    const jumpInput = document.getElementById("month-jump-input");
     const template = document.getElementById("event-template");
     const monthlyNote = document.getElementById("monthly-note");
     const monthlyNoteTitle = document.getElementById("monthly-note-title");
@@ -176,6 +180,9 @@ if (typeof module !== "undefined" && module.exports) {
     let monthlyNotes = {};
     let visibleMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
     let pointerStart = null;
+    let wheelDelta = 0;
+    let wheelCooldown = false;
+    let wheelResetTimer = null;
 
     function parseDate(dateText) {
         if (!/^\d{4}-\d{2}-\d{2}$/.test(dateText || "")) return null;
@@ -405,6 +412,14 @@ if (typeof module !== "undefined" && module.exports) {
         renderVisibleMonth(true);
     }
 
+    function jumpToMonth(monthKey) {
+        const targetMonth = parseMonthKey(monthKey);
+        if (!targetMonth) return false;
+        visibleMonth = targetMonth;
+        renderVisibleMonth(true);
+        return true;
+    }
+
     function renderCalendar(data) {
         events = normalizeEvents(data.events);
         monthlyNotes = normalizeMonthlyNotes(data.monthly_notes);
@@ -435,6 +450,43 @@ if (typeof module !== "undefined" && module.exports) {
         visibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
         renderVisibleMonth(true);
     });
+    jumpButton.addEventListener("click", () => {
+        jumpInput.value = toMonthKey(visibleMonth);
+        if (!jumpDialog.open) jumpDialog.showModal();
+        jumpInput.focus();
+    });
+    jumpInput.addEventListener("change", () => {
+        if (jumpToMonth(jumpInput.value)) jumpDialog.close();
+    });
+    jumpDialog.addEventListener("click", (event) => {
+        if (event.target === jumpDialog) jumpDialog.close();
+    });
+
+    calendarShell.addEventListener("wheel", (event) => {
+        if (root.hidden || jumpDialog.open || event.ctrlKey) return;
+        if (!event.deltaY || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+        event.preventDefault();
+        if (wheelCooldown) return;
+
+        const scale = event.deltaMode === WheelEvent.DOM_DELTA_LINE
+            ? 16
+            : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+                ? Math.max(root.clientHeight, 1)
+                : 1;
+        wheelDelta += event.deltaY * scale;
+        window.clearTimeout(wheelResetTimer);
+        wheelResetTimer = window.setTimeout(() => {
+            wheelDelta = 0;
+        }, 140);
+        if (Math.abs(wheelDelta) < 40) return;
+
+        moveMonth(wheelDelta < 0 ? -1 : 1);
+        wheelDelta = 0;
+        wheelCooldown = true;
+        window.setTimeout(() => {
+            wheelCooldown = false;
+        }, 180);
+    }, { passive: false });
 
     root.addEventListener("pointerdown", (event) => {
         pointerStart = { x: event.clientX, y: event.clientY };
@@ -455,6 +507,7 @@ if (typeof module !== "undefined" && module.exports) {
     });
 
     document.addEventListener("keydown", (event) => {
+        if (jumpDialog.open) return;
         if (event.key === "ArrowLeft") {
             event.preventDefault();
             moveMonth(-1);
