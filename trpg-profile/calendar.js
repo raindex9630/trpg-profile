@@ -398,6 +398,8 @@ if (typeof module !== "undefined" && module.exports) {
         const note = monthlyNotes[monthKey] || "";
         monthlyNoteTitle.textContent = `${year}年${month}月のメモ`;
         monthlyNoteText.textContent = note;
+        monthlyNoteText.scrollTop = 0;
+        monthlyNoteText.tabIndex = note ? 0 : -1;
         monthlyNote.hidden = false;
         status.hidden = true;
         root.hidden = false;
@@ -464,6 +466,7 @@ if (typeof module !== "undefined" && module.exports) {
 
     calendarShell.addEventListener("wheel", (event) => {
         if (root.hidden || jumpDialog.open || event.ctrlKey) return;
+        if (event.target.closest(".monthly-note")) return;
         if (!event.deltaY || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
         event.preventDefault();
         if (wheelCooldown) return;

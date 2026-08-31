@@ -2,8 +2,11 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-08-31 21:17",
-  "monthly_notes": {},
+  "updated_at": "2026-08-31 23:32",
+  "monthly_notes": {
+    "2026-08": "×",
+    "2026-09": "×"
+  },
   "events": [
     {
       "id": "ebf18fc4ddde",
@@ -198,6 +201,84 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
+      "end_next_day": true
+    },
+    {
+      "id": "fae54ede5043",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-10-25"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:30",
+      "end_next_day": true
+    },
+    {
+      "id": "af69688bdf49",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "PL",
+      "dates": [
+        "2026-09-04"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "00:00",
+      "end_next_day": true
+    },
+    {
+      "id": "31f69e956de9",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "PL",
+      "dates": [
+        "2026-09-07"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "00:00",
+      "end_next_day": true
+    },
+    {
+      "id": "adb523c29712",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "PL",
+      "dates": [
+        "2026-09-11"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "00:00",
+      "end_next_day": true
+    },
+    {
+      "id": "429d6553aeac",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "PL",
+      "dates": [
+        "2026-09-14"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "00:00",
+      "end_next_day": true
+    },
+    {
+      "id": "361ca0e2768d",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "PL",
+      "dates": [
+        "2026-09-25"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "00:00",
       "end_next_day": true
     }
   ]

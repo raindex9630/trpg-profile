@@ -9,6 +9,7 @@
     --shadow: 0 10px 30px rgba(31, 41, 55, 0.06);
     --radius-lg: 16px;
     --radius-md: 8px;
+    --monthly-note-height: 120px;
 
     --gm-bg: #dff4ff;
     --gm-border: #82c8e8;
@@ -271,13 +272,14 @@ button {
 
 .monthly-note {
     display: grid;
-    grid-template-columns: max-content minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
     align-items: start;
-    gap: 5px 12px;
-    flex: 0 0 42px;
-    height: 42px;
-    min-height: 42px;
+    gap: 4px;
+    flex: 0 0 var(--monthly-note-height);
+    height: var(--monthly-note-height);
+    min-height: var(--monthly-note-height);
+    max-height: var(--monthly-note-height);
     overflow: hidden;
     margin-top: 7px;
     padding: 7px 11px;
@@ -294,20 +296,28 @@ button {
 
 .monthly-note h2 {
     color: #344151;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     line-height: 1.4;
     white-space: nowrap;
 }
 
 .monthly-note p {
     min-width: 0;
-    max-height: 100%;
+    min-height: 0;
+    max-height: none;
     overflow-y: auto;
+    scrollbar-gutter: stable;
     color: #58616d;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     line-height: 1.45;
     overflow-wrap: anywhere;
     white-space: pre-wrap;
+}
+
+.monthly-note p:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid rgba(8, 121, 168, 0.35);
+    outline-offset: 1px;
 }
 
 .month-section {
@@ -548,6 +558,10 @@ button {
 }
 
 @media (max-width: 700px) {
+    :root {
+        --monthly-note-height: 96px;
+    }
+
     .calendar-shell {
         width: calc(100% - 12px);
     }
@@ -655,25 +669,28 @@ button {
     }
 
     .monthly-note {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto minmax(0, 1fr);
-        gap: 1px;
-        flex-basis: 38px;
-        height: 38px;
-        min-height: 38px;
+        gap: 2px;
         margin-top: 4px;
-        padding: 4px 6px;
+        padding: 5px 7px;
         border-radius: 6px;
     }
 
-    .monthly-note h2,
+    .monthly-note h2 {
+        font-size: 0.6rem;
+        line-height: 1.35;
+    }
+
     .monthly-note p {
-        font-size: 0.48rem;
-        line-height: 1.3;
+        font-size: 0.64rem;
+        line-height: 1.4;
     }
 }
 
 @media (max-height: 620px) {
+    :root {
+        --monthly-note-height: 84px;
+    }
+
     .calendar-updated,
     .event-details {
         display: none;
