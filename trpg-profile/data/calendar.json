@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-08-31 19:35",
+  "updated_at": "2026-08-31 21:17",
   "monthly_notes": {},
   "events": [
     {
@@ -16,8 +16,7 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
     },
     {
       "id": "c12a1a071590",
@@ -30,8 +29,7 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
     },
     {
       "id": "c9420ac87433",
@@ -44,8 +42,7 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
     },
     {
       "id": "a5d0aa46190a",
@@ -58,8 +55,7 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
     },
     {
       "id": "e2c9d40aa184",
@@ -72,8 +68,7 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
     },
     {
       "id": "7212423c24f8",
@@ -86,8 +81,7 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
     },
     {
       "id": "857aa582cbd1",
@@ -100,8 +94,7 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
     },
     {
       "id": "5c7160ab4711",
@@ -114,8 +107,7 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
     },
     {
       "id": "20c29697e27d",
@@ -128,8 +120,7 @@
       "all_day": false,
       "start_time": "13:00",
       "end_time": "24:30",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
     },
     {
       "id": "fdc401d0207c",
@@ -142,8 +133,72 @@
       "all_day": false,
       "start_time": "21:30",
       "end_time": "25:00",
-      "end_next_day": true,
-      "details": ""
+      "end_next_day": true
+    },
+    {
+      "id": "d3ce5a3d6a7c",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-10-18"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true
+    },
+    {
+      "id": "6f9442d8b300",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-10-20"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true
+    },
+    {
+      "id": "61537ed4c228",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-10-21"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true
+    },
+    {
+      "id": "904552f9361f",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-10-27"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true
+    },
+    {
+      "id": "6048bcb53299",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-10-28"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true
     }
   ]
 }

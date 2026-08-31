@@ -633,12 +633,12 @@ button {
     }
 
     .event-summary {
-        font-size: clamp(0.38rem, 1.65vw, 0.53rem);
+        font-size: clamp(0.48rem, 2vw, 0.62rem);
         line-height: 1.15;
     }
 
     .event-time {
-        font-size: clamp(0.32rem, 1.35vw, 0.46rem);
+        font-size: clamp(0.4rem, 1.7vw, 0.52rem);
         line-height: 1.1;
     }
 
