@@ -158,6 +158,11 @@ if (typeof module !== "undefined" && module.exports) {
         "仮押さえ": "tag-hold",
         "×": "tag-blocked"
     };
+    const BLOCKED_PERIODS = {
+        all_day: { label: "終日", title: "×", sortTime: "10:00" },
+        day: { label: "昼", title: "昼×", sortTime: "13:00" },
+        night: { label: "夜", title: "夜×", sortTime: "21:00" }
+    };
     const WEEKDAYS = ["月", "火", "水", "木", "金", "土", "日"];
 
     const root = document.getElementById("calendar-root");
@@ -256,32 +261,57 @@ if (typeof module !== "undefined" && module.exports) {
             const normalizedDates = [...new Set(dates)]
                 .filter((dateText) => parseDate(dateText))
                 .sort();
-            const allDay = Boolean(event.all_day) || !isValidStartTime(event.start_time);
-            const startTime = allDay ? "" : event.start_time;
-            const endTime = allDay || !isValidEndTime(event.end_time) ? "" : event.end_time;
+            let blockedPeriod = "";
+            if (event.tag === "×") {
+                if (BLOCKED_PERIODS[event.blocked_period]) {
+                    blockedPeriod = event.blocked_period;
+                } else if (event.all_day || !isValidStartTime(event.start_time)) {
+                    blockedPeriod = "all_day";
+                } else if (Number(event.start_time.slice(0, 2)) >= 18) {
+                    blockedPeriod = "night";
+                } else if (Number(event.start_time.slice(0, 2)) >= 12) {
+                    blockedPeriod = "day";
+                } else {
+                    blockedPeriod = "all_day";
+                }
+            }
+            const allDay = event.tag === "×"
+                ? blockedPeriod === "all_day"
+                : Boolean(event.all_day) || !isValidStartTime(event.start_time);
+            const startTime = event.tag === "×"
+                ? (allDay ? "" : BLOCKED_PERIODS[blockedPeriod].sortTime)
+                : (allDay ? "" : event.start_time);
+            const endTime = event.tag === "×"
+                ? ""
+                : (allDay || !isValidEndTime(event.end_time) ? "" : event.end_time);
 
             return normalizedDates.map((dateText, dateIndex) => ({
                 id: String(event.id || `${eventIndex}-${dateIndex}`),
                 date: dateText,
                 tag: event.tag,
-                title: String(event.title || (event.tag === "×" ? "予定あり" : "名称未設定")),
+                title: event.tag === "×"
+                    ? BLOCKED_PERIODS[blockedPeriod].title
+                    : String(event.title || "名称未設定"),
                 details: String(event.details || ""),
                 allDay,
                 startTime,
                 endTime,
-                endNextDay: Boolean(event.end_next_day) || usesExtendedEndHour(endTime),
-                isBackupDate: Boolean(event.is_backup_date)
+                endNextDay: event.tag !== "×" && (Boolean(event.end_next_day) || usesExtendedEndHour(endTime)),
+                isBackupDate: event.tag !== "×" && Boolean(event.is_backup_date),
+                blockedPeriod,
+                sortTime: event.tag === "×" ? BLOCKED_PERIODS[blockedPeriod].sortTime : (startTime || "00:00")
             }));
         }).sort((a, b) => {
             const dateOrder = a.date.localeCompare(b.date);
             if (dateOrder !== 0) return dateOrder;
-            const timeOrder = (a.startTime || "00:00").localeCompare(b.startTime || "00:00");
+            const timeOrder = a.sortTime.localeCompare(b.sortTime);
             if (timeOrder !== 0) return timeOrder;
             return a.title.localeCompare(b.title, "ja");
         });
     }
 
     function formatTime(event) {
+        if (event.tag === "×") return "";
         if (event.allDay || !event.startTime) return "終日";
         if (!event.endTime) return event.startTime;
         const nextDayPrefix = event.endNextDay && !usesExtendedEndHour(event.endTime) ? "翌" : "";
@@ -303,10 +333,17 @@ if (typeof module !== "undefined" && module.exports) {
         const formattedTitle = formatEventTitle(event);
         card.querySelector(".event-title").textContent = formattedTitle;
         const time = card.querySelector(".event-time");
-        time.textContent = formattedTime;
-        time.dateTime = event.allDay ? event.date : `${event.date}T${event.startTime}:00`;
+        if (formattedTime) {
+            time.textContent = formattedTime;
+            time.dateTime = event.allDay ? event.date : `${event.date}T${event.startTime}:00`;
+        } else {
+            time.remove();
+        }
         card.querySelector(".event-details").textContent = event.details;
-        card.setAttribute("aria-label", `${event.tag} ${formattedTitle} ${formattedTime}`);
+        card.setAttribute(
+            "aria-label",
+            [event.tag, formattedTitle, formattedTime].filter(Boolean).join(" ")
+        );
         return card;
     }
 

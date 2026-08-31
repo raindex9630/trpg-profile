@@ -69,7 +69,6 @@ button {
 .legend-item {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
     min-height: 26px;
     padding: 3px 8px;
     border: 1px solid;
@@ -77,13 +76,6 @@ button {
     font-size: 0.68rem;
     font-weight: 700;
     white-space: nowrap;
-}
-
-.legend-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: currentColor;
 }
 
 .calendar-shell {
@@ -160,6 +152,14 @@ button {
 }
 
 .month-heading-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.month-actions {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -474,7 +474,7 @@ button {
     display: block;
     min-width: 0;
     margin: 0;
-    font-size: clamp(0.5rem, 0.9vw, 0.7rem);
+    font-size: 11px;
     font-weight: 700;
     line-height: 1.3;
     overflow-wrap: anywhere;
@@ -486,8 +486,10 @@ button {
 }
 
 .event-time {
+    display: block;
+    margin-top: 1px;
     color: currentColor;
-    font-size: clamp(0.46rem, 0.75vw, 0.62rem);
+    font-size: 9.4px;
     font-weight: 700;
     line-height: 1.2;
     white-space: nowrap;
@@ -581,15 +583,9 @@ button {
     }
 
     .legend-item {
-        gap: 3px;
         min-height: 20px;
         padding: 1px 4px;
         font-size: 0.5rem;
-    }
-
-    .legend-dot {
-        width: 4px;
-        height: 4px;
     }
 
     .calendar-shell {
@@ -611,6 +607,10 @@ button {
     }
 
     .month-heading-line {
+        gap: 3px;
+    }
+
+    .month-actions {
         gap: 5px;
     }
 
@@ -667,6 +667,7 @@ button {
     }
 
     .event-time {
+        margin-top: 0;
         font-size: 7.7px;
         line-height: 1.1;
         overflow-wrap: anywhere;

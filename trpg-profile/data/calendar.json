@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-01 00:31",
+  "updated_at": "2026-09-01 00:39",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×"
@@ -342,7 +342,7 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": true
     },
     {
       "id": "40ece9edb8bd",
@@ -354,6 +354,104 @@
       ],
       "all_day": false,
       "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "f1c980ded629",
+      "session_id": "1932799623fa",
+      "title": "Vicx",
+      "tag": "PL",
+      "dates": [
+        "2026-09-22"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "f9b269e6419b",
+      "session_id": "1932799623fa",
+      "title": "Vicx",
+      "tag": "PL",
+      "dates": [
+        "2026-09-23"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "abe51cffdccd",
+      "session_id": "1932799623fa",
+      "title": "Vicx",
+      "tag": "PL",
+      "dates": [
+        "2026-09-24"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "220047b46bdb",
+      "session_id": "1932799623fa",
+      "title": "Vicx",
+      "tag": "PL",
+      "dates": [
+        "2026-09-26"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": true
+    },
+    {
+      "id": "988fd6430ff3",
+      "session_id": "833662224ab7",
+      "title": "BARABARADICAL￤2陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-19"
+      ],
+      "all_day": false,
+      "start_time": "16:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "f98f895bdd78",
+      "session_id": "833662224ab7",
+      "title": "BARABARADICAL￤2陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-20"
+      ],
+      "all_day": false,
+      "start_time": "20:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "4dd229578e3b",
+      "session_id": "833662224ab7",
+      "title": "BARABARADICAL￤2陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-17"
+      ],
+      "all_day": false,
+      "start_time": "20:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false
