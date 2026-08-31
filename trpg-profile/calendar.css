@@ -164,16 +164,11 @@ button {
     font-weight: 600;
 }
 
-#calendar-count,
 .calendar-updated {
     display: inline;
     margin: 0;
     color: var(--text-muted);
     font-size: 0.65rem;
-}
-
-.calendar-updated:not(:empty)::before {
-    content: " · ";
 }
 
 .calendar-viewport {
@@ -294,6 +289,11 @@ button {
     background: #fafbfd;
 }
 
+.calendar-day.is-weekend,
+.calendar-day.is-holiday {
+    background: #fff1f4;
+}
+
 .day-number {
     display: inline-grid;
     place-items: center;
@@ -313,9 +313,19 @@ button {
     color: #4e72a8;
 }
 
+.calendar-day.is-holiday .day-number {
+    color: #b55765;
+}
+
 .calendar-day.is-today .day-number {
     background: #344151;
     color: #fff;
+}
+
+.calendar-day.is-today.is-holiday .day-number {
+    background: #fff;
+    color: #b55765;
+    box-shadow: inset 0 0 0 2px #344151;
 }
 
 .day-events {
@@ -343,13 +353,12 @@ button {
 .event-heading {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 3px;
     min-width: 0;
     margin-bottom: 1px;
 }
 
-.event-tag,
 .event-time {
     overflow: hidden;
     font-size: clamp(0.46rem, 0.75vw, 0.62rem);
@@ -507,7 +516,6 @@ button {
         font-size: 0.5rem;
     }
 
-    #calendar-count,
     .calendar-updated {
         font-size: 0.48rem;
     }
@@ -548,7 +556,6 @@ button {
         margin-bottom: 0;
     }
 
-    .event-tag,
     .event-time {
         display: block;
         font-size: clamp(0.34rem, 1.5vw, 0.48rem);

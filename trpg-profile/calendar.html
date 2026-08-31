@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="calendar.css?v=20260831e">
+    <link rel="stylesheet" href="calendar.css?v=20260831g">
 </head>
 
 <body>
@@ -23,7 +23,6 @@
                     <h2 id="month-label">読み込み中</h2>
                     <button id="month-today" class="today-button" type="button">今月を表示</button>
                 </div>
-                <p id="calendar-count">予定を読み込んでいます</p>
                 <p id="calendar-updated" class="calendar-updated"></p>
                 <div class="legend" aria-label="予定種別の色分け">
                     <span class="legend-item tag-gm"><span class="legend-dot" aria-hidden="true"></span>GM</span>
@@ -46,7 +45,6 @@
     <template id="event-template">
         <article class="event-card">
             <div class="event-heading">
-                <span class="event-tag"></span>
                 <time class="event-time"></time>
             </div>
             <p class="event-title"></p>
@@ -54,7 +52,7 @@
         </article>
     </template>
 
-    <script src="calendar.js?v=20260831c"></script>
+    <script src="calendar.js?v=20260831e"></script>
 </body>
 
 </html>

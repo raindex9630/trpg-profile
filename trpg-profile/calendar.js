@@ -1,5 +1,154 @@
+const JapaneseHolidays = (() => {
+    "use strict";
+
+    const cache = new Map();
+
+    function dateKey(year, month, day) {
+        return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    }
+
+    function parseDateKey(value) {
+        const [year, month, day] = value.split("-").map(Number);
+        return new Date(year, month - 1, day, 12);
+    }
+
+    function addDays(value, amount) {
+        return new Date(value.getFullYear(), value.getMonth(), value.getDate() + amount, 12);
+    }
+
+    function nthMonday(year, month, nth) {
+        const first = new Date(year, month - 1, 1, 12);
+        const offset = (8 - first.getDay()) % 7;
+        return 1 + offset + ((nth - 1) * 7);
+    }
+
+    function addHoliday(target, year, month, day) {
+        target.add(dateKey(year, month, day));
+    }
+
+    function holidaysForYear(year) {
+        if (cache.has(year)) return cache.get(year);
+
+        const nationalHolidays = new Set();
+        if (year < 2000 || year > 2099) {
+            cache.set(year, nationalHolidays);
+            return nationalHolidays;
+        }
+
+        addHoliday(nationalHolidays, year, 1, 1);
+        addHoliday(nationalHolidays, year, 1, nthMonday(year, 1, 2));
+        addHoliday(nationalHolidays, year, 2, 11);
+        if (year >= 2020) addHoliday(nationalHolidays, year, 2, 23);
+        if (year <= 2018) addHoliday(nationalHolidays, year, 12, 23);
+
+        const vernalEquinox = Math.floor(
+            20.8431 + (0.242194 * (year - 1980)) - Math.floor((year - 1980) / 4)
+        );
+        addHoliday(nationalHolidays, year, 3, vernalEquinox);
+        addHoliday(nationalHolidays, year, 4, 29);
+        addHoliday(nationalHolidays, year, 5, 3);
+        addHoliday(nationalHolidays, year, 5, 4);
+        addHoliday(nationalHolidays, year, 5, 5);
+
+        if (year === 2020) {
+            addHoliday(nationalHolidays, year, 7, 23);
+            addHoliday(nationalHolidays, year, 7, 24);
+            addHoliday(nationalHolidays, year, 8, 10);
+        } else if (year === 2021) {
+            addHoliday(nationalHolidays, year, 7, 22);
+            addHoliday(nationalHolidays, year, 7, 23);
+            addHoliday(nationalHolidays, year, 8, 8);
+        } else {
+            addHoliday(
+                nationalHolidays,
+                year,
+                7,
+                year >= 2003 ? nthMonday(year, 7, 3) : 20
+            );
+            if (year >= 2016) addHoliday(nationalHolidays, year, 8, 11);
+            addHoliday(nationalHolidays, year, 10, nthMonday(year, 10, 2));
+        }
+
+        addHoliday(
+            nationalHolidays,
+            year,
+            9,
+            year >= 2003 ? nthMonday(year, 9, 3) : 15
+        );
+        const autumnEquinox = Math.floor(
+            23.2488 + (0.242194 * (year - 1980)) - Math.floor((year - 1980) / 4)
+        );
+        addHoliday(nationalHolidays, year, 9, autumnEquinox);
+        addHoliday(nationalHolidays, year, 11, 3);
+        addHoliday(nationalHolidays, year, 11, 23);
+
+        if (year === 2019) {
+            addHoliday(nationalHolidays, year, 5, 1);
+            addHoliday(nationalHolidays, year, 10, 22);
+        }
+
+        const holidays = new Set(nationalHolidays);
+        let cursor = new Date(year, 0, 2, 12);
+        const lastCitizenHolidayCandidate = new Date(year, 11, 30, 12);
+        while (cursor <= lastCitizenHolidayCandidate) {
+            const currentKey = dateKey(cursor.getFullYear(), cursor.getMonth() + 1, cursor.getDate());
+            const previous = addDays(cursor, -1);
+            const next = addDays(cursor, 1);
+            const previousKey = dateKey(previous.getFullYear(), previous.getMonth() + 1, previous.getDate());
+            const nextKey = dateKey(next.getFullYear(), next.getMonth() + 1, next.getDate());
+            if (
+                !nationalHolidays.has(currentKey)
+                && nationalHolidays.has(previousKey)
+                && nationalHolidays.has(nextKey)
+            ) {
+                holidays.add(currentKey);
+            }
+            cursor = addDays(cursor, 1);
+        }
+
+        [...nationalHolidays].sort().forEach((holidayKey) => {
+            const holiday = parseDateKey(holidayKey);
+            if (holiday.getDay() !== 0) return;
+            let substitute = addDays(holiday, 1);
+            let substituteKey = dateKey(
+                substitute.getFullYear(),
+                substitute.getMonth() + 1,
+                substitute.getDate()
+            );
+            while (holidays.has(substituteKey)) {
+                substitute = addDays(substitute, 1);
+                substituteKey = dateKey(
+                    substitute.getFullYear(),
+                    substitute.getMonth() + 1,
+                    substitute.getDate()
+                );
+            }
+            holidays.add(substituteKey);
+        });
+
+        cache.set(year, holidays);
+        return holidays;
+    }
+
+    return {
+        has(dateText) {
+            const year = Number(String(dateText).slice(0, 4));
+            return Number.isInteger(year) && holidaysForYear(year).has(dateText);
+        },
+        forYear(year) {
+            return new Set(holidaysForYear(year));
+        }
+    };
+})();
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = JapaneseHolidays;
+}
+
 (function () {
     "use strict";
+
+    if (typeof document === "undefined") return;
 
     const DATA_URL = `data/calendar.json?v=${Date.now()}`;
     const TAG_CLASS = {
@@ -12,7 +161,6 @@
 
     const root = document.getElementById("calendar-root");
     const status = document.getElementById("calendar-status");
-    const count = document.getElementById("calendar-count");
     const updated = document.getElementById("calendar-updated");
     const monthLabel = document.getElementById("month-label");
     const previousButton = document.getElementById("month-prev");
@@ -125,9 +273,6 @@
         const card = template.content.firstElementChild.cloneNode(true);
         card.classList.add(TAG_CLASS[event.tag]);
 
-        const tag = card.querySelector(".event-tag");
-        tag.textContent = event.tag;
-
         const time = card.querySelector(".event-time");
         time.textContent = formatTime(event);
         time.dateTime = event.allDay ? event.date : `${event.date}T${event.startTime}:00`;
@@ -180,10 +325,17 @@
             dayCell.className = "calendar-day";
             dayCell.setAttribute("role", "gridcell");
             const weekdayIndex = (date.getDay() + 6) % 7;
-            dayCell.setAttribute("aria-label", `${year}年${month}月${day}日 ${WEEKDAYS[weekdayIndex]}曜日`);
+            const isHoliday = JapaneseHolidays.has(dateKey);
+            const holidayLabel = isHoliday ? " 祝日" : "";
+            dayCell.setAttribute(
+                "aria-label",
+                `${year}年${month}月${day}日 ${WEEKDAYS[weekdayIndex]}曜日${holidayLabel}`
+            );
 
             if (date.getDay() === 0) dayCell.classList.add("is-sunday");
             if (date.getDay() === 6) dayCell.classList.add("is-saturday");
+            if (date.getDay() === 0 || date.getDay() === 6) dayCell.classList.add("is-weekend");
+            if (isHoliday) dayCell.classList.add("is-holiday");
             if (dateKey === todayKey) dayCell.classList.add("is-today");
             if (dayEvents.length) dayCell.classList.add("has-events");
             if (dayEvents.length >= 3) dayCell.classList.add("is-crowded");
@@ -233,12 +385,7 @@
         const year = visibleMonth.getFullYear();
         const month = visibleMonth.getMonth() + 1;
         const monthKey = toMonthKey(visibleMonth);
-        const visibleCount = events.filter((event) => event.date.startsWith(monthKey)).length;
-
         monthLabel.textContent = `${year}年${month}月`;
-        count.textContent = events.length
-            ? `この月 ${visibleCount}件 / 全${events.length}件`
-            : "現在、公開中の予定はありません";
         root.setAttribute("aria-label", `${year}年${month}月の予定カレンダー`);
         root.replaceChildren(createMonthSection(visibleMonth));
         const note = monthlyNotes[monthKey] || "";
@@ -278,7 +425,6 @@
         status.classList.add("is-error");
         status.textContent = "予定を読み込めませんでした。時間をおいて、もう一度ページを開いてください。";
         monthLabel.textContent = "読み込みエラー";
-        count.textContent = "";
         monthlyNote.hidden = true;
     }
 
