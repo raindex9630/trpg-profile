@@ -169,6 +169,9 @@ if (typeof module !== "undefined" && module.exports) {
     const calendarShell = document.querySelector(".calendar-shell");
     const status = document.getElementById("calendar-status");
     const updated = document.getElementById("calendar-updated");
+    const siteUpdatedAt = String(
+        document.querySelector('meta[name="calendar-site-updated-at"]')?.content || ""
+    ).trim();
     const monthLabel = document.getElementById("month-label");
     const previousButton = document.getElementById("month-prev");
     const nextButton = document.getElementById("month-next");
@@ -509,7 +512,11 @@ if (typeof module !== "undefined" && module.exports) {
         });
 
         document.title = String(data.calendar_name || "卓予定カレンダー");
-        updated.textContent = data.updated_at ? `最終更新: ${data.updated_at}` : "";
+        const latestUpdatedAt = [String(data.updated_at || "").trim(), siteUpdatedAt]
+            .filter(Boolean)
+            .sort()
+            .at(-1) || "";
+        updated.textContent = latestUpdatedAt ? `最終更新: ${latestUpdatedAt}` : "";
         const hashMonth = parseMonthKey(window.location.hash.replace(/^#/, ""));
         const hasValidHash = Boolean(
             hashMonth && toMonthKey(hashMonth) === toMonthKey(clampToCurrentOrFutureMonth(hashMonth))
