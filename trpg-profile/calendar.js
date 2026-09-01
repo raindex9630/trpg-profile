@@ -208,19 +208,12 @@ if (typeof module !== "undefined" && module.exports) {
     }
 
     function minimumVisibleMonth() {
-        if (!ownerMode) return currentMonthStart();
-
-        const eventMonthKey = events.length ? events[0].date.slice(0, 7) : "";
-        const noteMonthKey = Object.keys(monthlyNotes).sort()[0] || "";
-        const earliestMonthKey = [eventMonthKey, noteMonthKey].filter(Boolean).sort()[0];
-        const earliestDataMonth = parseMonthKey(earliestMonthKey);
-        const currentMonth = currentMonthStart();
-        return earliestDataMonth && earliestDataMonth < currentMonth ? earliestDataMonth : currentMonth;
+        return ownerMode ? null : currentMonthStart();
     }
 
     function clampToAllowedMonth(monthDate) {
         const minimumMonth = minimumVisibleMonth();
-        return monthDate < minimumMonth ? minimumMonth : monthDate;
+        return minimumMonth && monthDate < minimumMonth ? minimumMonth : monthDate;
     }
 
     function replaceOwnerParameter(value = "") {
@@ -266,7 +259,7 @@ if (typeof module !== "undefined" && module.exports) {
         const ownerParameter = new URLSearchParams(window.location.search).get("owner");
         if (!ownerParameter) {
             return {
-                enabled: readStoredOwnerMode(),
+                enabled: false,
                 showCopyButton: false
             };
         }
@@ -298,7 +291,7 @@ if (typeof module !== "undefined" && module.exports) {
 
         replaceOwnerParameter();
         return {
-            enabled: readStoredOwnerMode(),
+            enabled: false,
             showCopyButton: false
         };
     }
@@ -604,8 +597,9 @@ if (typeof module !== "undefined" && module.exports) {
         monthlyNote.hidden = false;
         status.hidden = true;
         root.hidden = false;
-        const minimumMonthKey = toMonthKey(minimumVisibleMonth());
-        previousButton.disabled = monthKey === minimumMonthKey;
+        const minimumMonth = minimumVisibleMonth();
+        const minimumMonthKey = minimumMonth ? toMonthKey(minimumMonth) : "";
+        previousButton.disabled = Boolean(minimumMonthKey && monthKey === minimumMonthKey);
         jumpInput.min = minimumMonthKey;
 
         if (updateHash) {
@@ -627,8 +621,11 @@ if (typeof module !== "undefined" && module.exports) {
             renderVisibleMonth(true);
             return;
         }
-        const minimumMonthKey = toMonthKey(minimumVisibleMonth());
-        previousButton.disabled = toMonthKey(visibleMonth) === minimumMonthKey;
+        const minimumMonth = minimumVisibleMonth();
+        const minimumMonthKey = minimumMonth ? toMonthKey(minimumMonth) : "";
+        previousButton.disabled = Boolean(
+            minimumMonthKey && toMonthKey(visibleMonth) === minimumMonthKey
+        );
         jumpInput.min = minimumMonthKey;
     }
 
