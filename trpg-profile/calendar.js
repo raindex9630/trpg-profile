@@ -152,6 +152,8 @@ if (typeof module !== "undefined" && module.exports) {
 
     const DATA_URL = `data/calendar.json?v=${Date.now()}`;
     const BACKUP_DATE_SUFFIX = "￤予備日";
+    const OWNER_MODE_STORAGE_KEY = "trpg-calendar-owner-mode-v1";
+    const OWNER_TOKEN_SHA256 = "c46da830ab84464c8fe6277dfcfd9b057def75408ed3d8357337f94dbc88b45b";
     const TAG_CLASS = {
         "GM": "tag-gm",
         "PL": "tag-pl",
@@ -184,6 +186,7 @@ if (typeof module !== "undefined" && module.exports) {
     let events = [];
     let eventsByDate = new Map();
     let monthlyNotes = {};
+    let ownerMode = false;
     let visibleMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
     let pointerStart = null;
     let wheelDelta = 0;
@@ -195,9 +198,77 @@ if (typeof module !== "undefined" && module.exports) {
         return new Date(today.getFullYear(), today.getMonth(), 1);
     }
 
-    function clampToCurrentOrFutureMonth(monthDate) {
-        const minimumMonth = currentMonthStart();
+    function minimumVisibleMonth() {
+        if (!ownerMode) return currentMonthStart();
+
+        const eventMonthKey = events.length ? events[0].date.slice(0, 7) : "";
+        const noteMonthKey = Object.keys(monthlyNotes).sort()[0] || "";
+        const earliestMonthKey = [eventMonthKey, noteMonthKey].filter(Boolean).sort()[0];
+        const earliestDataMonth = parseMonthKey(earliestMonthKey);
+        const currentMonth = currentMonthStart();
+        return earliestDataMonth && earliestDataMonth < currentMonth ? earliestDataMonth : currentMonth;
+    }
+
+    function clampToAllowedMonth(monthDate) {
+        const minimumMonth = minimumVisibleMonth();
         return monthDate < minimumMonth ? minimumMonth : monthDate;
+    }
+
+    function removeOwnerParameter() {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("owner");
+        window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+
+    function readStoredOwnerMode() {
+        try {
+            return window.localStorage.getItem(OWNER_MODE_STORAGE_KEY) === OWNER_TOKEN_SHA256;
+        } catch (error) {
+            console.warn("Owner mode could not read browser storage:", error);
+            return false;
+        }
+    }
+
+    function storeOwnerMode(enabled) {
+        try {
+            if (enabled) {
+                window.localStorage.setItem(OWNER_MODE_STORAGE_KEY, OWNER_TOKEN_SHA256);
+            } else {
+                window.localStorage.removeItem(OWNER_MODE_STORAGE_KEY);
+            }
+        } catch (error) {
+            console.warn("Owner mode could not update browser storage:", error);
+        }
+    }
+
+    async function sha256(value) {
+        const bytes = new TextEncoder().encode(value);
+        const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+        return [...new Uint8Array(digest)]
+            .map((byte) => byte.toString(16).padStart(2, "0"))
+            .join("");
+    }
+
+    async function resolveOwnerMode() {
+        const ownerParameter = new URLSearchParams(window.location.search).get("owner");
+        if (!ownerParameter) return readStoredOwnerMode();
+
+        if (ownerParameter === "off") {
+            storeOwnerMode(false);
+            removeOwnerParameter();
+            return false;
+        }
+
+        let parameterIsValid = false;
+        try {
+            parameterIsValid = await sha256(ownerParameter) === OWNER_TOKEN_SHA256;
+        } catch (error) {
+            console.warn("Owner mode token could not be checked:", error);
+        }
+
+        if (parameterIsValid) storeOwnerMode(true);
+        removeOwnerParameter();
+        return parameterIsValid || readStoredOwnerMode();
     }
 
     function parseDate(dateText) {
@@ -430,7 +501,7 @@ if (typeof module !== "undefined" && module.exports) {
 
     function chooseInitialMonth() {
         const hashMonth = parseMonthKey(window.location.hash.replace(/^#/, ""));
-        if (hashMonth) return clampToCurrentOrFutureMonth(hashMonth);
+        if (hashMonth) return clampToAllowedMonth(hashMonth);
 
         const today = new Date();
         const currentMonthKey = toMonthKey(today);
@@ -447,7 +518,7 @@ if (typeof module !== "undefined" && module.exports) {
 
     function renderVisibleMonth(updateHash) {
         const requestedMonthKey = toMonthKey(visibleMonth);
-        visibleMonth = clampToCurrentOrFutureMonth(visibleMonth);
+        visibleMonth = clampToAllowedMonth(visibleMonth);
         if (requestedMonthKey !== toMonthKey(visibleMonth)) updateHash = true;
         const year = visibleMonth.getFullYear();
         const month = visibleMonth.getMonth() + 1;
@@ -463,7 +534,7 @@ if (typeof module !== "undefined" && module.exports) {
         monthlyNote.hidden = false;
         status.hidden = true;
         root.hidden = false;
-        const minimumMonthKey = toMonthKey(currentMonthStart());
+        const minimumMonthKey = toMonthKey(minimumVisibleMonth());
         previousButton.disabled = monthKey === minimumMonthKey;
         jumpInput.min = minimumMonthKey;
 
@@ -473,20 +544,20 @@ if (typeof module !== "undefined" && module.exports) {
     }
 
     function moveMonth(offset) {
-        visibleMonth = clampToCurrentOrFutureMonth(
+        visibleMonth = clampToAllowedMonth(
             new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + offset, 1)
         );
         renderVisibleMonth(true);
     }
 
     function enforceCurrentMonthFloor() {
-        const clampedMonth = clampToCurrentOrFutureMonth(visibleMonth);
+        const clampedMonth = clampToAllowedMonth(visibleMonth);
         if (toMonthKey(clampedMonth) !== toMonthKey(visibleMonth)) {
             visibleMonth = clampedMonth;
             renderVisibleMonth(true);
             return;
         }
-        const minimumMonthKey = toMonthKey(currentMonthStart());
+        const minimumMonthKey = toMonthKey(minimumVisibleMonth());
         previousButton.disabled = toMonthKey(visibleMonth) === minimumMonthKey;
         jumpInput.min = minimumMonthKey;
     }
@@ -494,7 +565,7 @@ if (typeof module !== "undefined" && module.exports) {
     function jumpToMonth(monthKey) {
         const targetMonth = parseMonthKey(monthKey);
         if (!targetMonth) return false;
-        visibleMonth = clampToCurrentOrFutureMonth(targetMonth);
+        visibleMonth = clampToAllowedMonth(targetMonth);
         renderVisibleMonth(true);
         return true;
     }
@@ -510,9 +581,10 @@ if (typeof module !== "undefined" && module.exports) {
 
         document.title = String(data.calendar_name || "卓予定カレンダー");
         updated.textContent = data.updated_at ? `最終更新: ${data.updated_at}` : "";
+        document.documentElement.dataset.calendarOwnerMode = ownerMode ? "true" : "false";
         const hashMonth = parseMonthKey(window.location.hash.replace(/^#/, ""));
         const hasValidHash = Boolean(
-            hashMonth && toMonthKey(hashMonth) === toMonthKey(clampToCurrentOrFutureMonth(hashMonth))
+            hashMonth && toMonthKey(hashMonth) === toMonthKey(clampToAllowedMonth(hashMonth))
         );
         visibleMonth = chooseInitialMonth();
         renderVisibleMonth(!hasValidHash);
@@ -603,7 +675,7 @@ if (typeof module !== "undefined" && module.exports) {
     window.addEventListener("hashchange", () => {
         const hashMonth = parseMonthKey(window.location.hash.replace(/^#/, ""));
         if (hashMonth) {
-            const targetMonth = clampToCurrentOrFutureMonth(hashMonth);
+            const targetMonth = clampToAllowedMonth(hashMonth);
             const hashWasClamped = toMonthKey(targetMonth) !== toMonthKey(hashMonth);
             if (toMonthKey(targetMonth) !== toMonthKey(visibleMonth) || hashWasClamped) {
                 visibleMonth = targetMonth;
@@ -614,7 +686,11 @@ if (typeof module !== "undefined" && module.exports) {
 
     window.setInterval(enforceCurrentMonthFloor, 60_000);
 
-    fetch(DATA_URL, { cache: "no-store" })
+    resolveOwnerMode()
+        .then((enabled) => {
+            ownerMode = enabled;
+            return fetch(DATA_URL, { cache: "no-store" });
+        })
         .then((response) => {
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             return response.json();
