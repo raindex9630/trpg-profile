@@ -102,7 +102,8 @@ button {
 
 .month-button,
 .today-button,
-.jump-button {
+.jump-button,
+.copy-url-button {
     display: inline-grid;
     place-items: center;
     border: 1px solid var(--border-strong);
@@ -132,7 +133,8 @@ button {
 
 .month-button:hover,
 .today-button:hover,
-.jump-button:hover {
+.jump-button:hover,
+.copy-url-button:hover {
     background: #fff;
     border-color: #98a4b2;
 }
@@ -149,6 +151,7 @@ button {
 .month-button:focus-visible,
 .today-button:focus-visible,
 .jump-button:focus-visible,
+.copy-url-button:focus-visible,
 .jump-dialog-close:focus-visible,
 .jump-month-field input:focus-visible {
     outline: 3px solid rgba(8, 121, 168, 0.24);
@@ -183,12 +186,33 @@ button {
 }
 
 .today-button,
-.jump-button {
+.jump-button,
+.copy-url-button {
     min-height: 24px;
     padding: 2px 8px;
     border-radius: 999px;
     font-size: 0.66rem;
     font-weight: 600;
+}
+
+.copy-url-button {
+    width: 104px;
+}
+
+.copy-url-button[hidden] {
+    display: none;
+}
+
+.copy-url-button.is-copied {
+    border-color: #4a9b6a;
+    background: #e5f5eb;
+    color: #27613d;
+}
+
+.copy-url-button.is-copy-error {
+    border-color: #c96666;
+    background: #fff0f0;
+    color: #9b3030;
 }
 
 .jump-dialog {
@@ -632,10 +656,15 @@ button {
     }
 
     .today-button,
-    .jump-button {
+    .jump-button,
+    .copy-url-button {
         min-height: 19px;
         padding: 1px 5px;
         font-size: 0.5rem;
+    }
+
+    .copy-url-button {
+        width: 78px;
     }
 
     .calendar-updated {

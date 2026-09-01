@@ -151,6 +151,7 @@ if (typeof module !== "undefined" && module.exports) {
     if (typeof document === "undefined") return;
 
     const DATA_URL = `data/calendar.json?v=${Date.now()}`;
+    const PUBLIC_SHARE_URL = "https://trpg-profile.pages.dev/calendar.html";
     const BACKUP_DATE_SUFFIX = "￤予備日";
     const OWNER_MODE_STORAGE_KEY = "trpg-calendar-owner-mode-v1";
     const OWNER_TOKEN_SHA256 = "c46da830ab84464c8fe6277dfcfd9b057def75408ed3d8357337f94dbc88b45b";
@@ -165,6 +166,11 @@ if (typeof module !== "undefined" && module.exports) {
         day: { label: "昼", title: "昼×", sortTime: "13:00" },
         night: { label: "夜", title: "夜×", sortTime: "21:00" }
     };
+    const HOLD_PERIOD_LABELS = {
+        all_day: "全日",
+        day: "昼",
+        night: "夜"
+    };
     const WEEKDAYS = ["月", "火", "水", "木", "金", "土", "日"];
 
     const root = document.getElementById("calendar-root");
@@ -178,6 +184,7 @@ if (typeof module !== "undefined" && module.exports) {
     const jumpButton = document.getElementById("month-jump");
     const jumpDialog = document.getElementById("month-jump-dialog");
     const jumpInput = document.getElementById("month-jump-input");
+    const copyPublicUrlButton = document.getElementById("copy-public-url");
     const template = document.getElementById("event-template");
     const monthlyNote = document.getElementById("monthly-note");
     const monthlyNoteTitle = document.getElementById("monthly-note-title");
@@ -192,6 +199,7 @@ if (typeof module !== "undefined" && module.exports) {
     let wheelDelta = 0;
     let wheelCooldown = false;
     let wheelResetTimer = null;
+    let copyFeedbackTimer = null;
 
     function currentMonthStart() {
         const today = new Date();
@@ -271,6 +279,42 @@ if (typeof module !== "undefined" && module.exports) {
         return parameterIsValid || readStoredOwnerMode();
     }
 
+    async function copyText(text) {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        const copied = document.execCommand("copy");
+        textarea.remove();
+        if (!copied) throw new Error("Clipboard copy was rejected");
+    }
+
+    async function copyPublicShareUrl() {
+        window.clearTimeout(copyFeedbackTimer);
+        copyPublicUrlButton.classList.remove("is-copied", "is-copy-error");
+        try {
+            await copyText(PUBLIC_SHARE_URL);
+            copyPublicUrlButton.textContent = "✓ コピーしました";
+            copyPublicUrlButton.classList.add("is-copied");
+        } catch (error) {
+            console.error("Public calendar URL could not be copied:", error);
+            copyPublicUrlButton.textContent = "コピー失敗";
+            copyPublicUrlButton.classList.add("is-copy-error");
+        }
+        copyFeedbackTimer = window.setTimeout(() => {
+            copyPublicUrlButton.textContent = "共有URLをコピー";
+            copyPublicUrlButton.classList.remove("is-copied", "is-copy-error");
+        }, 2000);
+    }
+
     function parseDate(dateText) {
         if (!/^\d{4}-\d{2}-\d{2}$/.test(dateText || "")) return null;
         const [year, month, day] = dateText.split("-").map(Number);
@@ -332,8 +376,9 @@ if (typeof module !== "undefined" && module.exports) {
             const normalizedDates = [...new Set(dates)]
                 .filter((dateText) => parseDate(dateText))
                 .sort();
+            const usesPeriod = event.tag === "×" || event.tag === "仮押さえ";
             let blockedPeriod = "";
-            if (event.tag === "×") {
+            if (usesPeriod) {
                 if (BLOCKED_PERIODS[event.blocked_period]) {
                     blockedPeriod = event.blocked_period;
                 } else if (event.all_day || !isValidStartTime(event.start_time)) {
@@ -346,13 +391,13 @@ if (typeof module !== "undefined" && module.exports) {
                     blockedPeriod = "all_day";
                 }
             }
-            const allDay = event.tag === "×"
+            const allDay = usesPeriod
                 ? blockedPeriod === "all_day"
                 : Boolean(event.all_day) || !isValidStartTime(event.start_time);
-            const startTime = event.tag === "×"
+            const startTime = usesPeriod
                 ? (allDay ? "" : BLOCKED_PERIODS[blockedPeriod].sortTime)
                 : (allDay ? "" : event.start_time);
-            const endTime = event.tag === "×"
+            const endTime = usesPeriod
                 ? ""
                 : (allDay || !isValidEndTime(event.end_time) ? "" : event.end_time);
 
@@ -367,10 +412,10 @@ if (typeof module !== "undefined" && module.exports) {
                 allDay,
                 startTime,
                 endTime,
-                endNextDay: event.tag !== "×" && (Boolean(event.end_next_day) || usesExtendedEndHour(endTime)),
+                endNextDay: !usesPeriod && (Boolean(event.end_next_day) || usesExtendedEndHour(endTime)),
                 isBackupDate: event.tag !== "×" && Boolean(event.is_backup_date),
                 blockedPeriod,
-                sortTime: event.tag === "×" ? BLOCKED_PERIODS[blockedPeriod].sortTime : (startTime || "00:00")
+                sortTime: usesPeriod ? BLOCKED_PERIODS[blockedPeriod].sortTime : (startTime || "00:00")
             }));
         }).sort((a, b) => {
             const dateOrder = a.date.localeCompare(b.date);
@@ -383,6 +428,7 @@ if (typeof module !== "undefined" && module.exports) {
 
     function formatTime(event) {
         if (event.tag === "×") return "";
+        if (event.tag === "仮押さえ") return HOLD_PERIOD_LABELS[event.blockedPeriod];
         if (event.allDay || !event.startTime) return "終日";
         if (!event.endTime) return event.startTime;
         const nextDayPrefix = event.endNextDay && !usesExtendedEndHour(event.endTime) ? "翌" : "";
@@ -615,6 +661,7 @@ if (typeof module !== "undefined" && module.exports) {
     jumpDialog.addEventListener("click", (event) => {
         if (event.target === jumpDialog) jumpDialog.close();
     });
+    copyPublicUrlButton.addEventListener("click", copyPublicShareUrl);
 
     calendarShell.addEventListener("wheel", (event) => {
         if (root.hidden || jumpDialog.open || event.ctrlKey) return;
@@ -689,6 +736,7 @@ if (typeof module !== "undefined" && module.exports) {
     resolveOwnerMode()
         .then((enabled) => {
             ownerMode = enabled;
+            copyPublicUrlButton.hidden = !ownerMode;
             return fetch(DATA_URL, { cache: "no-store" });
         })
         .then((response) => {

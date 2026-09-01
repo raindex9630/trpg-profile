@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-01 04:43",
+  "updated_at": "2026-09-01 23:42",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -1199,6 +1199,428 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "all_day"
+    },
+    {
+      "id": "ceeeba0841c1",
+      "session_id": "22c2ad995ba3",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-01"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "9888e1225e89",
+      "session_id": "22c2ad995ba3",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-08"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "454244514cee",
+      "session_id": "22c2ad995ba3",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-15"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "18acaf77d809",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-02"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "01ad395a00bd",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-03"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "58a253178567",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-04"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "a7270464205f",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-06"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "768b2be4c76e",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-09"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "7fb0270a45e3",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-11"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "d385702ae597",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-12"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "bed08c42c392",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-13"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "bced23305ebf",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-18"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "507ccae9936f",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-20"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "0dfe6bfcc8d4",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-12-02"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "0a08e8f4d04a",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-12-04"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "8bca4666771b",
+      "session_id": "2afdb393cfa4",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-12-24"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "f448c0317175",
+      "session_id": "ff23ea68e139",
+      "title": "ハッピーエンドは君が殺した",
+      "tag": "PL",
+      "dates": [
+        "2027-01-06"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a2821d25d1cd",
+      "session_id": "ff23ea68e139",
+      "title": "ハッピーエンドは君が殺した",
+      "tag": "PL",
+      "dates": [
+        "2027-01-07"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "ca9baea00bb4",
+      "session_id": "ff23ea68e139",
+      "title": "ハッピーエンドは君が殺した",
+      "tag": "PL",
+      "dates": [
+        "2027-01-13"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "12f01db5fb86",
+      "session_id": "ff23ea68e139",
+      "title": "ハッピーエンドは君が殺した",
+      "tag": "PL",
+      "dates": [
+        "2027-01-14"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "74a473589e38",
+      "session_id": "ff23ea68e139",
+      "title": "ハッピーエンドは君が殺した",
+      "tag": "PL",
+      "dates": [
+        "2027-01-20"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "fdd464bf1fc9",
+      "session_id": "17a8c094a7f5",
+      "title": "MAGGY 889￤3陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-17"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "fed1636eaed8",
+      "session_id": "17a8c094a7f5",
+      "title": "MAGGY 889￤3陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-23"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "fd9ca107593e",
+      "session_id": "17a8c094a7f5",
+      "title": "MAGGY 889￤3陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-24"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": true
+    },
+    {
+      "id": "39100208e405",
+      "session_id": "5aece6b001e8",
+      "title": "夜明けのヴィジェル￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2027-02-01"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "920ea7340354",
+      "session_id": "5aece6b001e8",
+      "title": "夜明けのヴィジェル￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2027-02-08"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "b5be44102ba4",
+      "session_id": "5aece6b001e8",
+      "title": "夜明けのヴィジェル￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2027-02-15"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "b7c881b03710",
+      "session_id": "5aece6b001e8",
+      "title": "夜明けのヴィジェル￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2027-02-22"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "37e1fdd09eed",
+      "session_id": "5aece6b001e8",
+      "title": "夜明けのヴィジェル￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2027-02-21"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
