@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-01 23:42",
+  "updated_at": "2026-09-02 00:22",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -1247,7 +1247,7 @@
     },
     {
       "id": "18acaf77d809",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1262,7 +1262,7 @@
     },
     {
       "id": "01ad395a00bd",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1277,7 +1277,7 @@
     },
     {
       "id": "58a253178567",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1292,7 +1292,7 @@
     },
     {
       "id": "a7270464205f",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1307,7 +1307,7 @@
     },
     {
       "id": "768b2be4c76e",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1322,7 +1322,7 @@
     },
     {
       "id": "7fb0270a45e3",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1337,7 +1337,7 @@
     },
     {
       "id": "d385702ae597",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1352,7 +1352,7 @@
     },
     {
       "id": "bed08c42c392",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1367,7 +1367,7 @@
     },
     {
       "id": "bced23305ebf",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1382,7 +1382,7 @@
     },
     {
       "id": "507ccae9936f",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1397,7 +1397,7 @@
     },
     {
       "id": "0dfe6bfcc8d4",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1412,7 +1412,7 @@
     },
     {
       "id": "0a08e8f4d04a",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1427,7 +1427,7 @@
     },
     {
       "id": "8bca4666771b",
-      "session_id": "2afdb393cfa4",
+      "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
@@ -1618,6 +1618,230 @@
       ],
       "all_day": false,
       "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a0efc1a2c710",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-03"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "54a986dfd0e5",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-04"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "eaa866b0ee4c",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-11"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "3a44312757ee",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-17"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "0e2b4bc931e8",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-18"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "b71777005a08",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-25"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "bf3b2d157766",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-12"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "b78b5b28a572",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-13"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a0fbef8d1e18",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-16"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "12e6de028d1a",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-19"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "57184b51bd80",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-22"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "e6602f4b323e",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-23"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "53ae400dd58b",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-26"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "051239c6d8d9",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-27"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a6780b05a9ee",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-28"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "e9c45257f1f9",
+      "session_id": "c8c11136e8b7",
+      "title": "奇天烈探偵倶楽部",
+      "tag": "PL",
+      "dates": [
+        "2027-04-30"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false
