@@ -155,6 +155,7 @@ if (typeof module !== "undefined" && module.exports) {
     const BACKUP_DATE_SUFFIX = "￤予備日";
     const OWNER_MODE_STORAGE_KEY = "trpg-calendar-owner-mode-v1";
     const OWNER_TOKEN_SHA256 = "c46da830ab84464c8fe6277dfcfd9b057def75408ed3d8357337f94dbc88b45b";
+    const OWNER_PAGE_MARKER = "active";
     const TAG_CLASS = {
         "GM": "tag-gm",
         "PL": "tag-pl",
@@ -222,9 +223,13 @@ if (typeof module !== "undefined" && module.exports) {
         return monthDate < minimumMonth ? minimumMonth : monthDate;
     }
 
-    function removeOwnerParameter() {
+    function replaceOwnerParameter(value = "") {
         const url = new URL(window.location.href);
-        url.searchParams.delete("owner");
+        if (value) {
+            url.searchParams.set("owner", value);
+        } else {
+            url.searchParams.delete("owner");
+        }
         window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
     }
 
@@ -259,12 +264,23 @@ if (typeof module !== "undefined" && module.exports) {
 
     async function resolveOwnerMode() {
         const ownerParameter = new URLSearchParams(window.location.search).get("owner");
-        if (!ownerParameter) return readStoredOwnerMode();
+        if (!ownerParameter) {
+            return {
+                enabled: readStoredOwnerMode(),
+                showCopyButton: false
+            };
+        }
 
         if (ownerParameter === "off") {
             storeOwnerMode(false);
-            removeOwnerParameter();
-            return false;
+            replaceOwnerParameter();
+            return { enabled: false, showCopyButton: false };
+        }
+
+        if (ownerParameter === OWNER_PAGE_MARKER) {
+            const enabled = readStoredOwnerMode();
+            if (!enabled) replaceOwnerParameter();
+            return { enabled, showCopyButton: enabled };
         }
 
         let parameterIsValid = false;
@@ -274,9 +290,17 @@ if (typeof module !== "undefined" && module.exports) {
             console.warn("Owner mode token could not be checked:", error);
         }
 
-        if (parameterIsValid) storeOwnerMode(true);
-        removeOwnerParameter();
-        return parameterIsValid || readStoredOwnerMode();
+        if (parameterIsValid) {
+            storeOwnerMode(true);
+            replaceOwnerParameter(OWNER_PAGE_MARKER);
+            return { enabled: true, showCopyButton: true };
+        }
+
+        replaceOwnerParameter();
+        return {
+            enabled: readStoredOwnerMode(),
+            showCopyButton: false
+        };
     }
 
     async function copyText(text) {
@@ -734,9 +758,9 @@ if (typeof module !== "undefined" && module.exports) {
     window.setInterval(enforceCurrentMonthFloor, 60_000);
 
     resolveOwnerMode()
-        .then((enabled) => {
-            ownerMode = enabled;
-            copyPublicUrlButton.hidden = !ownerMode;
+        .then((ownerAccess) => {
+            ownerMode = ownerAccess.enabled;
+            copyPublicUrlButton.hidden = !ownerAccess.showCopyButton;
             return fetch(DATA_URL, { cache: "no-store" });
         })
         .then((response) => {
