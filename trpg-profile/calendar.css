@@ -117,8 +117,17 @@ button {
     height: 36px;
     padding: 0;
     border-radius: 50%;
-    font-size: 1.5rem;
-    line-height: 1;
+}
+
+.month-button svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .month-button:hover,
@@ -603,7 +612,11 @@ button {
     .month-button {
         width: 28px;
         height: 28px;
-        font-size: 1.2rem;
+    }
+
+    .month-button svg {
+        width: 14px;
+        height: 14px;
     }
 
     .month-heading-line {
