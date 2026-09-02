@@ -201,6 +201,8 @@ if (typeof module !== "undefined" && module.exports) {
     let wheelCooldown = false;
     let wheelResetTimer = null;
     let copyFeedbackTimer = null;
+    let dateRolloverTimer = null;
+    let renderedTodayKey = toDateKey(new Date());
 
     function currentMonthStart() {
         const today = new Date();
@@ -629,6 +631,57 @@ if (typeof module !== "undefined" && module.exports) {
         jumpInput.min = minimumMonthKey;
     }
 
+    function synchronizeCalendarDate() {
+        const currentTodayKey = toDateKey(new Date());
+        if (currentTodayKey === renderedTodayKey) {
+            enforceCurrentMonthFloor();
+            return;
+        }
+
+        const previousTodayMonthKey = renderedTodayKey.slice(0, 7);
+        const currentTodayMonthKey = currentTodayKey.slice(0, 7);
+        renderedTodayKey = currentTodayKey;
+
+        const previousVisibleMonthKey = toMonthKey(visibleMonth);
+        const clampedMonth = clampToAllowedMonth(visibleMonth);
+        const monthWasClamped = toMonthKey(clampedMonth) !== previousVisibleMonthKey;
+        if (monthWasClamped) {
+            visibleMonth = clampedMonth;
+            if (!root.hidden) renderVisibleMonth(true);
+            return;
+        }
+
+        if (
+            !root.hidden
+            && (
+                previousVisibleMonthKey === previousTodayMonthKey
+                || previousVisibleMonthKey === currentTodayMonthKey
+            )
+        ) {
+            renderVisibleMonth(false);
+            return;
+        }
+        enforceCurrentMonthFloor();
+    }
+
+    function scheduleNextDateRollover() {
+        window.clearTimeout(dateRolloverTimer);
+        const now = new Date();
+        const nextMidnight = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate() + 1,
+            0,
+            0,
+            0,
+            50
+        );
+        dateRolloverTimer = window.setTimeout(() => {
+            synchronizeCalendarDate();
+            scheduleNextDateRollover();
+        }, Math.max(250, nextMidnight.getTime() - now.getTime()));
+    }
+
     function jumpToMonth(monthKey) {
         const targetMonth = parseMonthKey(monthKey);
         if (!targetMonth) return false;
@@ -653,8 +706,10 @@ if (typeof module !== "undefined" && module.exports) {
         const hasValidHash = Boolean(
             hashMonth && toMonthKey(hashMonth) === toMonthKey(clampToAllowedMonth(hashMonth))
         );
+        renderedTodayKey = toDateKey(new Date());
         visibleMonth = chooseInitialMonth();
         renderVisibleMonth(!hasValidHash);
+        scheduleNextDateRollover();
     }
 
     function showError() {
@@ -752,7 +807,23 @@ if (typeof module !== "undefined" && module.exports) {
         }
     });
 
-    window.setInterval(enforceCurrentMonthFloor, 60_000);
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState !== "visible") return;
+        synchronizeCalendarDate();
+        scheduleNextDateRollover();
+    });
+
+    window.addEventListener("focus", () => {
+        synchronizeCalendarDate();
+        scheduleNextDateRollover();
+    });
+
+    window.addEventListener("pageshow", () => {
+        synchronizeCalendarDate();
+        scheduleNextDateRollover();
+    });
+
+    window.setInterval(synchronizeCalendarDate, 60_000);
 
     resolveOwnerMode()
         .then((ownerAccess) => {
