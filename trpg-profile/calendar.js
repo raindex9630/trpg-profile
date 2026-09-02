@@ -427,6 +427,7 @@ if (typeof module !== "undefined" && module.exports) {
                 title: event.tag === "×"
                     ? BLOCKED_PERIODS[blockedPeriod].title
                     : String(event.title || "名称未設定"),
+                scheduleNote: event.tag === "×" ? "" : String(event.schedule_note || "").trim(),
                 details: String(event.details || ""),
                 allDay,
                 startTime,
@@ -455,10 +456,14 @@ if (typeof module !== "undefined" && module.exports) {
     }
 
     function formatEventTitle(event) {
-        if (!event.isBackupDate || event.title.endsWith(BACKUP_DATE_SUFFIX)) {
-            return event.title;
+        let title = event.title;
+        if (event.scheduleNote && !title.endsWith(`￤${event.scheduleNote}`)) {
+            title = `${title}￤${event.scheduleNote}`;
         }
-        return `${event.title}${BACKUP_DATE_SUFFIX}`;
+        if (event.isBackupDate && !title.endsWith(BACKUP_DATE_SUFFIX)) {
+            title = `${title}${BACKUP_DATE_SUFFIX}`;
+        }
+        return title;
     }
 
     function createEventCard(event) {
