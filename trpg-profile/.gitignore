@@ -13,6 +13,13 @@ app.js
 *.py[cod]
 .thumb-test-*/
 
+# Calendar web editor local dependencies and secrets
+calendar_editor_web/node_modules/
+calendar_editor_web/.wrangler/
+calendar_editor_web/.dev.vars
+calendar_editor_web/.env
+calendar_editor_web/.env.*
+
 # Local project notes for cross-chat work
 AGENTS.md
 PROJECT_STRUCTURE.md
