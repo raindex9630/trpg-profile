@@ -872,12 +872,7 @@
           {
             "title": "催眠ダーリンLv1　2陣",
             "role": "KP"
-          }
-        ]
-      },
-      {
-        "label": "9月",
-        "items": [
+          },
           {
             "title": "NOBODY*2",
             "role": "HO2 謎多き探索者"
@@ -885,7 +880,12 @@
           {
             "title": "MAGGY 889　1陣",
             "role": "KP"
-          },
+          }
+        ]
+      },
+      {
+        "label": "9月",
+        "items": [
           {
             "title": "BARABARADICAL　2陣",
             "role": "KP"

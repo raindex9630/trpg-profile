@@ -2,7 +2,7 @@
 
 このREADMEは、CloudflareやGitHubに慣れていなくても、所有者用の編集画面を最初から公開し、実際に保存できるところまで進められるように書いた手順書です。
 
-編集画面は一般公開しません。Cloudflare Accessで所有者のメールアドレスだけを許可し、保存処理はブラウザではなくCloudflare Pages FunctionsからGitHubへ行います。
+編集画面は一般公開しません。Cloudflare Accessで所有者のメールアドレスだけを許可します。保存処理はCloudflare Pages FunctionsからGitHubへ行います。
 
 ## 最初に知っておくこと
 
@@ -45,6 +45,7 @@
 
 - GitHubの対象リポジトリを管理できるアカウント
 - Cloudflareアカウント
+- Cloudflare Zero Trust Free plan
 - Cloudflare Zero Trustで利用できるログイン方法
 - 編集を許可する自分のメールアドレス
 - Node.js 20以上とnpm（ローカル確認をする場合）
@@ -113,7 +114,7 @@ npm run dev
 
 ## 2. GitHubの保存用トークンを作る
 
-GitHubでfine-grained personal access tokenを作成します。クラシックトークンではなく、対象リポジトリと権限を限定できるfine-grained tokenを使います。
+GitHubで、対象リポジトリと権限を限定したfine-grained personal access tokenを作成します。
 
 1. GitHubへログインする。
 2. 右上のプロフィール画像から Settings を開く。
@@ -152,10 +153,10 @@ GitHub公式:
 1. [Cloudflare Dashboard](https://dash.cloudflare.com/)へログインする。
 2. Workers & Pages を開く。
 3. Create application を押す。
-4. Pages タブを選ぶ。
-5. Connect to Git を選ぶ。
-6. GitHubアカウントを接続する。
-7. raindex9630/trpg-profile を選ぶ。
+4. 「Make something new」画面の一番下にある Continue to Pages を押す。
+5. Pagesの「Get started」画面で「Import an existing Git repository」の Get started を押す。
+6. GitHub account欄で raindex9630 が選択され、リポジトリ一覧が表示されていることを確認する。
+7. リポジトリ一覧の trpg-profile を押す。
 8. Begin setup または選択後の設定ボタンを押す。
 9. Project nameへ既存の公開Pagesとは別の名前を入れる。例: trpg-calendar-editor
 10. Production branchで main を選ぶ。
@@ -172,6 +173,8 @@ GitHub公式:
 
 Build commandの exit 0 は、ビルド工程のない静的サイトでPages Functionsを利用するための設定です。FunctionsはRoot directory直下の functions フォルダから自動検出されます。
 
+Cloudflareの新しい作成画面では「Pages」タブが表示されず、Pagesが「legacy Pages workflow」と表記されています。このプロジェクトは pages_build_output_dir と functions フォルダを使用するCloudflare Pages用の構成なので、Continue to Pagesを選びます。その次の画面では、以前の「Connect to Git」に相当する項目が「Import an existing Git repository」と表示されます。
+
 初回デプロイ直後は、まだ認証用環境変数がないため、URLを開いても「認証設定が不足しています」と表示されます。これは編集画面を無防備に公開しないための正常な状態です。
 
 Cloudflare公式:
@@ -184,29 +187,42 @@ Cloudflare公式:
 
 ここが最重要です。Preview URLだけでなく、Productionの pages.dev URLも保護します。
 
+### 4-0. Zero Trust Free planを有効にする
+
+Access controls → Applicationsを初めて開いたときに「Finish your account setup」と表示された場合に行います。
+
+1. Choose a planを押す。
+2. Zero Trust Free plan（$0 forever）を選ぶ。
+3. team nameの入力欄が表示されたら、自分で識別できる英数字の名前を入力する。
+4. Cloudflareが求める支払い情報を入力してFree planを有効にする。
+5. Access controls → Applicationsへ戻る。
+
+Free planの利用料金は$0です。CloudflareはFree planの有効化時にも支払い情報の登録を求めます。team nameは、後でCF_ACCESS_TEAM_DOMAINへ設定するteam domainの一部になります。
+
 ### 4-1. まずPreview protectionを有効にする
 
 1. Cloudflare Dashboardの Workers & Pages を開く。
 2. 作成した編集用Pagesプロジェクトを選ぶ。
 3. Settings を開く。
-4. General 内の Access policy または Preview deployment access を探す。
-5. Enable access policy を選ぶ。
-6. Manage Access policy を開く。
+4. General 内の Preview access 行を確認する。
+5. 右端の Restrict previews を押す。
+6. Preview access 行の右端に表示された Manage を押す。
 
 Pagesのこの機能は、最初は通常「Preview deployment」を保護します。Productionの project-name.pages.dev は、この操作だけでは保護されません。
 
 ### 4-2. Production用Access applicationを作る
 
-Cloudflare公式のPages向け手順では、自動作成されたPreview用applicationを一度Production用へ変更し、その後Preview protectionを再度有効にします。
+手順4-1のManageを押すと、Preview用applicationのApplication details画面が開きます。Pagesが自動作成したPublic hostnamesは固定表示されます。このapplicationはPreview用として維持し、Production用を追加します。
 
-1. Zero Trust Dashboardの Access controls → Applications を開く。
-2. Pages用に自動作成されたapplicationを選ぶ。
-3. Configure を押す。
-4. Application nameを分かりやすいProduction用の名前へ変更する。例: trpg-calendar-editor-production
-5. Public hostnameにあるサブドメイン先頭のワイルドカード「*」を削除する。
-6. Productionの project-name.pages.dev を対象にした状態で保存する。
-7. Pagesプロジェクトの Settings → General へ戻る。
-8. Enable access policy をもう一度選び、Preview用applicationを新しく作る。
+1. 画面右下の Cancel を押す。
+2. 画面上部の Applications を押して一覧へ戻る。
+3. Create new applicationを押す。
+4. Self-hosted and privateを選ぶ。
+5. Application nameへ trpg-calendar-editor-production と入力する。
+6. Add public hostnameを押す。
+7. Productionのホスト名 trpg-calendar-editor.pages.dev を入力する。
+8. 所有者のメールアドレスを許可するAllow policyを設定する。
+9. CreateまたはSaveを押す。
 
 最後にApplications一覧へ、次の2つがあることを確認します。
 
@@ -325,7 +341,7 @@ Cloudflare公式:
 ### 6-1. 認証を確認する
 
 1. Productionの編集URLをシークレットウィンドウで開く。
-2. 編集画面ではなくCloudflare Accessのログイン画面が先に出ることを確認する。
+2. Cloudflare Accessのログイン画面が最初に表示されることを確認する。
 3. 許可していないメールアドレスでは入れないことを確認する。
 4. ALLOWED_EMAILと同じメールアドレスでログインする。
 5. 編集画面が開き、既存予定が表示されることを確認する。
@@ -423,11 +439,11 @@ Production URLを開いた瞬間に編集画面やJSONが見える場合は、�
 - Redo: Undoした操作をやり直す。
 - JSON退避: 現在の編集中データをJSONファイルとしてダウンロードする。
 
-UndoやRedoも画面内の変更です。GitHubの過去コミットを直接取り消す機能ではありません。必要ならUndo後に「GitHubへ保存」を押します。
+UndoやRedoは画面内の編集中データへ適用されます。GitHubへ反映するときは、操作後に「GitHubへ保存」を押します。
 
 ## 8. 競合が起きたとき
 
-別のブラウザ、Preview、ローカル管理アプリなどが先にGitHubを更新すると、保存時に409 ConflictまたはSHA_CONFLICTが表示されます。これは故障ではなく、古いデータで新しい変更を上書きしないための停止です。
+別のブラウザ、Preview、ローカル管理アプリなどが先にGitHubを更新すると、保存時に409 ConflictまたはSHA_CONFLICTが表示され、保存を停止してGitHubの最新データを保護します。
 
 1. まず「JSON退避」で編集中データをダウンロードする。
 2. 画面の案内を読み、「最新版を再読込」を選ぶ。
@@ -535,7 +551,7 @@ npm testでは、共通データロジック、実署名したテストJWT、iss
 - [ ] 許可メールアドレスが1件だけになっている
 - [ ] Production用AUDをProduction環境へ設定した
 - [ ] Preview用AUDをPreview環境へ設定した
-- [ ] GITHUB_TOKENをVariableではなくSecretへ登録した
+- [ ] GITHUB_TOKENをSecretへ登録した
 - [ ] tokenの対象repoがtrpg-profileだけになっている
 - [ ] token権限がContents Read and writeだけになっている
 - [ ] GitHub上のパスがtrpg-profile/data/calendar.jsonになっている
