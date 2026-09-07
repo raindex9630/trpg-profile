@@ -9,6 +9,7 @@ import {
   deepClone,
   duplicateSessionEvents,
   emptyData,
+  formatEventTime,
   japanTimestamp,
   normalizeData,
   normalizeEndTimeText,
@@ -38,6 +39,14 @@ function regular(overrides = {}) {
     ...overrides,
   };
 }
+
+test("閲覧カレンダーと同じ時刻表記を使い、24時超と翌日を維持する", () => {
+  assert.equal(formatEventTime({ tag: "GM", ...regular() }), "21:00-24:00");
+  assert.equal(formatEventTime({ tag: "PL", ...regular({ start_time: "21:30", end_time: "25:00" }) }), "21:30-25:00");
+  assert.equal(formatEventTime({ tag: "PL", ...regular({ end_time: "01:00" }) }), "21:00-翌01:00");
+  assert.equal(formatEventTime({ tag: "GM", ...regular({ all_day: true }) }), "終日");
+  assert.equal(formatEventTime({ tag: "×", ...regular() }), "");
+});
 
 function event(overrides = {}) {
   return {

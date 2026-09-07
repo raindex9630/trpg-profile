@@ -34,3 +34,27 @@ test("ブラウザ資産に秘密設定名を含めない", () => {
   const browserAssets = `${html}\n${css}\n${js}`;
   for (const secret of ["GITHUB_TOKEN", "CF_ACCESS_AUD", "ALLOWED_EMAIL"]) assert.equal(browserAssets.includes(secret), false);
 });
+
+test("閲覧画面の3段見出しとカレンダーの表示寸法を維持する", () => {
+  assert.match(css, /\.month-heading-line\s*\{[^}]*flex-direction:\s*column/s);
+  assert.match(css, /\.calendar-updated\s*\{[^}]*position:\s*absolute/s);
+  assert.match(css, /\.calendar-viewport\s*\{[^}]*border-radius:\s*16px/s);
+  assert.match(css, /\.event-title\s*\{[^}]*font-size:\s*11px/s);
+  assert.match(css, /\.event-time\s*\{[^}]*margin-top:\s*4px;[^}]*font-size:\s*9\.4px/s);
+  assert.match(css, /--monthly-note-height:\s*120px/);
+  assert.match(css, /\.monthly-note p\s*\{[^}]*overflow-y:\s*auto/s);
+  assert.ok(css.indexOf(".tag-gm {") > css.indexOf(".event-card {"), "種別の淡色罫線をカードの基本border宣言で上書きしない");
+  const monthActions = html.match(/<div class="month-actions">([\s\S]*?)<\/div>/)[1];
+  assert.equal((monthActions.match(/<button /g) || []).length, 3);
+  assert.doesNotMatch(monthActions, /new-session-button/);
+  assert.match(html, /class="editor-toolbar-tools"/);
+});
+
+test("スマホでも共有URLを残し、成功通知は閲覧の邪魔にならない", () => {
+  assert.doesNotMatch(css, /\.copy-url-button\s*\{[^}]*display:\s*none/s);
+  assert.match(css, /@container calendar \(max-width: 620px\)/);
+  assert.match(css, /height:\s*100dvh/);
+  assert.match(js, /setStatus\(initial \? ""/);
+  assert.match(js, /clearTimeout\(statusDismissTimer\)/);
+  assert.match(js, /kind === "success"[\s\S]*?setTimeout/);
+});

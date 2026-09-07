@@ -436,7 +436,7 @@ function formatEventTime(event) {
   if (event.all_day || !event.start_time) return "終日";
   if (!event.end_time) return event.start_time;
   const next = event.end_next_day && !usesExtendedEndHour(event.end_time) ? "翌" : "";
-  return `${event.start_time}–${next}${event.end_time}`;
+  return `${event.start_time}-${next}${event.end_time}`;
 }
 
 function validateCalendarData(value) {

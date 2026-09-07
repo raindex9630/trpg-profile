@@ -85,9 +85,14 @@ function errorMessage(error) {
   return error instanceof Error ? error.message : String(error || "不明なエラーです。");
 }
 
+let statusDismissTimer;
 function setStatus(message, kind = "info") {
+  window.clearTimeout(statusDismissTimer);
   elements.status.textContent = message;
   elements.status.dataset.kind = kind;
+  if (kind === "success") {
+    statusDismissTimer = window.setTimeout(() => { elements.status.textContent = ""; }, 5000);
+  }
 }
 
 function selectedTag() {
@@ -410,7 +415,7 @@ function renderCalendar() {
   const currentKey = monthKey();
   elements.month_label.textContent = `${year}年${month + 1}月`;
   elements.month_jump_input.value = currentKey;
-  elements.calendar_updated.textContent = state.data.updated_at ? `最終更新：${state.data.updated_at}` : "";
+  elements.calendar_updated.textContent = state.data.updated_at ? `最終更新: ${state.data.updated_at}` : "";
   elements.monthly_note_title.textContent = `${year}年${month + 1}月のメモ`;
   elements.monthly_note_text.textContent = state.data.monthly_notes[currentKey] || "メモはありません。";
   elements.calendar_grid.replaceChildren();
@@ -448,6 +453,10 @@ function renderCalendar() {
     number.textContent = String(day);
     const eventWrap = document.createElement("div");
     eventWrap.className = "day-events";
+    if (dayEvents.length >= 3) {
+      cell.classList.add("is-crowded");
+      cell.style.setProperty("--event-count", dayEvents.length);
+    }
     dayEvents.forEach((calendarEvent) => {
       const button = document.createElement("button");
       button.type = "button";
@@ -700,7 +709,7 @@ async function loadCalendar({ initial = false } = {}) {
     elements.workspace.hidden = false;
     document.title = `${state.data.calendar_name}｜編集`;
     renderAll();
-    setStatus("GitHubの最新版を読み込みました。カレンダーから追加・編集できます。", "success");
+    setStatus(initial ? "" : "GitHubの最新版を読み込みました。カレンダーから追加・編集できます。", "success");
   } catch (error) {
     setStatus(`読込に失敗しました：${errorMessage(error)}`, "error");
   } finally {
