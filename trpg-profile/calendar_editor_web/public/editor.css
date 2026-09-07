@@ -284,6 +284,12 @@ textarea { resize: vertical; }
 .tag-hold { color: var(--hold-strong); border-color: var(--hold-border); background: var(--hold-bg); }
 .tag-blocked { color: var(--blocked-strong); border-color: var(--blocked-border); background: var(--blocked-bg); }
 
+@media (hover: hover) and (pointer: fine) {
+  .calendar-day:hover {
+    background-image: linear-gradient(rgba(84, 93, 104, 0.08), rgba(84, 93, 104, 0.08));
+  }
+}
+
 @media (max-width: 1000px) {
   .editor-workspace.is-panel-open { grid-template-columns: minmax(350px, 380px) minmax(0, 1fr); }
 }

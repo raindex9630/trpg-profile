@@ -601,6 +601,12 @@ button {
     border-color: #dfadb4;
 }
 
+@media (hover: hover) and (pointer: fine) {
+    .calendar-day:not(.is-empty):hover {
+        background-image: linear-gradient(rgba(84, 93, 104, 0.08), rgba(84, 93, 104, 0.08));
+    }
+}
+
 @media (max-width: 700px) {
     :root {
         --monthly-note-height: 96px;

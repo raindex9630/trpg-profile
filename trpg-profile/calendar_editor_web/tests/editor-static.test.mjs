@@ -94,6 +94,11 @@ test("スマホでも共有URLを残し、成功通知は閲覧の邪魔にな�
   assert.match(js, /kind === "success"[\s\S]*?setTimeout/);
 });
 
+test("日付のマウスホバーは背景だけを薄く灰色にする", () => {
+  assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{\s*\.calendar-day:hover\s*\{\s*background-image: linear-gradient\(rgba\(84, 93, 104, 0\.08\), rgba\(84, 93, 104, 0\.08\)\);\s*\}/);
+  assert.match(css, /\.calendar-day\.is-draft-selected\s*\{[^}]*box-shadow:\s*inset/s);
+});
+
 test("日付から追加を始め、最後の日付を外すと確認なしで閉じる", () => {
   const ui = selectionHarness();
   ui.openCreatePanel("2026-09-05");
