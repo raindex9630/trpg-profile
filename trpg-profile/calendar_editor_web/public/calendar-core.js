@@ -75,6 +75,25 @@ function eventDisplayTitle(event) {
   return title;
 }
 
+function splitSessionTitle(value) {
+  const title = String(value ?? "").trim();
+  const parts = title.split("￤");
+  const possibleRound = parts.at(-1)?.trim() || "";
+  if (parts.length > 1 && /陣$/.test(possibleRound)) {
+    return {
+      scenarioName: parts.slice(0, -1).join("￤").trim(),
+      round: possibleRound,
+    };
+  }
+  return { scenarioName: title, round: "" };
+}
+
+function composeSessionTitle(scenarioName, round = "") {
+  const name = String(scenarioName ?? "").trim();
+  const roundText = String(round ?? "").trim();
+  return roundText ? `${name}￤${roundText}` : name;
+}
+
 function isValidDateText(value) {
   const text = String(value ?? "");
   if (!DATE_PATTERN.test(text)) return false;
@@ -287,6 +306,65 @@ function createScheduleEvents(sessionId, title, tag, dates, scheduleValues, opti
   return created;
 }
 
+function createSessionEventsFromOccurrences(sessionId, title, tag, occurrences, options = {}) {
+  const idFactory = options.idFactory || createId;
+  const created = [];
+  const seenDates = new Set();
+  for (const occurrence of [...(occurrences || [])].sort((left, right) => String(left.date).localeCompare(String(right.date)))) {
+    const date = String(occurrence.date || "");
+    if (!isValidDateText(date) || seenDates.has(date)) continue;
+    seenDates.add(date);
+    const event = createScheduleEvents(sessionId, title, tag, [date], occurrence, { idFactory })[0];
+    if (tag === "×") {
+      const period = String(occurrence.blocked_period || "all_day");
+      event.title = BLOCKED_PERIODS[period]?.title || BLOCKED_PERIODS.all_day.title;
+    }
+    created.push(event);
+  }
+  return created;
+}
+
+function replaceSessionOccurrences(events, sessionId, title, tag, occurrences, options = {}) {
+  const idFactory = options.idFactory || createId;
+  const targetId = String(sessionId || "");
+  const sourceEvents = events.filter((event) => String(event.session_id || event.id || "") === targetId);
+  const sourceById = new Map(sourceEvents.map((event) => [String(event.id), event]));
+  const firstIndex = events.findIndex((event) => String(event.session_id || event.id || "") === targetId);
+  const replacements = [];
+  const seenDates = new Set();
+
+  for (const occurrence of [...(occurrences || [])].sort((left, right) => String(left.date).localeCompare(String(right.date)))) {
+    const date = String(occurrence.date || "");
+    if (!isValidDateText(date) || seenDates.has(date)) continue;
+    seenDates.add(date);
+    const source = sourceById.get(String(occurrence.eventId || occurrence.id || ""));
+    let replacement;
+    if (source) {
+      replacement = deepClone(source);
+      replacement.title = String(title);
+      replacement.tag = String(tag);
+      replacement.session_id = tag === "×" ? String(replacement.id) : targetId;
+      replacement.dates = [date];
+      updateScheduleFields(replacement, occurrence);
+      if (tag === "×") {
+        const period = String(occurrence.blocked_period || "all_day");
+        replacement.title = BLOCKED_PERIODS[period]?.title || BLOCKED_PERIODS.all_day.title;
+        replacement.is_backup_date = false;
+        delete replacement.schedule_note;
+      }
+    } else {
+      replacement = createSessionEventsFromOccurrences(targetId, title, tag, [occurrence], { idFactory })[0];
+    }
+    if (replacement) replacements.push(replacement);
+  }
+
+  const untouched = events.filter((event) => String(event.session_id || event.id || "") !== targetId);
+  const insertAt = firstIndex < 0 ? untouched.length : Math.min(firstIndex, untouched.length);
+  untouched.splice(insertAt, 0, ...replacements);
+  events.splice(0, events.length, ...untouched);
+  return replacements;
+}
+
 function updateScheduleFields(event, scheduleValues) {
   for (const field of SCHEDULE_LOCAL_FIELDS) {
     if (field === "schedule_note") {
@@ -444,8 +522,10 @@ export {
   VALID_TAGS,
   automaticallyEndsNextDay,
   coalesceSameTitleSessions,
+  composeSessionTitle,
   createId,
   createScheduleEvents,
+  createSessionEventsFromOccurrences,
   deepClone,
   duplicateSessionEvents,
   emptyData,
@@ -459,9 +539,11 @@ export {
   normalizeScheduleNote,
   normalizeStartTimeText,
   prepareCalendarForSave,
+  replaceSessionOccurrences,
   rescheduleScheduleEvent,
   serializeCalendarData,
   sessionTitleKey,
+  splitSessionTitle,
   uniqueSessionCopyTitle,
   updateScheduleFields,
   updateSessionFields,

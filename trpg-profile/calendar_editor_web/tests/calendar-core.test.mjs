@@ -3,7 +3,9 @@ import assert from "node:assert/strict";
 import {
   automaticallyEndsNextDay,
   coalesceSameTitleSessions,
+  composeSessionTitle,
   createScheduleEvents,
+  createSessionEventsFromOccurrences,
   deepClone,
   duplicateSessionEvents,
   emptyData,
@@ -12,7 +14,9 @@ import {
   normalizeEndTimeText,
   normalizeStartTimeText,
   prepareCalendarForSave,
+  replaceSessionOccurrences,
   rescheduleScheduleEvent,
+  splitSessionTitle,
   updateScheduleFields,
   updateSessionFields,
   validateCalendarData,
@@ -74,6 +78,48 @@ test("複数日追加は日付ごとに異なるidを発行する", () => {
   const created = createScheduleEvents("session00001", "卓", "GM", ["2026-09-04", "2026-09-03"], regular(), { idFactory: ids("event0000001", "event0000002") });
   assert.deepEqual(created.map((item) => item.dates[0]), ["2026-09-03", "2026-09-04"]);
   assert.notEqual(created[0].id, created[1].id);
+});
+
+test("シナリオ名と陣を既存タイトル形式のまま分離・再結合する", () => {
+  assert.deepEqual(splitSessionTitle("MAGGY 889￤1陣"), { scenarioName: "MAGGY 889", round: "1陣" });
+  assert.deepEqual(splitSessionTitle("区切り￤を含む題名￤2陣"), { scenarioName: "区切り￤を含む題名", round: "2陣" });
+  assert.deepEqual(splitSessionTitle("NOBODY*2"), { scenarioName: "NOBODY*2", round: "" });
+  assert.equal(composeSessionTitle("MAGGY 889", "1陣"), "MAGGY 889￤1陣");
+});
+
+test("複数日程を日ごとの時刻・予備日・月またぎのまま作成する", () => {
+  const occurrences = [
+    { date: "2026-09-30", ...regular({ start_time: "21:00", end_time: "24:30" }) },
+    { date: "2026-10-02", ...regular({ start_time: "20:00", end_time: "25:00", is_backup_date: true }) },
+    { date: "2026-10-05", ...regular({ start_time: "19:30", end_time: "23:30", schedule_note: "後半" }) },
+  ];
+  const created = createSessionEventsFromOccurrences("session00001", "卓￤1陣", "GM", occurrences, {
+    idFactory: ids("event0000001", "event0000002", "event0000003"),
+  });
+  assert.deepEqual(created.map((item) => item.dates[0]), ["2026-09-30", "2026-10-02", "2026-10-05"]);
+  assert.deepEqual(created.map((item) => item.start_time), ["21:00", "20:00", "19:30"]);
+  assert.deepEqual(created.map((item) => item.end_time), ["24:30", "25:00", "23:30"]);
+  assert.deepEqual(created.map((item) => item.is_backup_date), [false, true, false]);
+  assert.equal(created[2].schedule_note, "後半");
+  assert.equal(new Set(created.map((item) => item.session_id)).size, 1);
+});
+
+test("セッション全体編集で対象日だけ変更し、日程の追加と削除を同時反映する", () => {
+  const events = [
+    event({ id: "event0000001", dates: ["2026-09-01"] }),
+    event({ id: "event0000002", dates: ["2026-09-02"], start_time: "20:00", end_time: "24:30" }),
+    event({ id: "other0000001", session_id: "other000001", title: "別卓", dates: ["2026-09-03"] }),
+  ];
+  const otherBefore = deepClone(events[2]);
+  replaceSessionOccurrences(events, "session00001", "NOBODY*2￤1陣", "PL", [
+    { eventId: "event0000002", date: "2026-09-02", ...regular({ start_time: "19:00", end_time: "25:00", is_backup_date: true }) },
+    { date: "2026-10-01", ...regular({ start_time: "21:30", end_time: "24:00" }) },
+  ], { idFactory: ids("event0000003") });
+  assert.equal(events.some((item) => item.id === "event0000001"), false);
+  assert.equal(events.find((item) => item.id === "event0000002").start_time, "19:00");
+  assert.equal(events.find((item) => item.id === "event0000002").is_backup_date, true);
+  assert.deepEqual(events.find((item) => item.id === "event0000003").dates, ["2026-10-01"]);
+  assert.deepEqual(events.find((item) => item.id === "other0000001"), otherBefore);
 });
 
 test("リスケは元日程を新しいidの日程へ置換する", () => {
