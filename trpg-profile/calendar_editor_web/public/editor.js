@@ -506,11 +506,8 @@ function toggleDraftDate(dateKey) {
   if (!panel || (panel.mode === "edit" && !panel.addingDates)) return;
   const index = panel.occurrences.findIndex((occurrence) => occurrence.date === dateKey);
   if (index >= 0) {
-    if (panel.mode === "edit" && panel.occurrences.length === 1) {
-      setStatus("最後の日程はここでは外せません。セッション削除を使用してください。", "warning");
-      return;
-    }
-    panel.occurrences.splice(index, 1);
+    removeDraftOccurrence(panel.occurrences[index].key);
+    return;
   } else {
     const next = defaultOccurrence(dateKey);
     if (panel.tag === "仮押さえ" || panel.tag === "×") {
@@ -520,6 +517,33 @@ function toggleDraftDate(dateKey) {
     panel.occurrences.push(next);
     panel.occurrences.sort((left, right) => left.date.localeCompare(right.date));
   }
+  renderOccurrences();
+  renderCalendar();
+}
+
+function removeDraftOccurrence(key) {
+  const panel = state.panel;
+  const index = panel?.occurrences.findIndex((item) => item.key === key) ?? -1;
+  if (index < 0) return;
+  if (panel.occurrences.length === 1) {
+    if (panel.mode === "edit") {
+      setStatus("最後の日程は単独削除できません。セッション削除を使用してください。", "warning");
+      return;
+    }
+    // Selecting dates alone is not content to discard. Ask before losing edited fields,
+    // and keep the last selection intact if the user cancels the confirmation.
+    const untouched = panelComparable({
+      ...panel,
+      tag: "PL",
+      scenarioName: "",
+      round: "",
+      occurrences: [defaultOccurrence(panel.occurrences[0].date)],
+    });
+    const hasContentChanges = signature(panelComparable()) !== signature(untouched);
+    if (closePanel({ force: !hasContentChanges })) elements.new_session_button.focus();
+    return;
+  }
+  panel.occurrences.splice(index, 1);
   renderOccurrences();
   renderCalendar();
 }
@@ -816,13 +840,7 @@ elements.occurrence_list.addEventListener("focusout", (event) => {
 elements.occurrence_list.addEventListener("click", (event) => {
   const key = event.target.closest("[data-remove-occurrence]")?.dataset.removeOccurrence;
   if (!key || !state.panel) return;
-  if (state.panel.mode === "edit" && state.panel.occurrences.length === 1) {
-    setStatus("最後の日程は単独削除できません。セッション削除を使用してください。", "warning");
-    return;
-  }
-  state.panel.occurrences = state.panel.occurrences.filter((item) => item.key !== key);
-  renderOccurrences();
-  renderCalendar();
+  removeDraftOccurrence(key);
 });
 
 elements.apply_bulk_time_button.addEventListener("click", () => {

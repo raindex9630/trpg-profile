@@ -1,10 +1,45 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { runInNewContext } from "node:vm";
+import * as calendarCore from "../public/calendar-core.js";
 
 const html = await readFile(new URL("../public/index.html", import.meta.url), "utf8");
 const css = await readFile(new URL("../public/editor.css", import.meta.url), "utf8");
 const js = await readFile(new URL("../public/editor.js", import.meta.url), "utf8");
+
+// Exercise the real selection/close functions without a browser or API writes.
+function selectionHarness(confirmAnswer = true) {
+  const nodes = new Map();
+  let confirms = 0;
+  const sandbox = {
+    ...calendarCore,
+    document: {
+      getElementById(id) {
+        if (!nodes.has(id)) nodes.set(id, {
+          hidden: false,
+          dataset: {},
+          classList: { add() {}, remove() {} },
+          focus() {},
+        });
+        return nodes.get(id);
+      },
+    },
+    window: {
+      confirm() { confirms += 1; return confirmAnswer; },
+      clearTimeout() {},
+    },
+  };
+  const definitions = js.slice(0, js.indexOf('elements.new_session_button.addEventListener'))
+    .replace(/^import \{[\s\S]*?\} from "\.\/calendar-core\.js";/, "");
+  runInNewContext(`${definitions}
+    renderCalendar = () => {};
+    renderOccurrences = () => {};
+    renderPanel = () => { elements.edit_panel.hidden = false; };
+    globalThis.selection = { state, openCreatePanel, toggleDraftDate, removeDraftOccurrence, setPanelBaseline };
+  `, sandbox);
+  return { ...sandbox.selection, nodes, confirms: () => confirms };
+}
 
 test("統合カレンダーの主要操作・ラベル・ライブ領域がHTMLにある", () => {
   for (const text of ["GitHubへ保存", "最新版を再読込", "＋ セッション追加", "予定アリ", "カレンダー上の日付をクリックして追加", "全日程に適用", "このセッションに日程を追加", "セッション削除", "月メモを編集"]) assert.match(html, new RegExp(text));
@@ -57,4 +92,70 @@ test("スマホでも共有URLを残し、成功通知は閲覧の邪魔にな�
   assert.match(js, /setStatus\(initial \? ""/);
   assert.match(js, /clearTimeout\(statusDismissTimer\)/);
   assert.match(js, /kind === "success"[\s\S]*?setTimeout/);
+});
+
+test("日付から追加を始め、最後の日付を外すと確認なしで閉じる", () => {
+  const ui = selectionHarness();
+  ui.openCreatePanel("2026-09-05");
+  ui.toggleDraftDate("2026-09-05");
+  assert.equal(ui.state.panel, null);
+  assert.equal(ui.nodes.get("edit-panel").hidden, true);
+  assert.equal(ui.confirms(), 0);
+});
+
+test("追加ボタンでは0件で開き、複数日の最後の選択を外すと閉じる", () => {
+  const ui = selectionHarness();
+  ui.openCreatePanel();
+  assert.ok(ui.state.panel);
+  ui.toggleDraftDate("2026-09-05");
+  ui.toggleDraftDate("2026-10-05");
+  ui.toggleDraftDate("2026-09-05");
+  assert.equal(ui.state.panel.occurrences.length, 1);
+  ui.toggleDraftDate("2026-10-05");
+  assert.equal(ui.state.panel, null);
+  assert.equal(ui.confirms(), 0);
+});
+
+test("左の日程削除ボタンも最後の選択解除と同じ処理を使う", () => {
+  const ui = selectionHarness();
+  ui.openCreatePanel("2026-09-05");
+  ui.removeDraftOccurrence(ui.state.panel.occurrences[0].key);
+  assert.equal(ui.state.panel, null);
+  assert.match(js, /occurrence_list\.addEventListener\("click",[\s\S]*?removeDraftOccurrence\(key\)/);
+});
+
+test("未保存の名前や時刻を破棄しない場合は最後の日付も維持する", () => {
+  for (const edit of [
+    (panel) => { panel.scenarioName = "入力中のセッション"; },
+    (panel) => { panel.occurrences[0].end_time = "25:00"; },
+  ]) {
+    const ui = selectionHarness(false);
+    ui.openCreatePanel("2026-09-05");
+    edit(ui.state.panel);
+    const before = JSON.stringify(ui.state.panel);
+    ui.toggleDraftDate("2026-09-05");
+    assert.equal(JSON.stringify(ui.state.panel), before);
+    assert.equal(ui.nodes.get("edit-panel").hidden, false);
+    assert.equal(ui.confirms(), 1);
+  }
+});
+
+test("未保存入力の破棄を確認すると最後の選択解除で閉じる", () => {
+  const ui = selectionHarness(true);
+  ui.openCreatePanel("2026-09-05");
+  ui.state.panel.scenarioName = "入力中のセッション";
+  ui.toggleDraftDate("2026-09-05");
+  assert.equal(ui.state.panel, null);
+  assert.equal(ui.confirms(), 1);
+});
+
+test("既存セッションの最後の日程は誤削除を防止する", () => {
+  const ui = selectionHarness();
+  ui.openCreatePanel("2026-09-05");
+  ui.state.panel.mode = "edit";
+  ui.state.panel.occurrences[0].eventId = "existing-event";
+  ui.setPanelBaseline();
+  ui.toggleDraftDate("2026-09-05");
+  assert.equal(ui.state.panel.occurrences.length, 1);
+  assert.match(ui.nodes.get("status").textContent, /セッション削除/);
 });
