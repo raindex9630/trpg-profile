@@ -226,12 +226,43 @@ function occurrenceFromEvent(event) {
   };
 }
 
+let panelTransitionId = 0;
+
+function showPanel() {
+  panelTransitionId += 1;
+  elements.workspace.classList.remove("is-panel-closing");
+  elements.workspace.classList.add("is-panel-open");
+  elements.edit_panel.inert = false;
+  elements.edit_panel.hidden = false;
+}
+
+function hidePanel() {
+  const transitionId = ++panelTransitionId;
+  const panel = elements.edit_panel;
+  const currentStyle = window.getComputedStyle(panel);
+  panel.style.setProperty("--panel-close-transform", currentStyle.transform);
+  panel.style.setProperty("--panel-close-opacity", currentStyle.opacity);
+  if (panel.contains(document.activeElement)) elements.new_session_button.focus();
+  panel.inert = true;
+  elements.workspace.classList.remove("is-panel-open");
+  elements.workspace.classList.add("is-panel-closing");
+  const finish = () => {
+    // A completed or cancelled old animation must not hide a newly opened pane.
+    if (transitionId !== panelTransitionId || state.panel) return;
+    panel.hidden = true;
+    panel.inert = false;
+    elements.workspace.classList.remove("is-panel-closing");
+  };
+  const animations = panel.getAnimations();
+  if (animations.length) Promise.allSettled(animations.map((animation) => animation.finished)).then(finish);
+  else finish(); // Includes prefers-reduced-motion and an already hidden pane.
+}
+
 function closePanel({ force = false } = {}) {
   if (!state.panel) return true;
   if (!force && panelIsDirty() && !window.confirm("入力中の変更を破棄して編集パネルを閉じますか？")) return false;
   state.panel = null;
-  elements.edit_panel.hidden = true;
-  elements.workspace.classList.remove("is-panel-open");
+  hidePanel();
   renderCalendar();
   return true;
 }
@@ -278,8 +309,7 @@ function openEditPanel(eventId) {
 function renderPanel() {
   const panel = state.panel;
   if (!panel) return closePanel({ force: true });
-  elements.workspace.classList.add("is-panel-open");
-  elements.edit_panel.hidden = false;
+  showPanel();
   elements.panel_title.textContent = panel.mode === "create" ? "セッション追加" : "セッション編集";
   elements.panel_save_button.textContent = panel.mode === "create" ? "登録" : "変更を保存";
   elements.delete_session_button.hidden = panel.mode !== "edit";
@@ -727,8 +757,7 @@ async function loadCalendar({ initial = false } = {}) {
     state.undo = [];
     state.redo = [];
     state.panel = null;
-    elements.edit_panel.hidden = true;
-    elements.workspace.classList.remove("is-panel-open");
+    hidePanel();
     elements.conflict_panel.hidden = true;
     elements.workspace.hidden = false;
     document.title = `${state.data.calendar_name}｜編集`;

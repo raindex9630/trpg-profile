@@ -71,19 +71,29 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .status[data-kind="error"] { border-color: #dfa6ab; color: #8d3037; background: #fff1f2; }
 
 .editor-workspace {
+  --panel-width: 400px;
+  --panel-open-duration: 260ms;
+  --panel-open-easing: cubic-bezier(.22, 1, .36, 1);
+  display: grid;
+  grid-template-columns: minmax(0px, 0px) minmax(0, 1fr);
+  gap: 0;
   width: 100%;
   height: 100%;
   min-height: 0;
   padding: 0 16px;
+  transition: grid-template-columns var(--panel-open-duration) var(--panel-open-easing),
+    gap var(--panel-open-duration) var(--panel-open-easing),
+    padding-left var(--panel-open-duration) var(--panel-open-easing);
 }
 .editor-workspace.is-panel-open {
-  display: grid;
   grid-template-columns: minmax(360px, 400px) minmax(0, 1fr);
   gap: 14px;
   padding-left: 10px;
 }
 
 .calendar-shell {
+  grid-column: 2;
+  grid-row: 1;
   container: calendar / inline-size;
   display: flex;
   flex-direction: column;
@@ -209,8 +219,11 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .monthly-note:hover .note-edit-button, .monthly-note:focus-within .note-edit-button { opacity: 1; }
 
 .edit-panel {
+  grid-column: 1;
+  grid-row: 1;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
+  width: var(--panel-width);
   height: calc(100% - 16px);
   min-height: 0;
   margin-top: 8px;
@@ -219,6 +232,21 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
   border-radius: 14px;
   background: var(--surface);
   box-shadow: 0 12px 38px rgba(31,41,55,.12);
+}
+.edit-panel:not([hidden]) {
+  animation: panel-slide-in var(--panel-open-duration) var(--panel-open-easing) both;
+}
+.is-panel-closing .edit-panel:not([hidden]) {
+  animation-name: panel-slide-out;
+  pointer-events: none;
+}
+@keyframes panel-slide-in {
+  from { transform: translateX(calc(-100% - 14px)); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes panel-slide-out {
+  from { transform: var(--panel-close-transform, translateX(0)); opacity: var(--panel-close-opacity, 1); }
+  to { transform: translateX(calc(-100% - 14px)); opacity: 0; }
 }
 .panel-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 17px 12px; border-bottom: 1px solid var(--border); }
 .panel-header h1 { margin: 2px 0 0; font-size: 1.05rem; }
@@ -291,14 +319,21 @@ textarea { resize: vertical; }
 }
 
 @media (max-width: 1000px) {
+  .editor-workspace { --panel-width: 380px; }
   .editor-workspace.is-panel-open { grid-template-columns: minmax(350px, 380px) minmax(0, 1fr); }
 }
 
 @media (max-width: 760px) {
-  body:has(.is-panel-open) { overflow: auto; }
-  .editor-workspace.is-panel-open { display: flex; flex-direction: column; height: auto; min-height: 100%; gap: 0; }
+  body:has(.is-panel-open, .is-panel-closing) { overflow-x: hidden; overflow-y: auto; }
+  .editor-workspace { display: block; transition: none; }
+  .editor-workspace:is(.is-panel-open, .is-panel-closing) { display: flex; flex-direction: column; height: auto; min-height: 100%; gap: 0; }
   .edit-panel { order: 1; flex: 0 0 auto; width: 100%; height: min(72svh, 700px); margin-top: 8px; }
-  .is-panel-open .calendar-shell { order: 2; flex: 0 0 auto; width: 100%; height: 100dvh; min-height: 620px; }
+  .is-panel-closing .edit-panel:not([hidden]) { animation-name: panel-slide-out, panel-collapse; }
+  @keyframes panel-collapse {
+    from { height: min(72svh, 700px); margin-top: 8px; border-width: 1px; }
+    to { height: 0; margin-top: 0; border-width: 0; }
+  }
+  :is(.is-panel-open, .is-panel-closing) .calendar-shell { order: 2; flex: 0 0 auto; width: 100%; height: 100dvh; min-height: 620px; }
   .status { right: 10px; bottom: 10px; max-width: calc(100% - 20px); }
 }
 
@@ -364,4 +399,6 @@ textarea { resize: vertical; }
 
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }
+  .editor-workspace { transition: none; }
+  .edit-panel:not([hidden]), .is-panel-closing .edit-panel:not([hidden]) { animation: none; }
 }

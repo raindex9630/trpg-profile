@@ -9,25 +9,43 @@ const css = await readFile(new URL("../public/editor.css", import.meta.url), "ut
 const js = await readFile(new URL("../public/editor.js", import.meta.url), "utf8");
 
 // Exercise the real selection/close functions without a browser or API writes.
-function selectionHarness(confirmAnswer = true) {
+function selectionHarness(confirmAnswer = true, animated = false) {
   const nodes = new Map();
+  const animations = [];
   let confirms = 0;
   const sandbox = {
     ...calendarCore,
     document: {
       getElementById(id) {
-        if (!nodes.has(id)) nodes.set(id, {
-          hidden: false,
-          dataset: {},
-          classList: { add() {}, remove() {} },
-          focus() {},
-        });
+        if (!nodes.has(id)) {
+          const classes = new Set();
+          nodes.set(id, {
+            hidden: id === "edit-panel",
+            dataset: {},
+            style: { setProperty() {} },
+            classList: {
+              add(value) { classes.add(value); },
+              remove(value) { classes.delete(value); },
+              contains(value) { return classes.has(value); },
+            },
+            contains() { return false; },
+            getAnimations() {
+              if (!animated) return [];
+              let resolve, reject;
+              const finished = new Promise((yes, no) => { resolve = yes; reject = no; });
+              animations.push({ resolve, reject });
+              return [{ finished }];
+            },
+            focus() {},
+          });
+        }
         return nodes.get(id);
       },
     },
     window: {
       confirm() { confirms += 1; return confirmAnswer; },
       clearTimeout() {},
+      getComputedStyle() { return { transform: "matrix(1, 0, 0, 1, 0, 0)", opacity: "1" }; },
     },
   };
   const definitions = js.slice(0, js.indexOf('elements.new_session_button.addEventListener'))
@@ -35,10 +53,10 @@ function selectionHarness(confirmAnswer = true) {
   runInNewContext(`${definitions}
     renderCalendar = () => {};
     renderOccurrences = () => {};
-    renderPanel = () => { elements.edit_panel.hidden = false; };
-    globalThis.selection = { state, openCreatePanel, toggleDraftDate, removeDraftOccurrence, setPanelBaseline };
+    renderPanel = () => showPanel();
+    globalThis.selection = { state, openCreatePanel, closePanel, toggleDraftDate, removeDraftOccurrence, setPanelBaseline };
   `, sandbox);
-  return { ...sandbox.selection, nodes, confirms: () => confirms };
+  return { ...sandbox.selection, nodes, animations, confirms: () => confirms };
 }
 
 test("統合カレンダーの主要操作・ラベル・ライブ領域がHTMLにある", () => {
@@ -97,6 +115,90 @@ test("スマホでも共有URLを残し、成功通知は閲覧の邪魔にな�
 test("日付のマウスホバーは背景だけを薄く灰色にする", () => {
   assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{\s*\.calendar-day:hover\s*\{\s*background-image: linear-gradient\(rgba\(84, 93, 104, 0\.08\), rgba\(84, 93, 104, 0\.08\)\);\s*\}/);
   assert.match(css, /\.calendar-day\.is-draft-selected\s*\{[^}]*box-shadow:\s*inset/s);
+});
+
+test("左ペインは開閉時にスライドし、カレンダーの幅も滑らかに変わる", () => {
+  assert.match(css, /\.editor-workspace\s*\{[^}]*grid-template-columns:\s*minmax\(0px, 0px\) minmax\(0, 1fr\)/s);
+  assert.match(css, /--panel-open-duration:\s*260ms/);
+  assert.match(css, /\.editor-workspace\s*\{[^}]*transition:\s*grid-template-columns/s);
+  assert.match(css, /\.calendar-shell\s*\{[^}]*grid-column:\s*2/s);
+  assert.match(css, /\.edit-panel\s*\{[^}]*width:\s*var\(--panel-width\)/s);
+  assert.match(css, /\.edit-panel:not\(\[hidden\]\)\s*\{\s*animation:\s*panel-slide-in/);
+  assert.match(css, /@keyframes panel-slide-in\s*\{\s*from\s*\{[^}]*translateX\(calc\(-100% - 14px\)\)/);
+  assert.match(css, /\.is-panel-closing \.edit-panel:not\(\[hidden\]\)\s*\{\s*animation-name:\s*panel-slide-out/);
+  assert.match(css, /@keyframes panel-slide-out\s*\{[^}]*--panel-close-transform[\s\S]*?to\s*\{[^}]*translateX\(calc\(-100% - 14px\)\)/);
+  assert.match(css, /animation-name:\s*panel-slide-out, panel-collapse/);
+  assert.match(css, /\[hidden\]\s*\{\s*display:\s*none !important/);
+});
+
+test("動きを減らす設定ではペインのスライドとカレンダーの幅アニメーションを止める", () => {
+  const reducedMotion = css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)"));
+  assert.match(reducedMotion, /\.editor-workspace\s*\{\s*transition:\s*none/);
+  assert.match(reducedMotion, /\.edit-panel:not\(\[hidden\]\)\s*\{\s*animation:\s*none/);
+});
+
+test("閉じる動きが終わるまで表示を保ち、操作だけを無効化する", async () => {
+  const ui = selectionHarness(true, true);
+  ui.openCreatePanel("2026-09-05");
+  ui.toggleDraftDate("2026-09-05");
+  const pane = ui.nodes.get("edit-panel");
+  const workspace = ui.nodes.get("workspace");
+  assert.equal(ui.state.panel, null);
+  assert.equal(pane.hidden, false);
+  assert.equal(pane.inert, true);
+  assert.equal(workspace.classList.contains("is-panel-open"), false);
+  assert.equal(workspace.classList.contains("is-panel-closing"), true);
+  ui.animations[0].resolve();
+  await new Promise(setImmediate);
+  assert.equal(pane.hidden, true);
+  assert.equal(pane.inert, false);
+  assert.equal(workspace.classList.contains("is-panel-closing"), false);
+});
+
+test("閉じる途中で再度開いても古いアニメーションで消えない", async () => {
+  const ui = selectionHarness(true, true);
+  ui.openCreatePanel();
+  ui.closePanel();
+  ui.openCreatePanel("2026-09-12");
+  ui.animations[0].resolve();
+  await new Promise(setImmediate);
+  assert.equal(ui.nodes.get("edit-panel").hidden, false);
+  assert.equal(ui.nodes.get("edit-panel").inert, false);
+  assert.equal(ui.nodes.get("workspace").classList.contains("is-panel-closing"), false);
+  assert.equal(ui.state.panel.occurrences[0].date, "2026-09-12");
+});
+
+test("連続開閉では最新の閉じる動きが終わるまで表示を保つ", async () => {
+  const ui = selectionHarness(true, true);
+  ui.openCreatePanel();
+  ui.closePanel();
+  ui.openCreatePanel();
+  ui.closePanel();
+  ui.animations[0].resolve();
+  await new Promise(setImmediate);
+  assert.equal(ui.nodes.get("edit-panel").hidden, false);
+  ui.animations[1].resolve();
+  await new Promise(setImmediate);
+  assert.equal(ui.nodes.get("edit-panel").hidden, true);
+});
+
+test("動きの途中でアニメーションが停止しても閉鎖を完了する", async () => {
+  const ui = selectionHarness(true, true);
+  ui.openCreatePanel();
+  ui.closePanel();
+  ui.animations[0].reject(new Error("Animation cancelled"));
+  await new Promise(setImmediate);
+  assert.equal(ui.nodes.get("edit-panel").hidden, true);
+});
+
+test("破棄確認でキャンセルした場合は閉じる動きを始めない", () => {
+  const ui = selectionHarness(false, true);
+  ui.openCreatePanel();
+  ui.state.panel.scenarioName = "編集中";
+  assert.equal(ui.closePanel(), false);
+  assert.equal(ui.animations.length, 0);
+  assert.equal(ui.nodes.get("edit-panel").hidden, false);
+  assert.equal(ui.nodes.get("edit-panel").inert, false);
 });
 
 test("日付から追加を始め、最後の日付を外すと確認なしで閉じる", () => {
