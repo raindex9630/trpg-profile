@@ -1859,6 +1859,21 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "all_day"
+    },
+    {
+      "id": "84e726609db2",
+      "session_id": "84e726609db2",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2027-03-14"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
     }
   ]
 }
