@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-04 01:06",
+  "updated_at": "2026-09-08 17:57",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -358,7 +358,7 @@
     },
     {
       "id": "40ece9edb8bd",
-      "session_id": "833ae38f4f95",
+      "session_id": "40ece9edb8bd",
       "title": "夜×",
       "tag": "×",
       "dates": [
@@ -639,7 +639,7 @@
     },
     {
       "id": "7cd48fbfffd2",
-      "session_id": "15ab8d103b57",
+      "session_id": "7cd48fbfffd2",
       "title": "×",
       "tag": "×",
       "dates": [
@@ -654,7 +654,7 @@
     },
     {
       "id": "407ca2dc2af6",
-      "session_id": "5ca83ed0f4a0",
+      "session_id": "407ca2dc2af6",
       "title": "昼×",
       "tag": "×",
       "dates": [
@@ -1184,21 +1184,6 @@
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": true
-    },
-    {
-      "id": "a32208837403",
-      "session_id": "e5beed883efa",
-      "title": "×",
-      "tag": "×",
-      "dates": [
-        "2026-12-13"
-      ],
-      "all_day": true,
-      "start_time": "",
-      "end_time": "",
-      "end_next_day": false,
-      "is_backup_date": false,
-      "blocked_period": "all_day"
     },
     {
       "id": "ceeeba0841c1",
