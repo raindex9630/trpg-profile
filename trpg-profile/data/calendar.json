@@ -2,16 +2,16 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-04 01:06",
+  "updated_at": "2026-09-12 00:32",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
     "2026-10": "×",
     "2026-11": "えっこく継続は仮なのですべifがここしか入れられなければOK",
     "2026-12": "えっこく継続orすべifのみ⭕️",
-    "2027-01": "ぺの可能性　リア友と遊ぶかも　同窓会（原義）あるかも　AE13陣？",
-    "2027-02": "ぺの可能性　同窓会（原義）あるかも",
-    "2027-03": "四季学かも",
+    "2027-01": "ぺの可能性　リア友と遊ぶかも　同窓会（原義）あるかも　AE13陣？\nめめかん？",
+    "2027-02": "ぺの可能性　同窓会（原義）あるかも\nめめかん？",
+    "2027-03": "四季学かも\nめめかん？",
     "2027-04": "△　継続のみ⭕️",
     "2027-05": "ヴィジェル2陣？　原稿ある",
     "2027-06": "ヴィジェル2陣？",
@@ -358,7 +358,7 @@
     },
     {
       "id": "40ece9edb8bd",
-      "session_id": "833ae38f4f95",
+      "session_id": "40ece9edb8bd",
       "title": "夜×",
       "tag": "×",
       "dates": [
@@ -639,7 +639,7 @@
     },
     {
       "id": "7cd48fbfffd2",
-      "session_id": "15ab8d103b57",
+      "session_id": "7cd48fbfffd2",
       "title": "×",
       "tag": "×",
       "dates": [
@@ -654,7 +654,7 @@
     },
     {
       "id": "407ca2dc2af6",
-      "session_id": "5ca83ed0f4a0",
+      "session_id": "407ca2dc2af6",
       "title": "昼×",
       "tag": "×",
       "dates": [
@@ -1184,21 +1184,6 @@
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": true
-    },
-    {
-      "id": "a32208837403",
-      "session_id": "e5beed883efa",
-      "title": "×",
-      "tag": "×",
-      "dates": [
-        "2026-12-13"
-      ],
-      "all_day": true,
-      "start_time": "",
-      "end_time": "",
-      "end_next_day": false,
-      "is_backup_date": false,
-      "blocked_period": "all_day"
     },
     {
       "id": "ceeeba0841c1",
@@ -1859,6 +1844,66 @@
       "end_time": "18:00",
       "end_next_day": false,
       "is_backup_date": false
+    },
+    {
+      "id": "055afc25ee88",
+      "session_id": "055afc25ee88",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2027-03-21"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "84e726609db2",
+      "session_id": "84e726609db2",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2027-03-14"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "33337742bce7",
+      "session_id": "33337742bce7",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2027-02-06"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "641fd14b59bb",
+      "session_id": "641fd14b59bb",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2027-02-07"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
     }
   ]
 }
