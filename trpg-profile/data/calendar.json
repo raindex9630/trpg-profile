@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-13 18:30",
+  "updated_at": "2026-09-13 18:31",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2011,21 +2011,6 @@
       "blocked_period": "night"
     },
     {
-      "id": "9f9da5869ffb",
-      "session_id": "a6b3410f272e",
-      "title": "町葬屋怪異譚",
-      "tag": "PL",
-      "dates": [
-        "2027-07-18"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
       "id": "ab44c1be2b39",
       "session_id": "a6b3410f272e",
       "title": "町葬屋怪異譚",
@@ -2062,21 +2047,6 @@
       "tag": "PL",
       "dates": [
         "2027-07-22"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "3c2dcbe3e43f",
-      "session_id": "a6b3410f272e",
-      "title": "町葬屋怪異譚",
-      "tag": "PL",
-      "dates": [
-        "2027-07-25"
       ],
       "all_day": false,
       "start_time": "21:00",
