@@ -36,7 +36,7 @@
 - GitHubトークンはCloudflareのSecretにだけ保存し、ブラウザへ渡しません。
 - Cloudflare Accessは `/auth/bootstrap` だけを保護し、初回認証時にFunctionでもJWTの署名、issuer、audience、有効期限、メールアドレスを検証します。
 - 初回認証後は、GitHub tokenから用途を分離して導出した鍵で署名する365日Cookieを使います。Cookieは有効な状態で利用すると24時間ごとに期限を365日後へ更新します。
-- Cookieはホスト限定の `__Host-` 名、`Secure`、`HttpOnly`、`SameSite=Strict` を使用し、ブラウザーのJavaScriptから読み取れないようにします。
+- Cookieはホスト限定の `__Host-` 名、`Secure`、`HttpOnly`、`SameSite=Strict` を使用し、ブラウザーのJavaScriptから読み取れないようにします。初回認証直後は同一サイトの完了ページを一度表示してから編集画面へ移動し、Strict Cookieを最初の画面要求から確実に送信します。
 - 全ページとAPIの前でFunction middlewareが所有者Cookieを検証します。未認証の画面は初回認証へ転送し、未認証のAPIは拒否します。
 - APIは同一サイトからのリクエストだけを受け付けます。
 - 読み込んだ時点のGitHub blob SHAと保存直前のSHAが違う場合は、他の更新を上書きせず409エラーにします。

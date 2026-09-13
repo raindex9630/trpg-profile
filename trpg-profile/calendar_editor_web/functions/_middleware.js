@@ -250,6 +250,22 @@ function loggedOutResponse() {
   });
 }
 
+function ownerSessionEstablishedResponse(cookie) {
+  const body = `<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="robots" content="noindex,nofollow"><meta http-equiv="refresh" content="0;url=/"><title>ログインしました</title></head><body><main><h1>ログインしました</h1><p><a href="/">編集画面を開く</a></p></main></body></html>`;
+  return new Response(body, {
+    status: 200,
+    headers: {
+      "Cache-Control": "no-store",
+      "Content-Security-Policy": "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+      "Content-Type": "text/html; charset=utf-8",
+      "Referrer-Policy": "no-referrer",
+      "Set-Cookie": cookie,
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+    },
+  });
+}
+
 function isApiRequest(request) {
   return new URL(request.url).pathname.startsWith("/api/");
 }
@@ -285,16 +301,11 @@ function createAuthMiddleware(options = {}) {
       try {
         const payload = await verifyAccessJwt(request.headers.get("Cf-Access-Jwt-Assertion"), context.env, options);
         const session = await createOwnerSession(request, context.env, options);
-        const response = new Response(null, {
-          status: 303,
-          headers: {
-            "Cache-Control": "no-store",
-            Location: new URL("/", request.url).toString(),
-            "Referrer-Policy": "no-referrer",
-          },
-        });
         context.data.accessUser = { email: payload.email, subject: payload.sub };
-        return responseWithCookie(response, ownerSessionCookie(session.token));
+        // Cloudflare Access completes authentication on another site. Commit a
+        // same-site page before navigating so the Strict cookie is included in
+        // the first request to the editor instead of causing a redirect loop.
+        return ownerSessionEstablishedResponse(ownerSessionCookie(session.token));
       } catch (error) {
         if (error instanceof AccessAuthError) return jsonError(error);
         return jsonError(new AccessAuthError("AUTH_INVALID", "認証処理に失敗しました。", 403));

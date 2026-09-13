@@ -201,6 +201,26 @@ test("Access認証済みリクエストから長期Cookieを発行する", async
   assert.equal(context.data.accessUser.email, "owner@example.com");
 });
 
+test("初回Access認証はStrict Cookie設定後に同一サイト画面から編集画面へ移動する", async () => {
+  const fixture = await authFixture();
+  const now = Date.UTC(2026, 8, 13, 3, 0, 0);
+  const accessToken = await fixture.token();
+  const middleware = createAuthMiddleware({ jwks: fixture.jwks, now: () => now });
+  const context = {
+    request: new Request("https://editor.example.com/auth/bootstrap", {
+      headers: { "Cf-Access-Jwt-Assertion": accessToken },
+    }),
+    env: fixture.env,
+    data: {},
+    next: async () => new Response("should not run"),
+  };
+  const response = await middleware(context);
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("Set-Cookie") || "", /SameSite=Strict$/);
+  assert.match(await response.text(), /http-equiv="refresh" content="0;url=\/"/);
+  assert.equal(context.data.accessUser.email, "owner@example.com");
+});
+
 test("未認証の画面は初回認証へ送り、APIはログインURL付き401を返す", async () => {
   const fixture = await authFixture();
   const middleware = createAuthMiddleware();
