@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-13 18:29",
+  "updated_at": "2026-09-13 18:30",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -1917,6 +1917,21 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "0ddafa4f394f",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-04"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
       "is_backup_date": false
     },
     {
@@ -1931,7 +1946,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "d45995080b58",
@@ -1945,7 +1961,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "c4ff2d556224",
@@ -1954,6 +1971,21 @@
       "tag": "PL",
       "dates": [
         "2027-07-08"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "d984483b31c7",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-11"
       ],
       "all_day": false,
       "start_time": "21:00",
@@ -1973,7 +2005,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "06334b891557",
@@ -1987,7 +2020,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "1a8e8c334885",
@@ -1996,6 +2030,21 @@
       "tag": "PL",
       "dates": [
         "2027-07-15"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "9f9da5869ffb",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-18"
       ],
       "all_day": false,
       "start_time": "21:00",
@@ -2015,7 +2064,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "cbe197c5204f",
@@ -2029,7 +2079,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "345fed6a8178",
@@ -2038,6 +2089,21 @@
       "tag": "PL",
       "dates": [
         "2027-07-22"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "3c2dcbe3e43f",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-25"
       ],
       "all_day": false,
       "start_time": "21:00",
@@ -2057,7 +2123,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "a544f525383d",
@@ -2071,7 +2138,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "a0d4f72500dd",
@@ -2085,7 +2153,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "dbaf655836fc",
@@ -2099,7 +2168,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "8e64e493fd92",
@@ -2113,7 +2183,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "9d475b0ccfe8",
@@ -2127,7 +2198,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "cada107d1560",
@@ -2141,7 +2213,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     }
   ]
 }
