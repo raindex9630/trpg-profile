@@ -1921,20 +1921,6 @@
       "blocked_period": "night"
     },
     {
-      "id": "0ddafa4f394f",
-      "session_id": "a6b3410f272e",
-      "title": "町葬屋怪異譚",
-      "tag": "PL",
-      "dates": [
-        "2027-07-04"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
       "id": "b9533c9b84ce",
       "session_id": "a6b3410f272e",
       "title": "町葬屋怪異譚",
@@ -1978,20 +1964,6 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
-    },
-    {
-      "id": "d984483b31c7",
-      "session_id": "a6b3410f272e",
-      "title": "町葬屋怪異譚",
-      "tag": "PL",
-      "dates": [
-        "2027-07-11"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
     },
     {
       "id": "2a1d1ea68af6",
@@ -2050,7 +2022,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "ab44c1be2b39",
@@ -2109,7 +2082,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "e2acef02ac6f",
