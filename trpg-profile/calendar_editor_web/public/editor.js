@@ -46,7 +46,7 @@ const elementIds = [
   "workspace", "status", "edit-panel", "panel-title", "panel-close-button",
   "session-editor-form", "scenario-name", "session-round", "selection-guide",
   "add-dates-mode-button", "bulk-time-panel", "bulk-start-time", "bulk-end-time",
-  "apply-bulk-time-button", "bulk-period-panel", "bulk-period", "apply-bulk-period-button",
+  "apply-bulk-time-button", "apply-new-time-button", "bulk-period-panel", "bulk-period", "apply-bulk-period-button",
   "occurrence-list", "empty-occurrences", "occurrence-count", "delete-session-button",
   "panel-cancel-button", "panel-save-button", "month-prev", "month-next", "month-label", "month-today",
   "month-jump", "copy-public-url", "new-session-button", "calendar-updated",
@@ -358,6 +358,9 @@ function renderOccurrences() {
   elements.occurrence_count.textContent = `${panel.occurrences.length}件`;
   elements.empty_occurrences.hidden = panel.occurrences.length > 0;
   const periodMode = panel.tag === "仮押さえ" || panel.tag === "×";
+  elements.apply_new_time_button.hidden = periodMode
+    || panel.mode !== "edit"
+    || !panel.occurrences.some((occurrence) => !occurrence.eventId);
 
   panel.occurrences.forEach((occurrence, index) => {
     const card = document.createElement("article");
@@ -805,6 +808,27 @@ function downloadJson() {
   setStatus("編集中のJSONをダウンロードしました。", "success");
 }
 
+function applyBulkTime(newOnly = false) {
+  if (!state.panel) return;
+  const start = normalizeStartTimeText(elements.bulk_start_time.value);
+  const end = normalizeEndTimeText(elements.bulk_end_time.value);
+  if (!start || !end) return setStatus("一括時刻は開始00:00～23:59、終了00:00～47:59で入力してください。", "error");
+  elements.bulk_start_time.value = start;
+  elements.bulk_end_time.value = end;
+  const targets = newOnly
+    ? state.panel.occurrences.filter((occurrence) => !occurrence.eventId)
+    : state.panel.occurrences;
+  if (!targets.length) return setStatus("追加した日程がありません。", "warning");
+  targets.forEach((occurrence) => {
+    occurrence.all_day = false;
+    occurrence.start_time = start;
+    occurrence.end_time = end;
+    occurrence.end_next_day = automaticallyEndsNextDay(start, end, false);
+  });
+  renderOccurrences();
+  setStatus(newOnly ? "追加した日程だけに時刻を適用しました。" : "全日程へ時刻を適用しました。", "success");
+}
+
 elements.new_session_button.addEventListener("click", () => openCreatePanel());
 elements.panel_close_button.addEventListener("click", () => closePanel());
 elements.panel_cancel_button.addEventListener("click", () => closePanel());
@@ -872,22 +896,8 @@ elements.occurrence_list.addEventListener("click", (event) => {
   removeDraftOccurrence(key);
 });
 
-elements.apply_bulk_time_button.addEventListener("click", () => {
-  if (!state.panel) return;
-  const start = normalizeStartTimeText(elements.bulk_start_time.value);
-  const end = normalizeEndTimeText(elements.bulk_end_time.value);
-  if (!start || !end) return setStatus("一括時刻は開始00:00～23:59、終了00:00～47:59で入力してください。", "error");
-  elements.bulk_start_time.value = start;
-  elements.bulk_end_time.value = end;
-  state.panel.occurrences.forEach((occurrence) => {
-    occurrence.all_day = false;
-    occurrence.start_time = start;
-    occurrence.end_time = end;
-    occurrence.end_next_day = automaticallyEndsNextDay(start, end, false);
-  });
-  renderOccurrences();
-  setStatus("全日程へ時刻を適用しました。", "success");
-});
+elements.apply_bulk_time_button.addEventListener("click", () => applyBulkTime());
+elements.apply_new_time_button.addEventListener("click", () => applyBulkTime(true));
 elements.apply_bulk_period_button.addEventListener("click", () => {
   if (!state.panel) return;
   const period = elements.bulk_period.value;

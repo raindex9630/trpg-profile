@@ -45,6 +45,7 @@ function selectionHarness(confirmAnswer = true, animated = false) {
     window: {
       confirm() { confirms += 1; return confirmAnswer; },
       clearTimeout() {},
+      setTimeout() {},
       getComputedStyle() { return { transform: "matrix(1, 0, 0, 1, 0, 0)", opacity: "1" }; },
     },
   };
@@ -54,13 +55,13 @@ function selectionHarness(confirmAnswer = true, animated = false) {
     renderCalendar = () => {};
     renderOccurrences = () => {};
     renderPanel = () => showPanel();
-    globalThis.selection = { state, openCreatePanel, closePanel, toggleDraftDate, removeDraftOccurrence, setPanelBaseline };
+    globalThis.selection = { state, elements, openCreatePanel, closePanel, toggleDraftDate, removeDraftOccurrence, setPanelBaseline, defaultOccurrence, applyBulkTime };
   `, sandbox);
   return { ...sandbox.selection, nodes, animations, confirms: () => confirms };
 }
 
 test("統合カレンダーの主要操作・ラベル・ライブ領域がHTMLにある", () => {
-  for (const text of ["GitHubへ保存", "最新版を再読込", "＋ セッション追加", "予定アリ", "カレンダー上の日付をクリックして追加", "全日程に適用", "このセッションに日程を追加", "セッション削除", "月メモを編集"]) assert.match(html, new RegExp(text));
+  for (const text of ["GitHubへ保存", "最新版を再読込", "＋ セッション追加", "予定アリ", "カレンダー上の日付をクリックして追加", "全日程に適用", "追加した日程だけに適用", "このセッションに日程を追加", "セッション削除", "月メモを編集"]) assert.match(html, new RegExp(text));
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /aria-label="月間予定カレンダー"/);
 });
@@ -265,4 +266,29 @@ test("既存セッションの最後の日程は誤削除を防止する", () =>
   ui.toggleDraftDate("2026-09-05");
   assert.equal(ui.state.panel.occurrences.length, 1);
   assert.match(ui.nodes.get("status").textContent, /セッション削除/);
+});
+
+test("追加日程だけへの一括時刻適用は既存日程を変更しない", () => {
+  const ui = selectionHarness();
+  ui.openCreatePanel("2026-09-05");
+  ui.state.panel.mode = "edit";
+  ui.state.panel.occurrences[0].eventId = "existing-event";
+  ui.state.panel.occurrences[0].start_time = "21:00";
+  ui.state.panel.occurrences[0].end_time = "24:00";
+  ui.state.panel.occurrences.push(ui.defaultOccurrence("2026-09-12"));
+  ui.state.panel.occurrences.push(ui.defaultOccurrence("2026-09-19"));
+  ui.elements.bulk_start_time.value = "13:00";
+  ui.elements.bulk_end_time.value = "24:00";
+
+  ui.applyBulkTime(true);
+
+  assert.equal(
+    JSON.stringify(ui.state.panel.occurrences.map(({ eventId, start_time, end_time }) => ({ eventId, start_time, end_time }))),
+    JSON.stringify([
+      { eventId: "existing-event", start_time: "21:00", end_time: "24:00" },
+      { eventId: "", start_time: "13:00", end_time: "24:00" },
+      { eventId: "", start_time: "13:00", end_time: "24:00" },
+    ]),
+  );
+  assert.match(ui.nodes.get("status").textContent, /追加した日程だけ/);
 });
