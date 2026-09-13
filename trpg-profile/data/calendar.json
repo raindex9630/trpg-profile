@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-13 18:31",
+  "updated_at": "2026-09-13 18:51",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -1921,6 +1921,20 @@
       "blocked_period": "night"
     },
     {
+      "id": "cd744f2a9729",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-04"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "b9533c9b84ce",
       "session_id": "a6b3410f272e",
       "title": "町葬屋怪異譚",
@@ -1964,6 +1978,20 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "7c3707b7b287",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-11"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "2a1d1ea68af6",
@@ -2011,6 +2039,20 @@
       "blocked_period": "night"
     },
     {
+      "id": "a5e109ef58e2",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-18"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "ab44c1be2b39",
       "session_id": "a6b3410f272e",
       "title": "町葬屋怪異譚",
@@ -2054,6 +2096,20 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "5debecdb85b6",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-25"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "e2acef02ac6f",
