@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-12 00:32",
+  "updated_at": "2026-09-13 18:29",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -1904,6 +1904,244 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "all_day"
+    },
+    {
+      "id": "be6427e480f0",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-02"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "b9533c9b84ce",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-06"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "d45995080b58",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-07"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "c4ff2d556224",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-08"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "2a1d1ea68af6",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-13"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "06334b891557",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-14"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "1a8e8c334885",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-15"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "ab44c1be2b39",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-20"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "cbe197c5204f",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-21"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "345fed6a8178",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-22"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "e2acef02ac6f",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-27"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a544f525383d",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-28"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a0d4f72500dd",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-29"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "dbaf655836fc",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-08-03"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "8e64e493fd92",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-08-04"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "9d475b0ccfe8",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-08-05"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "cada107d1560",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-08-06"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
