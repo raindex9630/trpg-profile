@@ -7,6 +7,7 @@ import * as calendarCore from "../public/calendar-core.js";
 const html = await readFile(new URL("../public/index.html", import.meta.url), "utf8");
 const css = await readFile(new URL("../public/editor.css", import.meta.url), "utf8");
 const js = await readFile(new URL("../public/editor.js", import.meta.url), "utf8");
+const publicCalendarJs = await readFile(new URL("../../calendar.js", import.meta.url), "utf8");
 
 // Exercise the real selection/close functions without a browser or API writes.
 function selectionHarness(confirmAnswer = true, animated = false) {
@@ -55,7 +56,7 @@ function selectionHarness(confirmAnswer = true, animated = false) {
     renderCalendar = () => {};
     renderOccurrences = () => {};
     renderPanel = () => showPanel();
-    globalThis.selection = { state, elements, openCreatePanel, closePanel, toggleDraftDate, removeDraftOccurrence, setPanelBaseline, defaultOccurrence, applyBulkTime };
+    globalThis.selection = { state, elements, openCreatePanel, closePanel, toggleDraftDate, removeDraftOccurrence, setPanelBaseline, defaultOccurrence, applyBulkTime, normalizedWheelDelta, wheelMonthOffset };
   `, sandbox);
   return { ...sandbox.selection, nodes, animations, confirms: () => confirms };
 }
@@ -121,6 +122,25 @@ test("スマホでも共有URLを残し、成功通知は閲覧の邪魔にな�
 test("日付のマウスホバーは背景だけを薄く灰色にする", () => {
   assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{\s*\.calendar-day:hover\s*\{\s*background-image: linear-gradient\(rgba\(84, 93, 104, 0\.08\), rgba\(84, 93, 104, 0\.08\)\);\s*\}/);
   assert.match(css, /\.calendar-day\.is-draft-selected\s*\{[^}]*box-shadow:\s*inset/s);
+});
+
+test("ホイールの各入力で待たずに月を連続移動できる", () => {
+  const ui = selectionHarness();
+  const wheelHandler = js.slice(
+    js.indexOf('elements.calendar_grid.addEventListener("wheel"'),
+    js.indexOf('elements.calendar_grid.addEventListener("pointerdown"'),
+  );
+  assert.equal(ui.normalizedWheelDelta({ deltaMode: 0, deltaY: 100 }, 800), 100);
+  assert.equal(ui.normalizedWheelDelta({ deltaMode: 1, deltaY: -3 }, 800), -96);
+  assert.equal(ui.wheelMonthOffset(59), 0);
+  assert.equal(ui.wheelMonthOffset(100), 1);
+  assert.equal(ui.wheelMonthOffset(-100), -1);
+  assert.equal(ui.wheelMonthOffset(300), 3);
+  assert.equal(ui.wheelMonthOffset(-5000), -12);
+  assert.doesNotMatch(wheelHandler, /wheelLockedUntil|setTimeout/);
+  assert.match(wheelHandler, /const offset = wheelMonthOffset\(state\.wheelTotal\);[\s\S]*?changeMonth\(offset\);[\s\S]*?state\.wheelTotal = 0;/);
+  assert.doesNotMatch(publicCalendarJs, /wheelCooldown|wheelResetTimer/);
+  assert.match(publicCalendarJs, /const offset = wheelMonthOffset\(wheelDelta\);[\s\S]*?moveMonth\(offset\);[\s\S]*?wheelDelta = 0;/);
 });
 
 test("左ペインは開閉時にスライドし、カレンダーの幅も滑らかに変わる", () => {

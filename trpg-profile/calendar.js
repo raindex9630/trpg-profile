@@ -198,8 +198,6 @@ if (typeof module !== "undefined" && module.exports) {
     let visibleMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
     let pointerStart = null;
     let wheelDelta = 0;
-    let wheelCooldown = false;
-    let wheelResetTimer = null;
     let copyFeedbackTimer = null;
     let dateRolloverTimer = null;
     let renderedTodayKey = toDateKey(new Date());
@@ -621,6 +619,22 @@ if (typeof module !== "undefined" && module.exports) {
         renderVisibleMonth(true);
     }
 
+    function normalizedWheelDelta(event, viewportHeight) {
+        const scale = event.deltaMode === 1
+            ? 32
+            : event.deltaMode === 2
+                ? Math.max(viewportHeight, 1)
+                : 1;
+        return event.deltaY * scale;
+    }
+
+    function wheelMonthOffset(delta) {
+        const magnitude = Math.abs(delta);
+        if (magnitude < 60) return 0;
+        const months = Math.min(12, Math.max(1, Math.round(magnitude / 100)));
+        return delta < 0 ? -months : months;
+    }
+
     function enforceCurrentMonthFloor() {
         const clampedMonth = clampToAllowedMonth(visibleMonth);
         if (toMonthKey(clampedMonth) !== toMonthKey(visibleMonth)) {
@@ -749,26 +763,15 @@ if (typeof module !== "undefined" && module.exports) {
         if (event.target.closest(".monthly-note")) return;
         if (!event.deltaY || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
         event.preventDefault();
-        if (wheelCooldown) return;
 
-        const scale = event.deltaMode === WheelEvent.DOM_DELTA_LINE
-            ? 16
-            : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
-                ? Math.max(root.clientHeight, 1)
-                : 1;
-        wheelDelta += event.deltaY * scale;
-        window.clearTimeout(wheelResetTimer);
-        wheelResetTimer = window.setTimeout(() => {
-            wheelDelta = 0;
-        }, 140);
-        if (Math.abs(wheelDelta) < 40) return;
+        const delta = normalizedWheelDelta(event, root.clientHeight);
+        if (wheelDelta && Math.sign(wheelDelta) !== Math.sign(delta)) wheelDelta = 0;
+        wheelDelta += delta;
+        const offset = wheelMonthOffset(wheelDelta);
+        if (!offset) return;
 
-        moveMonth(wheelDelta < 0 ? -1 : 1);
+        moveMonth(offset);
         wheelDelta = 0;
-        wheelCooldown = true;
-        window.setTimeout(() => {
-            wheelCooldown = false;
-        }, 180);
     }, { passive: false });
 
     root.addEventListener("pointerdown", (event) => {

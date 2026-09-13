@@ -38,7 +38,6 @@ const state = {
   redo: [],
   loading: false,
   wheelTotal: 0,
-  wheelLockedUntil: 0,
   pointerStart: null,
 };
 
@@ -75,6 +74,22 @@ function monthKey(date = state.currentMonth) {
 function parseDateKey(value) {
   const [year, month, day] = String(value).split("-").map(Number);
   return new Date(year, month - 1, day, 12);
+}
+
+function normalizedWheelDelta(event, viewportHeight) {
+  const scale = event.deltaMode === 1
+    ? 32
+    : event.deltaMode === 2
+      ? Math.max(viewportHeight, 1)
+      : 1;
+  return event.deltaY * scale;
+}
+
+function wheelMonthOffset(delta) {
+  const magnitude = Math.abs(delta);
+  if (magnitude < 60) return 0;
+  const months = Math.min(12, Math.max(1, Math.round(magnitude / 100)));
+  return delta < 0 ? -months : months;
 }
 
 function eventDate(event) {
@@ -1027,14 +1042,15 @@ document.addEventListener("keydown", (event) => {
 });
 
 elements.calendar_grid.addEventListener("wheel", (event) => {
-  if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+  if (event.ctrlKey || !event.deltaY || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
   event.preventDefault();
-  if (Date.now() < state.wheelLockedUntil) return;
-  state.wheelTotal += event.deltaY;
-  if (Math.abs(state.wheelTotal) < 80) return;
-  changeMonth(state.wheelTotal > 0 ? 1 : -1);
+  const delta = normalizedWheelDelta(event, elements.calendar_grid.clientHeight);
+  if (state.wheelTotal && Math.sign(state.wheelTotal) !== Math.sign(delta)) state.wheelTotal = 0;
+  state.wheelTotal += delta;
+  const offset = wheelMonthOffset(state.wheelTotal);
+  if (!offset) return;
+  changeMonth(offset);
   state.wheelTotal = 0;
-  state.wheelLockedUntil = Date.now() + 500;
 }, { passive: false });
 elements.calendar_grid.addEventListener("pointerdown", (event) => {
   if (event.pointerType === "mouse") return;
