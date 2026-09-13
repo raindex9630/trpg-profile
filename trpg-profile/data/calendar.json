@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-13 18:31",
+  "updated_at": "2026-09-13 18:52",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -15,8 +15,6 @@
     "2027-04": "△　継続のみ⭕️",
     "2027-05": "ヴィジェル2陣？　原稿ある",
     "2027-06": "ヴィジェル2陣？",
-    "2027-07": "町葬屋",
-    "2027-08": "町葬屋",
     "2027-09": "2027年いっぱいまでなるべく長め新規×　別でしたいことある　因シとサシキシは行かせて"
   },
   "events": [
@@ -1918,7 +1916,23 @@
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
+      "schedule_note": "事前導入",
       "blocked_period": "night"
+    },
+    {
+      "id": "cd744f2a9729",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-04"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "day"
     },
     {
       "id": "b9533c9b84ce",
@@ -1966,6 +1980,21 @@
       "blocked_period": "night"
     },
     {
+      "id": "7c3707b7b287",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-11"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "day"
+    },
+    {
       "id": "2a1d1ea68af6",
       "session_id": "a6b3410f272e",
       "title": "町葬屋怪異譚",
@@ -2011,6 +2040,21 @@
       "blocked_period": "night"
     },
     {
+      "id": "a5e109ef58e2",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-18"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "day"
+    },
+    {
       "id": "ab44c1be2b39",
       "session_id": "a6b3410f272e",
       "title": "町葬屋怪異譚",
@@ -2054,6 +2098,21 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "5debecdb85b6",
+      "session_id": "a6b3410f272e",
+      "title": "町葬屋怪異譚",
+      "tag": "PL",
+      "dates": [
+        "2027-07-25"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "day"
     },
     {
       "id": "e2acef02ac6f",
