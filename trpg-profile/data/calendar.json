@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-13 19:13",
+  "updated_at": "2026-09-13 23:11",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2250,6 +2250,34 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "8a7cc5356122",
+      "session_id": "7a7c81dfc017",
+      "title": "青白い馬",
+      "tag": "PL",
+      "dates": [
+        "2026-11-25"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "82718bc35554",
+      "session_id": "7a7c81dfc017",
+      "title": "青白い馬",
+      "tag": "PL",
+      "dates": [
+        "2026-11-26"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
