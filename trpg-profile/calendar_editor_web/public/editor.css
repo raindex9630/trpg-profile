@@ -163,9 +163,10 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .owner-menu summary { list-style: none; padding: 2px 8px; border: 1px solid var(--border); border-radius: 999px; background: #fff; cursor: pointer; font-weight: 600; }
 .owner-menu summary::-webkit-details-marker { display: none; }
 .owner-menu-panel { position: absolute; z-index: 20; top: calc(100% + 5px); right: 0; display: grid; width: 190px; padding: 6px; border: 1px solid var(--border); border-radius: 10px; background: #fff; box-shadow: 0 12px 34px rgba(31,41,55,.16); }
-.owner-menu-panel button { padding: 8px 9px; border: 0; border-radius: 6px; background: transparent; color: var(--text); text-align: left; font-size: .72rem; }
-.owner-menu-panel button:hover:not(:disabled) { background: var(--surface-muted); }
+.owner-menu-panel button, .owner-menu-panel a { padding: 8px 9px; border: 0; border-radius: 6px; background: transparent; color: var(--text); text-align: left; font-size: .72rem; text-decoration: none; }
+.owner-menu-panel button:hover:not(:disabled), .owner-menu-panel a:hover { background: var(--surface-muted); }
 .owner-menu-panel .menu-save-button { color: var(--blue); font-weight: 700; }
+.owner-menu-panel .menu-logout-link { margin-top: 3px; border-top: 1px solid var(--border); border-radius: 0 0 6px 6px; color: #a43d3d; }
 
 /* Match calendar.css: the viewing surface keeps the same metrics as the public calendar. */
 .calendar-viewport { display: flex; flex: 1 1 auto; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 10px 30px rgba(31,41,55,.06); touch-action: pan-y; }

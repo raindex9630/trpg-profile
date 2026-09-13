@@ -6,7 +6,17 @@ import {
   exportJWK,
   generateKeyPair,
 } from "jose";
-import { verifyAccessJwt } from "../functions/_middleware.js";
+import {
+  OWNER_SESSION_COOKIE,
+  OWNER_SESSION_MAX_AGE_SECONDS,
+  authenticateRequest,
+  createAuthMiddleware,
+  createOwnerSession,
+  ownerSessionCookie,
+  shouldRefreshSession,
+  verifyAccessJwt,
+  verifyOwnerSession,
+} from "../functions/_middleware.js";
 import {
   MAX_BODY_BYTES,
   createCalendarApi,
@@ -71,7 +81,12 @@ async function authFixture() {
   const jwk = await exportJWK(publicKey);
   jwk.kid = "test-key";
   const jwks = createLocalJWKSet({ keys: [jwk] });
-  const env = { CF_ACCESS_TEAM_DOMAIN: issuer, CF_ACCESS_AUD: audience, ALLOWED_EMAIL: "owner@example.com" };
+  const env = {
+    ...ENV,
+    CF_ACCESS_TEAM_DOMAIN: issuer,
+    CF_ACCESS_AUD: audience,
+    ALLOWED_EMAIL: "owner@example.com",
+  };
   async function token(claims = {}, options = {}) {
     return new SignJWT({ email: "owner@example.com", ...claims })
       .setProtectedHeader({ alg: "RS256", kid: "test-key" })
@@ -117,6 +132,107 @@ test("署名・issuer・audience・メールが正しいJWTを受理する", asy
   const jwt = await fixture.token();
   const payload = await verifyAccessJwt(jwt, fixture.env, { jwks: fixture.jwks });
   assert.equal(payload.email, "owner@example.com");
+});
+
+test("所有者セッションCookieを365日で発行し、同じオリジンで受理する", async () => {
+  const fixture = await authFixture();
+  const now = Date.UTC(2026, 8, 13, 3, 0, 0);
+  const request = new Request("https://editor.example.com/");
+  const session = await createOwnerSession(request, fixture.env, { now: () => now });
+  const claims = await verifyOwnerSession(session.token, request, fixture.env, { now: () => now });
+  assert.equal(claims.email, "owner@example.com");
+  assert.equal(claims.exp - claims.iat, OWNER_SESSION_MAX_AGE_SECONDS);
+  assert.match(ownerSessionCookie(session.token), new RegExp(`^${OWNER_SESSION_COOKIE}=`));
+  assert.match(ownerSessionCookie(session.token), /Max-Age=31536000; Path=\/; Secure; HttpOnly; SameSite=Strict$/);
+});
+
+test("所有者セッションCookieの改ざん・期限切れ・別オリジンを拒否する", async () => {
+  const fixture = await authFixture();
+  const now = Date.UTC(2026, 8, 13, 3, 0, 0);
+  const request = new Request("https://editor.example.com/");
+  const session = await createOwnerSession(request, fixture.env, { now: () => now });
+  const lastCharacter = session.token.endsWith("a") ? "b" : "a";
+  const tampered = `${session.token.slice(0, -1)}${lastCharacter}`;
+  await assert.rejects(() => verifyOwnerSession(tampered, request, fixture.env, { now: () => now }), (error) => error.code === "AUTH_INVALID");
+  await assert.rejects(
+    () => verifyOwnerSession(session.token, request, fixture.env, { now: () => now + (OWNER_SESSION_MAX_AGE_SECONDS + 1) * 1000 }),
+    (error) => error.code === "AUTH_INVALID",
+  );
+  await assert.rejects(
+    () => verifyOwnerSession(session.token, new Request("https://preview.example.com/"), fixture.env, { now: () => now }),
+    (error) => error.code === "AUTH_INVALID",
+  );
+});
+
+test("所有者セッションは24時間後に更新対象になる", async () => {
+  const fixture = await authFixture();
+  const now = Date.UTC(2026, 8, 13, 3, 0, 0);
+  const request = new Request("https://editor.example.com/");
+  const session = await createOwnerSession(request, fixture.env, { now: () => now });
+  assert.equal(shouldRefreshSession(session.claims, { now: () => now + 23 * 60 * 60 * 1000 }), false);
+  assert.equal(shouldRefreshSession(session.claims, { now: () => now + 24 * 60 * 60 * 1000 }), true);
+});
+
+test("Cookieだけで認証でき、Access JWTを再検証しない", async () => {
+  const fixture = await authFixture();
+  const now = Date.UTC(2026, 8, 13, 3, 0, 0);
+  const plainRequest = new Request("https://editor.example.com/");
+  const session = await createOwnerSession(plainRequest, fixture.env, { now: () => now });
+  const request = new Request(plainRequest, { headers: { Cookie: `${OWNER_SESSION_COOKIE}=${session.token}` } });
+  const authentication = await authenticateRequest(request, fixture.env, { now: () => now });
+  assert.equal(authentication.source, "owner-session");
+  assert.equal(authentication.payload.email, "owner@example.com");
+});
+
+test("Access認証済みリクエストから長期Cookieを発行する", async () => {
+  const fixture = await authFixture();
+  const now = Date.UTC(2026, 8, 13, 3, 0, 0);
+  const accessToken = await fixture.token();
+  const middleware = createAuthMiddleware({ jwks: fixture.jwks, now: () => now });
+  const context = {
+    request: new Request("https://editor.example.com/", { headers: { "Cf-Access-Jwt-Assertion": accessToken } }),
+    env: fixture.env,
+    data: {},
+    next: async () => new Response("ok"),
+  };
+  const response = await middleware(context);
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("Set-Cookie") || "", new RegExp(`^${OWNER_SESSION_COOKIE}=`));
+  assert.equal(context.data.accessUser.email, "owner@example.com");
+});
+
+test("未認証の画面は初回認証へ送り、APIはログインURL付き401を返す", async () => {
+  const fixture = await authFixture();
+  const middleware = createAuthMiddleware();
+  const pageResponse = await middleware({
+    request: new Request("https://editor.example.com/"),
+    env: fixture.env,
+    data: {},
+    next: async () => new Response("should not run"),
+  });
+  assert.equal(pageResponse.status, 302);
+  assert.equal(pageResponse.headers.get("Location"), "https://editor.example.com/auth/bootstrap");
+
+  const apiResponse = await middleware({
+    request: new Request("https://editor.example.com/api/calendar"),
+    env: fixture.env,
+    data: {},
+    next: async () => new Response("should not run"),
+  });
+  assert.equal(apiResponse.status, 401);
+  assert.equal((await apiResponse.json()).error.login_url, "/auth/bootstrap");
+});
+
+test("ログアウトはCookieを削除する", async () => {
+  const middleware = createAuthMiddleware();
+  const response = await middleware({
+    request: new Request("https://editor.example.com/auth/logout"),
+    env: {},
+    data: {},
+  });
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("Set-Cookie") || "", new RegExp(`^${OWNER_SESSION_COOKIE}=; Max-Age=0;`));
+  assert.match(await response.text(), /もう一度ログインする/);
 });
 
 test("GETはGitHubからdataとshaだけを返す", async () => {

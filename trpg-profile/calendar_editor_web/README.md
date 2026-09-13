@@ -2,7 +2,7 @@
 
 このREADMEは、CloudflareやGitHubに慣れていなくても、所有者用の編集画面を最初から公開し、実際に保存できるところまで進められるように書いた手順書です。
 
-編集画面は一般公開しません。Cloudflare Accessで所有者のメールアドレスだけを許可します。保存処理はCloudflare Pages FunctionsからGitHubへ行います。
+編集画面は一般公開しません。初回認証をCloudflare Accessで行い、その後はPages Functionsが署名付きの長期Cookieを検証します。保存処理はCloudflare Pages FunctionsからGitHubへ行います。
 
 ## 最初に知っておくこと
 
@@ -20,8 +20,8 @@
 ### 保存の流れ
 
 1. 所有者が編集用URLを開く。
-2. Cloudflare Accessがログインを求める。
-3. 許可されたメールアドレスなら編集画面が開く。
+2. このブラウザーに有効な所有者Cookieがなければ、Cloudflare Accessが初回ログインを求める。
+3. 許可されたメールアドレスなら、365日有効の所有者Cookieを発行して編集画面を開く。
 4. 編集画面がPages Functionへ読込を依頼する。
 5. FunctionがGitHubから trpg-profile/data/calendar.json を取得する。
 6. 画面内で編集し、「GitHubへ保存」を押す。
@@ -34,7 +34,10 @@
 ### 安全のための仕組み
 
 - GitHubトークンはCloudflareのSecretにだけ保存し、ブラウザへ渡しません。
-- Cloudflare Accessを通過しただけでなく、FunctionでもJWTの署名、issuer、audience、有効期限、メールアドレスを検証します。
+- Cloudflare Accessは `/auth/bootstrap` だけを保護し、初回認証時にFunctionでもJWTの署名、issuer、audience、有効期限、メールアドレスを検証します。
+- 初回認証後は、GitHub tokenから用途を分離して導出した鍵で署名する365日Cookieを使います。Cookieは有効な状態で利用すると24時間ごとに期限を365日後へ更新します。
+- Cookieはホスト限定の `__Host-` 名、`Secure`、`HttpOnly`、`SameSite=Strict` を使用し、ブラウザーのJavaScriptから読み取れないようにします。
+- 全ページとAPIの前でFunction middlewareが所有者Cookieを検証します。未認証の画面は初回認証へ転送し、未認証のAPIは拒否します。
 - APIは同一サイトからのリクエストだけを受け付けます。
 - 読み込んだ時点のGitHub blob SHAと保存直前のSHAが違う場合は、他の更新を上書きせず409エラーにします。
 - 認証設定が不足している状態では、編集画面を公開せずエラーで停止するfail-closed構成です。
@@ -187,9 +190,9 @@ Cloudflare公式:
 - [PagesのBuild configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/)
 - [ビルド不要の静的サイトをデプロイする](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/)
 
-## 4. Cloudflare Accessで編集サイトを保護する
+## 4. Cloudflare Accessで初回認証を保護する
 
-ここが最重要です。Preview URLだけでなく、Productionの pages.dev URLも保護します。
+ここが最重要です。Preview URLとProductionの pages.dev URLの `/auth/bootstrap` を保護します。編集画面とAPIはPages Functionsのmiddlewareが長期Cookieで保護します。
 
 ### 4-0. Zero Trust Free planを有効にする
 
@@ -203,7 +206,7 @@ Access controls → Applicationsを初めて開いたときに「Finish your acc
 
 Free planの利用料金は$0です。CloudflareはFree planの有効化時にも支払い情報の登録を求めます。team nameは、後でCF_ACCESS_TEAM_DOMAINへ設定するteam domainの一部になります。
 
-### 4-1. まずPreview protectionを有効にする
+### 4-1. Preview用Access applicationを設定する
 
 1. Cloudflare Dashboardの Workers & Pages を開く。
 2. 作成した編集用Pagesプロジェクトを選ぶ。
@@ -211,8 +214,10 @@ Free planの利用料金は$0です。CloudflareはFree planの有効化時に�
 4. General 内の Preview access 行を確認する。
 5. 右端の Restrict previews を押す。
 6. Preview access 行の右端に表示された Manage を押す。
+7. Application detailsのDestinationsで、`*.trpg-calendar-editor.pages.dev` のPathへ `auth/bootstrap` と入力する。
+8. Saveを押す。
 
-Pagesのこの機能は、最初は通常「Preview deployment」を保護します。Productionの project-name.pages.dev は、この操作だけでは保護されません。
+Pagesのこの機能はPreview deployment用のapplicationを作成します。Pathを空欄にするとサイト全体がAccessの最大セッション期間に制限されるため、`auth/bootstrap` を設定します。Productionの project-name.pages.dev は、この操作だけでは保護されません。
 
 ### 4-2. Production用Access applicationを作る
 
@@ -224,14 +229,14 @@ Pagesのこの機能は、最初は通常「Preview deployment」を保護しま
 4. Self-hosted and privateを選ぶ。
 5. Application nameへ trpg-calendar-editor-production と入力する。
 6. Add public hostnameを押す。
-7. Productionのホスト名 trpg-calendar-editor.pages.dev を入力する。
+7. Productionのホスト名 trpg-calendar-editor.pages.dev を入力し、Pathへ `auth/bootstrap` と入力する。
 8. 所有者のメールアドレスを許可するAllow policyを設定する。
 9. CreateまたはSaveを押す。
 
 最後にApplications一覧へ、次の2つがあることを確認します。
 
-- Productionの project-name.pages.dev を保護するapplication
-- Previewの *.project-name.pages.dev を保護するapplication
+- Productionの `project-name.pages.dev/auth/bootstrap` を保護するapplication
+- Previewの `*.project-name.pages.dev/auth/bootstrap` を保護するapplication
 
 カスタムドメインを編集サイトへ追加した場合、そのドメイン用のSelf-hosted applicationも別途必要です。
 
@@ -345,13 +350,15 @@ Cloudflare公式:
 ### 6-1. 認証を確認する
 
 1. Productionの編集URLをシークレットウィンドウで開く。
-2. Cloudflare Accessのログイン画面が最初に表示されることを確認する。
+2. `/auth/bootstrap` を経由し、Cloudflare Accessのログイン画面が表示されることを確認する。
 3. 許可していないメールアドレスでは入れないことを確認する。
 4. ALLOWED_EMAILと同じメールアドレスでログインする。
 5. 編集画面が開き、既存予定が表示されることを確認する。
-6. Preview URLでも同じようにログインが必要なことを確認する。
+6. ブラウザーを閉じて同じ編集URLを開き直し、再ログインなしで表示されることを確認する。
+7. 管理メニューの「このブラウザーからログアウト」でCookieを削除し、もう一度開くと初回認証へ戻ることを確認する。
+8. Preview URLでも同じように、最初の1回だけログインが必要なことを確認する。
 
-Production URLを開いた瞬間に編集画面やJSONが見える場合は、保存テストへ進まずAccess設定を直してください。
+シークレットウィンドウでProduction URLを開いた瞬間に編集画面やJSONが見える場合は、保存テストへ進まずmiddlewareのデプロイとAccessのPath設定を直してください。
 
 ### 6-2. 読込を確認する
 
@@ -455,8 +462,8 @@ UndoやRedoは画面内の編集中データへ適用されます。GitHubへ反
 | 画面やAPIの表示 | 主な原因 | 確認する場所 |
 | --- | --- | --- |
 | AUTH_CONFIG_ERROR / 認証設定が不足 | Access用変数が未設定 | Pages → Settings → Variables and SecretsのCF_ACCESS_TEAM_DOMAIN、CF_ACCESS_AUD、ALLOWED_EMAIL |
-| AUTH_REQUIRED | Access JWTがない | Production / PreviewのAccess application、ログイン状態 |
-| AUTH_INVALID | team domainかAUDが違う、JWT期限切れ | ProductionとPreviewで正しいAUDを分けたか、team domain末尾に余計なパスがないか |
+| AUTH_REQUIRED | 所有者CookieとAccess JWTがない | `/auth/bootstrap` のAccess application、ログイン状態 |
+| AUTH_INVALID | Cookieの期限切れ・改ざん、またはteam domainかAUDの不一致 | ログアウト後の再ログイン、Production / PreviewのAUD、team domain |
 | EMAIL_NOT_ALLOWED | JWTのメールと許可メールが不一致 | Access policyのEmailsとALLOWED_EMAIL |
 | GITHUB_CONFIG_ERROR | GitHub用変数が不足または不正 | GITHUB_TOKEN、OWNER、REPO、BRANCH、CALENDAR_PATH |
 | GITHUB_AUTH_FAILED | トークンが無効または権限不足 | tokenの期限、Resource owner、対象repo、Contents Read and write |
@@ -478,6 +485,8 @@ UndoやRedoは画面内の編集中データへ適用されます。GitHubへ反
 3. ProductionとPreviewを再デプロイする。
 4. 編集サイトで読込と小さな保存が成功することを確認する。
 5. GitHubで古いトークンをRevokeする。
+
+GITHUB_TOKENの更新で所有者Cookieの署名鍵も変わるため、更新後はすべてのブラウザーで一度だけ再ログインが必要です。これは全端末の長期セッションを強制失効する手段にもなります。
 
 ### 漏えいが疑われる場合
 
@@ -533,7 +542,7 @@ npm testでは、共通データロジック、実署名したテストJWT、iss
 | public/editor.css | 閲覧カレンダー、左編集パネル、レスポンシブ表示 |
 | public/editor.js | 複数日選択、日程個別編集、読込、直接保存、競合時の表示 |
 | public/calendar-core.js | カレンダーデータの共通処理 |
-| functions/_middleware.js | Cloudflare Access JWTの検証 |
+| functions/_middleware.js | 初回Access JWT、365日更新型の所有者Cookie、全ページ・API認証、ログアウト |
 | functions/api/calendar.js | GitHubからのGETとGitHubへのPUT |
 | scripts/preview-server.mjs | GitHubへ書き込まないローカルプレビュー |
 | tests/ | 認証、API、データ、UIの自動テスト |
@@ -543,8 +552,12 @@ npm testでは、共通データロジック、実署名したテストJWT、iss
 ## 14. 公開前の最終チェックリスト
 
 - [ ] 公開サイトと編集サイトが別のPagesプロジェクトになっている
-- [ ] Production URLを未ログインで開くとAccessログインになる
-- [ ] Preview URLも未ログインで開けない
+- [ ] ProductionのAccess destinationが `trpg-calendar-editor.pages.dev/auth/bootstrap` になっている
+- [ ] PreviewのAccess destinationが `*.trpg-calendar-editor.pages.dev/auth/bootstrap` になっている
+- [ ] Production URLを未ログインで開くと `/auth/bootstrap` 経由でAccessログインになる
+- [ ] Preview URLも未ログインでは `/auth/bootstrap` 経由でAccessログインになる
+- [ ] 一度ログインしたブラウザーでは、閉じて開き直しても再ログインなしで表示できる
+- [ ] 管理メニューからログアウトすると再認証が必要になる
 - [ ] 許可メールアドレスが1件だけになっている
 - [ ] Production用AUDをProduction環境へ設定した
 - [ ] Preview用AUDをPreview環境へ設定した
@@ -563,4 +576,6 @@ npm testでは、共通データロジック、実署名したテストJWT、iss
 - Preview環境をmainへ向けた場合、Previewからの保存も本番データを変更する。
 - 保存後の公開反映時間は、既存の公開Pagesプロジェクトのデプロイ時間に依存する。
 - Access、Secret、GitHub tokenの作成と実デプロイは、CloudflareとGitHubの管理画面で行う必要がある。
+- 長期Cookieは最終発行から365日で失効し、利用中は24時間ごとに期限を365日後へ更新する。Cookie削除、別ブラウザー、ブラウザー側の保存制限、GITHUB_TOKEN更新でも再ログインが必要になる。
+- 長期Cookieの個別端末失効は行わない。管理メニューでは現在のブラウザーだけをログアウトし、全端末を失効する場合はGITHUB_TOKENを更新して再デプロイする。
 - 公開 calendar.html の既存のownerクエリは過去月表示用の簡易UI制御であり、編集権限には使用しない。

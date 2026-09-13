@@ -65,6 +65,11 @@ test("統合カレンダーの主要操作・ラベル・ライブ領域がHTML�
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /aria-label="月間予定カレンダー"/);
 });
+
+test("管理メニューから長期セッションをログアウトできる", () => {
+  assert.match(html, /class="menu-logout-link" href="\/auth\/logout"/);
+  assert.match(css, /\.owner-menu-panel \.menu-logout-link/);
+});
 test("左パネルがカレンダーを押して縮め、狭幅でも重ならない", () => {
   assert.match(css, /min-width:\s*320px/);
   assert.match(css, /grid-template-columns:\s*minmax\(360px, 400px\) minmax\(0, 1fr\)/);
