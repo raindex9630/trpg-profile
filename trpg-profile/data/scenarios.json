@@ -876,10 +876,6 @@
           {
             "title": "NOBODY*2",
             "role": "HO2 謎多き探索者"
-          },
-          {
-            "title": "MAGGY 889　1陣",
-            "role": "KP"
           }
         ]
       },
@@ -927,6 +923,10 @@
           {
             "title": "奇天烈探偵倶楽部 事前導入",
             "role": "HO3 女中"
+          },
+          {
+            "title": "青白い馬",
+            "role": "PL"
           }
         ]
       },
@@ -1616,6 +1616,10 @@
             {
               "title": "AE",
               "count": "10"
+            },
+            {
+              "title": "MAGGY 889",
+              "count": "1"
             },
             {
               "title": "Naming the Blood",
