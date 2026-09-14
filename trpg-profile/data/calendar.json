@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-13 18:52",
+  "updated_at": "2026-09-15 01:12",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -30,7 +30,8 @@
       "start_time": "21:30",
       "end_time": "25:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "c12a1a071590",
@@ -44,91 +45,8 @@
       "start_time": "21:30",
       "end_time": "25:00",
       "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "c9420ac87433",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-09-08"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "a5d0aa46190a",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-09-09"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "e2c9d40aa184",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-09-13"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "7212423c24f8",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-09-15"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "857aa582cbd1",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-09-16"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "5c7160ab4711",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-09-29"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "20c29697e27d",
@@ -142,7 +60,83 @@
       "start_time": "13:00",
       "end_time": "24:30",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "day"
+    },
+    {
+      "id": "c9420ac87433",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-08"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "a5d0aa46190a",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-09"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "7212423c24f8",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-15"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "857aa582cbd1",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-16"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "5c7160ab4711",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
+      "dates": [
+        "2026-09-29"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "25:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "fdc401d0207c",
@@ -156,7 +150,8 @@
       "start_time": "21:30",
       "end_time": "25:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "d3ce5a3d6a7c",
@@ -170,7 +165,8 @@
       "start_time": "21:30",
       "end_time": "25:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "6f9442d8b300",
@@ -184,7 +180,8 @@
       "start_time": "21:30",
       "end_time": "25:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "61537ed4c228",
@@ -198,35 +195,8 @@
       "start_time": "21:30",
       "end_time": "25:00",
       "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "904552f9361f",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-27"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "6048bcb53299",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-28"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "fae54ede5043",
@@ -240,77 +210,38 @@
       "start_time": "13:00",
       "end_time": "24:30",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "day"
     },
     {
-      "id": "af69688bdf49",
-      "session_id": "76571bd30c5d",
-      "title": "MAGGY 889￤1陣",
-      "tag": "GM",
+      "id": "904552f9361f",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
       "dates": [
-        "2026-09-04"
+        "2026-10-27"
       ],
       "all_day": false,
       "start_time": "21:30",
-      "end_time": "24:00",
+      "end_time": "25:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
-      "id": "31f69e956de9",
-      "session_id": "76571bd30c5d",
-      "title": "MAGGY 889￤1陣",
-      "tag": "GM",
+      "id": "6048bcb53299",
+      "session_id": "0849e105c62b",
+      "title": "NOBODY*2",
+      "tag": "PL",
       "dates": [
-        "2026-09-07"
+        "2026-10-28"
       ],
       "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
+      "start_time": "21:30",
+      "end_time": "25:00",
       "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "adb523c29712",
-      "session_id": "76571bd30c5d",
-      "title": "MAGGY 889￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-09-11"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "429d6553aeac",
-      "session_id": "76571bd30c5d",
-      "title": "MAGGY 889￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-09-14"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "361ca0e2768d",
-      "session_id": "76571bd30c5d",
-      "title": "MAGGY 889￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-09-25"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "66226d3363d6",
@@ -324,7 +255,38 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "af69688bdf49",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-04"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "31f69e956de9",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-07"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "00e30d292cdc",
@@ -338,21 +300,38 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
-      "id": "46a9cc5c0583",
+      "id": "adb523c29712",
       "session_id": "76571bd30c5d",
       "title": "MAGGY 889￤1陣",
       "tag": "GM",
       "dates": [
-        "2026-09-28"
+        "2026-09-11"
       ],
       "all_day": false,
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": true
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "429d6553aeac",
+      "session_id": "76571bd30c5d",
+      "title": "MAGGY 889￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-14"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "40ece9edb8bd",
@@ -775,119 +754,8 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "f6f75f8bb8c4",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-10"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "ff02f973e6e7",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-16"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "f02abdeb5f4f",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-17"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "8097720884f6",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-19"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "2bb235176cd4",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-23"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "a123e6931afa",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-24"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "87b5e025aac8",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-27"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "9f9a5e3cb488",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-30"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "aa675bb3d4d7",
@@ -901,7 +769,23 @@
       "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "f6f75f8bb8c4",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-10"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "dbe497bb42a3",
@@ -915,7 +799,98 @@
       "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "ff02f973e6e7",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-16"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "f02abdeb5f4f",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-17"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "8097720884f6",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-19"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "2bb235176cd4",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-23"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "a123e6931afa",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-24"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "87b5e025aac8",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-27"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "b79d6b0b667b",
@@ -929,7 +904,24 @@
       "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": true
+      "is_backup_date": false,
+      "schedule_note": "差替用予備日",
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "9f9a5e3cb488",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-30"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "393cb869c7a1",
@@ -943,7 +935,8 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "188bbbc07794",
@@ -957,189 +950,8 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "198ea9fd158c",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-07"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "6a700e4afc44",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-08"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "664dd33af2eb",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-10"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "3b3b9b1d4c41",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-14"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "505b571b7163",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-15"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "0146f8342b47",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-17"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "b3aea3b5afc4",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-21"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "c59c4a840d6e",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-22"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "ee38c4ce82fe",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-23"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "cbf02749bfd5",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-25"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": true
-    },
-    {
-      "id": "00c2cfaeacd2",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-28"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": true
-    },
-    {
-      "id": "a7fea089caf8",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-30"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": true
-    },
-    {
-      "id": "bda4ea77cf97",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-31"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": true
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "c602e11f34e6",
@@ -1153,7 +965,98 @@
       "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "198ea9fd158c",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-07"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "6a700e4afc44",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-08"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "664dd33af2eb",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-10"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "3b3b9b1d4c41",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-14"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "505b571b7163",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-15"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "0146f8342b47",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-17"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "5b793d47a6e0",
@@ -1167,7 +1070,8 @@
       "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "all_day"
     },
     {
       "id": "73ba7f7425c5",
@@ -1181,7 +1085,114 @@
       "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": true
+      "is_backup_date": false,
+      "schedule_note": "差替用予備日",
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "b3aea3b5afc4",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-21"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "c59c4a840d6e",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-22"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "ee38c4ce82fe",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-23"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "cbf02749bfd5",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-25"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": true,
+      "blocked_period": "night"
+    },
+    {
+      "id": "00c2cfaeacd2",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-28"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": true,
+      "blocked_period": "night"
+    },
+    {
+      "id": "a7fea089caf8",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-30"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": true,
+      "blocked_period": "night"
+    },
+    {
+      "id": "bda4ea77cf97",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-31"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": true,
+      "blocked_period": "night"
     },
     {
       "id": "ceeeba0841c1",
@@ -2218,6 +2229,49 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "8a7cc5356122",
+      "session_id": "7a7c81dfc017",
+      "title": "青白い馬",
+      "tag": "PL",
+      "dates": [
+        "2026-11-25"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "82718bc35554",
+      "session_id": "7a7c81dfc017",
+      "title": "青白い馬",
+      "tag": "PL",
+      "dates": [
+        "2026-11-26"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "978b6acf5388",
+      "session_id": "22c2ad995ba3",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-09-27"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "day"
     }
   ]
 }
