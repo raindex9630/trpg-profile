@@ -1885,21 +1885,6 @@
       "blocked_period": "all_day"
     },
     {
-      "id": "33337742bce7",
-      "session_id": "33337742bce7",
-      "title": "×",
-      "tag": "×",
-      "dates": [
-        "2027-02-06"
-      ],
-      "all_day": true,
-      "start_time": "",
-      "end_time": "",
-      "end_next_day": false,
-      "is_backup_date": false,
-      "blocked_period": "all_day"
-    },
-    {
       "id": "641fd14b59bb",
       "session_id": "641fd14b59bb",
       "title": "×",
