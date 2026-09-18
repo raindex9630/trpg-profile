@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-18 21:10",
+  "updated_at": "2026-09-18 21:14",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2302,6 +2302,62 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "all_day"
+    },
+    {
+      "id": "112006d9e411",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-09"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "ebf466646c08",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-06"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "2cdd31a7ab6d",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-20"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "fa1609e14e77",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-27"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
