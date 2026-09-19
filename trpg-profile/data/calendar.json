@@ -2531,6 +2531,21 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "fccc99a7c277",
+      "session_id": "fccc99a7c277",
+      "title": "昼×",
+      "tag": "×",
+      "dates": [
+        "2026-09-21"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "day"
     }
   ]
 }
