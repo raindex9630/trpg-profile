@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-18 21:37",
+  "updated_at": "2026-09-19 16:51",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2289,6 +2289,34 @@
       "blocked_period": "all_day"
     },
     {
+      "id": "e7ffe4e18fdd",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-05"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "6e1288e66e89",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-08"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "112006d9e411",
       "session_id": "65329c7b3749",
       "title": "Pèttirosso!",
@@ -2302,6 +2330,104 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "all_day"
+    },
+    {
+      "id": "c255d006e00f",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-18"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "2a72a1a525c8",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-19"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "70ae349748f4",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-22"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "b0e001dafb18",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-25"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "94f5df5bd95c",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-26"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "ea8b7f4141fa",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-29"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "720263136b27",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-02"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "ebf466646c08",
@@ -2319,6 +2445,48 @@
       "blocked_period": "night"
     },
     {
+      "id": "cb410f06e7f5",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-09"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "7fa44684a55b",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-18"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "53d9b5b90046",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-19"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "2cdd31a7ab6d",
       "session_id": "65329c7b3749",
       "title": "Pèttirosso!",
@@ -2332,6 +2500,20 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "f139d4e17f5d",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-25"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "fa1609e14e77",
