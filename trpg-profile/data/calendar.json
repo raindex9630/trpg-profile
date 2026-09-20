@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-20 01:53",
+  "updated_at": "2026-09-20 16:38",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -581,20 +581,6 @@
       "tag": "GM",
       "dates": [
         "2026-10-10"
-      ],
-      "all_day": false,
-      "start_time": "10:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "495563e51f5b",
-      "session_id": "af5276125b87",
-      "title": "ハッピーサファーーー！￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-11"
       ],
       "all_day": false,
       "start_time": "10:00",
