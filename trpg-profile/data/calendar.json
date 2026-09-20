@@ -2,16 +2,16 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-15 01:12",
+  "updated_at": "2026-09-20 16:38",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
     "2026-10": "×",
     "2026-11": "えっこく継続は仮なのですべifがここしか入れられなければOK",
     "2026-12": "えっこく継続orすべifのみ⭕️",
-    "2027-01": "ぺの可能性　リア友と遊ぶかも　同窓会（原義）あるかも　AE13陣？\nめめかん？",
-    "2027-02": "ぺの可能性　同窓会（原義）あるかも\nめめかん？",
-    "2027-03": "四季学かも\nめめかん？",
+    "2027-01": "ぺの可能性　リア友と遊ぶかも　AE13陣？\nめめかん？",
+    "2027-02": "ぺの可能性\nめめかん？",
+    "2027-03": "14と21の×はどっちか一つは確実に空きます\n四季学かも\nめめかん？",
     "2027-04": "△　継続のみ⭕️",
     "2027-05": "ヴィジェル2陣？　原稿ある",
     "2027-06": "ヴィジェル2陣？",
@@ -117,7 +117,7 @@
         "2026-09-16"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "22:00",
       "end_time": "25:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -405,34 +405,6 @@
       "is_backup_date": true
     },
     {
-      "id": "988fd6430ff3",
-      "session_id": "833662224ab7",
-      "title": "BARABARADICAL￤2陣",
-      "tag": "GM",
-      "dates": [
-        "2026-09-19"
-      ],
-      "all_day": false,
-      "start_time": "16:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "f98f895bdd78",
-      "session_id": "833662224ab7",
-      "title": "BARABARADICAL￤2陣",
-      "tag": "GM",
-      "dates": [
-        "2026-09-20"
-      ],
-      "all_day": false,
-      "start_time": "20:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
       "id": "4dd229578e3b",
       "session_id": "833662224ab7",
       "title": "BARABARADICAL￤2陣",
@@ -444,7 +416,23 @@
       "start_time": "20:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "988fd6430ff3",
+      "session_id": "833662224ab7",
+      "title": "BARABARADICAL￤2陣",
+      "tag": "GM",
+      "dates": [
+        "2026-09-19"
+      ],
+      "all_day": false,
+      "start_time": "16:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "day"
     },
     {
       "id": "88475fb11808",
@@ -593,20 +581,6 @@
       "tag": "GM",
       "dates": [
         "2026-10-10"
-      ],
-      "all_day": false,
-      "start_time": "10:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "495563e51f5b",
-      "session_id": "af5276125b87",
-      "title": "ハッピーサファーーー！￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-11"
       ],
       "all_day": false,
       "start_time": "10:00",
@@ -1195,42 +1169,27 @@
       "blocked_period": "night"
     },
     {
+      "id": "978b6acf5388",
+      "session_id": "22c2ad995ba3",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-09-27"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "day"
+    },
+    {
       "id": "ceeeba0841c1",
       "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
         "2026-11-01"
-      ],
-      "all_day": true,
-      "start_time": "",
-      "end_time": "",
-      "end_next_day": false,
-      "is_backup_date": false,
-      "blocked_period": "all_day"
-    },
-    {
-      "id": "9888e1225e89",
-      "session_id": "22c2ad995ba3",
-      "title": "えっこく継続",
-      "tag": "仮押さえ",
-      "dates": [
-        "2026-11-08"
-      ],
-      "all_day": true,
-      "start_time": "",
-      "end_time": "",
-      "end_next_day": false,
-      "is_backup_date": false,
-      "blocked_period": "all_day"
-    },
-    {
-      "id": "454244514cee",
-      "session_id": "22c2ad995ba3",
-      "title": "えっこく継続",
-      "tag": "仮押さえ",
-      "dates": [
-        "2026-11-15"
       ],
       "all_day": true,
       "start_time": "",
@@ -1300,6 +1259,21 @@
       "blocked_period": "night"
     },
     {
+      "id": "9888e1225e89",
+      "session_id": "22c2ad995ba3",
+      "title": "えっこく継続",
+      "tag": "仮押さえ",
+      "dates": [
+        "2026-11-08"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
       "id": "768b2be4c76e",
       "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
@@ -1360,19 +1334,19 @@
       "blocked_period": "night"
     },
     {
-      "id": "bced23305ebf",
+      "id": "454244514cee",
       "session_id": "22c2ad995ba3",
       "title": "えっこく継続",
       "tag": "仮押さえ",
       "dates": [
-        "2026-11-18"
+        "2026-11-15"
       ],
-      "all_day": false,
-      "start_time": "21:00",
+      "all_day": true,
+      "start_time": "",
       "end_time": "",
       "end_next_day": false,
       "is_backup_date": false,
-      "blocked_period": "night"
+      "blocked_period": "all_day"
     },
     {
       "id": "507ccae9936f",
@@ -1885,21 +1859,6 @@
       "blocked_period": "all_day"
     },
     {
-      "id": "33337742bce7",
-      "session_id": "33337742bce7",
-      "title": "×",
-      "tag": "×",
-      "dates": [
-        "2027-02-06"
-      ],
-      "all_day": true,
-      "start_time": "",
-      "end_time": "",
-      "end_next_day": false,
-      "is_backup_date": false,
-      "blocked_period": "all_day"
-    },
-    {
       "id": "641fd14b59bb",
       "session_id": "641fd14b59bb",
       "title": "×",
@@ -2259,12 +2218,313 @@
       "is_backup_date": false
     },
     {
-      "id": "978b6acf5388",
-      "session_id": "22c2ad995ba3",
-      "title": "えっこく継続",
-      "tag": "仮押さえ",
+      "id": "1463f4c22b35",
+      "session_id": "1463f4c22b35",
+      "title": "×",
+      "tag": "×",
       "dates": [
-        "2026-09-27"
+        "2026-10-11"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "6d01714b74f4",
+      "session_id": "6d01714b74f4",
+      "title": "昼×",
+      "tag": "×",
+      "dates": [
+        "2027-02-28"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "day"
+    },
+    {
+      "id": "8d95c1424395",
+      "session_id": "8d95c1424395",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2026-11-18"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "e7ffe4e18fdd",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-05"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "schedule_note": "事前導入",
+      "blocked_period": "night"
+    },
+    {
+      "id": "6e1288e66e89",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-08"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "112006d9e411",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-09"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "c255d006e00f",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-18"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "2a72a1a525c8",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-19"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "70ae349748f4",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-22"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "b0e001dafb18",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-25"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "94f5df5bd95c",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-26"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "ea8b7f4141fa",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-01-29"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "720263136b27",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-02"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "ebf466646c08",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-06"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "cb410f06e7f5",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-09"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "7fa44684a55b",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-18"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "53d9b5b90046",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-19"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "2cdd31a7ab6d",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-20"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "f139d4e17f5d",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-25"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "fa1609e14e77",
+      "session_id": "65329c7b3749",
+      "title": "Pèttirosso!",
+      "tag": "PL",
+      "dates": [
+        "2027-02-27"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "fccc99a7c277",
+      "session_id": "fccc99a7c277",
+      "title": "昼×",
+      "tag": "×",
+      "dates": [
+        "2026-09-21"
       ],
       "all_day": false,
       "start_time": "13:00",
