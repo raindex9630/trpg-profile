@@ -883,10 +883,6 @@
         "label": "9月",
         "items": [
           {
-            "title": "BARABARADICAL　2陣",
-            "role": "KP"
-          },
-          {
             "title": "Vicx",
             "role": "PL"
           }
@@ -947,6 +943,10 @@
         "label": "1月",
         "items": [
           {
+            "title": "Pèttirosso!",
+            "role": "HO4 もう一つのファミリーの構成員"
+          },
+          {
             "title": "ハッピーエンドは君が殺した",
             "role": "HOヘンゼルとグレーテル"
           },
@@ -962,6 +962,10 @@
           {
             "title": "夜明けのヴィジェル　1陣",
             "role": "KP"
+          },
+          {
+            "title": "Pèttirosso!",
+            "role": "HO4 もう一つのファミリーの構成員"
           }
         ]
       },
@@ -1052,11 +1056,6 @@
     },
     {
       "title": "テンスメイド",
-      "note": "",
-      "favorite": true
-    },
-    {
-      "title": "瞑瞑館殺人事件",
       "note": "",
       "favorite": true
     },
@@ -1616,6 +1615,10 @@
             {
               "title": "AE",
               "count": "10"
+            },
+            {
+              "title": "BARABARADICAL",
+              "count": "2"
             },
             {
               "title": "MAGGY 889",
