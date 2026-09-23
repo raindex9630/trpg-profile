@@ -176,6 +176,12 @@
               "favorite_ho": false
             },
             {
+              "title": "Vicx",
+              "ho": "",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "wash over",
               "ho": "",
               "favorite": false,
@@ -876,15 +882,6 @@
           {
             "title": "NOBODY*2",
             "role": "HO2 謎多き探索者"
-          }
-        ]
-      },
-      {
-        "label": "9月",
-        "items": [
-          {
-            "title": "Vicx",
-            "role": "PL"
           }
         ]
       },
