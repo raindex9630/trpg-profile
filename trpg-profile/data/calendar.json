@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-24 01:47",
+  "updated_at": "2026-09-25 00:58",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -407,132 +407,6 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "day"
-    },
-    {
-      "id": "88475fb11808",
-      "session_id": "5b2a440d2071",
-      "title": "しんでしまう一週間後のきみへ￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-02"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "0e4534649f00",
-      "session_id": "5b2a440d2071",
-      "title": "しんでしまう一週間後のきみへ￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-05"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "66eeaf9367a9",
-      "session_id": "5b2a440d2071",
-      "title": "しんでしまう一週間後のきみへ￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-06"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "bfa743c77e58",
-      "session_id": "5b2a440d2071",
-      "title": "しんでしまう一週間後のきみへ￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-07"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "bae270104143",
-      "session_id": "5b2a440d2071",
-      "title": "しんでしまう一週間後のきみへ￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-09"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "6b42826cacc8",
-      "session_id": "5b2a440d2071",
-      "title": "しんでしまう一週間後のきみへ￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-12"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "eaf22b0b7f5d",
-      "session_id": "5b2a440d2071",
-      "title": "しんでしまう一週間後のきみへ￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-15"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": true
-    },
-    {
-      "id": "e68b00c36407",
-      "session_id": "5b2a440d2071",
-      "title": "しんでしまう一週間後のきみへ￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-01"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
-    },
-    {
-      "id": "2d63727cfc3e",
-      "session_id": "5b2a440d2071",
-      "title": "しんでしまう一週間後のきみへ￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-10-08"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
     },
     {
       "id": "0566ec1d20c9",
