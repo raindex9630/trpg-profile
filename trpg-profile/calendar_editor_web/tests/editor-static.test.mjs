@@ -257,6 +257,23 @@ test("日付や予定カードから開いた編集ペインはクリックし�
   assert.doesNotMatch(js, /scrollPanelToOccurrence[\s\S]*?behavior:\s*"smooth"/);
 });
 
+test("クリックした日付をカレンダーと編集ペインの両方で強調する", () => {
+  const ui = selectionHarness();
+  ui.openCreatePanel("2026-09-30");
+  assert.equal(ui.state.panel.activeOccurrenceKey, ui.state.panel.occurrences[0].key);
+  ui.toggleDraftDate("2026-10-01");
+  assert.equal(
+    ui.state.panel.activeOccurrenceKey,
+    ui.state.panel.occurrences.find((occurrence) => occurrence.date === "2026-10-01").key,
+  );
+  assert.match(js, /card\.classList\.toggle\("is-active", occurrence\.key === panel\.activeOccurrenceKey\)/);
+  assert.match(js, /dateKey === activeDate[\s\S]*?cell\.classList\.add\("is-active-date"\)/);
+  assert.match(css, /\.occurrence-card\.is-active\s*\{[^}]*border-color:\s*var\(--blue-dark\);[^}]*background:[^}]*box-shadow:/s);
+  assert.match(css, /\.calendar-day\.is-active-date\s*\{[^}]*box-shadow:\s*inset 0 0 0 4px var\(--blue-dark\)/s);
+  assert.match(css, /\.calendar-day\.is-active-date \.day-number\s*\{[^}]*background:\s*var\(--blue-dark\);[^}]*color:\s*#fff/s);
+  assert.match(css, /\.calendar-day\.is-active-date \.event-card\.is-session-highlighted\s*\{[^}]*outline:\s*3px solid var\(--blue-dark\)/s);
+});
+
 test("追加ボタンでは0件で開き、複数日の最後の選択を外すと閉じる", () => {
   const ui = selectionHarness();
   ui.openCreatePanel();

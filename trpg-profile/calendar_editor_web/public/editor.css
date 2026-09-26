@@ -198,16 +198,20 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .calendar-day.is-holiday { background: #fff1f4; }
 .calendar-day.is-draft-selected { box-shadow: inset 0 0 0 3px var(--blue); background: #eef8fc; }
 .calendar-day.is-draft-selected::after { content: "✓"; position: absolute; top: 3px; right: 3px; display: grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 10px; font-weight: 800; }
+.calendar-day.is-active-date { box-shadow: inset 0 0 0 4px var(--blue-dark); background: #e2f3fa; }
+.calendar-day.is-active-date::after { background: var(--blue-dark); }
 .day-number { display: inline-grid; place-items: center; flex: 0 0 auto; width: clamp(18px, 2.2vw, 25px); height: clamp(18px, 2.2vw, 25px); margin-bottom: 2px; border-radius: 50%; font-size: clamp(.58rem, 1.1vw, .74rem); font-weight: 700; }
 .calendar-day.is-saturday .day-number { color: #4e72a8; }
 .calendar-day.is-holiday .day-number { color: #b55765; }
 .calendar-day.is-today .day-number { background: #344151; color: #fff; }
 .calendar-day.is-today.is-holiday .day-number { background: #fff; color: #b55765; box-shadow: inset 0 0 0 2px #344151; }
+.calendar-day.is-active-date .day-number { background: var(--blue-dark); color: #fff; box-shadow: none; }
 .day-events { display: grid; gap: clamp(2px, .35vw, 5px); min-height: 0; }
 .calendar-day.is-crowded .day-events { grid-template-rows: repeat(var(--event-count, 3), minmax(0, 1fr)); flex: 1 1 auto; overflow: hidden; }
 .event-card { display: block; width: 100%; min-width: 0; min-height: 0; overflow: hidden; padding: clamp(3px, .45vw, 6px); border: 1px solid; border-left-width: 3px; border-radius: 8px; text-align: left; }
 .event-card:hover { filter: brightness(.98); }
 .event-card.is-session-highlighted { outline: 2px solid var(--blue); outline-offset: 1px; }
+.calendar-day.is-active-date .event-card.is-session-highlighted { outline: 3px solid var(--blue-dark); }
 .event-title { display: block; min-width: 0; margin: 0; color: var(--text); font-size: 11px; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; white-space: normal; }
 .event-time { display: block; margin-top: 4px; color: currentColor; font-size: 9.4px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
 .calendar-day.is-crowded .event-card { padding-block: 2px; }
@@ -275,6 +279,7 @@ textarea { resize: vertical; }
 .occurrence-list { display: grid; gap: 9px; margin-top: 10px; }
 .occurrence-card { padding: 10px; border: 1px solid var(--border); border-radius: 9px; background: #fff; }
 .occurrence-card.is-new { border-color: #93c8df; background: #f7fcfe; }
+.occurrence-card.is-active { border-color: var(--blue-dark); background: #eaf7fc; box-shadow: 0 0 0 3px rgba(17, 121, 162, .18); }
 .occurrence-head { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 7px; }
 .occurrence-head input { font-weight: 700; }
 .remove-occurrence { width: 31px; height: 31px; padding: 0; border: 1px solid #e2b7bb; border-radius: 7px; background: #fff; color: var(--danger); }

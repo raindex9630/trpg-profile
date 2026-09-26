@@ -304,6 +304,7 @@ function openCreatePanel(initialDate = "") {
     scenarioName: "",
     round: "",
     addingDates: true,
+    activeOccurrenceKey: initialOccurrence?.key || "",
     occurrences: initialOccurrence ? [initialOccurrence] : [],
     baseline: "",
   };
@@ -327,6 +328,7 @@ function openEditPanel(eventId) {
     scenarioName: titleParts.scenarioName,
     round: titleParts.round,
     addingDates: false,
+    activeOccurrenceKey: String(selected.id || ""),
     occurrences: sessionEvents.map(occurrenceFromEvent),
     baseline: "",
   };
@@ -337,6 +339,7 @@ function openEditPanel(eventId) {
 function renderPanel({ targetOccurrenceKey = "" } = {}) {
   const panel = state.panel;
   if (!panel) return closePanel({ force: true });
+  if (targetOccurrenceKey) panel.activeOccurrenceKey = String(targetOccurrenceKey);
   showPanel();
   elements.panel_title.textContent = panel.mode === "create" ? "セッション追加" : "セッション編集";
   elements.panel_save_button.textContent = panel.mode === "create" ? "登録" : "変更を保存";
@@ -395,6 +398,8 @@ function renderOccurrences() {
     const card = document.createElement("article");
     card.className = `occurrence-card${occurrence.eventId ? "" : " is-new"}`;
     card.dataset.occurrenceKey = occurrence.key;
+    card.classList.toggle("is-active", occurrence.key === panel.activeOccurrenceKey);
+    if (occurrence.key === panel.activeOccurrenceKey) card.setAttribute("aria-current", "true");
 
     const head = document.createElement("div");
     head.className = "occurrence-head";
@@ -486,6 +491,8 @@ function renderCalendar() {
   const leading = (new Date(year, month, 1, 12).getDay() + 6) % 7;
   const cellCount = Math.ceil((leading + dayCount) / 7) * 7;
   const todayKey = localDateKey(new Date());
+  const activeDate = state.panel?.occurrences
+    .find((occurrence) => occurrence.key === state.panel.activeOccurrenceKey)?.date || "";
   for (let index = 0; index < cellCount; index += 1) {
     const day = index - leading + 1;
     if (day < 1 || day > dayCount) {
@@ -509,6 +516,7 @@ function renderCalendar() {
     if (date.getDay() === 0 || JapaneseHolidays.has(dateKey)) cell.classList.add("is-holiday");
     if (dateKey === todayKey) cell.classList.add("is-today");
     if (draftHasDate(dateKey)) cell.classList.add("is-draft-selected");
+    if (dateKey === activeDate) cell.classList.add("is-active-date");
 
     const number = document.createElement("span");
     number.className = "day-number";
@@ -578,9 +586,11 @@ function toggleDraftDate(dateKey) {
     }
     panel.occurrences.push(next);
     panel.occurrences.sort((left, right) => left.date.localeCompare(right.date));
+    panel.activeOccurrenceKey = next.key;
   }
   renderOccurrences();
   renderCalendar();
+  scrollPanelToOccurrence(panel.activeOccurrenceKey);
 }
 
 function removeDraftOccurrence(key) {
@@ -605,6 +615,7 @@ function removeDraftOccurrence(key) {
     if (closePanel({ force: !hasContentChanges })) elements.new_session_button.focus();
     return;
   }
+  if (panel.activeOccurrenceKey === key) panel.activeOccurrenceKey = "";
   panel.occurrences.splice(index, 1);
   renderOccurrences();
   renderCalendar();
@@ -944,6 +955,14 @@ elements.calendar_grid.addEventListener("click", (event) => {
   if (state.panel) {
     if (eventButton) {
       if (state.panel.mode === "create" || state.panel.addingDates) return;
+      const occurrence = state.panel.occurrences
+        .find((item) => String(item.eventId) === String(eventButton.dataset.eventId));
+      if (occurrence) {
+        state.panel.activeOccurrenceKey = occurrence.key;
+        renderOccurrences();
+        renderCalendar();
+        scrollPanelToOccurrence(occurrence.key);
+      }
       return;
     }
     if (dayCell) toggleDraftDate(dayCell.dataset.date);
