@@ -243,6 +243,18 @@ function occurrenceFromEvent(event) {
 
 let panelTransitionId = 0;
 
+function scrollPanelToOccurrence(occurrenceKey) {
+  if (!occurrenceKey) return false;
+  const target = Array.from(elements.occurrence_list.children)
+    .find((card) => card.dataset.occurrenceKey === String(occurrenceKey));
+  if (!target) return false;
+  const panelBody = elements.session_editor_form;
+  const bodyTop = panelBody.getBoundingClientRect().top;
+  const targetTop = target.getBoundingClientRect().top;
+  panelBody.scrollTop = Math.max(0, panelBody.scrollTop + targetTop - bodyTop - 12);
+  return true;
+}
+
 function showPanel() {
   panelTransitionId += 1;
   elements.workspace.classList.remove("is-panel-closing");
@@ -284,6 +296,7 @@ function closePanel({ force = false } = {}) {
 
 function openCreatePanel(initialDate = "") {
   if (state.panel && !closePanel()) return;
+  const initialOccurrence = initialDate ? defaultOccurrence(initialDate) : null;
   state.panel = {
     mode: "create",
     sessionId: "",
@@ -291,11 +304,11 @@ function openCreatePanel(initialDate = "") {
     scenarioName: "",
     round: "",
     addingDates: true,
-    occurrences: initialDate ? [defaultOccurrence(initialDate)] : [],
+    occurrences: initialOccurrence ? [initialOccurrence] : [],
     baseline: "",
   };
   setPanelBaseline();
-  renderPanel();
+  renderPanel({ targetOccurrenceKey: initialOccurrence?.key || "" });
 }
 
 function openEditPanel(eventId) {
@@ -318,10 +331,10 @@ function openEditPanel(eventId) {
     baseline: "",
   };
   setPanelBaseline();
-  renderPanel();
+  renderPanel({ targetOccurrenceKey: String(selected.id || "") });
 }
 
-function renderPanel() {
+function renderPanel({ targetOccurrenceKey = "" } = {}) {
   const panel = state.panel;
   if (!panel) return closePanel({ force: true });
   showPanel();
@@ -346,7 +359,8 @@ function renderPanel() {
   renderOccurrences();
   renderCalendar();
   updateStateIndicators();
-  if (panel.mode === "create") elements.scenario_name.focus();
+  if (targetOccurrenceKey) scrollPanelToOccurrence(targetOccurrenceKey);
+  else if (panel.mode === "create") elements.scenario_name.focus();
 }
 
 function makeLabel(text, control) {

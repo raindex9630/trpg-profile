@@ -23,12 +23,15 @@ function selectionHarness(confirmAnswer = true, animated = false) {
           nodes.set(id, {
             hidden: id === "edit-panel",
             dataset: {},
+            children: [],
+            scrollTop: 0,
             style: { setProperty() {} },
             classList: {
               add(value) { classes.add(value); },
               remove(value) { classes.delete(value); },
               contains(value) { return classes.has(value); },
             },
+            getBoundingClientRect() { return { top: 0 }; },
             contains() { return false; },
             getAnimations() {
               if (!animated) return [];
@@ -56,7 +59,7 @@ function selectionHarness(confirmAnswer = true, animated = false) {
     renderCalendar = () => {};
     renderOccurrences = () => {};
     renderPanel = () => showPanel();
-    globalThis.selection = { state, elements, openCreatePanel, closePanel, toggleDraftDate, removeDraftOccurrence, setPanelBaseline, defaultOccurrence, applyBulkTime, normalizedWheelDelta, wheelMonthOffset };
+    globalThis.selection = { state, elements, openCreatePanel, closePanel, toggleDraftDate, removeDraftOccurrence, setPanelBaseline, defaultOccurrence, applyBulkTime, normalizedWheelDelta, wheelMonthOffset, scrollPanelToOccurrence };
   `, sandbox);
   return { ...sandbox.selection, nodes, animations, confirms: () => confirms };
 }
@@ -234,6 +237,24 @@ test("日付から追加を始め、最後の日付を外すと確認なしで�
   assert.equal(ui.state.panel, null);
   assert.equal(ui.nodes.get("edit-panel").hidden, true);
   assert.equal(ui.confirms(), 0);
+});
+
+test("日付や予定カードから開いた編集ペインはクリックした日程へ即時移動する", () => {
+  const ui = selectionHarness();
+  const panelBody = ui.nodes.get("session-editor-form");
+  const occurrenceList = ui.nodes.get("occurrence-list");
+  panelBody.scrollTop = 40;
+  panelBody.getBoundingClientRect = () => ({ top: 100 });
+  occurrenceList.children = [
+    { dataset: { occurrenceKey: "first" }, getBoundingClientRect: () => ({ top: 160 }) },
+    { dataset: { occurrenceKey: "clicked" }, getBoundingClientRect: () => ({ top: 400 }) },
+  ];
+
+  assert.equal(ui.scrollPanelToOccurrence("clicked"), true);
+  assert.equal(panelBody.scrollTop, 328);
+  assert.match(js, /renderPanel\(\{ targetOccurrenceKey: initialOccurrence\?\.key \|\| "" \}\)/);
+  assert.match(js, /renderPanel\(\{ targetOccurrenceKey: String\(selected\.id \|\| ""\) \}\)/);
+  assert.doesNotMatch(js, /scrollPanelToOccurrence[\s\S]*?behavior:\s*"smooth"/);
 });
 
 test("追加ボタンでは0件で開き、複数日の最後の選択を外すと閉じる", () => {
