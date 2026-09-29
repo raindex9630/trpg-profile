@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-27 21:08",
+  "updated_at": "2026-09-29 23:39",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -118,111 +118,6 @@
       ],
       "all_day": false,
       "start_time": "22:00",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "fdc401d0207c",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-09-30"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "d3ce5a3d6a7c",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-18"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "6f9442d8b300",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-20"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "61537ed4c228",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-21"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "fae54ede5043",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-25"
-      ],
-      "all_day": false,
-      "start_time": "13:00",
-      "end_time": "24:30",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "day"
-    },
-    {
-      "id": "904552f9361f",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-27"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "6048bcb53299",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-28"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
       "end_time": "25:00",
       "end_next_day": true,
       "is_backup_date": false,
