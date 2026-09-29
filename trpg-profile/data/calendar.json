@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-26 17:45",
+  "updated_at": "2026-09-29 23:39",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -118,111 +118,6 @@
       ],
       "all_day": false,
       "start_time": "22:00",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "fdc401d0207c",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-09-30"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "d3ce5a3d6a7c",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-18"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "6f9442d8b300",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-20"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "61537ed4c228",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-21"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "fae54ede5043",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-25"
-      ],
-      "all_day": false,
-      "start_time": "13:00",
-      "end_time": "24:30",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "day"
-    },
-    {
-      "id": "904552f9361f",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-27"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
-      "end_time": "25:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "6048bcb53299",
-      "session_id": "0849e105c62b",
-      "title": "NOBODY*2",
-      "tag": "PL",
-      "dates": [
-        "2026-10-28"
-      ],
-      "all_day": false,
-      "start_time": "21:30",
       "end_time": "25:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -452,6 +347,34 @@
       "blocked_period": "day"
     },
     {
+      "id": "e7d86f5a7904",
+      "session_id": "1dfb7303366d",
+      "title": "空の青さの掴み方",
+      "tag": "PL",
+      "dates": [
+        "2026-10-13"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "7d7d16ac690d",
+      "session_id": "1dfb7303366d",
+      "title": "空の青さの掴み方",
+      "tag": "PL",
+      "dates": [
+        "2026-10-14"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "04c0ab437eb3",
       "session_id": "1dfb7303366d",
       "title": "空の青さの掴み方",
@@ -463,7 +386,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "32e1c58ec1a5",
@@ -477,7 +401,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "1a151698d722",
@@ -491,7 +416,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "745a2260c88f",
@@ -505,7 +431,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "ea88fe34fd2d",
@@ -519,7 +446,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "ebcbf98096a4",
@@ -533,7 +461,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "81a6b5cacee0",
@@ -547,7 +476,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "4ab1724dc23f",
@@ -1000,21 +930,6 @@
       "end_next_day": true,
       "is_backup_date": true,
       "blocked_period": "night"
-    },
-    {
-      "id": "978b6acf5388",
-      "session_id": "22c2ad995ba3",
-      "title": "えっこく継続",
-      "tag": "仮押さえ",
-      "dates": [
-        "2026-09-27"
-      ],
-      "all_day": false,
-      "start_time": "13:00",
-      "end_time": "",
-      "end_next_day": false,
-      "is_backup_date": false,
-      "blocked_period": "day"
     },
     {
       "id": "ceeeba0841c1",
