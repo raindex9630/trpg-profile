@@ -2295,6 +2295,21 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "2072f859b1c2",
+      "session_id": "2072f859b1c2",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2026-10-04"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
     }
   ]
 }
