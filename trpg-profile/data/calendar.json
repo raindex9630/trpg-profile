@@ -334,17 +334,17 @@
     {
       "id": "407ca2dc2af6",
       "session_id": "407ca2dc2af6",
-      "title": "昼×",
+      "title": "×",
       "tag": "×",
       "dates": [
         "2026-10-18"
       ],
-      "all_day": false,
-      "start_time": "13:00",
+      "all_day": true,
+      "start_time": "",
       "end_time": "",
       "end_next_day": false,
       "is_backup_date": false,
-      "blocked_period": "day"
+      "blocked_period": "all_day"
     },
     {
       "id": "e7d86f5a7904",
