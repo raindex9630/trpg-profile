@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-30 01:07",
+  "updated_at": "2026-09-30 01:08",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2310,6 +2310,21 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "all_day"
+    },
+    {
+      "id": "489c44746142",
+      "session_id": "489c44746142",
+      "title": "夜×",
+      "tag": "×",
+      "dates": [
+        "2026-10-01"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
     }
   ]
 }
