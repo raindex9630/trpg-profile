@@ -2284,17 +2284,17 @@
     {
       "id": "aa343bde051a",
       "session_id": "aa343bde051a",
-      "title": "×",
+      "title": "夜×",
       "tag": "×",
       "dates": [
         "2026-09-30"
       ],
-      "all_day": true,
-      "start_time": "",
+      "all_day": false,
+      "start_time": "21:00",
       "end_time": "",
       "end_next_day": false,
       "is_backup_date": false,
-      "blocked_period": "all_day"
+      "blocked_period": "night"
     }
   ]
 }
