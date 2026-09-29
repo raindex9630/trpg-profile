@@ -876,22 +876,14 @@
         "label": "現行",
         "items": [
           {
-            "title": "催眠ダーリンLv1　2陣",
-            "role": "KP"
-          },
-          {
-            "title": "NOBODY*2",
-            "role": "HO2 謎多き探索者"
+            "title": "なし",
+            "role": ""
           }
         ]
       },
       {
         "label": "10月",
         "items": [
-          {
-            "title": "NOBODY*2",
-            "role": "HO2 謎多き探索者"
-          },
           {
             "title": "MAGGY 889　2陣",
             "role": "KP"
