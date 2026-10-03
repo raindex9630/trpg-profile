@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-10-03 10:18",
+  "updated_at": "2026-10-04 00:14",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -630,22 +630,6 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
-    },
-    {
-      "id": "b79d6b0b667b",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-28"
-      ],
-      "all_day": false,
-      "start_time": "10:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "schedule_note": "差替用予備日",
-      "blocked_period": "all_day"
     },
     {
       "id": "9f9a5e3cb488",
