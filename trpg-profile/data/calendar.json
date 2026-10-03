@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-10-04 00:14",
+  "updated_at": "2026-10-04 00:15",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2326,6 +2326,48 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "all_day"
+    },
+    {
+      "id": "904e6ed421c5",
+      "session_id": "25d3ebe4aa4e",
+      "title": "AE￤13陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-21"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "ad6cf2d4717b",
+      "session_id": "25d3ebe4aa4e",
+      "title": "AE￤13陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-27"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "0dcd6752f3f3",
+      "session_id": "25d3ebe4aa4e",
+      "title": "AE￤13陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-28"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
