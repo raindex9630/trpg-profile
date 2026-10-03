@@ -2373,6 +2373,20 @@
       "blocked_period": "night"
     },
     {
+      "id": "c550cf257c27",
+      "session_id": "25d3ebe4aa4e",
+      "title": "AE￤13陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-30"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "abb7202b8d91",
       "session_id": "25d3ebe4aa4e",
       "title": "AE￤13陣",
@@ -2384,7 +2398,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": true
+      "is_backup_date": true,
+      "blocked_period": "night"
     }
   ]
 }
