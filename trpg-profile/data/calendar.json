@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-10-04 00:17",
+  "updated_at": "2026-10-04 16:52",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2399,6 +2399,76 @@
       "end_next_day": true,
       "is_backup_date": true,
       "blocked_period": "night"
+    },
+    {
+      "id": "d59220b027e0",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-05"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "2b5b19bc0c47",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-07"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "252e13827581",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-09"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a31c628bb788",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-14"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "628d04321135",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-15"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
