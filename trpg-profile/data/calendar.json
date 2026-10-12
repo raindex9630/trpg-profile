@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-10-05 21:12",
+  "updated_at": "2026-10-12 14:36",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2469,6 +2469,62 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "fd3e62e1bad0",
+      "session_id": "c4e38f8438a3",
+      "title": "ミノタウロスの証人￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-29"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "e3354b16379b",
+      "session_id": "c4e38f8438a3",
+      "title": "ミノタウロスの証人￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-30"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "end_next_day": false,
+      "is_backup_date": false
+    },
+    {
+      "id": "da5b71affc6f",
+      "session_id": "c4e38f8438a3",
+      "title": "ミノタウロスの証人￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-02"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "350648f43ee2",
+      "session_id": "c4e38f8438a3",
+      "title": "ミノタウロスの証人￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-03"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
