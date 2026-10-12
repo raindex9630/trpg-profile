@@ -2,20 +2,20 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-09-29 23:39",
+  "updated_at": "2026-10-12 14:36",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
     "2026-10": "×",
     "2026-11": "えっこく継続は仮なのですべifがここしか入れられなければOK",
     "2026-12": "えっこく継続orすべifのみ⭕️",
-    "2027-01": "ぺの可能性　リア友と遊ぶかも　AE13陣？\nめめかん？",
-    "2027-02": "ぺの可能性\nめめかん？",
-    "2027-03": "14と21の×はどっちか一つは確実に空きます\n四季学かも\nめめかん？",
+    "2027-01": "×",
+    "2027-03": "14と21の×はどっちか一つは確実に空きます\n四季学かも\nめめかん",
     "2027-04": "△　継続のみ⭕️",
     "2027-05": "ヴィジェル2陣？　原稿ある",
     "2027-06": "ヴィジェル2陣？",
-    "2027-09": "2027年いっぱいまでなるべく長め新規×　別でしたいことある　因シとサシキシは行かせて"
+    "2027-09": "2027年いっぱいまでなるべく長め新規×　別でしたいことある　因シとサシキシは行かせて",
+    "2027-02": "ひととひ"
   },
   "events": [
     {
@@ -297,10 +297,11 @@
         "2026-10-03"
       ],
       "all_day": false,
-      "start_time": "10:00",
+      "start_time": "13:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "all_day"
     },
     {
       "id": "a2b904124881",
@@ -314,7 +315,8 @@
       "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "all_day"
     },
     {
       "id": "7cd48fbfffd2",
@@ -334,17 +336,17 @@
     {
       "id": "407ca2dc2af6",
       "session_id": "407ca2dc2af6",
-      "title": "昼×",
+      "title": "×",
       "tag": "×",
       "dates": [
         "2026-10-18"
       ],
-      "all_day": false,
-      "start_time": "13:00",
+      "all_day": true,
+      "start_time": "",
       "end_time": "",
       "end_next_day": false,
       "is_backup_date": false,
-      "blocked_period": "day"
+      "blocked_period": "all_day"
     },
     {
       "id": "e7d86f5a7904",
@@ -628,22 +630,6 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
-    },
-    {
-      "id": "b79d6b0b667b",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-28"
-      ],
-      "all_day": false,
-      "start_time": "10:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "schedule_note": "差替用予備日",
-      "blocked_period": "all_day"
     },
     {
       "id": "9f9a5e3cb488",
@@ -1592,21 +1578,6 @@
       "blocked_period": "all_day"
     },
     {
-      "id": "84e726609db2",
-      "session_id": "84e726609db2",
-      "title": "×",
-      "tag": "×",
-      "dates": [
-        "2027-03-14"
-      ],
-      "all_day": true,
-      "start_time": "",
-      "end_time": "",
-      "end_next_day": false,
-      "is_backup_date": false,
-      "blocked_period": "all_day"
-    },
-    {
       "id": "641fd14b59bb",
       "session_id": "641fd14b59bb",
       "title": "×",
@@ -2280,6 +2251,281 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "day"
+    },
+    {
+      "id": "aa343bde051a",
+      "session_id": "aa343bde051a",
+      "title": "夜×",
+      "tag": "×",
+      "dates": [
+        "2026-09-30"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "2072f859b1c2",
+      "session_id": "2072f859b1c2",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2026-10-04"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "489c44746142",
+      "session_id": "489c44746142",
+      "title": "夜×",
+      "tag": "×",
+      "dates": [
+        "2026-10-01"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "f2e3ebf7a408",
+      "session_id": "f2e3ebf7a408",
+      "title": "×",
+      "tag": "×",
+      "dates": [
+        "2026-10-19"
+      ],
+      "all_day": true,
+      "start_time": "",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "all_day"
+    },
+    {
+      "id": "904e6ed421c5",
+      "session_id": "25d3ebe4aa4e",
+      "title": "AE￤13陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-21"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "ad6cf2d4717b",
+      "session_id": "25d3ebe4aa4e",
+      "title": "AE￤13陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-27"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "0dcd6752f3f3",
+      "session_id": "25d3ebe4aa4e",
+      "title": "AE￤13陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-28"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "c550cf257c27",
+      "session_id": "25d3ebe4aa4e",
+      "title": "AE￤13陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-30"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "abb7202b8d91",
+      "session_id": "25d3ebe4aa4e",
+      "title": "AE￤13陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-31"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": true,
+      "blocked_period": "night"
+    },
+    {
+      "id": "d59220b027e0",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-05"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "2b5b19bc0c47",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-07"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "252e13827581",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-09"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a31c628bb788",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-14"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "628d04321135",
+      "session_id": "03c9ece78c33",
+      "title": "AE継続",
+      "tag": "GM",
+      "dates": [
+        "2027-04-15"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "8eb52c9cfbd0",
+      "session_id": "8eb52c9cfbd0",
+      "title": "夜×",
+      "tag": "×",
+      "dates": [
+        "2026-10-05"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "fd3e62e1bad0",
+      "session_id": "c4e38f8438a3",
+      "title": "ミノタウロスの証人￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-29"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "e3354b16379b",
+      "session_id": "c4e38f8438a3",
+      "title": "ミノタウロスの証人￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-30"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "end_next_day": false,
+      "is_backup_date": false
+    },
+    {
+      "id": "da5b71affc6f",
+      "session_id": "c4e38f8438a3",
+      "title": "ミノタウロスの証人￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-02"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "350648f43ee2",
+      "session_id": "c4e38f8438a3",
+      "title": "ミノタウロスの証人￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2027-01-03"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
