@@ -27,22 +27,22 @@
     },
     {
         "id": "081",
-        "name": "VicxPC",
-        "ruby": "",
+        "name": "コハル",
+        "ruby": "-",
         "image_icon": "",
         "image_main": "",
         "images_diff": [],
         "profile": {
-            "gender": "未定",
-            "age": "",
+            "gender": "女性",
+            "age": "10歳",
             "height": "",
-            "job": ""
+            "job": "庭師"
         },
         "passed_scenarios": [
             {
                 "title": "Vicx",
                 "ho": "",
-                "end": "予定",
+                "end": "END 1",
                 "is_if": false
             }
         ],
@@ -159,15 +159,15 @@
     },
     {
         "id": "077",
-        "name": "空掴HO2",
-        "ruby": "",
+        "name": "Alula Cielo",
+        "ruby": "アルラ・チェーロ",
         "image_icon": "",
         "image_main": "",
         "images_diff": [],
         "profile": {
-            "gender": "未定",
-            "age": "",
-            "height": "",
+            "gender": "女性",
+            "age": "19歳",
+            "height": "161cm",
             "job": ""
         },
         "passed_scenarios": [
@@ -255,7 +255,8 @@
         ],
         "arts": [],
         "created_at": "2026-03-02",
-        "is_lost": false
+        "is_lost": false,
+        "is_hidden": true
     },
     {
         "id": "073",

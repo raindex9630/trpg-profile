@@ -874,20 +874,11 @@
     "months": [
       {
         "label": "現行",
-        "items": [
-          {
-            "title": "なし",
-            "role": ""
-          }
-        ]
+        "items": []
       },
       {
         "label": "10月",
         "items": [
-          {
-            "title": "MAGGY 889　2陣",
-            "role": "KP"
-          },
           {
             "title": "空の青さの掴み方",
             "role": "HO2 新都市の迷子"
@@ -915,6 +906,10 @@
         "label": "12月",
         "items": [
           {
+            "title": "ミノタウロスの証人　1陣",
+            "role": "KP"
+          },
+          {
             "title": "MAGIC JEWEL　1陣",
             "role": "KP"
           }
@@ -927,6 +922,10 @@
       {
         "label": "1月",
         "items": [
+          {
+            "title": "ミノタウロスの証人　1陣",
+            "role": "KP"
+          },
           {
             "title": "Pèttirosso!",
             "role": "HO4 もう一つのファミリーの構成員"
@@ -951,6 +950,19 @@
           {
             "title": "Pèttirosso!",
             "role": "HO4 もう一つのファミリーの構成員"
+          }
+        ]
+      },
+      {
+        "label": "3月",
+        "items": [
+          {
+            "title": "四季送り学園（仮）",
+            "role": "HO3 秋"
+          },
+          {
+            "title": "瞑瞑館殺人事件（仮）",
+            "role": "HO3 汝、その命を脅かされしもの"
           }
         ]
       },
@@ -1607,7 +1619,7 @@
             },
             {
               "title": "MAGGY 889",
-              "count": "1"
+              "count": "2"
             },
             {
               "title": "Naming the Blood",

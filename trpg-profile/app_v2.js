@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span class="planned-item-title">${mItem.title}</span>
                                     ${mItem.role ? `<span class="planned-item-role">${mItem.role}</span>` : ''}
                                 </li>
-                            `).join('')}
+                            `).join('') || (month.label === '現行' ? '<li class="planned-item"><span class="planned-item-title">なし</span></li>' : '')}
                         </ul>
                     </div>
             `).join('');
