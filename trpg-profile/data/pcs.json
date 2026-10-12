@@ -542,12 +542,6 @@
                 "ho": "HO1 白夜",
                 "end": "END 2+a",
                 "is_if": false
-            },
-            {
-                "title": "催眠ダーリンLv1",
-                "ho": "KPC",
-                "end": "現行",
-                "is_if": false
             }
         ],
         "arts": [
