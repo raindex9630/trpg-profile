@@ -625,7 +625,7 @@
         "2026-11-28"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -748,7 +748,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "505b571b7163",
