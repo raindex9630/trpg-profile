@@ -737,6 +737,20 @@
       "blocked_period": "night"
     },
     {
+      "id": "c625273807e2",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-14"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "505b571b7163",
       "session_id": "c4e4308662d0",
       "title": "MAGIC JEWEL￤1陣",
