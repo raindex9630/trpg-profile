@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-10-12 14:36",
+  "updated_at": "2026-10-13 16:23",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -527,21 +527,6 @@
       "blocked_period": "night"
     },
     {
-      "id": "dbe497bb42a3",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-11-14"
-      ],
-      "all_day": false,
-      "start_time": "10:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "all_day"
-    },
-    {
       "id": "ff02f973e6e7",
       "session_id": "c4e4308662d0",
       "title": "MAGIC JEWEL￤1陣",
@@ -626,6 +611,21 @@
       ],
       "all_day": false,
       "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "3b3b9b1d4c41",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-28"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -737,7 +737,7 @@
       "blocked_period": "night"
     },
     {
-      "id": "3b3b9b1d4c41",
+      "id": "c625273807e2",
       "session_id": "c4e4308662d0",
       "title": "MAGIC JEWEL￤1陣",
       "tag": "GM",
@@ -745,7 +745,7 @@
         "2026-12-14"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -794,22 +794,6 @@
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
-      "blocked_period": "all_day"
-    },
-    {
-      "id": "73ba7f7425c5",
-      "session_id": "c4e4308662d0",
-      "title": "MAGIC JEWEL￤1陣",
-      "tag": "GM",
-      "dates": [
-        "2026-12-20"
-      ],
-      "all_day": false,
-      "start_time": "10:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "schedule_note": "差替用予備日",
       "blocked_period": "all_day"
     },
     {
