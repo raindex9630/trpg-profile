@@ -2613,6 +2613,20 @@
       "end_next_day": true,
       "is_backup_date": true,
       "blocked_period": "night"
+    },
+    {
+      "id": "9c43d05882a4",
+      "session_id": "e875479b6152",
+      "title": "ADAMS FRUSTRATION",
+      "tag": "PL",
+      "dates": [
+        "2026-11-14"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
