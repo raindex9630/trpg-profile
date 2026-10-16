@@ -889,6 +889,10 @@
             "role": "KP"
           },
           {
+            "title": "ADAMS FRUSTRATION",
+            "role": "PC2"
+          },
+          {
             "title": "奇天烈探偵倶楽部 事前導入",
             "role": "HO3 女中"
           },
@@ -902,11 +906,11 @@
         "label": "12月",
         "items": [
           {
-            "title": "ミノタウロスの証人　1陣",
+            "title": "MAGIC JEWEL　1陣",
             "role": "KP"
           },
           {
-            "title": "MAGIC JEWEL　1陣",
+            "title": "ミノタウロスの証人　1陣",
             "role": "KP"
           }
         ]
@@ -957,12 +961,12 @@
         "label": "3月",
         "items": [
           {
-            "title": "四季送り学園（仮）",
-            "role": "HO3 秋"
+            "title": "瞑瞑館殺人事件",
+            "role": "HO3 汝、その命を脅かされしもの"
           },
           {
-            "title": "瞑瞑館殺人事件（仮）",
-            "role": "HO3 汝、その命を脅かされしもの"
+            "title": "四季送り学園（仮）",
+            "role": "HO3 秋"
           }
         ]
       },
