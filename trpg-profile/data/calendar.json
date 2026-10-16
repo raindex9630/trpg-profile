@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-10-13 16:23",
+  "updated_at": "2026-10-16 22:47",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -10,7 +10,7 @@
     "2026-11": "えっこく継続は仮なのですべifがここしか入れられなければOK",
     "2026-12": "えっこく継続orすべifのみ⭕️",
     "2027-01": "×",
-    "2027-03": "14と21の×はどっちか一つは確実に空きます\n四季学かも\nめめかん",
+    "2027-03": "四季学",
     "2027-04": "△　継続のみ⭕️",
     "2027-05": "ヴィジェル2陣？　原稿ある",
     "2027-06": "ヴィジェル2陣？",
@@ -2507,6 +2507,123 @@
       ],
       "all_day": false,
       "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "c3473cc8618d",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-10"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "82d0ade07361",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-11"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "239688d9dfbe",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-13"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "51fbec741b2b",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-18"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "b4d6a0980e97",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-26"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "0326272195cd",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-27"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "2e4fca5c2c40",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-29"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": true,
+      "blocked_period": "night"
+    },
+    {
+      "id": "9c43d05882a4",
+      "session_id": "e875479b6152",
+      "title": "ADAMS FRUSTRATION",
+      "tag": "PL",
+      "dates": [
+        "2026-11-14"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false
