@@ -2523,7 +2523,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "82d0ade07361",
@@ -2535,6 +2536,21 @@
       ],
       "all_day": false,
       "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "239688d9dfbe",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-13"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false
@@ -2551,7 +2567,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "b4d6a0980e97",
@@ -2563,6 +2580,21 @@
       ],
       "all_day": false,
       "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "0326272195cd",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-27"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false
@@ -2579,7 +2611,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": true
+      "is_backup_date": true,
+      "blocked_period": "night"
     }
   ]
 }
