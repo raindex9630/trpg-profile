@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-10-13 16:23",
+  "updated_at": "2026-10-16 22:46",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2510,6 +2510,76 @@
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false
+    },
+    {
+      "id": "c3473cc8618d",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-10"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "82d0ade07361",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-11"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "51fbec741b2b",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-18"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "b4d6a0980e97",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-26"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "2e4fca5c2c40",
+      "session_id": "313ab3351bb9",
+      "title": "瞑瞑館殺人事件",
+      "tag": "PL",
+      "dates": [
+        "2027-03-29"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": true
     }
   ]
 }
