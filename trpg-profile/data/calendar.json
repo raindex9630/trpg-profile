@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-10-16 22:47",
+  "updated_at": "2026-10-21 15:00",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2624,6 +2624,104 @@
       ],
       "all_day": false,
       "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "fda21ec90937",
+      "session_id": "acb91c779f56",
+      "title": "秘湯と逃避欲",
+      "tag": "GM",
+      "dates": [
+        "2027-02-11"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "d7c645891c9a",
+      "session_id": "acb91c779f56",
+      "title": "秘湯と逃避欲",
+      "tag": "GM",
+      "dates": [
+        "2027-02-12"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "56be949c7c86",
+      "session_id": "acb91c779f56",
+      "title": "秘湯と逃避欲",
+      "tag": "GM",
+      "dates": [
+        "2027-02-13"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "05e1f88d5057",
+      "session_id": "acb91c779f56",
+      "title": "秘湯と逃避欲",
+      "tag": "GM",
+      "dates": [
+        "2027-02-16"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "4dbcb35b81d7",
+      "session_id": "acb91c779f56",
+      "title": "秘湯と逃避欲",
+      "tag": "GM",
+      "dates": [
+        "2027-02-17"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "c110e352924a",
+      "session_id": "acb91c779f56",
+      "title": "秘湯と逃避欲",
+      "tag": "GM",
+      "dates": [
+        "2027-02-23"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "4e823f574e2a",
+      "session_id": "acb91c779f56",
+      "title": "秘湯と逃避欲",
+      "tag": "GM",
+      "dates": [
+        "2027-02-24"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false
