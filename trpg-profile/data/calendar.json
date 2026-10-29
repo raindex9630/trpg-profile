@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-10-27 23:07",
+  "updated_at": "2026-10-30 00:31",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -359,7 +359,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "7d7d16ac690d",
@@ -373,7 +374,8 @@
       "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "04c0ab437eb3",
@@ -442,36 +444,6 @@
       "tag": "PL",
       "dates": [
         "2026-10-29"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "ebcbf98096a4",
-      "session_id": "1dfb7303366d",
-      "title": "空の青さの掴み方",
-      "tag": "PL",
-      "dates": [
-        "2026-10-30"
-      ],
-      "all_day": false,
-      "start_time": "21:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false,
-      "blocked_period": "night"
-    },
-    {
-      "id": "81a6b5cacee0",
-      "session_id": "1dfb7303366d",
-      "title": "空の青さの掴み方",
-      "tag": "PL",
-      "dates": [
-        "2026-10-31"
       ],
       "all_day": false,
       "start_time": "21:00",
