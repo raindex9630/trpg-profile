@@ -766,7 +766,8 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "5b793d47a6e0",
@@ -825,7 +826,7 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false,
+      "is_backup_date": true,
       "blocked_period": "night"
     },
     {
