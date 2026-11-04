@@ -2714,6 +2714,34 @@
       "is_backup_date": false
     },
     {
+      "id": "8293a8052ef8",
+      "session_id": "58d191226a3a",
+      "title": "四季送り学園",
+      "tag": "PL",
+      "dates": [
+        "2027-03-02"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a31e0d456e62",
+      "session_id": "58d191226a3a",
+      "title": "四季送り学園",
+      "tag": "PL",
+      "dates": [
+        "2027-03-03"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "804155d997bc",
       "session_id": "58d191226a3a",
       "title": "四季送り学園",
@@ -2817,6 +2845,20 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
+    },
+    {
+      "id": "03e7589b34e5",
+      "session_id": "58d191226a3a",
+      "title": "四季送り学園",
+      "tag": "PL",
+      "dates": [
+        "2027-03-30"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     }
   ]
 }
