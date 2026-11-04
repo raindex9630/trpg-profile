@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-11-04 17:13",
+  "updated_at": "2026-11-04 20:45",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2725,7 +2725,8 @@
       "start_time": "13:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "day"
     },
     {
       "id": "e034fcc296fe",
@@ -2754,7 +2755,8 @@
       "start_time": "13:00",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "day"
     },
     {
       "id": "7fc5cb4cc117",
@@ -2815,20 +2817,6 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
-    },
-    {
-      "id": "f183231ba1da",
-      "session_id": "58d191226a3a",
-      "title": "四季送り学園",
-      "tag": "PL",
-      "dates": [
-        "2027-03-28"
-      ],
-      "all_day": false,
-      "start_time": "13:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
     }
   ]
 }
