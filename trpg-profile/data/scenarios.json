@@ -484,6 +484,12 @@
               "favorite": false
             },
             {
+              "title": "空の青さの掴み方",
+              "ho": "HO2 新都市の迷子",
+              "favorite": false,
+              "favorite_ho": false
+            },
+            {
               "title": "追憶のECHO",
               "ho": "HO2 夢辿る者",
               "favorite": false
@@ -874,12 +880,7 @@
     "months": [
       {
         "label": "現行",
-        "items": [
-          {
-            "title": "空の青さの掴み方",
-            "role": "HO2 新都市の迷子"
-          }
-        ]
+        "items": []
       },
       {
         "label": "11月",
@@ -954,6 +955,10 @@
           {
             "title": "Pèttirosso!",
             "role": "HO4 もう一つのファミリーの構成員"
+          },
+          {
+            "title": "秘湯と逃避欲",
+            "role": "KP・HO2"
           }
         ]
       },
@@ -961,12 +966,12 @@
         "label": "3月",
         "items": [
           {
-            "title": "瞑瞑館殺人事件",
-            "role": "HO3 汝、その命を脅かされしもの"
+            "title": "四季送り学園",
+            "role": "HO3 秋"
           },
           {
-            "title": "四季送り学園（仮）",
-            "role": "HO3 秋"
+            "title": "瞑瞑館殺人事件",
+            "role": "HO3 汝、その命を脅かされしもの"
           }
         ]
       },
@@ -976,6 +981,10 @@
           {
             "title": "奇天烈探偵倶楽部",
             "role": "HO3 女中"
+          },
+          {
+            "title": "タイトル未定　1陣",
+            "role": "KP"
           }
         ]
       },
