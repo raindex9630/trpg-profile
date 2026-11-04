@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-11-03 23:57",
+  "updated_at": "2026-11-04 17:12",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2709,6 +2709,76 @@
       ],
       "all_day": false,
       "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "e034fcc296fe",
+      "session_id": "58d191226a3a",
+      "title": "四季送り学園",
+      "tag": "PL",
+      "dates": [
+        "2027-03-09"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "7fc5cb4cc117",
+      "session_id": "58d191226a3a",
+      "title": "四季送り学園",
+      "tag": "PL",
+      "dates": [
+        "2027-03-16"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "95b2f2f48c58",
+      "session_id": "58d191226a3a",
+      "title": "四季送り学園",
+      "tag": "PL",
+      "dates": [
+        "2027-03-17"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "a918b409ed11",
+      "session_id": "58d191226a3a",
+      "title": "四季送り学園",
+      "tag": "PL",
+      "dates": [
+        "2027-03-23"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
+      "id": "cdfdd220bf0f",
+      "session_id": "58d191226a3a",
+      "title": "四季送り学園",
+      "tag": "PL",
+      "dates": [
+        "2027-03-24"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false
