@@ -880,15 +880,16 @@
     "months": [
       {
         "label": "現行",
-        "items": []
-      },
-      {
-        "label": "11月",
         "items": [
           {
             "title": "MAGIC JEWEL　1陣",
             "role": "KP"
-          },
+          }
+        ]
+      },
+      {
+        "label": "11月",
+        "items": [
           {
             "title": "ADAMS FRUSTRATION",
             "role": "PC2"
