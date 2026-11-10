@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-11-10 17:10",
+  "updated_at": "2026-11-10 17:11",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2875,6 +2875,20 @@
       "end_next_day": false,
       "is_backup_date": false,
       "blocked_period": "all_day"
+    },
+    {
+      "id": "f879ac65a1bf",
+      "session_id": "610801172cc9",
+      "title": "MAGGY 889￤5陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-26"
+      ],
+      "all_day": false,
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "end_next_day": false,
+      "is_backup_date": false
     }
   ]
 }
