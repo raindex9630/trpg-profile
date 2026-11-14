@@ -556,7 +556,8 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "2bb235176cd4",
@@ -672,7 +673,7 @@
         "2026-12-05"
       ],
       "all_day": false,
-      "start_time": "10:00",
+      "start_time": "16:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -735,7 +736,8 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "c625273807e2",
@@ -824,7 +826,8 @@
       "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
-      "is_backup_date": false
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "b3aea3b5afc4",
