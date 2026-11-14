@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-11-15 01:33",
+  "updated_at": "2026-11-15 01:34",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -545,6 +545,20 @@
       "blocked_period": "night"
     },
     {
+      "id": "dbdc1bf5d721",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-22"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "2bb235176cd4",
       "session_id": "c4e4308662d0",
       "title": "MAGIC JEWEL￤1陣",
@@ -710,6 +724,20 @@
       "blocked_period": "night"
     },
     {
+      "id": "5f6726063693",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-13"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
+    },
+    {
       "id": "c625273807e2",
       "session_id": "c4e4308662d0",
       "title": "MAGIC JEWEL￤1陣",
@@ -783,6 +811,20 @@
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "all_day"
+    },
+    {
+      "id": "6767037ed29f",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-20"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false
     },
     {
       "id": "b3aea3b5afc4",
