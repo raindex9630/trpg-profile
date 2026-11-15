@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-11-15 22:35",
+  "updated_at": "2026-11-15 23:55",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -2933,6 +2933,20 @@
       "start_time": "10:00",
       "end_time": "18:00",
       "end_next_day": false,
+      "is_backup_date": false
+    },
+    {
+      "id": "a114d6bc3b1d",
+      "session_id": "f44f51d2966d",
+      "title": "ドゥマルデからのささげもの",
+      "tag": "PL",
+      "dates": [
+        "2026-12-12"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
       "is_backup_date": false
     }
   ]
