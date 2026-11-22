@@ -873,6 +873,22 @@
           ]
         }
       ]
+    },
+    {
+      "system": "inSANe",
+      "groups": [
+        {
+          "label": "2PL",
+          "items": [
+            {
+              "title": "ADAMS FRUSTRATION",
+              "ho": "PC2",
+              "favorite": false,
+              "favorite_ho": false
+            }
+          ]
+        }
+      ]
     }
   ],
   "planned_schedule": {
@@ -884,6 +900,10 @@
           {
             "title": "MAGIC JEWEL　1陣",
             "role": "KP"
+          },
+          {
+            "title": "MAGGY 889　4陣",
+            "role": "KP"
           }
         ]
       },
@@ -891,20 +911,12 @@
         "label": "11月",
         "items": [
           {
-            "title": "ADAMS FRUSTRATION",
-            "role": "PC2"
-          },
-          {
-            "title": "MAGGY 889　4陣",
-            "role": "KP"
-          },
-          {
-            "title": "奇天烈探偵倶楽部 事前導入",
-            "role": "HO3 女中"
-          },
-          {
             "title": "青白い馬",
             "role": "PL"
+          },
+          {
+            "title": "MAGGY 889　5陣",
+            "role": "KP"
           }
         ]
       },
@@ -918,6 +930,14 @@
           {
             "title": "MAGGY 889　4陣",
             "role": "KP"
+          },
+          {
+            "title": "MAGGY 889　5陣",
+            "role": "KP"
+          },
+          {
+            "title": "ドゥマルデからのささげもの",
+            "role": "PL"
           },
           {
             "title": "ミノタウロスの証人　1陣",
