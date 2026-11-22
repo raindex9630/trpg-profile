@@ -2,7 +2,7 @@
   "version": 1,
   "calendar_name": "卓予定カレンダー",
   "description": "GM・PL予定と、仮押さえ・参加不可の日を共有しています。",
-  "updated_at": "2026-11-10 17:11",
+  "updated_at": "2026-11-20 00:05",
   "monthly_notes": {
     "2026-08": "×",
     "2026-09": "×",
@@ -508,7 +508,7 @@
         "2026-11-16"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -538,7 +538,22 @@
         "2026-11-19"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "21:00",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "dbdc1bf5d721",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-11-22"
+      ],
+      "all_day": false,
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -553,7 +568,7 @@
         "2026-11-23"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -628,7 +643,7 @@
         "2026-12-01"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -658,7 +673,7 @@
         "2026-12-05"
       ],
       "all_day": false,
-      "start_time": "10:00",
+      "start_time": "16:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -688,7 +703,7 @@
         "2026-12-08"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -701,6 +716,21 @@
       "tag": "GM",
       "dates": [
         "2026-12-10"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
+    },
+    {
+      "id": "5f6726063693",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-13"
       ],
       "all_day": false,
       "start_time": "21:30",
@@ -763,14 +793,14 @@
         "2026-12-18"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
       "blocked_period": "night"
     },
     {
-      "id": "5b793d47a6e0",
+      "id": "cddf6f32108a",
       "session_id": "c4e4308662d0",
       "title": "MAGIC JEWEL￤1陣",
       "tag": "GM",
@@ -778,11 +808,26 @@
         "2026-12-19"
       ],
       "all_day": false,
-      "start_time": "10:00",
+      "start_time": "21:30",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
-      "blocked_period": "all_day"
+      "blocked_period": "night"
+    },
+    {
+      "id": "6767037ed29f",
+      "session_id": "c4e4308662d0",
+      "title": "MAGIC JEWEL￤1陣",
+      "tag": "GM",
+      "dates": [
+        "2026-12-20"
+      ],
+      "all_day": false,
+      "start_time": "21:30",
+      "end_time": "24:00",
+      "end_next_day": true,
+      "is_backup_date": false,
+      "blocked_period": "night"
     },
     {
       "id": "b3aea3b5afc4",
@@ -808,7 +853,7 @@
         "2026-12-22"
       ],
       "all_day": false,
-      "start_time": "21:30",
+      "start_time": "21:00",
       "end_time": "24:00",
       "end_next_day": true,
       "is_backup_date": false,
@@ -2582,9 +2627,10 @@
       ],
       "all_day": false,
       "start_time": "13:00",
-      "end_time": "24:00",
-      "end_next_day": true,
-      "is_backup_date": false
+      "end_time": "20:00",
+      "end_next_day": false,
+      "is_backup_date": false,
+      "blocked_period": "day"
     },
     {
       "id": "fda21ec90937",
@@ -2888,6 +2934,20 @@
       "start_time": "10:00",
       "end_time": "18:00",
       "end_next_day": false,
+      "is_backup_date": false
+    },
+    {
+      "id": "a114d6bc3b1d",
+      "session_id": "f44f51d2966d",
+      "title": "ドゥマルデからのささげもの",
+      "tag": "PL",
+      "dates": [
+        "2026-12-12"
+      ],
+      "all_day": false,
+      "start_time": "13:00",
+      "end_time": "24:00",
+      "end_next_day": true,
       "is_backup_date": false
     }
   ]
