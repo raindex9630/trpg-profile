@@ -188,6 +188,12 @@
               "favorite_ho": false
             },
             {
+              "title": "青白い馬",
+              "ho": "",
+              "favorite": true,
+              "favorite_ho": false
+            },
+            {
               "title": "新シキ世界／アウター・プロトコル",
               "ho": "",
               "favorite": false
@@ -904,15 +910,6 @@
           {
             "title": "MAGGY 889　4陣",
             "role": "KP"
-          }
-        ]
-      },
-      {
-        "label": "11月",
-        "items": [
-          {
-            "title": "青白い馬",
-            "role": "PL"
           },
           {
             "title": "MAGGY 889　5陣",
